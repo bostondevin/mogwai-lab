@@ -1,11 +1,7 @@
 export type IconProps = {
-    classNames: string;
+  className: string;
 };
 
 export const Icon = (props: Partial<IconProps>) => {
-    return (
-        <i className={props.classNames}></i>
-    );
-
+  return <i className={props.className}></i>;
 };
-

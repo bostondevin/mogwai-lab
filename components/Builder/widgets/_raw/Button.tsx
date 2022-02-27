@@ -25,7 +25,7 @@ export const Button = (props: ButtonProps) => {
       type={props.type || "button"}
       disabled={props.disabled}
       className={props.className + (props.disabled ? " opacity-50" : "")}
-      aria-label={props.ariaLabel || undefined}
+      aria-label={props.ariaLabel}
       onClick={props.onClick}
     >
       {props.children}

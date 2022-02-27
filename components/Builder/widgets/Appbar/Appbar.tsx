@@ -109,7 +109,7 @@ export const Appbar = () => {
                     onClick={() => actions.history.undo()}
                     disabled={!canUndo}
                   >
-                    <Icon classNames="fas fa-undo" />
+                    <Icon className="fas fa-undo" />
                   </Button>
                 </Tooltip>
 
@@ -118,7 +118,7 @@ export const Appbar = () => {
                     disabled={!canRedo}
                     onClick={() => actions.history.redo()}
                   >
-                    <Icon classNames="fas fa-redo" />
+                    <Icon className="fas fa-redo" />
                   </Button>
                 </Tooltip>
               </>
@@ -126,9 +126,9 @@ export const Appbar = () => {
             <Tooltip title={enabled ? "Save" : "Edit"} placement="bottom">
               <Button onClick={saveChanges}>
                 {enabled ? (
-                  <Icon classNames="fas fa-floppy-disk" />
+                  <Icon className="fas fa-floppy-disk" />
                 ) : (
-                  <Icon classNames="fas fa-edit" />
+                  <Icon className="fas fa-edit" />
                 )}
               </Button>
             </Tooltip>
