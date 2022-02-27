@@ -5,7 +5,7 @@ import { Tooltip } from "@material-ui/core";
 import lz from "lzutf8";
 
 import { Link } from "../Link/Link";
-import { Button } from "../_raw/Button";
+import { Button } from "../Button/_raw/Button";
 import { Icon } from "../Icon/Icon";
 import Logo from "../../../../public/tornado-logo.svg";
 
@@ -108,14 +108,14 @@ export const Appbar = () => {
           <div className="flex-1 flex gap-4">
             {enabled && (
               <>
-                <Tooltip title="Undo" placement="bottom">
-                  <Button
-                    onClick={() => actions.history.undo()}
-                    disabled={!canUndo}
-                  >
-                    <Icon className="fas fa-undo" />
-                  </Button>
-                </Tooltip>
+                <Button
+                  tooltip="Undo"
+                  placement="bottom"
+                  onClick={() => actions.history.undo()}
+                  disabled={!canUndo}
+                >
+                  <Icon className="fas fa-undo" />
+                </Button>
 
                 <Tooltip title="Redo" placement="bottom">
                   <Button
@@ -127,7 +127,11 @@ export const Appbar = () => {
                 </Tooltip>
 
                 <Tooltip title="Cancel" placement="bottom">
-                  <Button onClick={cancelEdit}>
+                  <Button
+                    onClick={cancelEdit}
+                    tooltip="Cancel"
+                    placement="bottom"
+                  >
                     <Icon className="fas fa-times" />
                   </Button>
                 </Tooltip>

@@ -8,7 +8,7 @@ import cx from "classnames";
 import { Appbar } from "./widgets/Appbar/Appbar";
 import { Sidebar } from "./EditPanel/EditPanel";
 
-export const Builder: React.FC = () => {
+export const Builder = ({ gun }): JSX.Element => {
   const {
     enabled,
     connectors,

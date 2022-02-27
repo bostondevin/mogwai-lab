@@ -1,16 +1,8 @@
 import { UserComponent, useNode } from "@craftjs/core";
 import React from "react";
-import { ButtonSettings } from "./ButtonSettings";
-
-type ButtonType = "button" | "submit" | "reset";
-
-export interface ButtonProps {
-  type: ButtonType;
-  label?: string;
-  className?: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  children?: JSX.Element | JSX.Element[] | string | null | undefined;
-}
+import { Tooltip } from "@material-ui/core";
+import { ButtonConfig } from "./ButtonConfig";
+import { ButtonProps } from "./_raw/ButtonProps";
 
 export const Button: UserComponent<ButtonProps> = (props: any) => {
   const {
@@ -20,14 +12,16 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
   }));
 
   return (
-    <button
-      ref={connect}
-      type={props.type}
-      className={props.className}
-      onClick={props.onClick}
-    >
-      {props.children}
-    </button>
+    <Tooltip title={props.tooltip} placement={props.placement}>
+      <button
+        ref={connect}
+        type={props.type}
+        className={props.className}
+        onClick={props.onClick}
+      >
+        {props.children}
+      </button>
+    </Tooltip>
   );
 };
 
@@ -38,6 +32,6 @@ Button.craft = {
     className: "w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg",
   },
   related: {
-    toolbar: ButtonSettings,
+    toolbar: ButtonConfig,
   },
 };
