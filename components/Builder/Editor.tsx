@@ -12,7 +12,7 @@ import { Custom1, OnlyButtons } from "./widgets/Custom1/Custom1";
 import { Custom2, Custom2VideoDrop } from "./widgets/Custom2/Custom2";
 import { Custom3, Custom3BtnDrop } from "./widgets/Custom3/Custom3";
 
-export const Editor = ({ gun }): JSX.Element => {
+export const Editor = ({ store }): JSX.Element => {
   return (
     <CraftEditor
       resolver={{
@@ -30,7 +30,7 @@ export const Editor = ({ gun }): JSX.Element => {
       enabled={false}
       onRender={EditMenu}
     >
-      <Builder gun={gun} />
+      <Builder store={store} />
     </CraftEditor>
   );
 };

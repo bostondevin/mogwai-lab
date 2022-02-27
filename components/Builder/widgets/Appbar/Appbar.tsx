@@ -9,7 +9,7 @@ import { Button } from "../Button/_raw/Button";
 import { Icon } from "../Icon/Icon";
 import Logo from "../../../../public/tornado-logo.svg";
 
-export const Appbar = ({ gun }): JSX.Element => {
+export const Appbar = ({ store }): JSX.Element => {
   const [path, setPath] = useState(null);
   const router = useRouter();
   useEffect(() => {
@@ -25,13 +25,15 @@ export const Appbar = ({ gun }): JSX.Element => {
   );
 
   const doSave = () => {
-    const json = query.serialize();
-    const condensedJson = lz.encodeBase64(lz.compress(json));
-    // localStorage.setItem(path, condensedJson);
-    const template = gun.get("templates" + path);
-    template.put(condensedJson, () => {
-      console.log("Template Saved!");
-    });
+    if (enabled) {
+      const json = query.serialize();
+      const condensedJson = lz.encodeBase64(lz.compress(json));
+      const template = store.path(("templates" + path).split("/"));
+      template.put(condensedJson, (d) => {
+        console.log("Template Saved!");
+        console.log(d);
+      });
+    }
   };
 
   const cancelEdit = () => {
