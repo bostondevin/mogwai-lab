@@ -9,7 +9,7 @@ import { Custom1, OnlyButtons } from "./widgets/Custom1/Custom1";
 import { Custom2, Custom2VideoDrop } from "./widgets/Custom2/Custom2";
 import { Custom3, Custom3BtnDrop } from "./widgets/Custom3/Custom3";
 
-export const Template = (): JSX.Element => {
+export const Template = () => {
   return (
     <Element
       canvas
