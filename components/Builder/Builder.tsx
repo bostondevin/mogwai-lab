@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Editor, Frame, Element } from "@craftjs/core";
+import React, { useEffect } from "react";
+import { Frame } from "@craftjs/core";
 import { useEditor } from "@craftjs/core";
 import { useRouter } from "next/router";
 import lz from "lzutf8";
@@ -52,7 +52,7 @@ export const Builder: React.FC = () => {
   }, [router.asPath]);
 
   return (
-    <div className={cx(["flex h-full overflow-hidden flex-row w-full fixed"])}>
+    <div className="flex h-full overflow-hidden flex-row w-full fixed">
       <div className="page-container flex flex-1 h-full flex-col">
         <Appbar />
 
@@ -68,11 +68,7 @@ export const Builder: React.FC = () => {
           <div className="relative flex-col flex items-center pt-8">
             <Frame></Frame>
           </div>
-          <div
-            className={
-              "flex items-center justify-center w-full pt-6 text-xs text-light-gray-2"
-            }
-          >
+          <div className="flex items-center justify-center w-full pt-6 text-xs text-light-gray-2">
             Footer text
           </div>
         </div>

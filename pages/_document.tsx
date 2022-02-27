@@ -14,12 +14,12 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html style={{ height: "100%", width: "100%" }}>
+      <Html className="h-full w-full">
         <Head>
           {(this.props as any).styleTags}
           <script src="https://kit.fontawesome.com/eba6bb339e.js"></script>
         </Head>
-        <body style={{ height: "100%", width: "100%" }}>
+        <body className="h-full w-full">
           <Main />
           <NextScript />
         </body>

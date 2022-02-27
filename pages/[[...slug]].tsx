@@ -1,4 +1,3 @@
-import React from "react";
 import { NextSeo } from "next-seo";
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -20,11 +19,11 @@ function Home() {
   return (
     <ThemeProvider theme={theme}>
       <NextSeo
-        title="Builder App"
-        description="An application for building drag-n-drop."
-        canonical="http://builder.org/"
+        title="Mogwai Lab"
+        description="An application for building things of all variety."
+        canonical="https://mogwai-labs.com/"
         twitter={{
-          site: "craft.js.org",
+          site: "mogwai-labs.com",
           cardType: "summary_large_image",
         }}
       />
