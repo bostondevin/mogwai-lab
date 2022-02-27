@@ -50,7 +50,7 @@ function Home() {
           cardType: "summary_large_image",
         }}
       />
-      <Editor />
+      <Editor gun={gun} />
     </ThemeProvider>
   );
 }

@@ -9,7 +9,7 @@ import { Button } from "../Button/_raw/Button";
 import { Icon } from "../Icon/Icon";
 import Logo from "../../../../public/tornado-logo.svg";
 
-export const Appbar = () => {
+export const Appbar = ({ gun }): JSX.Element => {
   const [path, setPath] = useState(null);
   const router = useRouter();
   useEffect(() => {
@@ -27,7 +27,11 @@ export const Appbar = () => {
   const doSave = () => {
     const json = query.serialize();
     const condensedJson = lz.encodeBase64(lz.compress(json));
-    localStorage.setItem(path, condensedJson);
+    // localStorage.setItem(path, condensedJson);
+    const template = gun.get("templates" + path);
+    template.put(condensedJson, () => {
+      console.log("Template Saved!");
+    });
   };
 
   const cancelEdit = () => {
@@ -117,34 +121,34 @@ export const Appbar = () => {
                   <Icon className="fas fa-undo" />
                 </Button>
 
-                <Tooltip title="Redo" placement="bottom">
-                  <Button
-                    disabled={!canRedo}
-                    onClick={() => actions.history.redo()}
-                  >
-                    <Icon className="fas fa-redo" />
-                  </Button>
-                </Tooltip>
+                <Button
+                  tooltip="Redo"
+                  placement="bottom"
+                  disabled={!canRedo}
+                  onClick={() => actions.history.redo()}
+                >
+                  <Icon className="fas fa-redo" />
+                </Button>
 
-                <Tooltip title="Cancel" placement="bottom">
-                  <Button
-                    onClick={cancelEdit}
-                    tooltip="Cancel"
-                    placement="bottom"
-                  >
-                    <Icon className="fas fa-times" />
-                  </Button>
-                </Tooltip>
+                <Button
+                  tooltip="Cancel"
+                  onClick={cancelEdit}
+                  placement="bottom"
+                >
+                  <Icon className="fas fa-times" />
+                </Button>
               </>
             )}
 
-            <Tooltip title={enabled ? "Save" : "Edit"} placement="bottom">
-              <Button onClick={saveChanges}>
-                <Icon
-                  className={enabled ? "fas fa-floppy-disk" : "fas fa-edit"}
-                />
-              </Button>
-            </Tooltip>
+            <Button
+              onClick={saveChanges}
+              tooltip={enabled ? "Save" : "Edit"}
+              placement="bottom"
+            >
+              <Icon
+                className={enabled ? "fas fa-floppy-disk" : "fas fa-edit"}
+              />
+            </Button>
           </div>
         </div>
 

@@ -12,16 +12,29 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
   }));
 
   return (
-    <Tooltip title={props.tooltip} placement={props.placement}>
-      <button
-        ref={connect}
-        type={props.type}
-        className={props.className}
-        onClick={props.onClick}
-      >
-        {props.children}
-      </button>
-    </Tooltip>
+    <>
+      {props.tooltip ? (
+        <Tooltip title={props.tooltip} placement={props.placement}>
+          <button
+            ref={connect}
+            type={props.type}
+            className={props.className}
+            onClick={props.onClick}
+          >
+            {props.children}
+          </button>
+        </Tooltip>
+      ) : (
+        <button
+          ref={connect}
+          type={props.type}
+          className={props.className}
+          onClick={props.onClick}
+        >
+          {props.children}
+        </button>
+      )}
+    </>
   );
 };
 

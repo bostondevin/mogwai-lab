@@ -43,18 +43,32 @@ export const Builder = ({ gun }): JSX.Element => {
 
   useEffect(() => {
     const path = window.location.pathname;
-    const existingPage = localStorage.getItem(path);
+    // const existingPage = localStorage.getItem(path);
 
+    if (gun) {
+      gun.get("template" + path).once((d) => {
+        if (d) {
+          console.log(d);
+          const json = lz.decompress(lz.decodeBase64(d));
+          if (json) deserialize(json);
+        } else {
+          console.log("No template for template" + path);
+        }
+      });
+    }
+
+    /*
     if (existingPage) {
       const json = lz.decompress(lz.decodeBase64(existingPage));
       if (json) deserialize(json);
     }
+    */
   }, [router.asPath]);
 
   return (
     <div className="flex h-full overflow-hidden flex-row w-full fixed">
       <div className="page-container flex flex-1 h-full flex-col">
-        <Appbar />
+        <Appbar gun={gun} />
 
         <div
           className={cx([
