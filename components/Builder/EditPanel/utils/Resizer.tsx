@@ -99,6 +99,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
     nodeWidth: node.data.props[propKey.width],
     nodeHeight: node.data.props[propKey.height],
     fillSpace: node.data.props.fillSpace,
+    className: node.data.props.className,
   }));
 
   const { isRootNode, parentDirection } = useEditor((state, query) => {

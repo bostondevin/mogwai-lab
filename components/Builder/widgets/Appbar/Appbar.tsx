@@ -7,7 +7,7 @@ import lz from "lzutf8";
 import { Link } from "../Link/Link";
 import { Button } from "../_raw/Button";
 import { Icon } from "../Icon/Icon";
-import { Logo } from "../../../../public/tornado-logo.svg";
+import Logo from "../../../../public/tornado-logo.svg";
 
 export const Appbar = () => {
   const [path, setPath] = useState(null);
@@ -35,7 +35,7 @@ export const Appbar = () => {
     actions.setOptions((options) => (options.enabled = !enabled));
   };
 
-  const clickLink = (e) => {
+  const clickLink = () => {
     if (enabled) {
       doSave();
     }

@@ -1,6 +1,6 @@
-import { UserComponent, useNode } from '@craftjs/core';
-import React from 'react';
-import { ButtonSettings } from './ButtonSettings';
+import { UserComponent, useNode } from "@craftjs/core";
+import React from "react";
+import { ButtonSettings } from "./ButtonSettings";
 
 type ButtonType = "button" | "submit" | "reset";
 
@@ -8,8 +8,8 @@ export interface ButtonProps {
   type: ButtonType;
   label?: string;
   className?: string;
-  onClick: (e:  React.MouseEvent<HTMLButtonElement>) => void;
-  children?: JSX.Element | JSX.Element[] | string | null | undefined
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  children?: JSX.Element | JSX.Element[] | string | null | undefined;
 }
 
 export const Button: UserComponent<ButtonProps> = (props: any) => {
@@ -22,7 +22,7 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
   return (
     <button
       ref={connect}
-      type={props.type} 
+      type={props.type}
       className={props.className}
       onClick={props.onClick}
     >
@@ -32,10 +32,10 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
 };
 
 Button.craft = {
-  displayName: 'Button',
+  displayName: "Button",
   props: {
-    type: 'button',
-    className: 'w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg',
+    type: "button",
+    className: "w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg",
   },
   related: {
     toolbar: ButtonSettings,

@@ -8,9 +8,7 @@ import cx from "classnames";
 import { Appbar } from "./widgets/Appbar/Appbar";
 import { Sidebar } from "./EditPanel/EditPanel";
 
-type BuilderProps = {};
-
-export const Builder: React.FC = (props: BuilderProps) => {
+export const Builder: React.FC = () => {
   const {
     enabled,
     connectors,
