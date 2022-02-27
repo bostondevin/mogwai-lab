@@ -30,6 +30,10 @@ export const Appbar = () => {
     localStorage.setItem(path, condensedJson);
   };
 
+  const cancelEdit = () => {
+    actions.setOptions((options) => (options.enabled = false));
+  };
+
   const saveChanges = () => {
     doSave();
     actions.setOptions((options) => (options.enabled = !enabled));
@@ -121,15 +125,20 @@ export const Appbar = () => {
                     <Icon className="fas fa-redo" />
                   </Button>
                 </Tooltip>
+
+                <Tooltip title="Cancel" placement="bottom">
+                  <Button onClick={cancelEdit}>
+                    <Icon className="fas fa-times" />
+                  </Button>
+                </Tooltip>
               </>
             )}
+
             <Tooltip title={enabled ? "Save" : "Edit"} placement="bottom">
               <Button onClick={saveChanges}>
-                {enabled ? (
-                  <Icon className="fas fa-floppy-disk" />
-                ) : (
-                  <Icon className="fas fa-edit" />
-                )}
+                <Icon
+                  className={enabled ? "fas fa-floppy-disk" : "fas fa-edit"}
+                />
               </Button>
             </Tooltip>
           </div>
