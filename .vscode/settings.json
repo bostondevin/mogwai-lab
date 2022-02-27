@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "editor.fontSize": 11,
+    "window.zoomLevel": 0,
+    "workbench.editor.enablePreview": false,
+    "git.ignoreLimitWarning": true,
+    "npm-scripts.showStartNotification": false
+  }
+  
