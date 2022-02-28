@@ -18,12 +18,8 @@ const store = Gun({
   },
 });
 
-const user = store.user().recall({
-  sessionStorage: true,
-});
-
 function MyApp({ Component, pageProps }) {
-  return <Component store={store} user={user} {...pageProps} />;
+  return <Component store={store} {...pageProps} />;
 }
 
 // Only uncomment this method if you have blocking data requirements for

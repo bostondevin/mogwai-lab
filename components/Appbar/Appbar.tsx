@@ -7,9 +7,9 @@ import { Link } from "../Link/Link";
 import { Button } from "../Button/_raw/Button";
 import { Icon } from "../Icon/Icon";
 
-import Logo from "../../../../public/tornado-logo.svg";
+import Logo from "../../public/tornado-logo.svg";
 
-export const Appbar = ({ store, user }): JSX.Element => {
+export const Appbar = ({ store }): JSX.Element => {
   const [path, setPath] = useState(null);
   const router = useRouter();
   useEffect(() => {
@@ -31,10 +31,10 @@ export const Appbar = ({ store, user }): JSX.Element => {
         lz.encodeBase64(lz.compress(json))
       );
       const template = store.get("templates").get(path);
-      template.put(condensedJson, (d) => {
-        console.log("Template Saved! templates" + path);
-        console.log(condensedJson);
-        console.log(d);
+      template.put(condensedJson, () => {
+        //console.log("Template Saved! templates" + path);
+        //console.log(condensedJson);
+        //console.log(d);
       });
     }
   };

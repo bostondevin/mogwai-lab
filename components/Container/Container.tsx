@@ -1,6 +1,6 @@
 import React from "react";
 import { ContainerSettings } from "./ContainerSettings";
-import { Resizer } from "../../EditPanel/utils/Resizer";
+import { Resizer } from "../Builder/EditPanel/utils/Resizer";
 
 export type ContainerProps = {
   background: Record<"r" | "g" | "b" | "a", number>;

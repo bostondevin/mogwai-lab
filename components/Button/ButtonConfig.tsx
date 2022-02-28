@@ -1,8 +1,8 @@
 import React from "react";
 
-import { ToolbarSection } from "../../EditPanel/Toolbar/ToolbarSection";
-import { ToolbarItem } from "../../EditPanel/Toolbar/ToolbarItem";
-import { ToolbarRadio } from "../../EditPanel/Toolbar/ToolbarRadio";
+import { ToolbarSection } from "../Builder/EditPanel/Toolbar/ToolbarSection";
+import { ToolbarItem } from "../Builder/EditPanel/Toolbar/ToolbarItem";
+import { ToolbarRadio } from "../Builder/EditPanel/Toolbar/ToolbarRadio";
 
 export const ButtonConfig = () => {
   return <React.Fragment></React.Fragment>;

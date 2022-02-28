@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { ToolbarSection } from '../../EditPanel/Toolbar/ToolbarSection';
-import { ToolbarItem } from '../../EditPanel/Toolbar/ToolbarItem';
+import { ToolbarSection } from "../Builder/EditPanel/Toolbar/ToolbarSection";
+import { ToolbarItem } from "../Builder/EditPanel/Toolbar/ToolbarItem";
 // import { ToolbarRadio } from '../../EditPanel/Toolbar/ToolbarRadio';
 
 export const VideoSettings = () => {

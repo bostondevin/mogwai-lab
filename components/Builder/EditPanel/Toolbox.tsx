@@ -4,10 +4,10 @@ import { Element, useEditor } from "@craftjs/core";
 
 import { ComponentItem } from "./ComponentItem";
 
-import { Button } from "../widgets/Button/Button";
-import { Container } from "../widgets/Container/Container";
-import { Text } from "../widgets/Typography/Typography";
-import { Video } from "../widgets/Video/Video";
+import { Button } from "../../Button/Button";
+import { Container } from "../../Container/Container";
+import { Text } from "../../Typography/Typography";
+import { Video } from "../../Video/Video";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);

@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import { Editor } from "../components/Builder/Editor";
+import { Builder } from "../components/Builder/Builder";
 
 const theme = createTheme({
   typography: {
@@ -15,19 +15,19 @@ const theme = createTheme({
   },
 });
 
-function Home({ store, user }) {
+function Home({ store }) {
   return (
     <ThemeProvider theme={theme}>
       <NextSeo
         title="Mogwai Lab"
         description="An application for building things of all variety."
-        canonical="https://mogwai-labs.com/"
+        canonical="http://mogwai-labs.com/"
         twitter={{
           site: "mogwai-labs.com",
           cardType: "summary_large_image",
         }}
       />
-      <Editor store={store} user={user} />
+      <Builder store={store} />
     </ThemeProvider>
   );
 }
