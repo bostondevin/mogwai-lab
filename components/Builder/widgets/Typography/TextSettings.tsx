@@ -1,18 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import { capitalize, weightDescription } from '../../EditPanel/utils/text';
-import { ToolbarSection } from '../../EditPanel/Toolbar/ToolbarSection';
-import { ToolbarItem } from '../../EditPanel/Toolbar/ToolbarItem';
-import { ToolbarRadio } from '../../EditPanel/Toolbar/ToolbarRadio';
+import { ToolbarSection } from "../../EditPanel/Toolbar/ToolbarSection";
+import { ToolbarItem } from "../../EditPanel/Toolbar/ToolbarItem";
+import { ToolbarRadio } from "../../EditPanel/Toolbar/ToolbarRadio";
 
 export const TextSettings = () => {
-  return (
-    <React.Fragment>
-      <ToolbarSection
+  return <React.Fragment></React.Fragment>;
+};
+
+/*
+<ToolbarSection
         title="Typography"
-        props={['fontSize', 'fontWeight', 'textAlign']}
+        props={["fontSize", "fontWeight", "textAlign"]}
         summary={({ fontSize, fontWeight, textAlign }: any) => {
-          return `${fontSize || ''}, ${weightDescription(
+          return `${fontSize || ""}, ${weightDescription(
             fontWeight
           )}, ${capitalize(textAlign)}`;
         }}
@@ -28,18 +29,21 @@ export const TextSettings = () => {
           <ToolbarRadio value="center" label="Center" />
           <ToolbarRadio value="right" label="Right" />
         </ToolbarItem>
+
         <ToolbarItem propKey="fontWeight" type="radio" label="Weight">
           <ToolbarRadio value="400" label="Regular" />
           <ToolbarRadio value="500" label="Medium" />
           <ToolbarRadio value="700" label="Bold" />
         </ToolbarItem>
       </ToolbarSection>
+
       <ToolbarSection
         title="Margin"
-        props={['margin']}
+        props={["margin"]}
         summary={({ margin }: any) => {
-          return `${margin[0] || 0}px ${margin[1] || 0}px ${margin[2] || 0}px ${margin[3] || 0
-            }px`;
+          return `${margin[0] || 0}px ${margin[1] || 0}px ${margin[2] || 0}px ${
+            margin[3] || 0
+          }px`;
         }}
       >
         <ToolbarItem propKey="margin" index={0} type="slider" label="Top" />
@@ -47,9 +51,10 @@ export const TextSettings = () => {
         <ToolbarItem propKey="margin" index={2} type="slider" label="Bottom" />
         <ToolbarItem propKey="margin" index={3} type="slider" label="Left" />
       </ToolbarSection>
+
       <ToolbarSection
         title="Appearance"
-        props={['color', 'shadow']}
+        props={["color", "shadow"]}
         summary={({ color, shadow }: any) => {
           return (
             <div className="fletext-right">
@@ -74,6 +79,5 @@ export const TextSettings = () => {
           label="Shadow"
         />
       </ToolbarSection>
-    </React.Fragment>
-  );
-};
+
+      */

@@ -15,7 +15,7 @@ const theme = createTheme({
   },
 });
 
-function Home({ gun }) {
+function Home({ store, user }) {
   return (
     <ThemeProvider theme={theme}>
       <NextSeo
@@ -27,7 +27,7 @@ function Home({ gun }) {
           cardType: "summary_large_image",
         }}
       />
-      <Editor store={gun} />
+      <Editor store={store} user={user} />
     </ThemeProvider>
   );
 }

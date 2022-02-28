@@ -1,20 +1,29 @@
-import { useNode, useEditor } from '@craftjs/core';
-import React from 'react';
-import ContentEditable from 'react-contenteditable';
-import { TextSettings } from './TextSettings';
+import { useNode, useEditor } from "@craftjs/core";
+import React from "react";
+import ContentEditable from "react-contenteditable";
+import { TextSettings } from "./TextSettings";
 
-type TextType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "p" | "legend" | "label";
+type TextType =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "span"
+  | "p"
+  | "legend"
+  | "label";
 
 /* eslint-disable-next-line */
 export interface TextProps {
-  type: TextType
-  text: string
-  className?: string
-//  children?: JSX.Element | JSX.Element[] | string | number | boolean | null | undefined
+  type: TextType;
+  text: string;
+  className?: string;
+  //  children?: JSX.Element | JSX.Element[] | string | number | boolean | null | undefined
 }
 
 export const Text = (props: Partial<TextProps>) => {
-
   const {
     connectors: { connect },
     setProp,
@@ -39,11 +48,11 @@ export const Text = (props: Partial<TextProps>) => {
 };
 
 Text.craft = {
-  displayName: 'Text',
+  displayName: "Text",
   props: {
-    type: 'span',
-    className: 'text-lg bold uppercase',
-    text: 'Lorem ipsum dolor sit amit',
+    type: "h2",
+    className: "text-lg bold outline-none",
+    text: "Lorem ipsum dolor sit amit",
   },
   related: {
     toolbar: TextSettings,

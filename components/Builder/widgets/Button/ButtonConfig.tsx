@@ -5,8 +5,10 @@ import { ToolbarItem } from "../../EditPanel/Toolbar/ToolbarItem";
 import { ToolbarRadio } from "../../EditPanel/Toolbar/ToolbarRadio";
 
 export const ButtonConfig = () => {
-  return (
-    <React.Fragment>
+  return <React.Fragment></React.Fragment>;
+};
+
+/*
       <ToolbarSection
         title="Colors"
         props={["background", "color"]}
@@ -61,6 +63,5 @@ export const ButtonConfig = () => {
           <ToolbarRadio value="outline" label="Outline" />
         </ToolbarItem>
       </ToolbarSection>
-    </React.Fragment>
-  );
-};
+
+      */

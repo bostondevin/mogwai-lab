@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useEditor } from "@craftjs/core";
-import { Tooltip } from "@material-ui/core";
 import lz from "lzutf8";
 
 import { Link } from "../Link/Link";
 import { Button } from "../Button/_raw/Button";
 import { Icon } from "../Icon/Icon";
+
 import Logo from "../../../../public/tornado-logo.svg";
 
-export const Appbar = ({ store }): JSX.Element => {
+export const Appbar = ({ store, user }): JSX.Element => {
   const [path, setPath] = useState(null);
   const router = useRouter();
   useEffect(() => {
@@ -27,10 +27,13 @@ export const Appbar = ({ store }): JSX.Element => {
   const doSave = () => {
     if (enabled) {
       const json = query.serialize();
-      const condensedJson = lz.encodeBase64(lz.compress(json));
-      const template = store.path(("templates" + path).split("/"));
+      const condensedJson = encodeURIComponent(
+        lz.encodeBase64(lz.compress(json))
+      );
+      const template = store.get("templates").get(path);
       template.put(condensedJson, (d) => {
-        console.log("Template Saved!");
+        console.log("Template Saved! templates" + path);
+        console.log(condensedJson);
         console.log(d);
       });
     }

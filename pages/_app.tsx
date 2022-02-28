@@ -8,24 +8,22 @@ import "gun/lib/path.js";
 import "gun/lib/load.js";
 import { nanoid } from "nanoid";
 
-const getPeers = () => {
-  if (process.env.NODE_ENV === "development") {
-    return ["http://localhost:8765/gun"];
-  } else {
-    return ["http://localhost:8765/gun"];
-  }
-};
-
-const gun = Gun({
-  peers: getPeers(),
+const store = Gun({
+  peers:
+    process.env.NODE_ENV === "development"
+      ? ["http://localhost:8765/gun"]
+      : ["http://localhost:8765/gun"],
   uuid: () => {
-    const newId = nanoid(11);
-    return newId;
+    return nanoid(11);
   },
 });
 
+const user = store.user().recall({
+  sessionStorage: true,
+});
+
 function MyApp({ Component, pageProps }) {
-  return <Component gun={gun} {...pageProps} />;
+  return <Component store={store} user={user} {...pageProps} />;
 }
 
 // Only uncomment this method if you have blocking data requirements for

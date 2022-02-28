@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Frame } from "@craftjs/core";
 import { useEditor } from "@craftjs/core";
 import { useRouter } from "next/router";
 import lz from "lzutf8";
@@ -8,7 +7,7 @@ import cx from "classnames";
 import { Appbar } from "./widgets/Appbar/Appbar";
 import { Sidebar } from "./EditPanel/EditPanel";
 
-export const Builder = ({ store }): JSX.Element => {
+export const Builder = ({ store, user, children }): JSX.Element => {
   const {
     enabled,
     connectors,
@@ -37,27 +36,32 @@ export const Builder = ({ store }): JSX.Element => {
         });
       }, 200);
     });
-  }, [setOptions, deserialize]);
+  }, [setOptions]);
 
   const router = useRouter();
 
   useEffect(() => {
-    const path = window.location.pathname;
-    store.path(("template" + path).split("/")).once((d) => {
-      if (d) {
-        const json = lz.decompress(lz.decodeBase64(d));
-        console.log(json);
-        if (json) deserialize(json);
-      } else {
-        console.log("No template for template" + path);
-      }
-    });
+    if (store) {
+      const path = window.location.pathname;
+      const template = store.get("templates").get(path);
+      console.log(template);
+      template.once((d) => {
+        if (d) {
+          const json = lz.decompress(lz.decodeBase64(decodeURIComponent(d)));
+          console.log(json);
+          if (json) deserialize(json);
+        } else {
+          console.log("No template for template" + path);
+          console.log(d);
+        }
+      });
+    }
   }, [router.asPath]);
 
   return (
     <div className="flex h-full overflow-hidden flex-row w-full fixed">
       <div className="page-container flex flex-1 h-full flex-col">
-        <Appbar store={store} />
+        <Appbar store={store} user={user} />
 
         <div
           className={cx([
@@ -69,10 +73,11 @@ export const Builder = ({ store }): JSX.Element => {
           ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
         >
           <div className="relative flex-col flex items-center pt-8">
-            <Frame></Frame>
+            {children}
           </div>
+
           <div className="flex items-center justify-center w-full pt-6 text-xs text-light-gray-2">
-            Footer text
+            User: {user?.is}
           </div>
         </div>
       </div>
