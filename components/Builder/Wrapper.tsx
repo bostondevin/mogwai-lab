@@ -43,13 +43,14 @@ export const Wrapper = ({ store, children }): JSX.Element => {
               hidden: false,
               isCanvas: true,
               linkedNodes: {},
+              className: "",
               nodes: [],
               props: {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
                 fillSpace: "no",
-                width: "800px",
+                width: "100%",
                 height: "auto",
               },
               type: {
@@ -67,7 +68,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
   return (
     <div className="flex h-full overflow-hidden flex-row w-full fixed">
-      <div className="page-container flex flex-1 h-full flex-col">
+      <div className="page-container flex h-full flex-col w-full">
         <Appbar store={store} />
 
         <div

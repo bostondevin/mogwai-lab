@@ -1,46 +1,29 @@
-import { useEditor } from '@craftjs/core';
-import { Tooltip } from '@material-ui/core';
-import styled from 'styled-components';
+import { useEditor } from "@craftjs/core";
+import { Tooltip } from "@material-ui/core";
+import { Icon } from "../../Icon/Icon";
 
-export type ComponentItemmProps = {
-    label: string;
-    icon: string;
-    children?: JSX.Element | null | undefined
-    element: JSX.Element;
+export type ComponentItemProps = {
+  label: string;
+  icon: string;
+  element: JSX.Element;
 };
 
-const Item = styled.a<{ move?: boolean }>`
-  svg {
-    width: 22px;
-    height: 22px;
-    fill: #707070;
-  }
-  ${(props) => props.move && `cursor: move;`}
-`;
+export const ComponentItem = (props: ComponentItemProps) => {
+  const {
+    enabled,
+    connectors: { create },
+  } = useEditor((state) => ({
+    enabled: state.options.enabled,
+  }));
 
-export const ComponentItem = (props: any) => {
-
-    const {
-        enabled,
-        connectors: { create },
-    } = useEditor((state) => ({
-        enabled: state.options.enabled,
-    }));
-
-    return (
-        <div
-            ref={(ref) =>
-                create(
-                    ref,
-                    props.element
-                )
-            }
-        >
-            <Tooltip title={props.label} placement="right">
-                <Item className="m-2 pb-2 cursor-pointer block" move>
-                    {props.label}
-                </Item>
-            </Tooltip>
-        </div>
-    );
+  return (
+    <div
+      ref={(ref) => create(ref, props.element)}
+      className="m-2 p-2 inline-block cursor-move"
+    >
+      <Tooltip title={props.label} placement="right">
+        <Icon className={props.icon} />
+      </Tooltip>
+    </div>
+  );
 };

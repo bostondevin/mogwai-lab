@@ -8,6 +8,7 @@ import { Button } from "../../Button/Button";
 import { Container } from "../../Container/Container";
 import { Text } from "../../Typography/Typography";
 import { Video } from "../../Video/Video";
+import { ForceGraph } from "../../ForceGraph/ForceGraph";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -39,7 +40,7 @@ export const Toolbox = () => {
   const components = [
     {
       title: "Container",
-      icon: "faSquare",
+      icon: "fas fa-square-dashed",
       element: (
         <Element
           canvas
@@ -53,20 +54,26 @@ export const Toolbox = () => {
     },
     {
       title: "Text",
-      icon: "faText",
+      icon: "fas fa-text",
       element: <Text text="Hi there" />,
     },
 
     {
       title: "Button",
-      icon: "faButton",
+      icon: "fas fa-bullseye-pointer",
       element: <Button type="button" />,
     },
 
     {
       title: "Video",
-      icon: "faVideo",
+      icon: "fab fa-youtube",
       element: <Video />,
+    },
+
+    {
+      title: "ForceGraph",
+      icon: "fas fa-sitemap",
+      element: <ForceGraph />,
     },
   ];
 

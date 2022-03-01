@@ -8,6 +8,7 @@ import { Container } from "../Container/Container";
 import { Text } from "../Typography/Typography";
 import { Button } from "../Button/Button";
 import { Video } from "../Video/Video";
+import { ForceGraph } from "../ForceGraph/ForceGraph";
 import { Custom1, OnlyButtons } from "../Custom1/Custom1";
 import { Custom2, Custom2VideoDrop } from "../Custom2/Custom2";
 import { Custom3, Custom3BtnDrop } from "../Custom3/Custom3";
@@ -26,6 +27,7 @@ export const Builder = ({ store }): JSX.Element => {
         OnlyButtons,
         Button,
         Video,
+        ForceGraph,
       }}
       enabled={false}
       onRender={EditMenu}
@@ -35,10 +37,8 @@ export const Builder = ({ store }): JSX.Element => {
           <Element
             canvas
             is={Container}
-            width="800px"
             height="auto"
             background={{ r: 255, g: 255, b: 255, a: 1 }}
-            padding={["40", "40", "40", "40"]}
             custom={{ displayName: "App" }}
           >
             <Element
@@ -47,7 +47,6 @@ export const Builder = ({ store }): JSX.Element => {
               flexDirection="row"
               width="100%"
               height="auto"
-              padding={["40", "40", "40", "40"]}
               margin={["0", "0", "40", "0"]}
               custom={{ displayName: "Introduction" }}
             >
@@ -80,7 +79,6 @@ export const Builder = ({ store }): JSX.Element => {
               flexDirection="column"
               width="100%"
               height="auto"
-              padding={["40", "40", "40", "40"]}
               margin={["0", "0", "40", "0"]}
               custom={{ displayName: "ComplexSection" }}
             >
@@ -203,7 +201,6 @@ export const Builder = ({ store }): JSX.Element => {
               flexDirection="column"
               width="100%"
               height="auto"
-              padding={["40", "40", "40", "40"]}
               margin={["0", "0", "40", "0"]}
               custom={{ displayName: "Programmatic" }}
             >

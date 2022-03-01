@@ -79,9 +79,6 @@ export const Appbar = ({ store }): JSX.Element => {
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-black w-full">
       <div className="container flex justify-between items-center mx-auto text-white">
-        <Link href="/" className="flex">
-          <Logo />
-        </Link>
         <div className="flex items-center md:order-2">
           <div
             className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"

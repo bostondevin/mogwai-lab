@@ -10,7 +10,6 @@ export type ContainerProps = {
   alignItems: string;
   justifyContent: string;
   fillSpace: string;
-  width: string;
   height: string;
   padding: string[];
   margin: string[];
@@ -34,7 +33,6 @@ const defaultProps = {
   color: { r: 0, g: 0, b: 0, a: 1 },
   shadow: 0,
   radius: 0,
-  width: "100%",
   height: "auto",
 };
 
@@ -59,7 +57,7 @@ export const Container = (props: Partial<ContainerProps>) => {
   } = props;
   return (
     <Resizer
-      propKey={{ width: "width", height: "height" }}
+      propKey={{ height: "height" }}
       className={className}
       style={{
         justifyContent,
@@ -67,7 +65,6 @@ export const Container = (props: Partial<ContainerProps>) => {
         alignItems,
         background: `rgba(${Object.values(background)})`,
         color: `rgba(${Object.values(color)})`,
-        padding: `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`,
         margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
         boxShadow:
           shadow === 0
