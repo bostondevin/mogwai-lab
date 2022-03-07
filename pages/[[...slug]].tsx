@@ -19,11 +19,11 @@ function Home({ store }) {
   return (
     <ThemeProvider theme={theme}>
       <NextSeo
-        title="Mogwai Lab"
-        description="An application for building things of all variety."
-        canonical="http://mogwai-labs.com/"
+        title="SEI Investments"
+        description="SEI Investments"
+        canonical="http://seic.com/"
         twitter={{
-          site: "mogwai-labs.com",
+          site: "seic.com",
           cardType: "summary_large_image",
         }}
       />

@@ -3,5 +3,5 @@ export type IconProps = {
 };
 
 export const Icon = (props: Partial<IconProps>) => {
-  return <i className={props.className}></i>;
+  return <i className={props.className} style={{ lineHeight: "inherit" }}></i>;
 };
