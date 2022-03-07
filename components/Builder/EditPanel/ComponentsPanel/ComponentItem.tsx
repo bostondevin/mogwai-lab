@@ -1,6 +1,6 @@
 import { useEditor } from "@craftjs/core";
 import { Tooltip } from "@material-ui/core";
-import { Icon } from "../../Icon/Icon";
+import { Icon } from "../../../Icon/Icon";
 
 export type ComponentItemProps = {
   label: string;

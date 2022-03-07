@@ -1,8 +1,8 @@
 import React from "react";
 
-import { ToolbarSection } from "../Builder/EditPanel/Toolbar/ToolbarSection";
-import { ToolbarItem } from "../Builder/EditPanel/Toolbar/ToolbarItem";
-import { ToolbarRadio } from "../Builder/EditPanel/Toolbar/ToolbarRadio";
+import { ToolbarSection } from "../Builder/EditPanel/SettingsPanel/ToolbarSection";
+import { ToolbarItem } from "../Builder/EditPanel/SettingsPanel/ToolbarItem";
+import { ToolbarRadio } from "../Builder/EditPanel/SettingsPanel/ToolbarRadio";
 
 export const TextSettings = () => {
   return <React.Fragment></React.Fragment>;

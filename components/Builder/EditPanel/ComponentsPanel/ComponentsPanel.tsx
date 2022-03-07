@@ -4,11 +4,11 @@ import { Element, useEditor } from "@craftjs/core";
 
 import { ComponentItem } from "./ComponentItem";
 
-import { Button } from "../../Button/Button";
-import { Container } from "../../Container/Container";
-import { Text } from "../../Typography/Typography";
-import { Video } from "../../Video/Video";
-import { ForceGraph } from "../../ForceGraph/ForceGraph";
+import { Button } from "../../../Button/Button";
+import { Container } from "../../../Container/Container";
+import { Text } from "../../../Typography/Typography";
+import { Video } from "../../../Video/Video";
+import { ForceGraph } from "../../../ForceGraph/ForceGraph";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);

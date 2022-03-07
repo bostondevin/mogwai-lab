@@ -1,14 +1,14 @@
-import { useEditor } from '@craftjs/core';
-import { Layers } from '@craftjs/layers';
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import { useEditor } from "@craftjs/core";
+import { Layers } from "@craftjs/layers";
+import React, { useState } from "react";
+import styled from "styled-components";
 
-import { SidebarItem } from './SidebarItem';
+import { SidebarItem } from "./SidebarItem";
 
-import CustomizeIcon from '../../../public/icons/customize.svg';
-import LayerIcon from '../../../public/icons/layers.svg';
-import { Toolbar } from './Toolbar';
-import { Toolbox } from './Toolbox';
+import CustomizeIcon from "../../../public/icons/customize.svg";
+import LayerIcon from "../../../public/icons/layers.svg";
+import { Toolbar } from "./SettingsPanel/SettingsPanel";
+import { Toolbox } from "./ComponentsPanel/ComponentsPanel";
 
 export const SidebarDiv = styled.div<{ enabled: boolean }>`
   width: 280px;
@@ -28,11 +28,10 @@ export const Sidebar = () => {
   return (
     <SidebarDiv enabled={enabled} className="sidebar transition bg-white w-2">
       <div className="flex flex-col h-full">
-
         <SidebarItem
           icon={CustomizeIcon}
           title="Components"
-          height={'33%'}
+          height={"33%"}
           visible={toolboxVisible}
           onChange={(val) => setToolboxVisible(val)}
         >
@@ -42,7 +41,7 @@ export const Sidebar = () => {
         <SidebarItem
           icon={CustomizeIcon}
           title="Settings"
-          height={'33%'}
+          height={"33%"}
           visible={toolbarVisible}
           onChange={(val) => setToolbarVisible(val)}
         >
@@ -52,7 +51,7 @@ export const Sidebar = () => {
         <SidebarItem
           icon={LayerIcon}
           title="Layers"
-          height={'33%'}
+          height={"33%"}
           visible={layersVisible}
           onChange={(val) => setLayerVisible(val)}
         >
@@ -60,7 +59,6 @@ export const Sidebar = () => {
             <Layers expandRootOnLoad={true} />
           </div>
         </SidebarItem>
-
       </div>
     </SidebarDiv>
   );
