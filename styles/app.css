@@ -26,3 +26,42 @@ body {
 .transition {
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
+
+.diagram-component {
+  width: 100%;
+  height: 300px;
+}
+
+.node__root > circle {
+  fill: red;
+}
+
+.node__branch > circle {
+  fill: yellow;
+}
+
+.node__leaf > circle {
+  fill: green;
+  /* Let's also make the radius of leaf nodes larger */
+  r: 40;
+}
+
+foreignObject {
+  display: block;
+}
+
+.fa,
+.fa-brands,
+.fa-duotone,
+.fa-light,
+.fa-regular,
+.fa-solid,
+.fa-thin,
+.fab,
+.fad,
+.fal,
+.far,
+.fas,
+.fat {
+  line-height: inherit;
+}

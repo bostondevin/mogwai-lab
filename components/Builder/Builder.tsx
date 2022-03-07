@@ -7,8 +7,10 @@ import { EditMenu } from "./EditPanel/EditMenu";
 import { Container } from "../Container/Container";
 import { Text } from "../Typography/Typography";
 import { Button } from "../Button/Button";
+import { TreeGraph } from "../TreeGraph/TreeGraph";
 import { Video } from "../Video/Video";
-import { ForceGraph } from "../ForceGraph/ForceGraph";
+import { Cards3D } from "../GoJs/GoJs";
+import ForceGraph from "../ForceGraph/ForceGraph";
 import { Custom1, OnlyButtons } from "../Custom1/Custom1";
 import { Custom2, Custom2VideoDrop } from "../Custom2/Custom2";
 import { Custom3, Custom3BtnDrop } from "../Custom3/Custom3";
@@ -28,6 +30,8 @@ export const Builder = ({ store }): JSX.Element => {
         Button,
         Video,
         ForceGraph,
+        Cards3D,
+        TreeGraph,
       }}
       enabled={false}
       onRender={EditMenu}

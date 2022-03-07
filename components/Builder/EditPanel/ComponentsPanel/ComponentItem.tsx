@@ -18,12 +18,11 @@ export const ComponentItem = (props: ComponentItemProps) => {
 
   return (
     <div
+      title={props.label}
       ref={(ref) => create(ref, props.element)}
-      className="m-2 p-2 inline-block cursor-move"
+      className="p-2 inline-block cursor-move"
     >
-      <Tooltip title={props.label} placement="right">
-        <Icon className={props.icon} />
-      </Tooltip>
+      <Icon className={props.icon} />
     </div>
   );
 };

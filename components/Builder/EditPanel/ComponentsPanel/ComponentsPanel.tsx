@@ -8,7 +8,10 @@ import { Button } from "../../../Button/Button";
 import { Container } from "../../../Container/Container";
 import { Text } from "../../../Typography/Typography";
 import { Video } from "../../../Video/Video";
-import { ForceGraph } from "../../../ForceGraph/ForceGraph";
+import { Cards3D } from "../../../GoJs/GoJs";
+import { TreeGraph } from "../../../TreeGraph/TreeGraph";
+
+import ForceGraph from "../../../ForceGraph/ForceGraph";
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -40,7 +43,7 @@ export const Toolbox = () => {
   const components = [
     {
       title: "Container",
-      icon: "fas fa-square-dashed",
+      icon: "fas fa-home",
       element: (
         <Element
           canvas
@@ -54,13 +57,23 @@ export const Toolbox = () => {
     },
     {
       title: "Text",
-      icon: "fas fa-text",
+      icon: "fas fa-home",
       element: <Text text="Hi there" />,
+    },
+    {
+      title: "3D Cards",
+      icon: "fas fa-home",
+      element: <Cards3D />,
+    },
+    {
+      title: "Tree Graph",
+      icon: "fas fa-home",
+      element: <TreeGraph />,
     },
 
     {
       title: "Button",
-      icon: "fas fa-bullseye-pointer",
+      icon: "fas fa-home",
       element: <Button type="button" />,
     },
 
