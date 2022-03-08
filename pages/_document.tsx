@@ -17,7 +17,10 @@ export default class MyDocument extends Document {
       <Html className="h-full w-full">
         <Head>
           {(this.props as any).styleTags}
-          <script src="https://kit.fontawesome.com/eba6bb339e.js"></script>
+          <script
+            src="https://kit.fontawesome.com/2104ea5de2.js"
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <body className="h-full w-full">
           <Main />

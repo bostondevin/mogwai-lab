@@ -20,7 +20,7 @@ export const ComponentItem = (props: ComponentItemProps) => {
     <div
       title={props.label}
       ref={(ref) => create(ref, props.element)}
-      className="p-2 inline-block cursor-move"
+      className="p-2 inline-block cursor-grab"
     >
       <Icon className={props.icon} />
     </div>

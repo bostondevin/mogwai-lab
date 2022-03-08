@@ -146,7 +146,7 @@ const TreeGraphConfig = () => {
 };
 
 TreeGraph.craft = {
-  displayName: "3D Card",
+  displayName: "Go.js Diagrap",
   props: {
     className: "w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg",
   },

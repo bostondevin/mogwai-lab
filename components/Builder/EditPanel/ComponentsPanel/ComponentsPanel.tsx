@@ -5,6 +5,7 @@ import { Element, useEditor } from "@craftjs/core";
 import { ComponentItem } from "./ComponentItem";
 
 import { Button } from "../../../Button/Button";
+import { Input } from "../../../Input/Input";
 import { Container } from "../../../Container/Container";
 import { Text } from "../../../Typography/Typography";
 import { Video } from "../../../Video/Video";
@@ -43,12 +44,12 @@ export const Toolbox = () => {
   const components = [
     {
       title: "Container",
-      icon: "fas fa-home",
+      icon: "fas fa-square-dashed",
       element: <Element canvas is={Container}></Element>,
     },
     {
       title: "Text",
-      icon: "fas fa-home",
+      icon: "fas fa-text",
       element: <Text text="Hi there" />,
     },
     {
@@ -56,16 +57,17 @@ export const Toolbox = () => {
       icon: "fas fa-sitemap",
       element: <Cards3D />,
     },
-    {
-      title: "Tree Graph",
-      icon: "fas fa-home",
-      element: <TreeGraph />,
-    },
 
     {
       title: "Button",
-      icon: "fas fa-home",
+      icon: "fas fa-bullseye-pointer",
       element: <Button type="button" />,
+    },
+
+    {
+      title: "Text Input",
+      icon: "fas fa-input-pipe",
+      element: <Input type="text" />,
     },
 
     {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { UserComponent, useNode } from "@craftjs/core";
 import * as go from "gojs";
+
 import { ReactDiagram } from "gojs-react";
 
 export interface CardProps {
@@ -20,6 +21,9 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
   const [graphData, setGraphData] = useState([]);
   const [breadCrumbs, setBreadCrumbs] = useState([]);
 
+  const widthIcon = 30,
+    heightContent = 80;
+
   const {
     connectors: { connect },
   } = useNode((node) => ({
@@ -30,51 +34,52 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
     if (node) {
       setGraphData([
         {
-          key: "smith-household",
+          key: "Franklin-household",
           rootdistance: 0,
           everExpanded: false,
           children: [
-            "smith-betty-client",
-            "smith-fred-client",
-            "smith-wilma-client",
+            "Franklin-betty-client",
+            "Franklin-fred-client",
+            "Franklin-wilma-client",
           ],
           accountNumber: "8374-9932",
-          label: "Smith Family Household",
+          label:
+            "Franklin Family Household Wrapping Really Very Incredibly Amazingly Long Name",
           accountValue: 2498452.98,
           type: "household",
         },
         {
-          key: "smith-betty-client",
+          key: "Franklin-betty-client",
           rootdistance: 1,
-          parent: "smith-household",
+          parent: "Franklin-household",
           everExpanded: false,
           children: [],
           accountNumber: "8374-9932",
           accountValue: 2431760.36,
-          label: "Betty Smith",
+          label: "Betty Franklin",
           type: "client",
         },
         {
-          key: "smith-fred-client",
+          key: "Franklin-fred-client",
           rootdistance: 1,
-          parent: "smith-household",
+          parent: "Franklin-household",
           everExpanded: false,
           children: [],
           accountNumber: "8374-9932",
           accountValue: 1000000.0,
-          label: "Fred Smith",
+          label: "Fred Franklin",
           type: "client",
         },
 
         {
-          key: "smith-wilma-client",
+          key: "Franklin-wilma-client",
           rootdistance: 1,
-          parent: "smith-household",
+          parent: "Franklin-household",
           everExpanded: false,
           children: [],
           accountNumber: "8374-9932",
           accountValue: 1000000.0,
-          label: "Wilma Smith",
+          label: "Wilma Franklin",
           type: "client",
         },
       ]);
@@ -131,6 +136,9 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
       "draggingTool.dragsTree": false, // dragging for both move and copy
       "undoManager.isEnabled": true,
       model: new go.TreeModel(graphData),
+      allowZoom: true,
+      minScale: 0.5,
+      maxScale: 3,
     });
 
     diagram.nodeTemplate = $(
@@ -140,10 +148,10 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
         selectionObjectName: "PANEL",
         isTreeExpanded: false,
         isTreeLeaf: false,
-        isShadowed: true,
-        shadowVisible: true,
-        shadowColor: "#555555",
-        shadowOffset: new go.Point(2, 2),
+        //        isShadowed: true,
+        //        shadowVisible: true,
+        //        shadowColor: "#555555",
+        //        shadowOffset: new go.Point(2, 2),
       },
       // the node's outer shape, which will surround the text
       $(
@@ -154,7 +162,7 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
           go.Shape,
           "RoundedRectangle",
           {
-            fill: "whitesmoke",
+            fill: "white",
             stroke: "black",
             strokeWidth: 2,
             parameter1: 8, // set the rounded corner
@@ -186,22 +194,52 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
             return darkColor;
           })
         ),
+        // new Spot(x?: number, y?: number, offx?: number, offy?: number)
 
+        $(go.Shape, "RoundedRectangle", {
+          alignment: new go.Spot(0, 0, 1, 1),
+          fill: "white",
+          width: widthIcon,
+          height: heightContent,
+          strokeWidth: 2,
+          stroke: "transparent",
+          parameter1: 8,
+          spot1: go.Spot.TopLeft,
+          spot2: go.Spot.BottomRight, // make content go all the way to inside edges of rounded corners
+        }),
+
+        $(go.Shape, "Rectangle", {
+          alignment: new go.Spot(0, 0, 22, 2),
+          fill: "white",
+          width: 10,
+          height: 10,
+          strokeWidth: 0,
+        }),
+
+        $(go.Shape, "Rectangle", {
+          alignment: new go.Spot(0, 0, 22, heightContent - 8),
+          fill: "white",
+          width: 10,
+          height: 10,
+          strokeWidth: 0,
+        }),
+
+        /*
         $(go.Panel, {
           alignment: go.Spot.TopRight,
           background: "white",
-          width: 155,
-          height: 80,
+          width: widthIcon,
+          height: heightContent,
           padding: 8,
           margin: 2,
         }),
-
+*/
         $(
           go.Panel,
           "Table",
           {
             defaultAlignment: go.Spot.Left,
-            margin: go.Margin.parse("0 0 0 0"),
+            margin: go.Margin.parse("0 10 0 0"),
           },
           $(go.RowColumnDefinition, { column: 2 }),
 
@@ -214,7 +252,7 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
               stroke: "black",
               column: 0,
               rowSpan: 3,
-              margin: go.Margin.parse("0 8 0 8"),
+              margin: go.Margin.parse("0 16 0 8"),
               alignment: go.Spot.Center,
             },
             new go.Binding("text", "type", (v) => {
@@ -264,8 +302,12 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
               alignment: go.Spot.Left,
               font: "normal small sans-serif",
               margin: go.Margin.parse("0 8 4 0"),
+              overflow: go.TextBlock.OverflowEllipsis,
+              maxLines: 2,
+              width: 130,
             },
-            new go.Binding("text", "label")
+            new go.Binding("text", "label"),
+            new go.Binding("width", "label", (v) => (v.length > 40 ? 250 : 110))
           ),
 
           $(
@@ -310,28 +352,6 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
       )
     );
 
-    diagram.model = new go.TreeModel([
-      {
-        key: 0,
-        everExpanded: false,
-        accountValue: 2498452.98,
-        accountNumber: "8374-9932",
-        label: "Smith Family Household",
-        type: "household",
-      },
-
-      {
-        key: 1,
-        everExpanded: false,
-        parent: 0,
-        rootdistance: 1,
-        accountNumber: "8374-9932",
-        accountValue: 2431760.36,
-        label: "Betty Smith",
-        type: "client",
-      },
-    ]);
-
     return diagram;
   }
 
@@ -345,6 +365,24 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
             </span>
           );
         })}
+      </div>
+
+      <div className="zoomSlider">
+        <button id="zoomSliderOut" className="zoomButton">
+          -
+        </button>
+        <div id="zoomSliderRangeCtn" className="zoomRangeContainer">
+          <input
+            id="zoomSliderRange"
+            className="zoomRangeInput"
+            type="range"
+            min="-50"
+            max="100"
+          />
+        </div>
+        <button id="zoomSliderIn" className="zoomButton">
+          +
+        </button>
       </div>
       <ReactDiagram
         ref={fgRef}
@@ -362,7 +400,7 @@ const Card3DConfig = () => {
 };
 
 Cards3D.craft = {
-  displayName: "3D Card",
+  displayName: "Go.js Diagram",
   props: {
     className: "w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg",
   },

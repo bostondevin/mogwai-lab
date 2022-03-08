@@ -7,6 +7,7 @@ import { EditMenu } from "./EditPanel/EditMenu";
 import { Container } from "../Container/Container";
 import { Text } from "../Typography/Typography";
 import { Button } from "../Button/Button";
+import { Input } from "../Input/Input";
 import { TreeGraph } from "../TreeGraph/TreeGraph";
 import { Video } from "../Video/Video";
 import { Cards3D } from "../GoJs/GoJs";
@@ -28,6 +29,7 @@ export const Builder = ({ store }): JSX.Element => {
         Custom3BtnDrop,
         OnlyButtons,
         Button,
+        Input,
         Video,
         ForceGraph,
         Cards3D,
