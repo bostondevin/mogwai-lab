@@ -1,14 +1,16 @@
-import React, { useCallback, useRef, useEffect } from "react";
+import React, { useCallback, useRef, useEffect, useState } from "react";
 import { UserComponent, useNode, NodeElement } from "@craftjs/core";
 import * as d3 from "d3";
 import ForceGraph3D, { ForceGraphMethods } from "react-force-graph-3d";
 import { sampleData } from "./forceGraphUtils";
 import ContainerDimensions from "react-container-dimensions";
+import SpriteText from "three-spritetext";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import {
   CSS2DRenderer,
   CSS2DObject,
 } from "three/examples/jsm/renderers/CSS2DRenderer";
+import { Vector2 } from "three";
 
 // const _ForceGraph3D = dynamic(() => import("react-force-graph-3d"), {
 // ssr: false
@@ -21,7 +23,25 @@ const ForwardGraph3D = forwardRef(
 );
 */
 const ForceGraphBase = () => {
-  const fgRef = useRef<ForceGraphMethods>();
+  // const fgRef = useRef<ForceGraphMethods>();
+  const [graphData, setGraphData] = useState({ nodes: [], links: [] });
+
+  const fgRef = useCallback((node: ForceGraphMethods) => {
+    if (node) {
+      // node.zoomToFit(100, 20);
+
+      const newVector = new Vector2(1000, 400);
+      const bloomPass = new UnrealBloomPass(newVector, 0.3, 0.4, 0.2);
+      //node.postProcessingComposer().addPass(bloomPass);
+
+      node.d3Force("link").distance(2);
+      node.d3Force("collide", d3.forceCollide(50));
+      node.d3ReheatSimulation();
+
+      setGraphData(sampleData);
+    }
+  }, []);
+
   const {
     connectors: { connect },
   } = useNode((node) => ({
@@ -35,7 +55,7 @@ const ForceGraphBase = () => {
   };
 
   const nodeColor = (node) => {
-    return undefined;
+    return "transparent";
   };
 
   const nodeThreeObject = (node) => {
@@ -55,6 +75,23 @@ const ForceGraphBase = () => {
         darkColor = "#0071dc";
         break;
     }
+
+    const sprite = new SpriteText(node.label);
+    sprite.material.depthWrite = false; // make sprite background transparent
+    sprite.color = darkColor;
+    sprite.textHeight = 6;
+    sprite.borderRadius = 5;
+    sprite.backgroundColor = "#ffffff";
+    sprite.fontFace = "Arial";
+    sprite.fontSize = 70;
+    sprite.fontWeight = "normal";
+    sprite.padding = 8;
+    sprite.borderWidth = 2;
+    sprite.borderColor = darkColor;
+    return sprite;
+
+    /*
+    
 
     const nodeEl = document.createElement("div");
     nodeEl.style.width = "180px";
@@ -100,30 +137,40 @@ const ForceGraphBase = () => {
     nodeEl.appendChild(infoContainer);
 
     return new CSS2DObject(nodeEl);
+    */
   };
 
   useEffect(() => {
     if (fgRef && fgRef.current) {
       const fg = fgRef.current;
-      // const newVector = { x: 1, y: 1 };
-      // const bloomPass = new UnrealBloomPass(newVector, 3, 1, 0.1);
-      // fgRef.current.postProcessingComposer().addPass(bloomPass);
+
+      //fg.d3Force("center", null);
+      //fg.d3Force("charge", null);
+
+      // fgRef.current.d3Force("collision", d3.forceCollide(500));
+      //fgRef.current.d3Force("collide", d3.forceCollide(4));
 
       //const LINK_LENGTH_CONSTANT = 123;
       //fg.d3Force("link").distance((link) => 300);
 
+      // fg.d3Force("link").distance((link) => 300);
+      // fgRef.numDimensions(3);
+
       //fg.d3Force("collide", d3.forceCollide(4));
+
+      //fgRef.current.zoomToFit(100);
     }
   }, []);
 
   const stopEngine = () => {
-    //fgRef.current.d3Force("link").distance((link) => 300);
+    //fgRef.current.d3Force("collision", d3.forceCollide(0.2));
+    // fgRef.current.d3Force("link").distance(100);
     //fgRef.current.zoomToFit(400);
   };
 
   const handleClick = useCallback(
     (node) => {
-      const distance = 40;
+      const distance = 80;
       const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
       if (fgRef.current) {
         console.log(fgRef.current);
@@ -147,10 +194,9 @@ const ForceGraphBase = () => {
         {({ width }) => (
           <ForceGraph3D
             ref={fgRef}
+            graphData={graphData}
             width={width}
             height={400}
-            graphData={sampleData}
-            nodeLabel="label"
             onNodeClick={handleClick}
             linkDirectionalParticles={2}
             linkDirectionalParticleWidth={1.4}
@@ -158,11 +204,10 @@ const ForceGraphBase = () => {
             linkOpacity={0.8}
             linkWidth={0.3}
             nodeColor={nodeColor}
-            extraRenderers={extraRenderers}
             nodeThreeObject={nodeThreeObject}
-            nodeThreeObjectExtend={true}
-            cooldownTicks={100}
             onEngineStop={stopEngine}
+            warmUpTicks={500}
+            cooldownTicks={500}
           />
         )}
       </ContainerDimensions>

@@ -6,6 +6,8 @@ export const sampleData = {
       accountNumber: "8374-9932",
       label: "Smith Family Household",
       type: "household",
+      vx: 3,
+      vy: 3,
     },
     {
       id: "smith-betty-client",
@@ -13,6 +15,8 @@ export const sampleData = {
       accountValue: 2431760.36,
       label: "Betty Smith",
       type: "client",
+      vx: 1,
+      vy: 1,
     },
     {
       id: "smith-betty-account-ira",
@@ -20,6 +24,8 @@ export const sampleData = {
       accountValue: 1231.55,
       label: "Betty Smith's IRA",
       type: "account",
+      vx: 1,
+      vy: 1,
     },
     {
       id: "smith-betty-account-401k",
@@ -27,6 +33,8 @@ export const sampleData = {
       accountValue: 1431760.36,
       label: "Betty Smith's 401k",
       type: "account",
+      vx: 1,
+      vy: 1,
     },
 
     {
@@ -35,6 +43,8 @@ export const sampleData = {
       accountValue: 1000000.0,
       label: "Fred Smith",
       type: "client",
+      vx: 1,
+      vy: 1,
     },
     {
       id: "smith-fred-account-ira",
@@ -42,6 +52,8 @@ export const sampleData = {
       accountValue: 4832.61,
       label: "Fred Smith's IRA",
       type: "account",
+      vx: 1,
+      vy: 1,
     },
     {
       id: "smith-fred-account-401k",
@@ -49,6 +61,8 @@ export const sampleData = {
       accountValue: 61862.21,
       label: "Fred Smith's 401k",
       type: "account",
+      vx: 1,
+      vy: 1,
     },
   ],
   links: [
