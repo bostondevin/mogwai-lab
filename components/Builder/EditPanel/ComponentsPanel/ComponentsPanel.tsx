@@ -44,16 +44,7 @@ export const Toolbox = () => {
     {
       title: "Container",
       icon: "fas fa-home",
-      element: (
-        <Element
-          canvas
-          is={Container}
-          background={{ r: 78, g: 78, b: 78, a: 1 }}
-          color={{ r: 0, g: 0, b: 0, a: 1 }}
-          height="300px"
-          width="300px"
-        ></Element>
-      ),
+      element: <Element canvas is={Container}></Element>,
     },
     {
       title: "Text",
@@ -61,8 +52,8 @@ export const Toolbox = () => {
       element: <Text text="Hi there" />,
     },
     {
-      title: "3D Cards",
-      icon: "fas fa-home",
+      title: "Go.js Tree",
+      icon: "fas fa-sitemap",
       element: <Cards3D />,
     },
     {

@@ -18,6 +18,7 @@ export interface CardProps {
 
 export const Cards3D: UserComponent<CardProps> = (props: any) => {
   const [graphData, setGraphData] = useState([]);
+  const [breadCrumbs, setBreadCrumbs] = useState([]);
 
   const {
     connectors: { connect },
@@ -29,18 +30,21 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
     if (node) {
       setGraphData([
         {
-          key: 0,
-          color: "red",
+          rootdistance: 0,
           everExpanded: false,
-          id: "smith-household",
-          accountValue: 2498452.98,
+          key: "smith-household",
           accountNumber: "8374-9932",
           label: "Smith Family Household",
+          accountValue: 2498452.98,
           type: "household",
         },
       ]);
     }
   }, []);
+
+  const clickBreadCrumb = (item) => {
+    console.log(item);
+  };
 
   function handleModelChange(changes) {
     // alert("GoJS model changed!");
@@ -80,13 +84,22 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
         var child = diagram.findNodeForData(childdata);
         child.location = parent.location;
       }
+
       return numchildren;
     }
 
     diagram.startTransaction("CollapseExpandTree");
     // this behavior is specific to this incrementalTree sample:
     var data = node.data;
+
+    const newBreadcrumbs = breadCrumbs.filter(
+      (d) => d.rootdistance < data.rootdistance
+    );
+    setBreadCrumbs([...newBreadcrumbs, ...[data]]);
+
     if (!data.everExpanded) {
+      console.log(data);
+
       // only create children once per node
       diagram.model.setDataProperty(data, "everExpanded", true);
       var numchildren = createSubTree(data);
@@ -177,7 +190,6 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
         $(go.Panel, {
           alignment: go.Spot.TopRight,
           background: "white",
-          parameter1: 8, // set the rounded corner
           width: 155,
           height: 80,
           padding: 8,
@@ -302,6 +314,17 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
         label: "Smith Family Household",
         type: "household",
       },
+
+      {
+        key: 1,
+        everExpanded: false,
+        parent: 0,
+        rootdistance: 1,
+        accountNumber: "8374-9932",
+        accountValue: 2431760.36,
+        label: "Betty Smith",
+        type: "client",
+      },
     ]);
 
     return diagram;
@@ -309,6 +332,14 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
 
   return (
     <div ref={connect}>
+      breadCrumbs:
+      {breadCrumbs.map((item) => {
+        return (
+          <span key={item.key} className="mr-2">
+            <a onClick={clickBreadCrumb(item)}>{item.label}</a> &gt;
+          </span>
+        );
+      })}
       <ReactDiagram
         ref={fgRef}
         initDiagram={initDiagram}

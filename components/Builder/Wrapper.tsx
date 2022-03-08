@@ -31,27 +31,20 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
           if (json) deserialize(json);
         } else {
-          console.log("No template for template" + path);
+          //console.log("No template for template" + path);
 
-          // console.log(d);
           const blank = {
             ROOT: {
               custom: {
-                displayName: "App",
+                displayName: "Container",
               },
               displayName: "Container",
               hidden: false,
               isCanvas: true,
               linkedNodes: {},
-              className: "",
               nodes: [],
               props: {
-                flexDirection: "column",
-                alignItems: "flex-start",
-                justifyContent: "flex-start",
-                fillSpace: "no",
-                width: "100%",
-                height: "auto",
+                className: "w-full h-full overflow-auto",
               },
               type: {
                 resolvedName: "Container",
@@ -59,7 +52,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
             },
           };
 
-          console.log(JSON.stringify(blank));
+          //console.log(JSON.stringify(blank));
           deserialize(JSON.stringify(blank));
         }
       });
@@ -73,18 +66,14 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
         <div
           className={cx([
-            "craftjs-renderer flex-1 h-full w-full transition pb-8 overflow-auto",
+            "craftjs-renderer h-full w-full transition overflow-auto",
             {
               "bg-renderer-gray": enabled,
             },
           ])}
           ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
         >
-          <div className="flex-col flex items-center pt-8">{children}</div>
-
-          <div className="flex items-center justify-center w-full pt-6 text-xs text-light-gray-2">
-            Store
-          </div>
+          {children}
         </div>
       </div>
 

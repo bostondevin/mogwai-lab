@@ -1,13 +1,15 @@
 import React from "react";
 
-import { ToolbarSection } from "../Builder/EditPanel/SettingsPanel/ToolbarSection";
-import { ToolbarItem } from "../Builder/EditPanel/SettingsPanel/ToolbarItem";
-import { ToolbarRadio } from "../Builder/EditPanel/SettingsPanel/ToolbarRadio";
+//import { ToolbarSection } from "../Builder/EditPanel/SettingsPanel/ToolbarSection";
+//import { ToolbarItem } from "../Builder/EditPanel/SettingsPanel/ToolbarItem";
+//import { ToolbarRadio } from "../Builder/EditPanel/SettingsPanel/ToolbarRadio";
 
 export const ContainerSettings = () => {
-  return (
-    <React.Fragment>
-      <ToolbarSection
+  return <React.Fragment></React.Fragment>;
+};
+
+/*
+<ToolbarSection
         title="Dimensions"
         props={["width", "height"]}
         summary={({ width, height }: any) => {
@@ -121,6 +123,4 @@ export const ContainerSettings = () => {
           <ToolbarRadio value="flex-end" label="Flex end" />
         </ToolbarItem>
       </ToolbarSection>
-    </React.Fragment>
-  );
-};
+      */
