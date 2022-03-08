@@ -1,4 +1,4 @@
-import { Tooltip } from "@material-ui/core";
+import { Tooltip } from "@mui/material";
 import { ButtonProps } from "./ButtonProps";
 
 export const Button = (props: ButtonProps) => {

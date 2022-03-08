@@ -1,14 +1,22 @@
 import { useEditor } from "@craftjs/core";
 import { Layers } from "@craftjs/layers";
+
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { SidebarItem } from "./SidebarItem";
-
-import CustomizeIcon from "../../../public/icons/customize.svg";
-import LayerIcon from "../../../public/icons/layers.svg";
 import { Toolbar } from "./SettingsPanel/SettingsPanel";
 import { Toolbox } from "./ComponentsPanel/ComponentsPanel";
+
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
+// import Tooltip from "@mui/material/Tooltip";
 
 export const SidebarDiv = styled.div<{ enabled: boolean }>`
   width: 280px;
@@ -17,49 +25,68 @@ export const SidebarDiv = styled.div<{ enabled: boolean }>`
   margin-right: ${(props) => (props.enabled ? 0 : -280)}px;
 `;
 
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      className="h-full"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ height: "100%" }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
 export const Sidebar = () => {
-  const [layersVisible, setLayerVisible] = useState(true);
-  const [toolbarVisible, setToolbarVisible] = useState(true);
-  const [toolboxVisible, setToolboxVisible] = useState(true);
   const { enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
 
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setSelectedTab(newValue);
+  };
+
   return (
-    <SidebarDiv enabled={enabled} className="sidebar transition bg-white w-2">
-      <div className="flex flex-col h-full">
-        <SidebarItem
-          icon={CustomizeIcon}
-          title="Components"
-          height={"33%"}
-          visible={toolboxVisible}
-          onChange={(val) => setToolboxVisible(val)}
+    <SidebarDiv
+      enabled={enabled}
+      className="sidebar transition bg-white w-2 flex flex-col h-full"
+    >
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={selectedTab}
+          onChange={handleChange}
+          aria-label="basic tabs example"
         >
-          <Toolbox />
-        </SidebarItem>
+          <Tab label="Components" {...a11yProps(0)} />
+          <Tab label="Settings" {...a11yProps(1)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={selectedTab} index={0}>
+        <Toolbox />
+      </TabPanel>
+      <TabPanel value={selectedTab} index={1}>
+        <Toolbar />
+      </TabPanel>
 
-        <SidebarItem
-          icon={CustomizeIcon}
-          title="Settings"
-          height={"33%"}
-          visible={toolbarVisible}
-          onChange={(val) => setToolbarVisible(val)}
-        >
-          <Toolbar />
-        </SidebarItem>
-
-        <SidebarItem
-          icon={LayerIcon}
-          title="Layers"
-          height={"33%"}
-          visible={layersVisible}
-          onChange={(val) => setLayerVisible(val)}
-        >
-          <div className="">
-            <Layers expandRootOnLoad={true} />
-          </div>
-        </SidebarItem>
-      </div>
+      <Layers expandRootOnLoad={true} />
     </SidebarDiv>
   );
 };

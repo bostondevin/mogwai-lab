@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import MuiLink from '@material-ui/core/Link';
-import clsx from 'clsx';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import React from 'react';
+import MuiLink from "@mui/material/Link";
+import clsx from "clsx";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import React from "react";
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
   const { as, href, prefetch, ...other } = props;
@@ -26,7 +26,7 @@ NextComposed.propTypes = {
 // https://nextjs.org/docs/#with-link
 function Link(props) {
   const {
-    activeClassName = 'active',
+    activeClassName = "active",
     className: classNameProps,
     innerRef,
     naked,

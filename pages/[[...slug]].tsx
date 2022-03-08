@@ -1,6 +1,5 @@
 import { NextSeo } from "next-seo";
-import { createTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Builder } from "../components/Builder/Builder";
 
 const theme = createTheme({

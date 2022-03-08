@@ -169,18 +169,6 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
             spot1: go.Spot.TopLeft,
             spot2: go.Spot.BottomRight, // make content go all the way to inside edges of rounded corners
           },
-          new go.Binding("fill", "type", (v) => {
-            let lightColor = "#EAA5F2";
-            switch (v) {
-              case "household":
-                lightColor = "#95c7f3";
-                break;
-              case "client":
-                lightColor = "#95c7f3";
-                break;
-            }
-            return lightColor;
-          }),
           new go.Binding("stroke", "type", (v) => {
             let darkColor = "#CD1FDE";
             switch (v) {
@@ -196,33 +184,81 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
         ),
         // new Spot(x?: number, y?: number, offx?: number, offy?: number)
 
-        $(go.Shape, "RoundedRectangle", {
-          alignment: new go.Spot(0, 0, 1, 1),
-          fill: "white",
-          width: widthIcon,
-          height: heightContent,
-          strokeWidth: 2,
-          stroke: "transparent",
-          parameter1: 8,
-          spot1: go.Spot.TopLeft,
-          spot2: go.Spot.BottomRight, // make content go all the way to inside edges of rounded corners
-        }),
+        $(
+          go.Shape,
+          "RoundedRectangle",
+          {
+            alignment: new go.Spot(0, 0, 1, 1),
+            fill: "white",
+            width: widthIcon,
+            height: heightContent,
+            strokeWidth: 2,
+            stroke: "transparent",
+            parameter1: 8,
+            spot1: go.Spot.TopLeft,
+            spot2: go.Spot.BottomRight, // make content go all the way to inside edges of rounded corners
+          },
+          new go.Binding("fill", "type", (v) => {
+            let lightColor = "#EAA5F2";
+            switch (v) {
+              case "household":
+                lightColor = "#95c7f3";
+                break;
+              case "client":
+                lightColor = "#95c7f3";
+                break;
+            }
+            return lightColor;
+          })
+        ),
 
-        $(go.Shape, "Rectangle", {
-          alignment: new go.Spot(0, 0, 22, 2),
-          fill: "white",
-          width: 10,
-          height: 10,
-          strokeWidth: 0,
-        }),
+        $(
+          go.Shape,
+          "Rectangle",
+          {
+            alignment: new go.Spot(0, 0, 22, 2),
+            fill: "white",
+            width: 10,
+            height: 10,
+            strokeWidth: 0,
+          },
+          new go.Binding("fill", "type", (v) => {
+            let lightColor = "#EAA5F2";
+            switch (v) {
+              case "household":
+                lightColor = "#95c7f3";
+                break;
+              case "client":
+                lightColor = "#95c7f3";
+                break;
+            }
+            return lightColor;
+          })
+        ),
 
-        $(go.Shape, "Rectangle", {
-          alignment: new go.Spot(0, 0, 22, heightContent - 8),
-          fill: "white",
-          width: 10,
-          height: 10,
-          strokeWidth: 0,
-        }),
+        $(
+          go.Shape,
+          "Rectangle",
+          {
+            alignment: new go.Spot(0, 0, 22, heightContent - 8),
+            fill: "white",
+            width: 10,
+            height: 10,
+            strokeWidth: 0,
+          },
+          new go.Binding("fill", "type", (v) => {
+            let lightColor = "#EAA5F2";
+            switch (v) {
+              case "household":
+                lightColor = "#95c7f3";
+                break;
+              case "client":
+                lightColor = "#95c7f3";
+                break;
+            }
+            return lightColor;
+          })
+        ),
 
         /*
         $(go.Panel, {
@@ -400,7 +436,7 @@ const Card3DConfig = () => {
 };
 
 Cards3D.craft = {
-  displayName: "Go.js Diagram",
+  displayName: "Diagram",
   props: {
     className: "w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg",
   },

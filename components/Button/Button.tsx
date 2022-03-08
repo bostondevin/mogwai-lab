@@ -1,6 +1,6 @@
 import { UserComponent, useNode } from "@craftjs/core";
 import React from "react";
-import { Tooltip } from "@material-ui/core";
+import Tooltip from "@mui/material/Tooltip";
 import { ButtonConfig } from "./ButtonConfig";
 import { ButtonProps } from "./_raw/ButtonProps";
 

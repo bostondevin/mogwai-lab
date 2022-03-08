@@ -1,5 +1,5 @@
 import { useEditor } from "@craftjs/core";
-import { Tooltip } from "@material-ui/core";
+import { Tooltip } from "@mui/material";
 import { Icon } from "../../../Icon/Icon";
 
 export type ComponentItemProps = {
@@ -15,7 +15,6 @@ export const ComponentItem = (props: ComponentItemProps) => {
   } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
-
   return (
     <div
       title={props.label}

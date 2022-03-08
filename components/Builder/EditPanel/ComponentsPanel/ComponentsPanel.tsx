@@ -53,8 +53,8 @@ export const Toolbox = () => {
       element: <Text text="Hi there" />,
     },
     {
-      title: "Go.js Tree",
-      icon: "fas fa-sitemap",
+      title: "Diagram",
+      icon: "fas fa-diagram-project",
       element: <Cards3D />,
     },
 

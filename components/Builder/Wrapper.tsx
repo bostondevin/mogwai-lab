@@ -68,7 +68,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
           className={cx([
             "craftjs-renderer h-full w-full transition overflow-auto",
             {
-              "bg-renderer-gray": enabled,
+              "background-sky-500": enabled,
             },
           ])}
           ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
