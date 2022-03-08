@@ -22,12 +22,12 @@ export const Wrapper = ({ store, children }): JSX.Element => {
     if (store) {
       const path = window.location.pathname;
       const template = store.get("templates").get(path);
-      console.log(path);
+      //console.log(path);
       template.once((d) => {
         if (d) {
           const json = lz.decompress(lz.decodeBase64(decodeURIComponent(d)));
-          console.log(json);
-          console.log(JSON.parse(json));
+          //console.log(json);
+          //console.log(JSON.parse(json));
 
           if (json) deserialize(json);
         } else {

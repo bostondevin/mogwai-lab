@@ -30,13 +30,52 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
     if (node) {
       setGraphData([
         {
+          key: "smith-household",
           rootdistance: 0,
           everExpanded: false,
-          key: "smith-household",
+          children: [
+            "smith-betty-client",
+            "smith-fred-client",
+            "smith-wilma-client",
+          ],
           accountNumber: "8374-9932",
           label: "Smith Family Household",
           accountValue: 2498452.98,
           type: "household",
+        },
+        {
+          key: "smith-betty-client",
+          rootdistance: 1,
+          parent: "smith-household",
+          everExpanded: false,
+          children: [],
+          accountNumber: "8374-9932",
+          accountValue: 2431760.36,
+          label: "Betty Smith",
+          type: "client",
+        },
+        {
+          key: "smith-fred-client",
+          rootdistance: 1,
+          parent: "smith-household",
+          everExpanded: false,
+          children: [],
+          accountNumber: "8374-9932",
+          accountValue: 1000000.0,
+          label: "Fred Smith",
+          type: "client",
+        },
+
+        {
+          key: "smith-wilma-client",
+          rootdistance: 1,
+          parent: "smith-household",
+          everExpanded: false,
+          children: [],
+          accountNumber: "8374-9932",
+          accountValue: 1000000.0,
+          label: "Wilma Smith",
+          type: "client",
         },
       ]);
     }
@@ -53,41 +92,6 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
   function expandNode(node) {
     var diagram = node.diagram;
 
-    function createSubTree(parentdata) {
-      var numchildren = Math.floor(Math.random() * 10);
-
-      if (diagram.nodes.count <= 1) {
-        numchildren += 1; // make sure the root node has at least one child
-      }
-
-      // create several node data objects and add them to the model
-      var model = diagram.model;
-      var parent = diagram.findNodeForData(parentdata);
-
-      var degrees = 1;
-      var grandparent = parent.findTreeParentNode();
-      while (grandparent) {
-        degrees++;
-        grandparent = grandparent.findTreeParentNode();
-      }
-
-      for (var i = 0; i < numchildren; i++) {
-        var childdata = {
-          key: model.nodeDataArray.length,
-          parent: parentdata.key,
-          rootdistance: degrees,
-        };
-
-        // add to model.nodeDataArray and create a Node
-        model.addNodeData(childdata);
-        // position the new child node close to the parent
-        var child = diagram.findNodeForData(childdata);
-        child.location = parent.location;
-      }
-
-      return numchildren;
-    }
-
     diagram.startTransaction("CollapseExpandTree");
     // this behavior is specific to this incrementalTree sample:
     var data = node.data;
@@ -98,23 +102,20 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
     setBreadCrumbs([...newBreadcrumbs, ...[data]]);
 
     if (!data.everExpanded) {
-      console.log(data);
-
-      // only create children once per node
       diagram.model.setDataProperty(data, "everExpanded", true);
-      var numchildren = createSubTree(data);
-
-      if (numchildren === 0) {
-        // now known no children: don't need Button!
-        node.findObject("TREEBUTTON").visible = false;
-      }
     }
+
+    const immediateChildren = graphData.filter((d) => d.parent === data.key);
+
+    //node.findObject("TREEBUTTON").visible = immediateChildren.length > 0;
+
     // this behavior is generic for most expand/collapse tree buttons:
     if (node.isTreeExpanded) {
       diagram.commandHandler.collapseTree(node);
     } else {
       diagram.commandHandler.expandTree(node);
     }
+
     diagram.commitTransaction("CollapseExpandTree");
     diagram.zoomToFit();
   }
@@ -125,10 +126,9 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
     const diagram = $(go.Diagram, {
       initialContentAlignment: go.Spot.Center,
       layout: $(go.ForceDirectedLayout),
-      // moving and copying nodes also moves and copies their subtrees
       "commandHandler.copiesTree": true, // for the copy command
       "commandHandler.deletesTree": true, // for the delete command
-      "draggingTool.dragsTree": true, // dragging for both move and copy
+      "draggingTool.dragsTree": false, // dragging for both move and copy
       "undoManager.isEnabled": true,
       model: new go.TreeModel(graphData),
     });
@@ -287,22 +287,27 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
         )
       ),
 
-      $("TreeExpanderButton", {
-        name: "TREEBUTTON",
-        width: 20,
-        height: 20,
-        alignment: go.Spot.TopRight,
-        alignmentFocus: go.Spot.Center,
-        // customize the expander behavior to
-        // create children if the node has never been expanded
-        click: (e, obj) => {
-          // OBJ is the Button
-          var node = obj.part; // get the Node containing this Button
-          if (node === null) return;
-          e.handled = true;
-          expandNode(node);
+      $(
+        "TreeExpanderButton",
+        {
+          name: "TREEBUTTON",
+          width: 20,
+          height: 20,
+          alignment: go.Spot.TopRight,
+          alignmentFocus: go.Spot.Center,
+          // customize the expander behavior to
+          // create children if the node has never been expanded
+          visible: false,
+          click: (e, obj) => {
+            // OBJ is the Button
+            var node = obj.part; // get the Node containing this Button
+            if (node === null) return;
+            e.handled = true;
+            expandNode(node);
+          },
         },
-      })
+        new go.Binding("visible", "children", (v) => v.length > 0)
+      )
     );
 
     diagram.model = new go.TreeModel([
@@ -332,14 +337,15 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
 
   return (
     <div ref={connect}>
-      breadCrumbs:
-      {breadCrumbs.map((item) => {
-        return (
-          <span key={item.key} className="mr-2">
-            <a onClick={clickBreadCrumb(item)}>{item.label}</a> &gt;
-          </span>
-        );
-      })}
+      <div>
+        {breadCrumbs.map((item) => {
+          return (
+            <span key={item.key} className="mr-2">
+              <a onClick={clickBreadCrumb(item)}>{item.label}</a> &gt;
+            </span>
+          );
+        })}
+      </div>
       <ReactDiagram
         ref={fgRef}
         initDiagram={initDiagram}
