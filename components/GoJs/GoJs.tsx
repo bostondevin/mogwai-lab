@@ -96,6 +96,25 @@ export const Cards3D: UserComponent<CardProps> = () => {
         new go.Binding("stroke", "color"),
         new go.Binding("strokeWidth", "width"),
         new go.Binding("strokeDashArray", "dash")
+      ),
+      $(
+        go.Panel,
+        "Auto",
+        $(
+          go.Shape,
+          "RoundedRectangle",
+          {
+            fill: "black",
+            width: 40,
+          },
+          new go.Binding("visible", "showLabel")
+        ),
+        $(
+          go.TextBlock,
+          { margin: 3, text: "Joint", stroke: "white" },
+          new go.Binding("text", "label"),
+          new go.Binding("visible", "showLabel")
+        )
       )
     );
 
@@ -410,21 +429,50 @@ export const Cards3D: UserComponent<CardProps> = () => {
     ];
 
     const links = [
-      { from: "Franklin-household", to: "Franklin-betty-client" },
-      { from: "Franklin-household", to: "Franklin-fred-client" },
-      { from: "Franklin-household", to: "Franklin-wilma-client" },
+      {
+        from: "Franklin-household",
+        to: "Franklin-betty-client",
+        showLabel: false,
+      },
+      {
+        from: "Franklin-household",
+        to: "Franklin-fred-client",
+        showLabel: false,
+      },
+      {
+        from: "Franklin-household",
+        to: "Franklin-wilma-client",
+        showLabel: false,
+      },
 
-      { from: "Franklin-betty-client", to: "Franklin-betty-account-ira" },
-      { from: "Franklin-betty-client", to: "Franklin-betty-account-401k" },
+      {
+        from: "Franklin-betty-client",
+        to: "Franklin-betty-account-ira",
+        showLabel: false,
+      },
+      {
+        from: "Franklin-betty-client",
+        to: "Franklin-betty-account-401k",
+        showLabel: false,
+      },
       {
         from: "Franklin-betty-client",
         to: "Franklin-fred-account-401k",
+        showLabel: true,
         color: "gray",
         dash: [5, 5],
       },
 
-      { from: "Franklin-fred-client", to: "Franklin-fred-account-ira" },
-      { from: "Franklin-fred-client", to: "Franklin-fred-account-401k" },
+      {
+        from: "Franklin-fred-client",
+        to: "Franklin-fred-account-ira",
+        showLabel: false,
+      },
+      {
+        from: "Franklin-fred-client",
+        to: "Franklin-fred-account-401k",
+        showLabel: false,
+      },
     ];
 
     // setGraphData({ nodes: nodeDataArray, links: linkDataArray });
