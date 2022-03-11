@@ -9,10 +9,7 @@ import "gun/lib/load.js";
 import { nanoid } from "nanoid";
 
 const store = Gun({
-  peers:
-    process.env.NODE_ENV === "development"
-      ? ["https://mogwai-labs.herokuapp.com/gun"]
-      : ["http://localhost:8765/gun"],
+  peers: ["https://mogwai-labs.herokuapp.com/gun"],
   uuid: () => {
     return nanoid(11);
   },
@@ -21,6 +18,12 @@ const store = Gun({
 function MyApp({ Component, pageProps }) {
   return <Component store={store} {...pageProps} />;
 }
+
+/*
+process.env.NODE_ENV === "development"
+      ? ["https://mogwai-labs.herokuapp.com/gun"]
+      : ["http://localhost:8765/gun"]
+      */
 
 // Only uncomment this method if you have blocking data requirements for
 // every single page in your application. This disables the ability to
