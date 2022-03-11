@@ -18,7 +18,7 @@ export interface CardProps {
 }
 
 export const Cards3D: UserComponent<CardProps> = () => {
-  const [graphData, setGraphData] = useState([]);
+  const [graphData, setGraphData] = useState({ nodes: [], links: [] });
   const [breadCrumbs, setBreadCrumbs] = useState([]);
 
   const widthIcon = 30,
@@ -32,57 +32,6 @@ export const Cards3D: UserComponent<CardProps> = () => {
 
   const fgRef = useCallback((node: ReactDiagram) => {
     if (node) {
-      setGraphData([
-        {
-          key: "Franklin-household",
-          rootdistance: 0,
-          everExpanded: false,
-          children: [
-            "Franklin-betty-client",
-            "Franklin-fred-client",
-            "Franklin-wilma-client",
-          ],
-          accountNumber: "8374-9932",
-          label:
-            "Franklin Family Household Wrapping Really Very Incredibly Amazingly Long Name",
-          accountValue: 2498452.98,
-          type: "household",
-        },
-        {
-          key: "Franklin-betty-client",
-          rootdistance: 1,
-          parent: "Franklin-household",
-          everExpanded: false,
-          children: [],
-          accountNumber: "8374-9932",
-          accountValue: 2431760.36,
-          label: "Betty Franklin",
-          type: "client",
-        },
-        {
-          key: "Franklin-fred-client",
-          rootdistance: 1,
-          parent: "Franklin-household",
-          everExpanded: false,
-          children: [],
-          accountNumber: "8374-9932",
-          accountValue: 1000000.0,
-          label: "Fred Franklin",
-          type: "client",
-        },
-
-        {
-          key: "Franklin-wilma-client",
-          rootdistance: 1,
-          parent: "Franklin-household",
-          everExpanded: false,
-          children: [],
-          accountNumber: "8374-9932",
-          accountValue: 1000000.0,
-          label: "Wilma Franklin",
-          type: "client",
-        },
-      ]);
     }
   }, []);
 
@@ -110,7 +59,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
       diagram.model.setDataProperty(data, "everExpanded", true);
     }
 
-    const immediateChildren = graphData.filter((d) => d.parent === data.key);
+    //const immediateChildren = graphData.filter((d) => d.parent === data.key);
 
     //node.findObject("TREEBUTTON").visible = immediateChildren.length > 0;
 
@@ -135,7 +84,6 @@ export const Cards3D: UserComponent<CardProps> = () => {
       "commandHandler.deletesTree": true, // for the delete command
       "draggingTool.dragsTree": false, // dragging for both move and copy
       "undoManager.isEnabled": true,
-      model: new go.TreeModel(graphData),
       allowZoom: true,
       minScale: 0.5,
       maxScale: 3,
@@ -387,6 +335,61 @@ export const Cards3D: UserComponent<CardProps> = () => {
         new go.Binding("visible", "children", (v) => v.length > 0)
       )
     );
+
+    const nodes = [
+      {
+        key: "Franklin-household",
+        rootdistance: 0,
+        everExpanded: false,
+        accountNumber: "8374-9932",
+        label:
+          "Franklin Family Household Wrapping Really Very Incredibly Amazingly Long Name",
+        accountValue: 2498452.98,
+        type: "household",
+      },
+      {
+        key: "Franklin-betty-client",
+        rootdistance: 1,
+        everExpanded: false,
+        accountNumber: "8374-9932",
+        accountValue: 2431760.36,
+        label: "Betty Franklin",
+        type: "client",
+      },
+      {
+        key: "Franklin-fred-client",
+        rootdistance: 1,
+        everExpanded: false,
+        accountNumber: "8374-9932",
+        accountValue: 1000000.0,
+        label: "Fred Franklin",
+        type: "client",
+      },
+
+      {
+        key: "Franklin-wilma-client",
+        rootdistance: 1,
+        everExpanded: false,
+        accountNumber: "8374-9932",
+        accountValue: 1000000.0,
+        label: "Wilma Franklin",
+        type: "client",
+      },
+    ];
+    var links = [
+      { from: "Franklin-household", to: "Franklin-betty-client" },
+      { from: "Franklin-household", to: "Franklin-fred-client" },
+      { from: "Franklin-household", to: "Franklin-wilma-client" },
+    ];
+
+    // setGraphData({ nodes: nodeDataArray, links: linkDataArray });
+
+    console.log("INIT");
+    console.log(nodes);
+    console.log(links);
+
+    const diagramModel = (diagram.model = new go.GraphLinksModel(nodes, links));
+    diagramModel.linkKeyProperty = "key";
 
     return diagram;
   }
