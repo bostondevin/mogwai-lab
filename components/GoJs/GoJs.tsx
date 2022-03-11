@@ -433,33 +433,38 @@ export const Cards3D: UserComponent<CardProps> = () => {
         from: "Franklin-household",
         to: "Franklin-betty-client",
         showLabel: false,
+        color: "white",
       },
       {
         from: "Franklin-household",
         to: "Franklin-fred-client",
         showLabel: false,
+        color: "white",
       },
       {
         from: "Franklin-household",
         to: "Franklin-wilma-client",
         showLabel: false,
+        color: "white",
       },
 
       {
         from: "Franklin-betty-client",
         to: "Franklin-betty-account-ira",
         showLabel: false,
+        color: "white",
       },
       {
         from: "Franklin-betty-client",
         to: "Franklin-betty-account-401k",
         showLabel: false,
+        color: "white",
       },
       {
         from: "Franklin-betty-client",
         to: "Franklin-fred-account-401k",
         showLabel: true,
-        color: "gray",
+        color: "white",
         dash: [5, 5],
       },
 
@@ -467,15 +472,17 @@ export const Cards3D: UserComponent<CardProps> = () => {
         from: "Franklin-fred-client",
         to: "Franklin-fred-account-ira",
         showLabel: false,
+        color: "white",
       },
       {
         from: "Franklin-fred-client",
         to: "Franklin-fred-account-401k",
         showLabel: false,
+        color: "white",
       },
     ];
 
-    // setGraphData({ nodes: nodeDataArray, links: linkDataArray });
+    setGraphData({ nodes, links });
 
     const diagramModel = (diagram.model = new go.GraphLinksModel(nodes, links));
     diagramModel.linkKeyProperty = "key";
@@ -484,7 +491,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
   }
 
   return (
-    <div ref={connect}>
+    <div ref={connect} className="gradientDark">
       <div>
         {breadCrumbs.map((item) => {
           return (
@@ -495,28 +502,11 @@ export const Cards3D: UserComponent<CardProps> = () => {
         })}
       </div>
 
-      <div className="zoomSlider">
-        <button id="zoomSliderOut" className="zoomButton">
-          -
-        </button>
-        <div id="zoomSliderRangeCtn" className="zoomRangeContainer">
-          <input
-            id="zoomSliderRange"
-            className="zoomRangeInput"
-            type="range"
-            min="-50"
-            max="100"
-          />
-        </div>
-        <button id="zoomSliderIn" className="zoomButton">
-          +
-        </button>
-      </div>
       <ReactDiagram
         ref={fgRef}
         initDiagram={initDiagram}
         divClassName="diagram-component"
-        nodeDataArray={graphData}
+        nodeDataArray={graphData.nodes}
         onModelChange={handleModelChange}
       />
     </div>
