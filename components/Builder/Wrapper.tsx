@@ -58,7 +58,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
       });
     }
   }, [router.asPath]);
-
+  
   return (
     <div className="flex h-full overflow-hidden flex-row w-full fixed">
       <div className="page-container flex h-full flex-col w-full">

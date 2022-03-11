@@ -11,7 +11,7 @@ import { nanoid } from "nanoid";
 const store = Gun({
   peers:
     process.env.NODE_ENV === "development"
-      ? ["http://localhost:8765/gun"]
+      ? ["https://mogwai-labs.herokuapp.com/gun"]
       : ["http://localhost:8765/gun"],
   uuid: () => {
     return nanoid(11);

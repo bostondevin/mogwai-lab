@@ -18,6 +18,7 @@
     "@mui/icons-material": "^5.5.0",
     "@mui/material": "^5.5.0",
     "autoprefixer": "latest",
+    "aws-sdk": "^2.1091.0",
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.3.1",
     "cssnano": "^5.0.17",

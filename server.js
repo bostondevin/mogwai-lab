@@ -1,6 +1,7 @@
+// process.env.AWS_ACCESS_KEY
 
-const Hapi = require('hapi');
-const Gun = require('gun');
+const Hapi = require("hapi");
+const Gun = require("gun");
 
 const server = new Hapi.Server({
   port: 8765,
