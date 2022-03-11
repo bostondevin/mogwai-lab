@@ -54,6 +54,14 @@ export const Appbar = ({ store }): JSX.Element => {
 
   const toggleDarkMode = () => {
     setDarkMode(!isDark);
+
+    const classList = document.body.classList;
+
+    if (isDark) {
+      classList.add("dark");
+    } else {
+      classList.remove("dark");
+    }
   };
 
   const clickLink = () => {
