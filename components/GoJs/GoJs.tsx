@@ -350,18 +350,15 @@ export const Cards3D: UserComponent<CardProps> = () => {
           height: 20,
           alignment: go.Spot.TopRight,
           alignmentFocus: go.Spot.Center,
-          // customize the expander behavior to
-          // create children if the node has never been expanded
           visible: false,
           click: (e, obj) => {
-            // OBJ is the Button
-            var node = obj.part; // get the Node containing this Button
+            const node = obj.part;
             if (node === null) return;
             e.handled = true;
             expandNode(node);
           },
         },
-        new go.Binding("visible", "children", (v) => v.length > 0)
+        new go.Binding("visible", "hasChildren")
       )
     );
 
@@ -373,6 +370,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
           "Franklin Family Household Wrapping Really Very Incredibly Amazingly Long Name",
         accountValue: 2498452.98,
         type: "household",
+        hasChildren: true,
       },
       {
         key: "Franklin-betty-client",
@@ -380,6 +378,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
         accountValue: 2431760.36,
         label: "Betty Franklin",
         type: "client",
+        hasChildren: true,
       },
       {
         key: "Franklin-fred-client",
@@ -387,6 +386,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
         accountValue: 1000000.0,
         label: "Fred Franklin",
         type: "client",
+        hasChildren: true,
       },
 
       {
@@ -395,6 +395,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
         accountValue: 1000000.0,
         label: "Wilma Franklin",
         type: "client",
+        hasChildren: false,
       },
 
       {
@@ -403,6 +404,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
         accountValue: 1231.55,
         label: "Betty Smith's IRA",
         type: "account",
+        hasChildren: false,
       },
       {
         key: "Franklin-betty-account-401k",
@@ -410,6 +412,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
         accountValue: 1431760.36,
         label: "Betty Smith's 401k",
         type: "account",
+        hasChildren: false,
       },
 
       {
@@ -418,6 +421,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
         accountValue: 4832.61,
         label: "Fred Smith's IRA",
         type: "account",
+        hasChildren: false,
       },
       {
         key: "Franklin-fred-account-401k",
@@ -425,6 +429,7 @@ export const Cards3D: UserComponent<CardProps> = () => {
         accountValue: 61862.21,
         label: "Fred Smith's 401k",
         type: "account",
+        hasChildren: false,
       },
     ];
 
