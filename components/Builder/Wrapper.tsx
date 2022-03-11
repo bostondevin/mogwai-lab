@@ -58,7 +58,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
       });
     }
   }, [router.asPath]);
-  
+
   return (
     <div className="flex h-full overflow-hidden flex-row w-full fixed">
       <div className="page-container flex h-full flex-col w-full">
@@ -66,7 +66,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
         <div
           className={cx([
-            "craftjs-renderer h-full w-full transition overflow-auto",
+            "craftjs-renderer flex h-full w-full transition overflow-auto",
             {
               "background-sky-500": enabled,
             },

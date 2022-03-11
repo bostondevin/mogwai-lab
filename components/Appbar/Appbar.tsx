@@ -11,7 +11,11 @@ import Logo from "../../public/sei-logo.svg";
 
 export const Appbar = ({ store }): JSX.Element => {
   const [path, setPath] = useState(null);
+
+  const [isDark, setDarkMode] = useState(false);
+
   const router = useRouter();
+
   useEffect(() => {
     setPath(window.location.pathname);
   }, [router.asPath]);
@@ -46,6 +50,10 @@ export const Appbar = ({ store }): JSX.Element => {
   const saveChanges = () => {
     doSave();
     actions.setOptions((options) => (options.enabled = !enabled));
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!isDark);
   };
 
   const clickLink = () => {
@@ -143,7 +151,16 @@ export const Appbar = ({ store }): JSX.Element => {
           </>
         )}
 
-        <li className="flex">
+        <li className="flex gap-2">
+          <Button
+            onClick={toggleDarkMode}
+            tooltip={isDark ? "Light mode" : "Dark mode"}
+            placement="bottom"
+            className="px-2 opacity-50 hover:opacity-80"
+          >
+            <Icon className={isDark ? "fas fa-sun" : "fas fa-moon"} />
+          </Button>
+
           <Button
             onClick={saveChanges}
             tooltip={enabled ? "Save" : "Edit"}

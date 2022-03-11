@@ -123,12 +123,14 @@ export const Cards3D: UserComponent<CardProps> = () => {
       "Spot",
       {
         selectionObjectName: "PANEL",
+        selectionAdorned: false,
         isTreeExpanded: false,
         isTreeLeaf: false,
-        //        isShadowed: true,
-        //        shadowVisible: true,
-        //        shadowColor: "#555555",
-        //        shadowOffset: new go.Point(2, 2),
+        isShadowed: true,
+        shadowVisible: true,
+        shadowColor: "white",
+        shadowOffset: new go.Point(0, 0),
+        shadowBlur: 10,
       },
       // the node's outer shape, which will surround the text
       $(
@@ -497,20 +499,10 @@ export const Cards3D: UserComponent<CardProps> = () => {
 
   return (
     <div ref={connect} className="gradientDark">
-      <div>
-        {breadCrumbs.map((item) => {
-          return (
-            <span key={item.key} className="mr-2">
-              <button onClick={clickBreadCrumb}>{item.label}</button> &gt;
-            </span>
-          );
-        })}
-      </div>
-
       <ReactDiagram
         ref={fgRef}
         initDiagram={initDiagram}
-        divClassName="diagram-component"
+        divClassName="h-full w-full"
         nodeDataArray={graphData.nodes}
         onModelChange={handleModelChange}
       />
@@ -521,6 +513,18 @@ export const Cards3D: UserComponent<CardProps> = () => {
 const Card3DConfig = () => {
   return <React.Fragment></React.Fragment>;
 };
+
+/*
+<div>
+        {breadCrumbs.map((item) => {
+          return (
+            <span key={item.key} className="mr-2">
+              <button onClick={clickBreadCrumb}>{item.label}</button> &gt;
+            </span>
+          );
+        })}
+      </div>
+      */
 
 Cards3D.craft = {
   displayName: "Diagram",
