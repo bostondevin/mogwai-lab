@@ -89,6 +89,16 @@ export const Cards3D: UserComponent<CardProps> = () => {
       maxScale: 3,
     });
 
+    diagram.linkTemplate = $(
+      go.Link,
+      $(
+        go.Shape,
+        new go.Binding("stroke", "color"),
+        new go.Binding("strokeWidth", "width"),
+        new go.Binding("strokeDashArray", "dash")
+      )
+    );
+
     diagram.nodeTemplate = $(
       go.Node,
       "Spot",
@@ -339,8 +349,6 @@ export const Cards3D: UserComponent<CardProps> = () => {
     const nodes = [
       {
         key: "Franklin-household",
-        rootdistance: 0,
-        everExpanded: false,
         accountNumber: "8374-9932",
         label:
           "Franklin Family Household Wrapping Really Very Incredibly Amazingly Long Name",
@@ -349,8 +357,6 @@ export const Cards3D: UserComponent<CardProps> = () => {
       },
       {
         key: "Franklin-betty-client",
-        rootdistance: 1,
-        everExpanded: false,
         accountNumber: "8374-9932",
         accountValue: 2431760.36,
         label: "Betty Franklin",
@@ -358,8 +364,6 @@ export const Cards3D: UserComponent<CardProps> = () => {
       },
       {
         key: "Franklin-fred-client",
-        rootdistance: 1,
-        everExpanded: false,
         accountNumber: "8374-9932",
         accountValue: 1000000.0,
         label: "Fred Franklin",
@@ -368,25 +372,62 @@ export const Cards3D: UserComponent<CardProps> = () => {
 
       {
         key: "Franklin-wilma-client",
-        rootdistance: 1,
-        everExpanded: false,
         accountNumber: "8374-9932",
         accountValue: 1000000.0,
         label: "Wilma Franklin",
         type: "client",
       },
+
+      {
+        key: "Franklin-betty-account-ira",
+        accountNumber: "8374-9932",
+        accountValue: 1231.55,
+        label: "Betty Smith's IRA",
+        type: "account",
+      },
+      {
+        key: "Franklin-betty-account-401k",
+        accountNumber: "8374-9932",
+        accountValue: 1431760.36,
+        label: "Betty Smith's 401k",
+        type: "account",
+      },
+
+      {
+        key: "Franklin-fred-account-ira",
+        accountNumber: "8374-9932",
+        accountValue: 4832.61,
+        label: "Fred Smith's IRA",
+        type: "account",
+      },
+      {
+        key: "Franklin-fred-account-401k",
+        accountNumber: "8374-9932",
+        accountValue: 61862.21,
+        label: "Fred Smith's 401k",
+        type: "account",
+      },
     ];
-    var links = [
+
+    const links = [
       { from: "Franklin-household", to: "Franklin-betty-client" },
       { from: "Franklin-household", to: "Franklin-fred-client" },
       { from: "Franklin-household", to: "Franklin-wilma-client" },
+
+      { from: "Franklin-betty-client", to: "Franklin-betty-account-ira" },
+      { from: "Franklin-betty-client", to: "Franklin-betty-account-401k" },
+      {
+        from: "Franklin-betty-client",
+        to: "Franklin-fred-account-401k",
+        color: "gray",
+        dash: [5, 5],
+      },
+
+      { from: "Franklin-fred-client", to: "Franklin-fred-account-ira" },
+      { from: "Franklin-fred-client", to: "Franklin-fred-account-401k" },
     ];
 
     // setGraphData({ nodes: nodeDataArray, links: linkDataArray });
-
-    console.log("INIT");
-    console.log(nodes);
-    console.log(links);
 
     const diagramModel = (diagram.model = new go.GraphLinksModel(nodes, links));
     diagramModel.linkKeyProperty = "key";
