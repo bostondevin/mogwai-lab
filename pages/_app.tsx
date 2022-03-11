@@ -9,7 +9,7 @@ import "gun/lib/load.js";
 import { nanoid } from "nanoid";
 
 const store = Gun({
-  peers: ["https://mogwai-labs.herokuapp.com/gun"],
+  peers: ["https://mogwai-water.herokuapp.com/gun"],
   uuid: () => {
     return nanoid(11);
   },

@@ -74,12 +74,6 @@ export const Toolbox = () => {
       icon: "fab fa-youtube",
       element: <Video />,
     },
-
-    {
-      title: "ForceGraph",
-      icon: "fas fa-sitemap",
-      element: <ForceGraph />,
-    },
   ];
 
   return (
