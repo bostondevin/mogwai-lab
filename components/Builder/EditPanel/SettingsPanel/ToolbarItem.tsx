@@ -57,22 +57,7 @@ export const ToolbarItem = ({
             {props.label ? (
               <h4 className="text-sm text-light-gray-2">{props.label}</h4>
             ) : null}
-            <SliderStyled
-              value={parseInt(value) || 0}
-              onChange={
-                ((_, value: number) => {
-                  setProp((props: any) => {
-                    if (Array.isArray(propValue)) {
-                      props[propKey][index] = onChange
-                        ? onChange(value)
-                        : value;
-                    } else {
-                      props[propKey] = onChange ? onChange(value) : value;
-                    }
-                  }, 1000);
-                }) as any
-              }
-            />
+            <div>Slider...</div>
           </>
         ) : type === "radio" ? (
           <>

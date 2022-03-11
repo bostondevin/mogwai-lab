@@ -10,7 +10,6 @@ import { Container } from "../../../Container/Container";
 import { Text } from "../../../Typography/Typography";
 import { Video } from "../../../Video/Video";
 import { Cards3D } from "../../../GoJs/GoJs";
-import { TreeGraph } from "../../../TreeGraph/TreeGraph";
 
 import ForceGraph from "../../../ForceGraph/ForceGraph";
 

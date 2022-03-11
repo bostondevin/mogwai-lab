@@ -3,13 +3,13 @@ import { ContainerSettings } from "./ContainerSettings";
 import { UserComponent, useNode } from "@craftjs/core";
 
 export type ContainerProps = {
-  className: string;
-  children: React.ReactNode;
+  className?: string;
+  children?: React.ReactNode;
 };
 
 const defaultProps = {};
 
-export const Container: UserComponent<ContainerProps> = (props: any) => {
+export const Container: UserComponent<ContainerProps> = (props) => {
   const {
     connectors: { connect },
   } = useNode((node) => ({

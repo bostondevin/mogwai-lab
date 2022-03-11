@@ -17,7 +17,7 @@ export interface CardProps {
     | undefined;
 }
 
-export const Cards3D: UserComponent<CardProps> = (props: any) => {
+export const Cards3D: UserComponent<CardProps> = () => {
   const [graphData, setGraphData] = useState([]);
   const [breadCrumbs, setBreadCrumbs] = useState([]);
 
@@ -90,7 +90,7 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
     console.log(item);
   };
 
-  function handleModelChange(changes) {
+  function handleModelChange() {
     // alert("GoJS model changed!");
   }
 
@@ -397,7 +397,7 @@ export const Cards3D: UserComponent<CardProps> = (props: any) => {
         {breadCrumbs.map((item) => {
           return (
             <span key={item.key} className="mr-2">
-              <a onClick={clickBreadCrumb(item)}>{item.label}</a> &gt;
+              <button onClick={clickBreadCrumb}>{item.label}</button> &gt;
             </span>
           );
         })}

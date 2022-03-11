@@ -15,8 +15,8 @@ export type InputProps = {
   id?: string;
   type: InputType;
   className?: string;
-  onFocus?: (e: React.MouseEvent<HTMLInputElement>) => void;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Input = (props: Partial<InputProps>) => {
@@ -26,8 +26,8 @@ export const Input = (props: Partial<InputProps>) => {
       id={props.id}
       type={props.type}
       className={props.className}
-      onFocus={(e) => props.onFocus(e)}
-      onInput={(e) => props.onChange(e)}
+      onFocus={props.onFocus}
+      onInput={props.onChange}
     />
   );
 };

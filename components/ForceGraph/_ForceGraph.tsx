@@ -23,9 +23,10 @@ const ForwardGraph3D = forwardRef(
 );
 */
 const ForceGraphBase = () => {
-  // const fgRef = useRef<ForceGraphMethods>();
+  const fgRef = useRef<ForceGraphMethods>();
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
 
+  /*
   const fgRef = useCallback((node: ForceGraphMethods) => {
     if (node) {
       // node.zoomToFit(100, 20);
@@ -41,6 +42,7 @@ const ForceGraphBase = () => {
       setGraphData(sampleData);
     }
   }, []);
+*/
 
   const {
     connectors: { connect },
@@ -54,7 +56,7 @@ const ForceGraphBase = () => {
     return node.joint ? "lime" : "white";
   };
 
-  const nodeColor = (node) => {
+  const nodeColor = () => {
     return "transparent";
   };
 
@@ -141,8 +143,8 @@ const ForceGraphBase = () => {
   };
 
   useEffect(() => {
-    if (fgRef && fgRef.current) {
-      const fg = fgRef.current;
+    if (fgRef && fgRef["current"]) {
+      const fg = fgRef["current"];
 
       //fg.d3Force("center", null);
       //fg.d3Force("charge", null);
@@ -172,9 +174,9 @@ const ForceGraphBase = () => {
     (node) => {
       const distance = 80;
       const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
-      if (fgRef.current) {
-        console.log(fgRef.current);
-        fgRef.current.cameraPosition(
+      if (fgRef["current"]) {
+        console.log(fgRef["current"]);
+        fgRef["current"].cameraPosition(
           {
             x: node.x * distRatio,
             y: node.y * distRatio,
@@ -206,7 +208,6 @@ const ForceGraphBase = () => {
             nodeColor={nodeColor}
             nodeThreeObject={nodeThreeObject}
             onEngineStop={stopEngine}
-            warmUpTicks={500}
             cooldownTicks={500}
           />
         )}

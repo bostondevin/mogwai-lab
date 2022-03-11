@@ -60,8 +60,9 @@ export const Sidebar = () => {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const handleChange = (event, newValue) => {
-    setSelectedTab(newValue);
+  const handleChange = (event) => {
+    console.log(event);
+    // setSelectedTab(newValue);
   };
 
   return (
