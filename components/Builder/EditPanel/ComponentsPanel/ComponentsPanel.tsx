@@ -5,6 +5,7 @@ import { Element, useEditor } from "@craftjs/core";
 import { ComponentItem } from "./ComponentItem";
 
 import { Button } from "../../../Button/Button";
+import { AgGrid } from "../../../AgGrid/AgGrid";
 import { Input } from "../../../Input/Input";
 import { Container } from "../../../Container/Container";
 import { Text } from "../../../Typography/Typography";
@@ -67,6 +68,12 @@ export const Toolbox = () => {
       title: "Text Input",
       icon: "fas fa-input-pipe",
       element: <Input type="text" />,
+    },
+
+    {
+      title: "Grid",
+      icon: "fas fa-table",
+      element: <AgGrid className="w-full" dataSource="templates/test333" />,
     },
 
     {

@@ -71,13 +71,38 @@ export const Appbar = ({ store }): JSX.Element => {
   };
 
   const links = [
-    { key: 0, label: "Home", href: "/" },
-    { key: 1, label: "Reporting", href: "/reporting" },
-    { key: 2, label: "Utilities", href: "/utilities" },
-    { key: 3, label: "Client Management", href: "/client" },
-    { key: 4, label: "Workdesk", href: "/workdesk" },
-    { key: 5, label: "Documents", href: "/documents" },
-    { key: 6, label: "Admin", href: "/admin" },
+    { key: 0, label: "Home", href: "/", icon: "fa-solid fa-home" },
+    {
+      key: 1,
+      label: "Reporting",
+      href: "/reporting",
+      icon: "fa-solid fa-file-chart-column",
+    },
+    {
+      key: 2,
+      label: "Utilities",
+      href: "/utilities",
+      icon: "fa-solid fa-screwdriver-wrench",
+    },
+    {
+      key: 3,
+      label: "Clients",
+      href: "/client",
+      icon: "fa-solid fa-chart-user",
+    },
+    {
+      key: 4,
+      label: "WorkDesk",
+      href: "/workdesk",
+      icon: "fa-solid fa-lamp-desk",
+    },
+    {
+      key: 5,
+      label: "Documents",
+      href: "/documents",
+      icon: "fa-solid fa-file-circle-info",
+    },
+    { key: 6, label: "Admin", href: "/admin", icon: "fa-solid fa-folder-gear" },
   ];
 
   const settingsLinks = [
@@ -108,11 +133,8 @@ export const Appbar = ({ store }): JSX.Element => {
                 onClick={clickLink}
                 className={path === item.href ? linkOnClasses : linkOffClasses}
               >
-                {item.href === "/" ? (
-                  <Icon className="fas fa-home" />
-                ) : (
-                  item.label
-                )}
+                <Icon className={item.icon} />
+                <span className="ml-1">{item.label}</span>
               </Link>
             </li>
           );
@@ -130,7 +152,7 @@ export const Appbar = ({ store }): JSX.Element => {
                 disabled={!canUndo}
                 className="px-2"
               >
-                <Icon className="fas fa-undo" />
+                <Icon className="fa-solid fa-undo" />
               </Button>
             </li>
 
@@ -142,7 +164,7 @@ export const Appbar = ({ store }): JSX.Element => {
                 onClick={() => actions.history.redo()}
                 className="px-2"
               >
-                <Icon className="fas fa-redo" />
+                <Icon className="fa-solid fa-redo" />
               </Button>
             </li>
 
@@ -153,7 +175,7 @@ export const Appbar = ({ store }): JSX.Element => {
                 placement="bottom"
                 className="px-2"
               >
-                <Icon className="fas fa-times" />
+                <Icon className="fa-solid fa-times" />
               </Button>
             </li>
           </>
@@ -166,7 +188,7 @@ export const Appbar = ({ store }): JSX.Element => {
             placement="bottom"
             className="px-2 opacity-50 hover:opacity-80"
           >
-            <Icon className={isDark ? "fas fa-sun" : "fas fa-moon"} />
+            <Icon className={isDark ? "fa-solid fa-sun" : "fa-solid fa-moon"} />
           </Button>
 
           <Button
@@ -175,7 +197,11 @@ export const Appbar = ({ store }): JSX.Element => {
             placement="bottom"
             className="px-2 opacity-50 hover:opacity-80"
           >
-            <Icon className={enabled ? "fas fa-floppy-disk" : "fas fa-edit"} />
+            <Icon
+              className={
+                enabled ? "fa-solid fa-floppy-disk" : "fa-solid fa-edit"
+              }
+            />
           </Button>
         </li>
       </ul>

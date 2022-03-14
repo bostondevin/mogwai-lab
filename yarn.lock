@@ -1074,6 +1074,23 @@ addressparser@^0.3.2:
   resolved "https://registry.yarnpkg.com/addressparser/-/addressparser-0.3.2.tgz#59873f35e8fcf6c7361c10239261d76e15348bb2"
   integrity sha1-WYc/Nej89sc2HBAjkmHXbhU0i7I=
 
+ag-grid-community@^27.0.1:
+  version "27.0.1"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-27.0.1.tgz#7ce5c000d321ba2c22447837e793b1d8366f4cdb"
+  integrity sha512-wV3CLLJWet0I7lmlVjVjACVWQ1WmGYflEyc2nKK3u5CDKa9ewQGYcwZW92i+E+9rmGH6R7oaL3DFKzNWD6C56w==
+
+ag-grid-enterprise@^27.0.1:
+  version "27.0.1"
+  resolved "https://registry.yarnpkg.com/ag-grid-enterprise/-/ag-grid-enterprise-27.0.1.tgz#0336d5199523284dc7cabbb40909f93a79742c90"
+  integrity sha512-Gg/4VG/UGu8EkDt/03ucjSHwPlqcusxDGeEfJhzKtNlAgmHhoOUC3OEQWNqNLZVDy+Lw1rMOEm8uMR8umxXdaQ==
+
+ag-grid-react@^27.0.1:
+  version "27.0.1"
+  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-27.0.1.tgz#138a2f256ee1f24377268adcf3d7c4751c9896db"
+  integrity sha512-zoqhWT+ZD/l44Ij8HeUEYiI3SsdSWvuKjlnlkB51y3ASqlte2OIMNOZrFe1I23H59Ouhl+kvvQCagEzPvz0Lcg==
+  dependencies:
+    prop-types "^15.8.1"
+
 ammo@3.x.x:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/ammo/-/ammo-3.0.3.tgz#502aafa9d8bfca264143e226e5f322716e746b0c"
@@ -3349,7 +3366,7 @@ prop-types@15.7.2:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.1, prop-types@^15.7.2, prop-types@^15.8:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.1, prop-types@^15.7.2, prop-types@^15.8, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==

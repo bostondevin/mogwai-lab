@@ -10,6 +10,7 @@ import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { Video } from "../Video/Video";
 import { Cards3D } from "../GoJs/GoJs";
+import { AgGrid } from "../AgGrid/AgGrid";
 import ForceGraph from "../ForceGraph/ForceGraph";
 import { Custom1, OnlyButtons } from "../Custom1/Custom1";
 import { Custom2, Custom2VideoDrop } from "../Custom2/Custom2";
@@ -32,6 +33,7 @@ export const Builder = ({ store }): JSX.Element => {
         Video,
         ForceGraph,
         Cards3D,
+        AgGrid,
       }}
       enabled={false}
       onRender={EditMenu}

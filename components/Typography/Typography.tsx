@@ -2,26 +2,7 @@ import { useNode, useEditor } from "@craftjs/core";
 import React from "react";
 import ContentEditable from "react-contenteditable";
 import { TextSettings } from "./TextSettings";
-
-type TextType =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "span"
-  | "p"
-  | "legend"
-  | "label";
-
-/* eslint-disable-next-line */
-export interface TextProps {
-  type: TextType;
-  text: string;
-  className?: string;
-  //  children?: JSX.Element | JSX.Element[] | string | number | boolean | null | undefined
-}
+import { TextProps } from "./TextProps";
 
 export const Text = (props: Partial<TextProps>) => {
   const {

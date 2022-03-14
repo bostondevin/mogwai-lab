@@ -1,5 +1,5 @@
 import { useEditor } from "@craftjs/core";
-import { Tooltip } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "../../../Icon/Icon";
 
 export type ComponentItemProps = {
@@ -16,12 +16,12 @@ export const ComponentItem = (props: ComponentItemProps) => {
     enabled: state.options.enabled,
   }));
   return (
-    <div
+    <span
       title={props.label}
       ref={(ref) => create(ref, props.element)}
       className="p-2 inline-block cursor-grab"
     >
       <Icon className={props.icon} />
-    </div>
+    </span>
   );
 };

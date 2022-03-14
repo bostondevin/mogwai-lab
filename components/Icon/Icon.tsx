@@ -1,5 +1,5 @@
 export type IconProps = {
-  className: string;
+  className?: string;
 };
 
 export const Icon = (props: Partial<IconProps>) => {
