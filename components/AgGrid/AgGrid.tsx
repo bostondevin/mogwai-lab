@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
+import { UserComponent, useNode } from "@craftjs/core";
 
 import "ag-grid-enterprise";
 import "ag-grid-enterprise/dist/styles/ag-grid.css";
@@ -10,7 +11,13 @@ export type AgGridProps = {
   dataSource: string;
 };
 
-export const AgGrid = (props: Partial<AgGridProps>) => {
+export const AgGrid: UserComponent<AgGridProps> = (props: any) => {
+  const {
+    connectors: { connect },
+  } = useNode((node) => ({
+    selected: node.events.selected,
+  }));
+
   const [rows, setRows] = useState([]);
   const [columns, setColumns] = useState([]);
 
@@ -26,6 +33,7 @@ export const AgGrid = (props: Partial<AgGridProps>) => {
 
   return (
     <div
+      ref={connect}
       style={{ height: "150px" }}
       className={props.className + " ag-theme-balham-dark w-full"}
     >

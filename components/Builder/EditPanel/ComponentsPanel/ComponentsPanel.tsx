@@ -61,7 +61,7 @@ export const Toolbox = () => {
     {
       title: "Button",
       icon: "fas fa-bullseye-pointer",
-      element: <Button type="button" />,
+      element: <Element canvas is={Button}></Element>,
     },
 
     {
@@ -79,6 +79,12 @@ export const Toolbox = () => {
     {
       title: "Video",
       icon: "fab fa-youtube",
+      element: <Video />,
+    },
+
+    {
+      title: "2 Columns",
+      icon: "fab fa-table-columns",
       element: <Video />,
     },
   ];

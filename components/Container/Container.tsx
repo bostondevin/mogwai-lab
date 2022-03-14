@@ -7,8 +7,6 @@ export type ContainerProps = {
   children?: React.ReactNode;
 };
 
-const defaultProps = {};
-
 export const Container: UserComponent<ContainerProps> = (props) => {
   const {
     connectors: { connect },
@@ -24,8 +22,8 @@ export const Container: UserComponent<ContainerProps> = (props) => {
         props.children
           ? undefined
           : {
-              minHeight: "100px",
-              border: "dashed 3px rgba(0,0,0,.1)",
+              minHeight: "50px",
+              outline: "dashed 3px rgba(0,0,0,.1)",
               margin: "10px",
             }
       }
@@ -37,7 +35,9 @@ export const Container: UserComponent<ContainerProps> = (props) => {
 
 Container.craft = {
   displayName: "Container",
-  props: defaultProps,
+  props: {
+    className: "p-3",
+  },
   rules: {
     canDrag: () => true,
   },

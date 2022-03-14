@@ -30,6 +30,14 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
           type={props.type}
           className={props.className}
           onClick={props.onClick}
+          style={
+            props.children
+              ? undefined
+              : {
+                  minHeight: "50px",
+                  padding: "10px",
+                }
+          }
         >
           {props.children}
         </button>
@@ -43,6 +51,9 @@ Button.craft = {
   props: {
     type: "button",
     className: "w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg",
+  },
+  rules: {
+    canDrag: () => true,
   },
   related: {
     toolbar: ButtonConfig,
