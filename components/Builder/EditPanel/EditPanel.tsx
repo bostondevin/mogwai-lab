@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Toolbar } from "./SettingsPanel/SettingsPanel";
-import { Toolbox } from "./ComponentsPanel/ComponentsPanel";
+import { Toolbox } from "./ComponentsPanel";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -68,7 +68,7 @@ export const Sidebar = () => {
   return (
     <SidebarDiv
       enabled={enabled}
-      className="sidebar transition bg-white w-2 flex flex-col h-full"
+      className="sidebar transition bg-white w-2 flex flex-col h-full overflow-y-auto"
     >
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs

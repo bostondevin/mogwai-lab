@@ -1,39 +1,17 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React from "react";
 import { Element, useEditor } from "@craftjs/core";
 
-import { ComponentItem } from "./ComponentItem";
-
-import { Button } from "../../../Button/Button";
-import { AgGrid } from "../../../AgGrid/AgGrid";
-import { Input } from "../../../Input/Input";
-import { Select } from "../../../Select/Select";
-import { Field } from "../../../Input/Field";
-import { Container } from "../../../Container/Container";
-import { Text } from "../../../Typography/Typography";
-import { Video } from "../../../Video/Video";
-import { Cards3D } from "../../../GoJs/GoJs";
-
-import ForceGraph from "../../../ForceGraph/ForceGraph";
-
-const ToolboxDiv = styled.div<{ enabled: boolean }>`
-  transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  ${(props) => (!props.enabled ? `width: 0;` : "")}
-  ${(props) => (!props.enabled ? `opacity: 0;` : "")}
-`;
-
-const Item = styled.a<{ move?: boolean }>`
-  svg {
-    width: 22px;
-    height: 22px;
-    fill: #707070;
-  }
-  ${(props) =>
-    props.move &&
-    `
-    cursor: move;
-  `}
-`;
+import { Button } from "../../Button/Button";
+import { Accordion } from "../../Accordion/Accordion";
+import { AgGrid } from "../../AgGrid/AgGrid";
+import { Input } from "../../Input/Input";
+import { Select } from "../../Select/Select";
+import { Field } from "../../Input/Field";
+import { Container } from "../../Container/Container";
+import { Text } from "../../Typography/Typography";
+import { Video } from "../../Video/Video";
+import { Cards3D } from "../../GoJs/GoJs";
+import { Icon } from "../../Icon/Icon";
 
 export const Toolbox = () => {
   const {
@@ -254,6 +232,33 @@ export const Toolbox = () => {
   ];
 
   return (
+    <>
+      {components.map((panel) => {
+        return (
+          <Accordion
+            title={panel.label}
+            className="bg-slate-700 text-white/75"
+            headerClassName="uppercase bg-slate-800 hover:bg-slate-900 hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer"
+            containerClassName="overflow-hidden transition-all duration-200"
+          >
+            {panel.items.map((item) => {
+              return (
+                <span
+                  title={item.title}
+                  ref={(ref) => create(ref, item.element)}
+                  className="p-2 inline-block cursor-grab"
+                >
+                  <Icon className={item.icon} />
+                </span>
+              );
+            })}
+          </Accordion>
+        );
+      })}
+    </>
+  );
+};
+/*
     <ToolboxDiv
       enabled={enabled && enabled}
       className="toolbox transition flex"
@@ -271,5 +276,4 @@ export const Toolbox = () => {
         })}
       </div>
     </ToolboxDiv>
-  );
-};
+    */
