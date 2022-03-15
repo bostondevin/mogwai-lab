@@ -5,11 +5,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Toolbar } from "./SettingsPanel/SettingsPanel";
-import { Toolbox } from "./ComponentsPanel";
-
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+import { ComponentsPanel } from "./Components";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -80,13 +76,12 @@ export const Sidebar = () => {
           <Tab label="Settings" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <TabPanel value={selectedTab} index={0}>
-        <Toolbox />
+      <TabPanel value={0} index={0}>
+        <ComponentsPanel />
       </TabPanel>
-      <TabPanel value={selectedTab} index={1}>
+      <TabPanel value={1} index={1}>
         <Toolbar />
       </TabPanel>
-
       <Layers expandRootOnLoad={true} />
     </SidebarDiv>
   );

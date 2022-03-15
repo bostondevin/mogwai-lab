@@ -1,22 +1,9 @@
 import "../styles/app.css";
 
-import Gun from "gun/gun";
-import "gun/sea.js";
-import "gun/lib/webrtc.js";
-import "gun/lib/not.js";
-import "gun/lib/path.js";
-import "gun/lib/load.js";
-import { nanoid } from "nanoid";
-
-const store = Gun({
-  peers: ["https://mogwai-water.herokuapp.com/gun"],
-  uuid: () => {
-    return nanoid(11);
-  },
-});
+import { gunStore } from "../stores/gun";
 
 function MyApp({ Component, pageProps }) {
-  return <Component store={store} {...pageProps} />;
+  return <Component store={gunStore} {...pageProps} />;
 }
 
 /*
