@@ -23,7 +23,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
       const path = window.location.pathname;
       const template = store.get("templates").get(path);
       //console.log(path);
-      template.once((d) => {
+      template.on((d) => {
         if (d) {
           const json = lz.decompress(lz.decodeBase64(decodeURIComponent(d)));
           //console.log(json);
@@ -36,7 +36,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
           const blank = {
             ROOT: {
               custom: {
-                displayName: "Container",
+                displayName: "Application",
               },
               displayName: "Container",
               hidden: false,

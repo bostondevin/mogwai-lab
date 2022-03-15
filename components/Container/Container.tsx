@@ -1,6 +1,6 @@
 import React from "react";
 import { ContainerSettings } from "./ContainerSettings";
-import { UserComponent, useNode } from "@craftjs/core";
+import { UserComponent, useNode, useEditor } from "@craftjs/core";
 
 export type ContainerProps = {
   className?: string;
@@ -14,21 +14,22 @@ export const Container: UserComponent<ContainerProps> = (props) => {
     selected: node.events.selected,
   }));
 
+  const { enabled } = useEditor((state) => ({
+    enabled: state.options.enabled,
+  }));
+
   return (
     <div
       ref={connect}
-      className={props.className}
-      style={
-        props.children
-          ? undefined
-          : {
-              minHeight: "50px",
-              outline: "dashed 3px rgba(0,0,0,.1)",
-              margin: "10px",
-            }
-      }
+      className={enabled ? props.className + " outline-1" : props.className}
+      style={props.children ? undefined : { height: "50px" }}
     >
       {props.children}
+      {props.children ? (
+        ""
+      ) : (
+        <div className="border-dashed border-2 border-black/20 h-full"></div>
+      )}
     </div>
   );
 };
@@ -36,7 +37,7 @@ export const Container: UserComponent<ContainerProps> = (props) => {
 Container.craft = {
   displayName: "Container",
   props: {
-    className: "p-3",
+    className: "",
   },
   rules: {
     canDrag: () => true,

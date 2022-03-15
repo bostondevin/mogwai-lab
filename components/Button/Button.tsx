@@ -3,6 +3,8 @@ import React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import { ButtonConfig } from "./ButtonConfig";
 import { ButtonProps } from "./_raw/ButtonProps";
+import { Text } from "../Typography/Typography";
+import { Icon } from "../Icon/Icon";
 
 export const Button: UserComponent<ButtonProps> = (props: any) => {
   const {
@@ -54,6 +56,8 @@ Button.craft = {
   },
   rules: {
     canDrag: () => true,
+    canMoveIn: (nodes) =>
+      nodes.every((node) => node.data.type === Text || node.data.type === Icon),
   },
   related: {
     toolbar: ButtonConfig,

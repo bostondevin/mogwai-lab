@@ -1,10 +1,10 @@
-import { useNode, useEditor } from "@craftjs/core";
+import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import React from "react";
 import ContentEditable from "react-contenteditable";
 import { TextSettings } from "./TextSettings";
 import { TextProps } from "./TextProps";
 
-export const Text = (props: Partial<TextProps>) => {
+export const Text: UserComponent<TextProps> = (props) => {
   const {
     connectors: { connect },
     setProp,
@@ -17,6 +17,7 @@ export const Text = (props: Partial<TextProps>) => {
   return (
     <ContentEditable
       innerRef={connect}
+      id={props.id}
       html={props.text}
       className={props.className}
       disabled={!enabled}

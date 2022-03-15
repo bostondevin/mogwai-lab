@@ -8,6 +8,8 @@ import { Container } from "../Container/Container";
 import { Text } from "../Typography/Typography";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
+import { Field } from "../Input/Field";
+import { Select } from "../Select/Select";
 import { Video } from "../Video/Video";
 import { Cards3D } from "../GoJs/GoJs";
 import { AgGrid } from "../AgGrid/AgGrid";
@@ -30,6 +32,8 @@ export const Builder = ({ store }): JSX.Element => {
         OnlyButtons,
         Button,
         Input,
+        Select,
+        Field,
         Video,
         ForceGraph,
         Cards3D,

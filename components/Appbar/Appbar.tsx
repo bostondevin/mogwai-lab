@@ -47,6 +47,15 @@ export const Appbar = ({ store }): JSX.Element => {
     actions.setOptions((options) => (options.enabled = false));
   };
 
+  const clear = () => {
+    if (confirm("Are you sure you want to clear this page?")) {
+      const template = store.get("templates").get(path);
+      template.put(null, () => {
+        console.log("Removed");
+      });
+    }
+  };
+
   const saveChanges = () => {
     doSave();
     actions.setOptions((options) => (options.enabled = !enabled));
@@ -176,6 +185,17 @@ export const Appbar = ({ store }): JSX.Element => {
                 className="px-2"
               >
                 <Icon className="fa-solid fa-times" />
+              </Button>
+            </li>
+
+            <li className="flex">
+              <Button
+                tooltip="Remove All"
+                onClick={clear}
+                placement="bottom"
+                className="px-2"
+              >
+                <Icon className="fa-solid fa-trash" />
               </Button>
             </li>
           </>
