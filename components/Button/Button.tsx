@@ -1,12 +1,40 @@
-import { UserComponent, useNode } from "@craftjs/core";
 import React from "react";
+import { UserComponent, useNode } from "@craftjs/core";
 import Tooltip from "@mui/material/Tooltip";
-import { ButtonConfig } from "./ButtonConfig";
-import { ButtonProps } from "./_raw/ButtonProps";
 import { Text } from "../Typography/Typography";
 import { Icon } from "../Icon/Icon";
+import { ButtonConfig } from "./ButtonConfig";
+import { ButtonProps } from "./ButtonProps";
 
-export const Button: UserComponent<ButtonProps> = (props: any) => {
+export const Button = React.forwardRef((props: ButtonProps, ref: any) => (
+  <>
+    {props.tooltip ? (
+      <Tooltip title={props.tooltip} placement={props.placement}>
+        <button
+          ref={ref}
+          type={props.type ? props.type : "button"}
+          className={props.className}
+          onClick={props.onClick}
+          onMouseDown={props.onMouseDown}
+        >
+          {props.children}
+        </button>
+      </Tooltip>
+    ) : (
+      <button
+        ref={ref}
+        type={props.type ? props.type : "button"}
+        className={props.className}
+        onClick={props.onClick}
+        onMouseDown={props.onMouseDown}
+      >
+        {props.children}
+      </button>
+    )}
+  </>
+));
+
+export const ButtonReusable: UserComponent<ButtonProps> = (props: any) => {
   const {
     connectors: { connect },
   } = useNode((node) => ({
@@ -14,41 +42,13 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
   }));
 
   return (
-    <>
-      {props.tooltip ? (
-        <Tooltip title={props.tooltip} placement={props.placement}>
-          <button
-            ref={connect}
-            type={props.type}
-            className={props.className}
-            onClick={props.onClick}
-          >
-            {props.children}
-          </button>
-        </Tooltip>
-      ) : (
-        <button
-          ref={connect}
-          type={props.type}
-          className={props.className}
-          onClick={props.onClick}
-          style={
-            props.children
-              ? undefined
-              : {
-                  minHeight: "50px",
-                  padding: "10px",
-                }
-          }
-        >
-          {props.children}
-        </button>
-      )}
-    </>
+    <Button ref={connect} {...props}>
+      {props.children}
+    </Button>
   );
 };
 
-Button.craft = {
+ButtonReusable.craft = {
   displayName: "Button",
   props: {
     type: "button",

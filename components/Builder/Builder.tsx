@@ -6,7 +6,7 @@ import { EditMenu } from "./EditPanel/EditMenu";
 
 import { Container } from "../Container/Container";
 import { Text } from "../Typography/Typography";
-import { Button } from "../Button/Button";
+import { ButtonReusable } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { Field } from "../Input/Field";
 import { Select } from "../Select/Select";
@@ -30,7 +30,7 @@ export const Builder = ({ store }): JSX.Element => {
         Custom3,
         Custom3BtnDrop,
         OnlyButtons,
-        Button,
+        ButtonReusable,
         Input,
         Select,
         Field,

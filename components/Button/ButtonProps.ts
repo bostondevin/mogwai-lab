@@ -15,6 +15,7 @@ type PlacementType =
 
 export interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseDown?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   type?: ButtonType;
   placement?: PlacementType;
   className?: string;

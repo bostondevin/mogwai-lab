@@ -1,12 +1,11 @@
-import { useNode, useEditor } from '@craftjs/core';
-import { ROOT_NODE } from '@craftjs/utils';
-import React, { useEffect, useRef, useCallback } from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import { useNode, useEditor } from "@craftjs/core";
+import { ROOT_NODE } from "@craftjs/utils";
+import React, { useEffect, useRef, useCallback } from "react";
+import ReactDOM from "react-dom";
+import styled from "styled-components";
 
-import ArrowUp from '../../../public/icons/arrow-up.svg';
-import Delete from '../../../public/icons/delete.svg';
-import Move from '../../../public/icons/move.svg';
+import { Icon } from "../../Icon/Icon";
+import { Button } from "../../Button/Button";
 
 const IndicatorDiv = styled.div`
   height: 30px;
@@ -21,24 +20,12 @@ const IndicatorDiv = styled.div`
   }
 `;
 
-const Btn = styled.a`
-  padding: 0 0px;
-  opacity: 0.9;
-  display: flex;
-  align-items: center;
-  > div {
-    position: relative;
-    top: -50%;
-    left: -50%;
-  }
-`;
-
 export const EditMenu = ({ render }) => {
-
   const { id } = useNode();
 
-  const { actions, query, isActive } = useEditor((_, query) => ({
-    isActive: query.getEvent('selected').contains(id),
+  const { enabled, actions, query, isActive } = useEditor((state, query) => ({
+    isActive: query.getEvent("selected").contains(id),
+    enabled: state.options.enabled,
   }));
 
   const {
@@ -63,8 +50,8 @@ export const EditMenu = ({ render }) => {
 
   useEffect(() => {
     if (dom) {
-      if (isActive || isHover) dom.classList.add('component-selected');
-      else dom.classList.remove('component-selected');
+      if (isActive || isHover) dom.classList.add("component-selected");
+      else dom.classList.remove("component-selected");
     }
   }, [dom, isActive, isHover]);
 
@@ -89,59 +76,59 @@ export const EditMenu = ({ render }) => {
 
   useEffect(() => {
     document
-      .querySelector('.craftjs-renderer')
-      .addEventListener('scroll', scroll);
+      .querySelector(".craftjs-renderer")
+      .addEventListener("scroll", scroll);
 
     return () => {
       document
-        .querySelector('.craftjs-renderer')
-        .removeEventListener('scroll', scroll);
+        .querySelector(".craftjs-renderer")
+        .removeEventListener("scroll", scroll);
     };
   }, [scroll]);
 
   return (
     <>
-      {isHover || isActive
+      {enabled && (isHover || isActive)
         ? ReactDOM.createPortal(
-          <IndicatorDiv
-            ref={currentRef}
-            className="px-2 py-2 text-white bg-primary fixed flex items-center"
-            style={{
-              left: getPos(dom).left,
-              top: getPos(dom).top,
-              zIndex: 9999,
-            }}
-          >
-            <h2 className="flex-1 mr-4">{name}</h2>
-            {moveable ? (
-              <Btn className="mr-2 cursor-move" ref={drag}>
-                <Move />
-              </Btn>
-            ) : null}
-            {id !== ROOT_NODE && (
-              <Btn
-                className="mr-2 cursor-pointer"
-                onClick={() => {
-                  actions.selectNode(parent);
-                }}
-              >
-                <ArrowUp />
-              </Btn>
-            )}
-            {deletable ? (
-              <Btn
-                className="cursor-pointer"
-                onMouseDown={(e: React.MouseEvent) => {
-                  e.stopPropagation();
-                  actions.delete(id);
-                }}
-              >
-                <Delete />
-              </Btn>
-            ) : null}
-          </IndicatorDiv>,
-          document.querySelector('.page-container')
-        )
+            <IndicatorDiv
+              ref={currentRef}
+              className="px-2 py-2 text-white bg-blue-600 fixed flex items-center rounded-t-md"
+              style={{
+                left: getPos(dom).left,
+                top: getPos(dom).top,
+                zIndex: 9999,
+              }}
+            >
+              <h2 className="flex-1 mr-4">{name}</h2>
+              {moveable ? (
+                <Button className="mr-2 cursor-move" ref={drag}>
+                  <Icon className="fas fa-arrows-up-down-left-right" />
+                </Button>
+              ) : null}
+              {id !== ROOT_NODE && (
+                <Button
+                  className="mr-2 cursor-pointer"
+                  onClick={() => {
+                    actions.selectNode(parent);
+                  }}
+                >
+                  <Icon className="fas fa-arrow-up" />
+                </Button>
+              )}
+              {deletable ? (
+                <Button
+                  className="cursor-pointer"
+                  onMouseDown={(e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    actions.delete(id);
+                  }}
+                >
+                  <Icon className="fas fa-trash" />
+                </Button>
+              ) : null}
+            </IndicatorDiv>,
+            document.querySelector(".page-container")
+          )
         : null}
       {render}
     </>

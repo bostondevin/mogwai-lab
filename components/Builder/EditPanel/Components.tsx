@@ -3,7 +3,7 @@ import { Element, useEditor } from "@craftjs/core";
 
 import Tooltip from "@mui/material/Tooltip";
 
-import { Button } from "../../Button/Button";
+import { ButtonReusable } from "../../Button/Button";
 import { Accordion } from "../../Accordion/Accordion";
 import { AgGrid } from "../../AgGrid/AgGrid";
 import { Input } from "../../Input/Input";
@@ -28,7 +28,7 @@ export const ComponentsPanel = () => {
   const o = {
     Container: Container,
     Field: Field,
-    Button: Button,
+    Button: ButtonReusable,
     AgGrid: AgGrid,
     Input: Input,
     Select: Select,

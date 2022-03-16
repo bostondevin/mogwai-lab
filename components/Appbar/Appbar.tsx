@@ -4,7 +4,7 @@ import { useEditor } from "@craftjs/core";
 import lz from "lzutf8";
 
 import { Link } from "../Link/Link";
-import { Button } from "../Button/_raw/Button";
+import { Button } from "../Button/Button";
 import { Icon } from "../Icon/Icon";
 
 import Logo from "../../public/sei-logo.svg";
