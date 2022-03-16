@@ -1,10 +1,13 @@
 import React from "react";
-import { ContainerSettings } from "./ContainerSettings";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 
 export type ContainerProps = {
   className?: string;
   children?: React.ReactNode;
+};
+
+const ContainerSettings = () => {
+  return <React.Fragment></React.Fragment>;
 };
 
 export const Container: UserComponent<ContainerProps> = (props) => {

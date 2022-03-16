@@ -4,7 +4,7 @@ import { Element, useEditor } from "@craftjs/core";
 import Tooltip from "@mui/material/Tooltip";
 
 import { ButtonReusable, Button } from "../../Button";
-import { Container } from "../../Container/Container";
+import { Container } from "../../Container";
 import { Accordion } from "../../Accordion";
 import { AgGrid } from "../../AgGrid";
 import { Input } from "../../Input";

@@ -4,7 +4,7 @@ import { Editor as CraftEditor, Frame, Element } from "@craftjs/core";
 import { Wrapper } from "./Wrapper";
 import { EditMenu } from "./EditPanel/EditMenu";
 
-import { Container } from "../Container/Container";
+import { Container } from "../Container";
 import { Text } from "../Text";
 import { ButtonReusable } from "../Button";
 import { Input } from "../Input";
