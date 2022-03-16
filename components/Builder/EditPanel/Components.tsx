@@ -3,7 +3,7 @@ import { Element, useEditor } from "@craftjs/core";
 
 import Tooltip from "@mui/material/Tooltip";
 
-import { ButtonReusable } from "../../Button";
+import { ButtonReusable, Button } from "../../Button";
 import { Container } from "../../Container/Container";
 import { Accordion } from "../../Accordion";
 import { AgGrid } from "../../AgGrid";
@@ -50,26 +50,19 @@ export const ComponentsPanel = () => {
           >
             {panel.items.map((item, componentIndex) => {
               return (
-                <span
+                <Button
                   key={"component_" + componentIndex}
                   className="p-2 inline-block cursor-grab"
+                  tooltip={item.title}
+                  ref={(ref: any) =>
+                    create(
+                      ref,
+                      createElement(o[item.element.type], item.element.props)
+                    )
+                  }
                 >
-                  <Tooltip title={item.title}>
-                    <span
-                      ref={(ref) =>
-                        create(
-                          ref,
-                          createElement(
-                            o[item.element.type],
-                            item.element.props
-                          )
-                        )
-                      }
-                    >
-                      <Icon className={item.icon} />
-                    </span>
-                  </Tooltip>
-                </span>
+                  <Icon className={item.icon} />
+                </Button>
               );
             })}
           </Accordion>

@@ -1,7 +1,6 @@
 import React from "react";
 import { UserComponent, useNode } from "@craftjs/core";
 
-import Tooltip from "@mui/material/Tooltip";
 import { Text } from "./Text";
 import { Icon } from "./Icon";
 
@@ -42,31 +41,16 @@ interface ButtonProps {
 }
 
 export const Button = React.forwardRef((props: ButtonProps, ref: any) => (
-  <>
-    {props.tooltip ? (
-      <Tooltip title={props.tooltip} placement={props.placement}>
-        <button
-          ref={ref}
-          type={props.type ? props.type : "button"}
-          className={props.className}
-          onClick={props.onClick}
-          onMouseDown={props.onMouseDown}
-        >
-          {props.children}
-        </button>
-      </Tooltip>
-    ) : (
-      <button
-        ref={ref}
-        type={props.type ? props.type : "button"}
-        className={props.className}
-        onClick={props.onClick}
-        onMouseDown={props.onMouseDown}
-      >
-        {props.children}
-      </button>
-    )}
-  </>
+  <button
+    ref={ref}
+    title={props.tooltip ? props.tooltip : undefined}
+    type={props.type ? props.type : "button"}
+    className={props.className}
+    onClick={props.onClick}
+    onMouseDown={props.onMouseDown}
+  >
+    {props.children}
+  </button>
 ));
 
 export const ButtonReusable: UserComponent<ButtonProps> = (props: any) => {

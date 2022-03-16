@@ -18,6 +18,7 @@ export const Builder = ({ store }): JSX.Element => {
   return (
     <CraftEditor
       resolver={{
+        ButtonReusable,
         Container,
         Text,
         Input,
