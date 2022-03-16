@@ -1,7 +1,8 @@
 export type IconProps = {
   className?: string;
+  "aria-hidden"?: boolean;
 };
 
 export const Icon = (props: Partial<IconProps>) => {
-  return <i className={props.className}></i>;
+  return <i {...props}></i>;
 };

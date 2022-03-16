@@ -1,6 +1,8 @@
 import React, { createElement } from "react";
 import { Element, useEditor } from "@craftjs/core";
 
+import Tooltip from "@mui/material/Tooltip";
+
 import { Button } from "../../Button/Button";
 import { Accordion } from "../../Accordion/Accordion";
 import { AgGrid } from "../../AgGrid/AgGrid";
@@ -39,27 +41,36 @@ export const ComponentsPanel = () => {
 
   return (
     <>
-      {components.map((panel) => {
+      {components.map((panel, panelIndex) => {
         return (
           <Accordion
+            key={"group_" + panelIndex}
             title={panel.label}
             className="bg-slate-700 text-white/75"
             headerClassName="uppercase bg-slate-800 hover:bg-slate-900 hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer"
             containerClassName="overflow-hidden transition-all duration-200"
           >
-            {panel.items.map((item) => {
+            {panel.items.map((item, componentIndex) => {
               return (
                 <span
-                  title={item.title}
-                  ref={(ref) =>
-                    create(
-                      ref,
-                      createElement(o[item.element.type], item.element.props)
-                    )
-                  }
+                  key={"component_" + componentIndex}
                   className="p-2 inline-block cursor-grab"
                 >
-                  <Icon className={item.icon} />
+                  <Tooltip title={item.title}>
+                    <span
+                      ref={(ref) =>
+                        create(
+                          ref,
+                          createElement(
+                            o[item.element.type],
+                            item.element.props
+                          )
+                        )
+                      }
+                    >
+                      <Icon className={item.icon} />
+                    </span>
+                  </Tooltip>
                 </span>
               );
             })}

@@ -20,44 +20,11 @@ export const Appbar = ({ store }): JSX.Element => {
     setPath(window.location.pathname);
   }, [router.asPath]);
 
-  const { enabled, canUndo, canRedo, actions, query } = useEditor(
-    (state, query) => ({
-      enabled: state.options.enabled,
-      canUndo: query.history.canUndo(),
-      canRedo: query.history.canRedo(),
-    })
-  );
+  const { enabled, actions, query } = useEditor((state) => ({
+    enabled: state.options.enabled,
+  }));
 
-  const doSave = () => {
-    if (enabled) {
-      const json = query.serialize();
-      const condensedJson = encodeURIComponent(
-        lz.encodeBase64(lz.compress(json))
-      );
-      const template = store.get("templates").get(path);
-      template.put(condensedJson, () => {
-        //console.log("Template Saved! templates" + path);
-        //console.log(condensedJson);
-        //console.log(d);
-      });
-    }
-  };
-
-  const cancelEdit = () => {
-    actions.setOptions((options) => (options.enabled = false));
-  };
-
-  const clear = () => {
-    if (confirm("Are you sure you want to clear this page?")) {
-      const template = store.get("templates").get(path);
-      template.put(null, () => {
-        console.log("Removed");
-      });
-    }
-  };
-
-  const saveChanges = () => {
-    doSave();
+  const toggleEdit = () => {
     actions.setOptions((options) => (options.enabled = !enabled));
   };
 
@@ -75,7 +42,7 @@ export const Appbar = ({ store }): JSX.Element => {
 
   const clickLink = () => {
     if (enabled) {
-      doSave();
+      // doSave();
     }
   };
 
@@ -129,7 +96,7 @@ export const Appbar = ({ store }): JSX.Element => {
 
   return (
     <nav className="flex bg-white w-full">
-      <div style={{ width: "55px", height: "55px" }} className="ml-2">
+      <div style={{ width: "55px", height: "55px" }} className="ml-2 mr-10">
         <Logo />
       </div>
 
@@ -142,8 +109,12 @@ export const Appbar = ({ store }): JSX.Element => {
                 onClick={clickLink}
                 className={path === item.href ? linkOnClasses : linkOffClasses}
               >
-                <Icon className={item.icon} />
-                <span className="ml-1">{item.label}</span>
+                {item.key === 0 ? <Icon className={item.icon} /> : <></>}
+                {item.key !== 0 ? (
+                  <span className="ml-1">{item.label}</span>
+                ) : (
+                  <></>
+                )}
               </Link>
             </li>
           );
@@ -151,56 +122,6 @@ export const Appbar = ({ store }): JSX.Element => {
       </ul>
 
       <ul className="flex mr-3">
-        {enabled && (
-          <>
-            <li className="flex">
-              <Button
-                tooltip="Undo"
-                placement="bottom"
-                onClick={() => actions.history.undo()}
-                disabled={!canUndo}
-                className="px-2"
-              >
-                <Icon className="fa-solid fa-undo" />
-              </Button>
-            </li>
-
-            <li className="flex">
-              <Button
-                tooltip="Redo"
-                placement="bottom"
-                disabled={!canRedo}
-                onClick={() => actions.history.redo()}
-                className="px-2"
-              >
-                <Icon className="fa-solid fa-redo" />
-              </Button>
-            </li>
-
-            <li className="flex">
-              <Button
-                tooltip="Cancel"
-                onClick={cancelEdit}
-                placement="bottom"
-                className="px-2"
-              >
-                <Icon className="fa-solid fa-times" />
-              </Button>
-            </li>
-
-            <li className="flex">
-              <Button
-                tooltip="Remove All"
-                onClick={clear}
-                placement="bottom"
-                className="px-2"
-              >
-                <Icon className="fa-solid fa-trash" />
-              </Button>
-            </li>
-          </>
-        )}
-
         <li className="flex gap-2">
           <Button
             onClick={toggleDarkMode}
@@ -210,20 +131,24 @@ export const Appbar = ({ store }): JSX.Element => {
           >
             <Icon className={isDark ? "fa-solid fa-sun" : "fa-solid fa-moon"} />
           </Button>
-
-          <Button
-            onClick={saveChanges}
-            tooltip={enabled ? "Save" : "Edit"}
-            placement="bottom"
-            className="px-2 opacity-50 hover:opacity-80"
-          >
-            <Icon
-              className={
-                enabled ? "fa-solid fa-floppy-disk" : "fa-solid fa-edit"
-              }
-            />
-          </Button>
         </li>
+
+        {!enabled && (
+          <li className="flex">
+            <Button
+              onClick={toggleEdit}
+              tooltip={enabled ? "Save" : "Edit"}
+              placement="bottom"
+              className="px-2 opacity-50 hover:opacity-80"
+            >
+              <Icon
+                className={
+                  enabled ? "fa-solid fa-floppy-disk" : "fa-solid fa-edit"
+                }
+              />
+            </Button>
+          </li>
+        )}
       </ul>
     </nav>
   );

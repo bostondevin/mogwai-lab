@@ -22,13 +22,14 @@ export const Container: UserComponent<ContainerProps> = (props) => {
     <div
       ref={connect}
       className={enabled ? props.className + " outline-1" : props.className}
-      style={props.children ? undefined : { height: "50px" }}
+      style={props.children ? undefined : { minHeight: "50px" }}
     >
       {props.children}
-      {props.children ? (
-        ""
+
+      {!props.children && enabled ? (
+        <div className="border-dashed border-4 border-black/10 hover:border-black/30 h-full w-full flex"></div>
       ) : (
-        <div className="border-dashed border-2 border-black/20 h-full"></div>
+        <></>
       )}
     </div>
   );

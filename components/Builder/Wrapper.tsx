@@ -44,7 +44,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
               linkedNodes: {},
               nodes: [],
               props: {
-                className: "w-full h-full overflow-auto",
+                className: "w-full h-full overflow-auto flex flex-col",
               },
               type: {
                 resolvedName: "Container",
@@ -68,7 +68,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
           className={cx([
             "craftjs-renderer flex h-full w-full transition overflow-auto",
             {
-              "background-sky-500": enabled,
+              "p-3": enabled,
             },
           ])}
           ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
@@ -77,7 +77,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
         </div>
       </div>
 
-      <Sidebar />
+      <Sidebar store={store} />
     </div>
   );
 };

@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      translate: {
+        200: "200%",
+      },
       colors: {
         primary: "#0078D6",
         "dar-gray": "#4b4b4b",
