@@ -8,7 +8,8 @@ export const components = [
         icon: "fas fa-square-dashed",
         element: {
           type: "Element",
-          props: { canvas: true, is: "Container" },
+          is: "Container",
+          props: { type: "div", className: "w-full" },
         },
       },
     ],

@@ -57,7 +57,15 @@ export const ComponentsPanel = () => {
                   ref={(ref: any) =>
                     create(
                       ref,
-                      createElement(o[item.element.type], item.element.props)
+                      item.element.type === "Element" ? (
+                        <Element
+                          canvas
+                          is={o[item.element.is]}
+                          {...item.element.props}
+                        ></Element>
+                      ) : (
+                        createElement(o[item.element.type], item.element.props)
+                      )
                     )
                   }
                 >
