@@ -1,5 +1,30 @@
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { InputProps } from "./InputProps";
+
+type InputType =
+  | "text"
+  | "number"
+  | "tel"
+  | "email"
+  | "date"
+  | "datetime-local"
+  | "time"
+  | "checkbox"
+  | "radio"
+  | "range"
+  | "file";
+
+type InputProps = {
+  id?: string;
+  name?: string;
+  labelledby?: string;
+  placeholder?: string;
+  type: InputType;
+  className?: string;
+  readOnly?: boolean;
+  disabled?: boolean;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 export const Input: UserComponent<InputProps> = (props: any) => {
   const {

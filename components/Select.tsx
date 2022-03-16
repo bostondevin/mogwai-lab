@@ -1,5 +1,16 @@
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { SelectProps } from "./SelectProps";
+
+type SelectProps = {
+  id?: string;
+  name?: string;
+  labelledby?: string;
+  placeholder?: string;
+  className?: string;
+  readOnly?: boolean;
+  disabled?: boolean;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 export const Select: UserComponent<SelectProps> = (props: any) => {
   const {

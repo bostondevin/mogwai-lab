@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
-import { Icon } from "../Icon/Icon";
+import { Icon } from "./Icon";
 
-export type AccordionProps = {
+type AccordionProps = {
   title: string;
   className?: string;
   headerClassName?: string;
   containerClassName?: string;
-  children?: React.ReactNode;
+  children?: any;
 };
 
 export const Accordion = (props: Partial<AccordionProps>) => {

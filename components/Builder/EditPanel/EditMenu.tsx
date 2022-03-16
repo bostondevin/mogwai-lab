@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-import { Icon } from "../../Icon/Icon";
-import { Button } from "../../Button/Button";
+import { Icon } from "../../Icon";
+import { Button } from "../../Button";
 
 const IndicatorDiv = styled.div`
   height: 30px;
@@ -92,7 +92,7 @@ export const EditMenu = ({ render }) => {
         ? ReactDOM.createPortal(
             <IndicatorDiv
               ref={currentRef}
-              className="px-2 py-2 text-white bg-blue-600 fixed flex items-center rounded-t-md"
+              className="px-2 py-2 text-white bg-blue-600 fixed flex items-center rounded-t-md select-none"
               style={{
                 left: getPos(dom).left,
                 top: getPos(dom).top,

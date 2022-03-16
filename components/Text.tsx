@@ -1,8 +1,28 @@
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import React from "react";
 import ContentEditable from "react-contenteditable";
-import { TextSettings } from "./TextSettings";
-import { TextProps } from "./TextProps";
+
+type TextType =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "span"
+  | "p"
+  | "small"
+  | "legend"
+  | "label";
+
+/* eslint-disable-next-line */
+interface TextProps {
+  type: TextType;
+  text?: string;
+  id?: string;
+  className?: string;
+  //  children?: JSX.Element | JSX.Element[] | string | number | boolean | null | undefined
+}
 
 export const Text: UserComponent<TextProps> = (props) => {
   const {
@@ -27,6 +47,10 @@ export const Text: UserComponent<TextProps> = (props) => {
       tagName={props.type}
     />
   );
+};
+
+const TextSettings = () => {
+  return <React.Fragment></React.Fragment>;
 };
 
 Text.craft = {

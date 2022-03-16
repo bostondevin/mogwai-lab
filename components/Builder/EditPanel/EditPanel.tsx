@@ -15,8 +15,8 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { Button } from "../../Button/Button";
-import { Icon } from "../../Icon/Icon";
+import { Button } from "../../Button";
+import { Icon } from "../../Icon";
 
 // import Tooltip from "@mui/material/Tooltip";
 

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useEditor } from "@craftjs/core";
-import lz from "lzutf8";
 
-import { Link } from "../Link/Link";
-import { Button } from "../Button/Button";
-import { Icon } from "../Icon/Icon";
+import { Link } from "./Link";
+import { Button } from "./Button";
+import { Icon } from "./Icon";
 
-import Logo from "../../public/sei-logo.svg";
+import Logo from "../public/sei-logo.svg";
 
-export const Appbar = ({ store }): JSX.Element => {
+export const Appbar = (): JSX.Element => {
   const [path, setPath] = useState(null);
 
   const [isDark, setDarkMode] = useState(false);

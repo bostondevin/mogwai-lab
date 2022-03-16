@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import lz from "lzutf8";
 import cx from "classnames";
 
-import { Appbar } from "../Appbar/Appbar";
+import { Appbar } from "../Appbar";
 import { Sidebar } from "./EditPanel/EditPanel";
 
 export const Wrapper = ({ store, children }): JSX.Element => {
@@ -62,7 +62,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
   return (
     <div className="flex h-full overflow-hidden flex-row w-full fixed">
       <div className="page-container flex h-full flex-col w-full">
-        <Appbar store={store} />
+        <Appbar />
 
         <div
           className={cx([

@@ -3,17 +3,16 @@ import { Element, useEditor } from "@craftjs/core";
 
 import Tooltip from "@mui/material/Tooltip";
 
-import { ButtonReusable } from "../../Button/Button";
-import { Accordion } from "../../Accordion/Accordion";
-import { AgGrid } from "../../AgGrid/AgGrid";
-import { Input } from "../../Input/Input";
-import { Select } from "../../Select/Select";
-import { Field } from "../../Input/Field";
+import { ButtonReusable } from "../../Button";
 import { Container } from "../../Container/Container";
-import { Text } from "../../Typography/Typography";
-import { Video } from "../../Video/Video";
-import { Cards3D } from "../../GoJs/GoJs";
-import { Icon } from "../../Icon/Icon";
+import { Accordion } from "../../Accordion";
+import { AgGrid } from "../../AgGrid";
+import { Input } from "../../Input";
+import { Select } from "../../Select";
+import { Text } from "../../Text";
+import { Video } from "../../Video";
+import { Cards3D } from "../../GoJs";
+import { Icon } from "../../Icon";
 
 import { components } from "../../../constants/components";
 
@@ -27,7 +26,6 @@ export const ComponentsPanel = () => {
 
   const o = {
     Container: Container,
-    Field: Field,
     Button: ButtonReusable,
     AgGrid: AgGrid,
     Input: Input,
