@@ -11,7 +11,7 @@ import Logo from "../public/sei-logo.svg";
 export const Appbar = (): JSX.Element => {
   const [path, setPath] = useState(null);
 
-  const [isDark, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const router = useRouter();
 
@@ -28,15 +28,15 @@ export const Appbar = (): JSX.Element => {
   };
 
   const toggleDarkMode = () => {
-    setDarkMode(!isDark);
-
     const classList = document.body.classList;
 
-    if (isDark) {
+    if (!darkMode) {
       classList.add("dark");
     } else {
       classList.remove("dark");
     }
+
+    setDarkMode(!darkMode);
   };
 
   const clickLink = () => {
@@ -124,11 +124,13 @@ export const Appbar = (): JSX.Element => {
         <li className="flex gap-2">
           <Button
             onClick={toggleDarkMode}
-            tooltip={isDark ? "Light mode" : "Dark mode"}
+            tooltip={darkMode ? "Light mode" : "Dark mode"}
             placement="bottom"
             className="px-2 opacity-50 hover:opacity-80"
           >
-            <Icon className={isDark ? "fa-solid fa-sun" : "fa-solid fa-moon"} />
+            <Icon
+              className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}
+            />
           </Button>
         </li>
 

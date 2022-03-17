@@ -21,14 +21,11 @@ export const Wrapper = ({ store, children }): JSX.Element => {
   useEffect(() => {
     if (store) {
       const path = window.location.pathname;
-      const template = store.get("templates").get(path);
+      const template = store.path(("templates" + path).split("/")).get("html");
       //console.log(path);
       template.on((d) => {
         if (d) {
           const json = lz.decompress(lz.decodeBase64(decodeURIComponent(d)));
-          //console.log(json);
-          //console.log(JSON.parse(json));
-
           if (json) deserialize(json);
         } else {
           //console.log("No template for template" + path);

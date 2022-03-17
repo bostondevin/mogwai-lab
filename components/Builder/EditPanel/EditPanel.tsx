@@ -9,6 +9,7 @@ import lz from "lzutf8";
 
 import { Toolbar } from "./SettingsPanel/SettingsPanel";
 import { ComponentsPanel } from "./Components";
+import { DataPanel } from "./DataPanel";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -69,6 +70,15 @@ export const Sidebar = ({ store }): JSX.Element => {
 
   useEffect(() => {
     setPath(window.location.pathname);
+
+    console.log("PATHE");
+    console.log(window.location.pathname);
+    store
+      .get("templates")
+      .get("web:components")
+      .once((d) => {
+        console.log(d);
+      });
   }, [router.asPath]);
 
   const doSave = () => {
@@ -77,7 +87,7 @@ export const Sidebar = ({ store }): JSX.Element => {
       const condensedJson = encodeURIComponent(
         lz.encodeBase64(lz.compress(json))
       );
-      const template = store.get("templates").get(path);
+      const template = store.path(("templates" + path).split("/")).get("html");
       template.put(condensedJson, () => {
         //console.log("Template Saved! templates" + path);
         //console.log(condensedJson);
@@ -96,7 +106,7 @@ export const Sidebar = ({ store }): JSX.Element => {
 
   const clear = () => {
     if (confirm("Are you sure you want to clear this page?")) {
-      const template = store.get("templates").get(path);
+      const template = store.path(("templates" + path).split("/")).get("html");
       template.put(null, () => {
         console.log("Removed");
       });
@@ -200,6 +210,8 @@ export const Sidebar = ({ store }): JSX.Element => {
       <ComponentsPanel />
 
       <Toolbar />
+
+      <DataPanel store={store} path={path} />
 
       <Layers expandRootOnLoad={true} />
     </SidebarDiv>
