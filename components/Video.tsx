@@ -1,24 +1,9 @@
 import { useNode, useEditor } from "@craftjs/core";
 import React from "react";
 import YouTube from "react-youtube";
-import styled from "styled-components";
 
 import { ToolbarSection } from "./Builder/EditPanel/SettingsPanel/ToolbarSection";
 import { ToolbarItem } from "./Builder/EditPanel/SettingsPanel/ToolbarItem";
-// import { ToolbarRadio } from '../../EditPanel/SettingsPanel/ToolbarRadio';
-
-const YoutubeDiv = styled.div<any>`
-  width: 100%;
-  height: 100%;
-  > div {
-    height: 100%;
-  }
-  iframe {
-    pointer-events: ${(props) => (props.enabled ? "none" : "auto")};
-    // width:100%!important;
-    // height:100%!important;
-  }
-`;
 
 export const Video = (props: any) => {
   const { enabled } = useEditor((state) => ({
@@ -33,7 +18,10 @@ export const Video = (props: any) => {
   const { videoId } = props;
 
   return (
-    <YoutubeDiv ref={connect} enabled={enabled}>
+    <div
+      ref={connect}
+      className={props.className + (enabled ? " pointer-events-none" : "")}
+    >
       <YouTube
         videoId={videoId}
         opts={{
@@ -41,7 +29,7 @@ export const Video = (props: any) => {
           height: "100%",
         }}
       />
-    </YoutubeDiv>
+    </div>
   );
 };
 

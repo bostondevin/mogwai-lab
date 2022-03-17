@@ -16,7 +16,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { Button } from "../../Button";
+import { ButtonRaw } from "../../Button";
 import { Icon } from "../../Icon";
 
 // import Tooltip from "@mui/material/Tooltip";
@@ -125,18 +125,18 @@ export const Sidebar = ({ store }): JSX.Element => {
     >
       <ul className="flex mr-3 bg-slate-700 text-white/75 w-full p-1 text-sm">
         <li className="flex w-full">
-          <Button
+          <ButtonRaw
             tooltip="Close"
             onClick={cancelEdit}
             placement="bottom"
             className="px-2"
           >
             <Icon className="fa-solid fa-times" />
-          </Button>
+          </ButtonRaw>
         </li>
 
         <li className="flex">
-          <Button
+          <ButtonRaw
             tooltip="Outlines"
             placement="bottom"
             onClick={toggleOutlines}
@@ -148,22 +148,22 @@ export const Sidebar = ({ store }): JSX.Element => {
                 "fa-solid fa-square-dashed" + (canUndo ? "" : " opacity-50")
               }
             />
-          </Button>
+          </ButtonRaw>
         </li>
 
         <li className="flex">
-          <Button
+          <ButtonRaw
             tooltip="Remove All"
             onClick={clear}
             placement="bottom"
             className="px-2"
           >
             <Icon className="fa-solid fa-trash" />
-          </Button>
+          </ButtonRaw>
         </li>
 
         <li className="flex">
-          <Button
+          <ButtonRaw
             tooltip="Undo"
             placement="bottom"
             onClick={() => actions.history.undo()}
@@ -173,11 +173,11 @@ export const Sidebar = ({ store }): JSX.Element => {
             <Icon
               className={"fa-solid fa-undo" + (canUndo ? "" : " opacity-50")}
             />
-          </Button>
+          </ButtonRaw>
         </li>
 
         <li className="flex">
-          <Button
+          <ButtonRaw
             tooltip="Redo"
             placement="bottom"
             disabled={!canRedo}
@@ -187,11 +187,11 @@ export const Sidebar = ({ store }): JSX.Element => {
             <Icon
               className={"fa-solid fa-redo" + (canRedo ? "" : " opacity-50")}
             />
-          </Button>
+          </ButtonRaw>
         </li>
 
         <li className="flex gap-2">
-          <Button
+          <ButtonRaw
             onClick={saveChanges}
             disabled={!canUndo}
             tooltip={enabled ? "Save" : "Edit"}
@@ -203,7 +203,7 @@ export const Sidebar = ({ store }): JSX.Element => {
                 "fa-solid fa-floppy-disk" + (canUndo ? "" : " opacity-50")
               }
             />
-          </Button>
+          </ButtonRaw>
         </li>
       </ul>
 

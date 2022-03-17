@@ -6,9 +6,8 @@ import { EditMenu } from "./EditPanel/EditMenu";
 
 import { Container } from "../Container";
 import { Text } from "../Text";
-import { ButtonReusable } from "../Button";
+import { Button } from "../Button";
 import { Input } from "../Input";
-import { Select } from "../Select";
 import { Video } from "../Video";
 import { Cards3D } from "../GoJs";
 import { AgGrid } from "../AgGrid";
@@ -18,11 +17,10 @@ export const Builder = ({ store }): JSX.Element => {
   return (
     <CraftEditor
       resolver={{
-        ButtonReusable,
+        Button,
         Container,
         Text,
         Input,
-        Select,
         Video,
         ForceGraph,
         Cards3D,

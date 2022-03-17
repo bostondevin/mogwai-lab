@@ -1,10 +1,11 @@
 import React from "react";
+import NextLink from "next/link";
 import { UserComponent, useNode } from "@craftjs/core";
 
 import { Text } from "./Text";
 import { Icon } from "./Icon";
 
-type ButtonType = "button" | "submit" | "reset";
+type ButtonType = "button" | "submit" | "reset" | "link";
 
 type PlacementType =
   | "top"
@@ -27,6 +28,7 @@ interface ButtonProps {
   placement?: PlacementType;
   className?: string;
   tooltip?: string;
+  href?: string;
   disabled?: boolean;
   style?: string;
   ariaLabel?: string;
@@ -40,20 +42,30 @@ interface ButtonProps {
     | undefined;
 }
 
-export const Button = React.forwardRef((props: ButtonProps, ref: any) => (
-  <button
-    ref={ref}
-    title={props.tooltip ? props.tooltip : undefined}
-    type={props.type ? props.type : "button"}
-    className={props.className}
-    onClick={props.onClick}
-    onMouseDown={props.onMouseDown}
-  >
-    {props.children}
-  </button>
+export const ButtonRaw = React.forwardRef((props: ButtonProps, ref: any) => (
+  <>
+    {props.type === "link" ? (
+      <NextLink href={props.href}>
+        <a onClick={() => props.onClick} className={props.className}>
+          {props.children}
+        </a>
+      </NextLink>
+    ) : (
+      <button
+        ref={ref}
+        title={props.tooltip ? props.tooltip : undefined}
+        type={props.type ? props.type : "button"}
+        className={props.className}
+        onClick={props.onClick}
+        onMouseDown={props.onMouseDown}
+      >
+        {props.children}
+      </button>
+    )}
+  </>
 ));
 
-export const ButtonReusable: UserComponent<ButtonProps> = (props: any) => {
+export const Button: UserComponent<ButtonProps> = (props: any) => {
   const {
     connectors: { connect },
   } = useNode((node) => ({
@@ -61,9 +73,9 @@ export const ButtonReusable: UserComponent<ButtonProps> = (props: any) => {
   }));
 
   return (
-    <Button ref={connect} {...props}>
+    <ButtonRaw ref={connect} {...props}>
       {props.children}
-    </Button>
+    </ButtonRaw>
   );
 };
 
@@ -71,7 +83,7 @@ const ButtonConfig = () => {
   return <React.Fragment></React.Fragment>;
 };
 
-ButtonReusable.craft = {
+Button.craft = {
   displayName: "Button",
   props: {
     type: "button",
