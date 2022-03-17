@@ -1,24 +1,10 @@
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 
-type InputType =
-  | "text"
-  | "number"
-  | "tel"
-  | "email"
-  | "date"
-  | "datetime-local"
-  | "time"
-  | "checkbox"
-  | "radio"
-  | "range"
-  | "file";
-
-type InputProps = {
+type SelectProps = {
   id?: string;
   name?: string;
   labelledby?: string;
   placeholder?: string;
-  type: InputType;
   className?: string;
   readOnly?: boolean;
   disabled?: boolean;
@@ -26,10 +12,9 @@ type InputProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Input: UserComponent<InputProps> = (props: any) => {
+export const Select: UserComponent<SelectProps> = (props: any) => {
   const {
     connectors: { connect },
-    setProp,
   } = useNode();
 
   const { enabled } = useEditor((state) => ({
@@ -38,29 +23,25 @@ export const Input: UserComponent<InputProps> = (props: any) => {
 
   return (
     <>
-      <input
+      <select
         ref={connect}
         {...props}
         id={props.id}
-        list={props.id + "_list"}
         name={props.name}
-        type={props.type}
-        placeholder={props.placeholder}
         aria-labelledby={props.labelledby}
         className={props.className}
-        readOnly={enabled ? true : props.readOnly}
         disabled={props.disabled}
         onFocus={props.onFocus}
-        onInput={props.onChange}
-      />
-      <datalist id={props.id + "_list"}>
+        onChange={props.onChange}
+      >
+        {props.placeholder ? <option>{props.placeholder}</option> : ""}
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
         <option value="4">Option 4</option>
         <option value="5">Option 5</option>
         <option value="6">Option 6</option>
-      </datalist>
+      </select>
     </>
   );
 };

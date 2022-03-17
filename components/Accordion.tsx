@@ -20,8 +20,8 @@ export const Accordion = (props: Partial<AccordionProps>) => {
   };
 
   return (
-    <div className={props.className}>
-      <div className={props.headerClassName} onClick={HandleOpening}>
+    <div onClick={HandleOpening} className={props.className}>
+      <div className={props.headerClassName}>
         <Icon
           className={"mr-2 fas fa-chevron-" + (isOpened ? "down" : "right")}
         />

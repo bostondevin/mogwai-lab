@@ -3,11 +3,12 @@ import { Element, useEditor } from "@craftjs/core";
 
 import Tooltip from "@mui/material/Tooltip";
 
-import { ButtonRaw, Button } from "../../Button";
+import { ButtonReusable, Button } from "../../Button";
 import { Container } from "../../Container";
 import { Accordion } from "../../Accordion";
 import { AgGrid } from "../../AgGrid";
 import { Input } from "../../Input";
+import { Select } from "../../Select";
 import { Text } from "../../Text";
 import { Video } from "../../Video";
 import { Cards3D } from "../../GoJs";
@@ -25,9 +26,10 @@ export const ComponentsPanel = () => {
 
   const o = {
     Container: Container,
-    Button: Button,
+    Button: ButtonReusable,
     AgGrid: AgGrid,
     Input: Input,
+    Select: Select,
     Text: Text,
     Video: Video,
     Icon: Icon,
@@ -43,13 +45,12 @@ export const ComponentsPanel = () => {
             key={"group_" + panelIndex}
             title={panel.label}
             className="bg-slate-700 text-white/75"
-            headerClassName="uppercase select-none bg-slate-800 hover:bg-slate-900 hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer"
+            headerClassName="uppercase bg-slate-800 hover:bg-slate-900 hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer"
             containerClassName="overflow-hidden transition-all duration-200"
           >
             {panel.items.map((item, componentIndex) => {
               return (
-                <ButtonRaw
-                  type="button"
+                <Button
                   key={"component_" + componentIndex}
                   className="p-2 inline-block cursor-grab"
                   tooltip={item.title}
@@ -69,7 +70,7 @@ export const ComponentsPanel = () => {
                   }
                 >
                   <Icon className={item.icon} />
-                </ButtonRaw>
+                </Button>
               );
             })}
           </Accordion>

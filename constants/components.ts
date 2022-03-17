@@ -221,10 +221,9 @@ export const components = [
         title: "Select",
         icon: "fas fa-list-dropdown",
         element: {
-          type: "Input",
+          type: "Select",
           props: {
             id: "lissssst",
-            type: "select",
             placeholder: "- Choose -",
             className: "w-full",
           },

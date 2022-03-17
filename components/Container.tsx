@@ -15,8 +15,6 @@ type ContainerType =
 
 export type ContainerProps = {
   className?: string;
-  emptyClasses?: string;
-  emptyStyle?: any;
   ariaLabel?: string;
   type?: ContainerType;
   children?: React.ReactNode;
@@ -25,63 +23,6 @@ export type ContainerProps = {
 const ContainerSettings = () => {
   return <React.Fragment></React.Fragment>;
 };
-
-export const ContainerRaw = React.forwardRef(
-  (props: ContainerProps, ref: any) => (
-    <>
-      {props.type === "div" && (
-        <div ref={ref} {...props}>
-          {props.children}
-        </div>
-      )}
-      {props.type === "form" && (
-        <form ref={ref} {...props}>
-          {props.children}
-        </form>
-      )}
-      {props.type === "fieldset" && (
-        <fieldset ref={ref} {...props}>
-          {props.children}
-        </fieldset>
-      )}
-      {props.type === "article" && (
-        <article ref={ref} {...props}>
-          {props.children}
-        </article>
-      )}
-      {props.type === "section" && (
-        <section ref={ref} {...props}>
-          {props.children}
-        </section>
-      )}
-      {props.type === "header" && (
-        <header ref={ref} {...props}>
-          {props.children}
-        </header>
-      )}
-      {props.type === "main" && (
-        <main ref={ref} {...props}>
-          {props.children}
-        </main>
-      )}
-      {props.type === "footer" && (
-        <footer ref={ref} {...props}>
-          {props.children}
-        </footer>
-      )}
-      {props.type === "nav" && (
-        <nav ref={ref} {...props}>
-          {props.children}
-        </nav>
-      )}
-      {props.type === "aside" && (
-        <aside ref={ref} {...props}>
-          {props.children}
-        </aside>
-      )}
-    </>
-  )
-);
 
 export const Container: UserComponent<ContainerProps> = (props) => {
   const {
@@ -94,16 +35,132 @@ export const Container: UserComponent<ContainerProps> = (props) => {
     enabled: state.options.enabled,
   }));
 
+  const emptyClasses =
+    "border-dashed border-4 border-black/10 hover:border-black/30 h-full w-full flex";
+  const emptyStyle = { minHeight: "50px" };
   return (
-    <ContainerRaw {...props}>
-      {props.children}
-      {!props.children && enabled && (
+    <>
+      {props.type === "div" && (
         <div
-          className="border-dashed border-4 border-black/10 hover:border-black/30 h-full w-full flex"
-          style={{ minHeight: "50px" }}
-        ></div>
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </div>
       )}
-    </ContainerRaw>
+      {props.type === "form" && (
+        <form
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </form>
+      )}
+      {props.type === "fieldset" && (
+        <fieldset
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </fieldset>
+      )}
+      {props.type === "article" && (
+        <article
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </article>
+      )}
+      {props.type === "section" && (
+        <section
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </section>
+      )}
+      {props.type === "header" && (
+        <header
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </header>
+      )}
+      {props.type === "main" && (
+        <main
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </main>
+      )}
+      {props.type === "footer" && (
+        <footer
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </footer>
+      )}
+      {props.type === "nav" && (
+        <nav
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </nav>
+      )}
+      {props.type === "aside" && (
+        <aside
+          ref={connect}
+          className={enabled ? props.className + " outline-1" : props.className}
+        >
+          {props.children}
+
+          {!props.children && enabled && (
+            <div className={emptyClasses} style={emptyStyle}></div>
+          )}
+        </aside>
+      )}
+    </>
   );
 };
 

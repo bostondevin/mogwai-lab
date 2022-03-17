@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useEditor } from "@craftjs/core";
 
-import { ButtonRaw } from "./Button";
+import { Link } from "./Link";
+import { Button } from "./Button";
 import { Icon } from "./Icon";
+
 import Logo from "../public/sei-logo.svg";
 
 export const Appbar = (): JSX.Element => {
   const [path, setPath] = useState(null);
+
   const [darkMode, setDarkMode] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -99,8 +103,7 @@ export const Appbar = (): JSX.Element => {
         {links.map((item) => {
           return (
             <li key={item.key} className="flex items-center">
-              <ButtonRaw
-                type="link"
+              <Link
                 href={item.href}
                 onClick={clickLink}
                 className={path === item.href ? linkOnClasses : linkOffClasses}
@@ -111,7 +114,7 @@ export const Appbar = (): JSX.Element => {
                 ) : (
                   <></>
                 )}
-              </ButtonRaw>
+              </Link>
             </li>
           );
         })}
@@ -119,8 +122,7 @@ export const Appbar = (): JSX.Element => {
 
       <ul className="flex mr-3">
         <li className="flex gap-2">
-          <ButtonRaw
-            type="button"
+          <Button
             onClick={toggleDarkMode}
             tooltip={darkMode ? "Light mode" : "Dark mode"}
             placement="bottom"
@@ -129,13 +131,12 @@ export const Appbar = (): JSX.Element => {
             <Icon
               className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}
             />
-          </ButtonRaw>
+          </Button>
         </li>
 
         {!enabled && (
           <li className="flex">
-            <ButtonRaw
-              type="button"
+            <Button
               onClick={toggleEdit}
               tooltip={enabled ? "Save" : "Edit"}
               placement="bottom"
@@ -146,7 +147,7 @@ export const Appbar = (): JSX.Element => {
                   enabled ? "fa-solid fa-floppy-disk" : "fa-solid fa-edit"
                 }
               />
-            </ButtonRaw>
+            </Button>
           </li>
         )}
       </ul>
