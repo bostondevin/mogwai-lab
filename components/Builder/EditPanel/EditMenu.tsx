@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-import { Icon } from "../../Icon";
+import { IconRaw } from "../../Icon";
 import { Button } from "../../Button";
 
 const IndicatorDiv = styled.div`
@@ -102,7 +102,7 @@ export const EditMenu = ({ render }) => {
               <h2 className="flex-1 mr-4">{name}</h2>
               {moveable ? (
                 <Button className="mr-2 cursor-move" ref={drag}>
-                  <Icon className="fas fa-arrows-up-down-left-right" />
+                  <IconRaw className="fas fa-arrows-up-down-left-right" />
                 </Button>
               ) : null}
               {id !== ROOT_NODE && (
@@ -112,7 +112,7 @@ export const EditMenu = ({ render }) => {
                     actions.selectNode(parent);
                   }}
                 >
-                  <Icon className="fas fa-arrow-up" />
+                  <IconRaw className="fas fa-arrow-up" />
                 </Button>
               )}
               {deletable ? (
@@ -123,7 +123,7 @@ export const EditMenu = ({ render }) => {
                     actions.delete(id);
                   }}
                 >
-                  <Icon className="fas fa-trash" />
+                  <IconRaw className="fas fa-trash" />
                 </Button>
               ) : null}
             </IndicatorDiv>,

@@ -4,7 +4,7 @@ import { useEditor } from "@craftjs/core";
 
 import { Link } from "./Link";
 import { Button } from "./Button";
-import { Icon } from "./Icon";
+import { IconRaw } from "./Icon";
 
 import Logo from "../public/sei-logo.svg";
 
@@ -108,7 +108,7 @@ export const Appbar = (): JSX.Element => {
                 onClick={clickLink}
                 className={path === item.href ? linkOnClasses : linkOffClasses}
               >
-                {item.key === 0 ? <Icon className={item.icon} /> : <></>}
+                {item.key === 0 ? <IconRaw className={item.icon} /> : <></>}
                 {item.key !== 0 ? (
                   <span className="ml-1">{item.label}</span>
                 ) : (
@@ -128,7 +128,7 @@ export const Appbar = (): JSX.Element => {
             placement="bottom"
             className="px-2 opacity-50 hover:opacity-80"
           >
-            <Icon
+            <IconRaw
               className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}
             />
           </Button>
@@ -142,7 +142,7 @@ export const Appbar = (): JSX.Element => {
               placement="bottom"
               className="px-2 opacity-50 hover:opacity-80"
             >
-              <Icon
+              <IconRaw
                 className={
                   enabled ? "fa-solid fa-floppy-disk" : "fa-solid fa-edit"
                 }

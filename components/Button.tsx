@@ -4,27 +4,23 @@ import { UserComponent, useNode } from "@craftjs/core";
 import { Text } from "./Text";
 import { Icon } from "./Icon";
 
-type ButtonType = "button" | "submit" | "reset";
-
-type PlacementType =
-  | "top"
-  | "top-start"
-  | "top-end"
-  | "bottom"
-  | "bottom-start"
-  | "bottom-end"
-  | "left"
-  | "left-start"
-  | "left-end"
-  | "right"
-  | "right-start"
-  | "right-end";
-
 interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseDown?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  type?: ButtonType;
-  placement?: PlacementType;
+  type?: "button" | "submit" | "reset";
+  placement?:
+    | "top"
+    | "top-start"
+    | "top-end"
+    | "bottom"
+    | "bottom-start"
+    | "bottom-end"
+    | "left"
+    | "left-start"
+    | "left-end"
+    | "right"
+    | "right-start"
+    | "right-end";
   className?: string;
   tooltip?: string;
   disabled?: boolean;

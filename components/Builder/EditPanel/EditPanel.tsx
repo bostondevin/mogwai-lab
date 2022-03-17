@@ -17,7 +17,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 import { Button } from "../../Button";
-import { Icon } from "../../Icon";
+import { IconRaw } from "../../Icon";
 
 // import Tooltip from "@mui/material/Tooltip";
 
@@ -131,7 +131,7 @@ export const Sidebar = ({ store }): JSX.Element => {
             placement="bottom"
             className="px-2"
           >
-            <Icon className="fa-solid fa-times" />
+            <IconRaw className="fa-solid fa-times" />
           </Button>
         </li>
 
@@ -143,7 +143,7 @@ export const Sidebar = ({ store }): JSX.Element => {
             disabled={!canUndo}
             className="px-2"
           >
-            <Icon
+            <IconRaw
               className={
                 "fa-solid fa-square-dashed" + (canUndo ? "" : " opacity-50")
               }
@@ -158,7 +158,7 @@ export const Sidebar = ({ store }): JSX.Element => {
             placement="bottom"
             className="px-2"
           >
-            <Icon className="fa-solid fa-trash" />
+            <IconRaw className="fa-solid fa-trash" />
           </Button>
         </li>
 
@@ -170,7 +170,7 @@ export const Sidebar = ({ store }): JSX.Element => {
             disabled={!canUndo}
             className="px-2"
           >
-            <Icon
+            <IconRaw
               className={"fa-solid fa-undo" + (canUndo ? "" : " opacity-50")}
             />
           </Button>
@@ -184,7 +184,7 @@ export const Sidebar = ({ store }): JSX.Element => {
             onClick={() => actions.history.redo()}
             className="px-2"
           >
-            <Icon
+            <IconRaw
               className={"fa-solid fa-redo" + (canRedo ? "" : " opacity-50")}
             />
           </Button>
@@ -198,7 +198,7 @@ export const Sidebar = ({ store }): JSX.Element => {
             placement="bottom"
             className="px-2"
           >
-            <Icon
+            <IconRaw
               className={
                 "fa-solid fa-floppy-disk" + (canUndo ? "" : " opacity-50")
               }

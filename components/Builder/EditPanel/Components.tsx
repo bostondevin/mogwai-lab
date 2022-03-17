@@ -12,7 +12,7 @@ import { Select } from "../../Select";
 import { Text } from "../../Text";
 import { Video } from "../../Video";
 import { Cards3D } from "../../GoJs";
-import { Icon } from "../../Icon";
+import { Icon, IconRaw } from "../../Icon";
 
 import { components } from "../../../constants/components";
 
@@ -69,7 +69,7 @@ export const ComponentsPanel = () => {
                     )
                   }
                 >
-                  <Icon className={item.icon} />
+                  <IconRaw className={item.icon} />
                 </Button>
               );
             })}
