@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import styled from "styled-components";
 
 import { Icon } from "../../Icon";
-import { Button } from "../../Button";
+import { ButtonRaw } from "../../Button";
 
 const IndicatorDiv = styled.div`
   height: 30px;
@@ -101,22 +101,28 @@ export const EditMenu = ({ render }) => {
             >
               <h2 className="flex-1 mr-4">{name}</h2>
               {moveable ? (
-                <Button className="mr-2 cursor-move" ref={drag}>
+                <ButtonRaw
+                  type="button"
+                  className="mr-2 cursor-move"
+                  ref={drag}
+                >
                   <Icon className="fas fa-arrows-up-down-left-right" />
-                </Button>
+                </ButtonRaw>
               ) : null}
               {id !== ROOT_NODE && (
-                <Button
+                <ButtonRaw
+                  type="button"
                   className="mr-2 cursor-pointer"
                   onClick={() => {
                     actions.selectNode(parent);
                   }}
                 >
                   <Icon className="fas fa-arrow-up" />
-                </Button>
+                </ButtonRaw>
               )}
               {deletable ? (
-                <Button
+                <ButtonRaw
+                  type="button"
                   className="cursor-pointer"
                   onMouseDown={(e: React.MouseEvent) => {
                     e.stopPropagation();
@@ -124,7 +130,7 @@ export const EditMenu = ({ render }) => {
                   }}
                 >
                   <Icon className="fas fa-trash" />
-                </Button>
+                </ButtonRaw>
               ) : null}
             </IndicatorDiv>,
             document.querySelector(".page-container")

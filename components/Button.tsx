@@ -65,7 +65,7 @@ export const ButtonRaw = React.forwardRef((props: ButtonProps, ref: any) => (
   </>
 ));
 
-export const Button: UserComponent<ButtonProps> = (props: any) => {
+export const Button: UserComponent<ButtonProps> = (props) => {
   const {
     connectors: { connect },
   } = useNode((node) => ({

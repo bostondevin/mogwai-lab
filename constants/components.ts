@@ -230,14 +230,6 @@ export const components = [
           },
         },
       },
-      {
-        title: "Text Input",
-        icon: "fab fa-table-columns",
-        element: {
-          type: "Field",
-          props: {},
-        },
-      },
     ],
   },
   {
