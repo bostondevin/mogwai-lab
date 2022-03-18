@@ -5,11 +5,11 @@ import { Wrapper } from "./Wrapper";
 import { EditMenu } from "./EditPanel/EditMenu";
 
 import { Container } from "../Container";
-import { Text } from "../Text";
-import { ButtonReusable } from "../Button";
-import { Input } from "../Input";
-import { Select } from "../Select";
-import { Video } from "../Video";
+import { Text } from "../Elements/Text";
+import { ButtonReusable } from "../Elements/Button";
+import { Input } from "../Elements/Input";
+import { Select } from "../Elements/Select";
+import { Video } from "../Elements/Video";
 import { Cards3D } from "../GoJs";
 import { AgGrid } from "../AgGrid";
 import ForceGraph from "../ForceGraph/ForceGraph";

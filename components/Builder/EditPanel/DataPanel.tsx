@@ -2,16 +2,16 @@ import React, { createElement, useEffect, useState } from "react";
 
 import { Element, useEditor } from "@craftjs/core";
 
-import { ButtonReusable, Button } from "../../Button";
+import { ButtonReusable, Button } from "../../Elements/Button";
 import { Container } from "../../Container";
 import { Accordion } from "../../Accordion";
 import { AgGrid } from "../../AgGrid";
-import { Input } from "../../Input";
-import { Select } from "../../Select";
-import { Text } from "../../Text";
-import { Video } from "../../Video";
+import { Input } from "../../Elements/Input";
+import { Select } from "../../Elements/Select";
+import { Text } from "../../Elements/Text";
+import { Video } from "../../Elements/Video";
 import { Cards3D } from "../../GoJs";
-import { Icon } from "../../Icon";
+import { Icon } from "../../Elements/Icon";
 
 import { components } from "../../../constants/components";
 

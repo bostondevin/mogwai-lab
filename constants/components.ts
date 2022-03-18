@@ -12,6 +12,26 @@ export const components = [
           props: { type: "div", className: "w-full" },
         },
       },
+
+      {
+        title: "Article",
+        icon: "fas fa-square-dashed",
+        element: {
+          type: "Element",
+          is: "Container",
+          props: { type: "article", className: "w-full" },
+        },
+      },
+
+      {
+        title: "Section",
+        icon: "fas fa-square-dashed",
+        element: {
+          type: "Element",
+          is: "Container",
+          props: { type: "section", className: "w-full" },
+        },
+      },
     ],
   },
   {

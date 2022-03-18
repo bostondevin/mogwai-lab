@@ -3,8 +3,8 @@ import React from "react";
 import YouTube from "react-youtube";
 import styled from "styled-components";
 
-import { ToolbarSection } from "./Builder/EditPanel/SettingsPanel/ToolbarSection";
-import { ToolbarItem } from "./Builder/EditPanel/SettingsPanel/ToolbarItem";
+import { ToolbarSection } from "../Builder/EditPanel/SettingsPanel/ToolbarSection";
+import { ToolbarItem } from "../Builder/EditPanel/SettingsPanel/ToolbarItem";
 // import { ToolbarRadio } from '../../EditPanel/SettingsPanel/ToolbarRadio';
 
 const YoutubeDiv = styled.div<any>`

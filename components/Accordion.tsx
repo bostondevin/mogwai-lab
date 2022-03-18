@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { IconRaw } from "./Icon";
+import { IconRaw } from "./Elements/Icon";
 
 type AccordionProps = {
   title: string;

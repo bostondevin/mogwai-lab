@@ -3,16 +3,16 @@ import { Element, useEditor } from "@craftjs/core";
 
 import Tooltip from "@mui/material/Tooltip";
 
-import { ButtonReusable, Button } from "../../Button";
+import { ButtonReusable, Button } from "../../Elements/Button";
 import { Container } from "../../Container";
 import { Accordion } from "../../Accordion";
 import { AgGrid } from "../../AgGrid";
-import { Input } from "../../Input";
-import { Select } from "../../Select";
-import { Text } from "../../Text";
-import { Video } from "../../Video";
+import { Input } from "../../Elements/Input";
+import { Select } from "../../Elements/Select";
+import { Text } from "../../Elements/Text";
+import { Video } from "../../Elements/Video";
 import { Cards3D } from "../../GoJs";
-import { Icon, IconRaw } from "../../Icon";
+import { Icon, IconRaw } from "../../Elements/Icon";
 
 import { components } from "../../../constants/components";
 

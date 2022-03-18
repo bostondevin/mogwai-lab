@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-import { IconRaw } from "../../Icon";
-import { Button } from "../../Button";
+import { IconRaw } from "../../Elements/Icon";
+import { Button } from "../../Elements/Button";
 
 const IndicatorDiv = styled.div`
   height: 30px;

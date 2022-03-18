@@ -1,5 +1,5 @@
 import React from "react";
-import { UserComponent, useNode, useEditor } from "@craftjs/core";
+import { CommonInputProps } from "../../interfaces/Container.interface";
 
 type InputType =
   | "text"
@@ -14,20 +14,15 @@ type InputType =
   | "range"
   | "file";
 
-type InputProps = {
+export interface InputProps extends CommonInputProps {
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  id?: string;
-  name?: string;
-  labelledby?: string;
   placeholder?: string;
   type: InputType;
-  className?: string;
-  readOnly?: boolean;
-  disabled?: boolean;
-};
+}
 
-export const InputRaw = React.forwardRef((props: InputProps, ref: any) => (
+export const Input = React.forwardRef((props: InputProps, ref: any) => (
   <>
     <input ref={ref} {...props} />
     <datalist id={props.id + "_list"}>
@@ -40,16 +35,3 @@ export const InputRaw = React.forwardRef((props: InputProps, ref: any) => (
     </datalist>
   </>
 ));
-
-export const Input: UserComponent<InputProps> = (props) => {
-  const {
-    connectors: { connect },
-    setProp,
-  } = useNode();
-
-  const { enabled } = useEditor((state) => ({
-    enabled: state.options.enabled,
-  }));
-
-  return <InputRaw ref={connect} {...props} readOnly={enabled} />;
-};

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useEditor } from "@craftjs/core";
 
-import { Link } from "./Link";
-import { Button } from "./Button";
-import { IconRaw } from "./Icon";
+import { Link } from "./Elements/Link";
+import { Button } from "./Elements/Button";
+import { IconRaw } from "./Elements/Icon";
 
 import Logo from "../public/sei-logo.svg";
 
