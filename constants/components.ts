@@ -4,12 +4,12 @@ export const components = [
     label: "Containers",
     items: [
       {
-        title: "Container",
+        title: "Div",
         icon: "fas fa-square-dashed",
         element: {
           type: "Element",
-          is: "Container",
-          props: { type: "div", className: "w-full" },
+          is: "Div",
+          props: { className: "w-full" },
         },
       },
 
@@ -18,8 +18,8 @@ export const components = [
         icon: "fas fa-square-dashed",
         element: {
           type: "Element",
-          is: "Container",
-          props: { type: "article", className: "w-full" },
+          is: "Article",
+          props: { className: "w-full" },
         },
       },
 
@@ -28,8 +28,8 @@ export const components = [
         icon: "fas fa-square-dashed",
         element: {
           type: "Element",
-          is: "Container",
-          props: { type: "section", className: "w-full" },
+          is: "Section",
+          props: { className: "w-full" },
         },
       },
     ],
@@ -197,7 +197,7 @@ export const components = [
         title: "Diagram",
         icon: "fas fa-diagram-project",
         element: {
-          type: "Cards3D",
+          type: "Diagram",
           props: {},
         },
       },
@@ -206,7 +206,7 @@ export const components = [
         title: "Grid",
         icon: "fas fa-table",
         element: {
-          type: "AgGrid",
+          type: "Grid",
           props: {
             className: "w-full",
             dataSource: "templates/test333",
@@ -250,11 +250,11 @@ export const components = [
         },
       },
       {
-        title: "Text Input",
+        title: "Email Input",
         icon: "fab fa-table-columns",
         element: {
-          type: "Field",
-          props: {},
+          type: "Text",
+          props: { type: "email" },
         },
       },
     ],
@@ -269,6 +269,15 @@ export const components = [
         element: {
           type: "Element",
           props: { canvas: true, is: "Button" },
+        },
+      },
+
+      {
+        title: "Hyperlink",
+        icon: "fas fa-link",
+        element: {
+          type: "Element",
+          props: { canvas: true, is: "Link" },
         },
       },
     ],

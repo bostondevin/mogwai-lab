@@ -1,51 +1,21 @@
-import React, { createElement, useEffect, useState } from "react";
-
-import { Element, useEditor } from "@craftjs/core";
-
-import { ButtonReusable, Button } from "../../Elements/Button";
-import { Container } from "../../Container";
+import React, { useEffect, useState } from "react";
+import { useEditor } from "@craftjs/core";
 import { Accordion } from "../../Accordion";
-import { AgGrid } from "../../AgGrid";
-import { Input } from "../../Elements/Input";
-import { Select } from "../../Elements/Select";
-import { Text } from "../../Elements/Text";
-import { Video } from "../../Elements/Video";
-import { Cards3D } from "../../GoJs";
-import { Icon } from "../../Elements/Icon";
-
-import { components } from "../../../constants/components";
 
 export const DataPanel = ({ store, path }) => {
-  const {
-    enabled,
-    connectors: { create },
-  } = useEditor((state) => ({
+  const { enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
 
   const [dataProps, setDataProps] = useState({});
 
   useEffect(() => {
-    const d = store.path(("templates" + path).split("/"));
-    d.once((d) => {
+    store.path(("templates" + path).split("/")).once((d) => {
       let o = { ...d };
       delete o._;
       setDataProps(o);
     });
   }, []);
-
-  const o = {
-    Container: Container,
-    Button: ButtonReusable,
-    AgGrid: AgGrid,
-    Input: Input,
-    Select: Select,
-    Text: Text,
-    Video: Video,
-    Icon: Icon,
-    Cards3D: Cards3D,
-    Element: Element,
-  };
 
   return (
     <Accordion

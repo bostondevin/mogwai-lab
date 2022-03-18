@@ -1,25 +1,16 @@
+import React, { useState, useEffect } from "react";
 import { useEditor } from "@craftjs/core";
 import { Layers } from "@craftjs/layers";
-
-import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-
 import lz from "lzutf8";
 
-import { Toolbar } from "./SettingsPanel/SettingsPanel";
+import { Toolbar } from "./SettingsPanel";
 import { ComponentsPanel } from "./Components";
 import { DataPanel } from "./DataPanel";
 
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-
-import { Button } from "../../Elements/Button";
-import { IconRaw } from "../../Elements/Icon";
-
-// import Tooltip from "@mui/material/Tooltip";
+import { Button } from "../../Elements/Button/Button/Button";
+import { Icon } from "../../Elements/Media/Icon/Icon";
 
 export const SidebarDiv = styled.div<{ enabled: boolean }>`
   width: 280px;
@@ -27,34 +18,6 @@ export const SidebarDiv = styled.div<{ enabled: boolean }>`
   background: #fff;
   margin-right: ${(props) => (props.enabled ? 0 : -280)}px;
 `;
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      className="h-full"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ height: "100%" }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
 
 export const Sidebar = ({ store }): JSX.Element => {
   const [path, setPath] = useState(null);
@@ -70,9 +33,6 @@ export const Sidebar = ({ store }): JSX.Element => {
 
   useEffect(() => {
     setPath(window.location.pathname);
-
-    console.log("PATHE");
-    console.log(window.location.pathname);
     store
       .get("templates")
       .get("web:components")
@@ -88,11 +48,7 @@ export const Sidebar = ({ store }): JSX.Element => {
         lz.encodeBase64(lz.compress(json))
       );
       const template = store.path(("templates" + path).split("/")).get("html");
-      template.put(condensedJson, () => {
-        //console.log("Template Saved! templates" + path);
-        //console.log(condensedJson);
-        //console.log(d);
-      });
+      template.put(condensedJson, () => {});
     }
   };
 
@@ -126,24 +82,26 @@ export const Sidebar = ({ store }): JSX.Element => {
       <ul className="flex mr-3 bg-slate-700 text-white/75 w-full p-1 text-sm">
         <li className="flex w-full">
           <Button
+            type="button"
             tooltip="Close"
             onClick={cancelEdit}
             placement="bottom"
             className="px-2"
           >
-            <IconRaw className="fa-solid fa-times" />
+            <Icon className="fa-solid fa-times" />
           </Button>
         </li>
 
         <li className="flex">
           <Button
+            type="button"
             tooltip="Outlines"
             placement="bottom"
             onClick={toggleOutlines}
             disabled={!canUndo}
             className="px-2"
           >
-            <IconRaw
+            <Icon
               className={
                 "fa-solid fa-square-dashed" + (canUndo ? "" : " opacity-50")
               }
@@ -153,24 +111,26 @@ export const Sidebar = ({ store }): JSX.Element => {
 
         <li className="flex">
           <Button
+            type="button"
             tooltip="Remove All"
             onClick={clear}
             placement="bottom"
             className="px-2"
           >
-            <IconRaw className="fa-solid fa-trash" />
+            <Icon className="fa-solid fa-trash" />
           </Button>
         </li>
 
         <li className="flex">
           <Button
+            type="button"
             tooltip="Undo"
             placement="bottom"
             onClick={() => actions.history.undo()}
             disabled={!canUndo}
             className="px-2"
           >
-            <IconRaw
+            <Icon
               className={"fa-solid fa-undo" + (canUndo ? "" : " opacity-50")}
             />
           </Button>
@@ -178,13 +138,14 @@ export const Sidebar = ({ store }): JSX.Element => {
 
         <li className="flex">
           <Button
+            type="button"
             tooltip="Redo"
             placement="bottom"
             disabled={!canRedo}
             onClick={() => actions.history.redo()}
             className="px-2"
           >
-            <IconRaw
+            <Icon
               className={"fa-solid fa-redo" + (canRedo ? "" : " opacity-50")}
             />
           </Button>
@@ -192,13 +153,14 @@ export const Sidebar = ({ store }): JSX.Element => {
 
         <li className="flex gap-2">
           <Button
+            type="button"
             onClick={saveChanges}
             disabled={!canUndo}
             tooltip={enabled ? "Save" : "Edit"}
             placement="bottom"
             className="px-2"
           >
-            <IconRaw
+            <Icon
               className={
                 "fa-solid fa-floppy-disk" + (canUndo ? "" : " opacity-50")
               }

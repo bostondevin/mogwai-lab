@@ -4,29 +4,59 @@ import { Editor as CraftEditor, Frame, Element } from "@craftjs/core";
 import { Wrapper } from "./Wrapper";
 import { EditMenu } from "./EditPanel/EditMenu";
 
-import { Container } from "../Container";
-import { Text } from "../Elements/Text";
-import { ButtonReusable } from "../Elements/Button";
-import { Input } from "../Elements/Input";
-import { Select } from "../Elements/Select";
-import { Video } from "../Elements/Video";
-import { Cards3D } from "../GoJs";
-import { AgGrid } from "../AgGrid";
-import ForceGraph from "../ForceGraph/ForceGraph";
+import { CraftButton } from "../Elements/Button/Button/Button.craft";
+import { CraftLink } from "../Elements/Button/Link/Link.craft";
+
+import { CraftArticle } from "../Elements/Container/Article/Article.craft";
+import { CraftAside } from "../Elements/Container/Aside/Aside.craft";
+import { CraftDiv } from "../Elements/Container/Div/Div.craft";
+import { CraftFieldset } from "../Elements/Container/Fieldset/Fieldset.craft";
+import { CraftFooter } from "../Elements/Container/Footer/Footer.craft";
+import { CraftForm } from "../Elements/Container/Form/Form.craft";
+import { CraftHeader } from "../Elements/Container/Header/Header.craft";
+import { CraftMain } from "../Elements/Container/Main/Main.craft";
+import { CraftNav } from "../Elements/Container/Nav/Nav.craft";
+import { CraftSection } from "../Elements/Container/Section/Section.craft";
+
+import { CraftInput } from "../Elements/Input/Input/Input.craft";
+import { CraftSelect } from "../Elements/Input/Select/Select.craft";
+import { CraftTextarea } from "../Elements/Input/Textarea/Textarea.craft";
+
+import { CraftDiagram } from "../Elements/Media/Diagram/Diagram.craft";
+import { CraftGrid } from "../Elements/Media/Grid/Grid.craft";
+import { CraftIcon } from "../Elements/Media/Icon/Icon.craft";
+import { CraftImage } from "../Elements/Media/Image/Image.craft";
+import { CraftText } from "../Elements/Media/Text/Text.craft";
+import { CraftVideo } from "../Elements/Media/Video/Video.craft";
 
 export const Builder = ({ store }): JSX.Element => {
   return (
     <CraftEditor
       resolver={{
-        ButtonReusable,
-        Container,
-        Text,
-        Input,
-        Select,
-        Video,
-        ForceGraph,
-        Cards3D,
-        AgGrid,
+        CraftButton,
+        CraftLink,
+
+        CraftArticle,
+        CraftAside,
+        CraftDiv,
+        CraftFieldset,
+        CraftFooter,
+        CraftForm,
+        CraftHeader,
+        CraftMain,
+        CraftNav,
+        CraftSection,
+
+        CraftInput,
+        CraftSelect,
+        CraftTextarea,
+
+        CraftDiagram,
+        CraftGrid,
+        CraftIcon,
+        CraftImage,
+        CraftText,
+        CraftVideo,
       }}
       enabled={false}
       onRender={EditMenu}

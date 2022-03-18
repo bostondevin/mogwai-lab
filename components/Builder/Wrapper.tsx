@@ -32,25 +32,17 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
           const blank = {
             ROOT: {
-              custom: {
-                displayName: "Application",
-              },
-              displayName: "Container",
-              hidden: false,
+              displayName: "Application",
+              type: "Div",
               isCanvas: true,
-              linkedNodes: {},
-              nodes: [],
               props: {
-                type: "div",
                 className: "w-full h-full overflow-auto flex flex-col",
               },
-              type: {
-                resolvedName: "Container",
-              },
+              hidden: false,
             },
           };
 
-          //console.log(JSON.stringify(blank));
+          // console.log(JSON.stringify(blank));
           deserialize(JSON.stringify(blank));
         }
       });

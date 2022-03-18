@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useEditor } from "@craftjs/core";
 
-import { Link } from "./Elements/Link";
-import { Button } from "./Elements/Button";
-import { IconRaw } from "./Elements/Icon";
+import { Link } from "./Elements/Button/Link/Link";
+import { Button } from "./Elements/Button/Button/Button";
+import { Icon } from "./Elements/Media/Icon/Icon";
 
 import Logo from "../public/sei-logo.svg";
 
@@ -108,7 +108,7 @@ export const Appbar = (): JSX.Element => {
                 onClick={clickLink}
                 className={path === item.href ? linkOnClasses : linkOffClasses}
               >
-                {item.key === 0 ? <IconRaw className={item.icon} /> : <></>}
+                {item.key === 0 ? <Icon className={item.icon} /> : <></>}
                 {item.key !== 0 ? (
                   <span className="ml-1">{item.label}</span>
                 ) : (
@@ -128,7 +128,7 @@ export const Appbar = (): JSX.Element => {
             placement="bottom"
             className="px-2 opacity-50 hover:opacity-80"
           >
-            <IconRaw
+            <Icon
               className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}
             />
           </Button>
@@ -142,7 +142,7 @@ export const Appbar = (): JSX.Element => {
               placement="bottom"
               className="px-2 opacity-50 hover:opacity-80"
             >
-              <IconRaw
+              <Icon
                 className={
                   enabled ? "fa-solid fa-floppy-disk" : "fa-solid fa-edit"
                 }
