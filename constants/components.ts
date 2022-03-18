@@ -94,6 +94,43 @@ export const components = [
       },
     ],
   },
+
+  {
+    key: "lists",
+    label: "Lists",
+    items: [
+      {
+        title: "Unordered List",
+        icon: "fas fa-list-ul",
+        element: {
+          type: "Element",
+          is: "UnOrderedList",
+          props: { className: "" },
+        },
+      },
+
+      {
+        title: "Ordered List",
+        icon: "fas fa-list-ol",
+        element: {
+          type: "Element",
+          is: "OrderedList",
+          props: { className: "" },
+        },
+      },
+
+      {
+        title: "List Item",
+        icon: "fas fa-block-quote",
+        element: {
+          type: "Element",
+          is: "ListItem",
+          props: { className: "" },
+        },
+      },
+    ],
+  },
+
   {
     key: "typography",
     label: "Text",

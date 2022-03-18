@@ -18,6 +18,10 @@ import { CraftMain } from "../Elements/Container/Main/Main.craft";
 import { CraftNav } from "../Elements/Container/Nav/Nav.craft";
 import { CraftSection } from "../Elements/Container/Section/Section.craft";
 
+import { CraftOrderedList } from "../Elements/Container/OrderedList/OrderedList.craft";
+import { CraftUnOrderedList } from "../Elements/Container/UnOrderedList/UnOrderedList.craft";
+import { CraftListItem } from "../Elements/Container/ListItem/ListItem.craft";
+
 import { CraftInput } from "../Elements/Input/Input/Input.craft";
 import { CraftSelect } from "../Elements/Input/Select/Select.craft";
 import { CraftTextarea } from "../Elements/Input/Textarea/Textarea.craft";
@@ -46,6 +50,10 @@ export const Builder = ({ store }): JSX.Element => {
         CraftMain,
         CraftNav,
         CraftSection,
+
+        CraftOrderedList,
+        CraftUnOrderedList,
+        CraftListItem,
 
         CraftInput,
         CraftSelect,

@@ -1,5 +1,8 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
+import { CraftIcon } from "../../Media/Icon/Icon.craft";
+import { CraftText } from "../../Media/Text/Text.craft";
+
 import { Button, ButtonProps } from "./Button";
 import { ButtonSettings } from "../../../Builder/toolbar/ButtonSettings";
 import { nodeHook, editorHook } from "../../../Builder/toolbar/craft.utils";
@@ -25,11 +28,12 @@ CraftButton.craft = {
     className: "w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg",
   },
   rules: {
-    canDrag: () => true,
-    /*
-    canMoveIn: (nodes) =>
-      nodes.every((node) => node.data.type === Text || node.data.type === Icon),
-      */
+    canMoveIn: (nodes, self, helper) => {
+      return nodes.every(
+        (node) => node.data.type === CraftText || node.data.type === CraftIcon
+      );
+      //  && helper(self.id).decendants().length === 0
+    },
   },
   related: {
     toolbar: ButtonSettings,
