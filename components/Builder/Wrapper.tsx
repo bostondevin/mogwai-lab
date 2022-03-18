@@ -6,12 +6,13 @@ import cx from "classnames";
 
 import { Appbar } from "../Appbar";
 import { Sidebar } from "./EditPanel/EditPanel";
+import { Div } from "../Elements/Container/Div/Div";
 
 export const Wrapper = ({ store, children }): JSX.Element => {
   const {
     enabled,
     connectors,
-    actions: { setOptions, deserialize },
+    actions: { deserialize },
   } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
@@ -22,14 +23,12 @@ export const Wrapper = ({ store, children }): JSX.Element => {
     if (store) {
       const path = window.location.pathname;
       const template = store.path(("templates" + path).split("/")).get("html");
-      //console.log(path);
+
       template.on((d) => {
         if (d) {
           const json = lz.decompress(lz.decodeBase64(decodeURIComponent(d)));
           if (json) deserialize(json);
         } else {
-          //console.log("No template for template" + path);
-
           const blank = {
             ROOT: {
               displayName: "Application",
@@ -50,11 +49,11 @@ export const Wrapper = ({ store, children }): JSX.Element => {
   }, [router.asPath]);
 
   return (
-    <div className="flex h-full overflow-hidden flex-row w-full fixed">
-      <div className="page-container flex h-full flex-col w-full">
+    <Div className="flex h-full overflow-hidden flex-row w-full fixed">
+      <Div className="page-container flex h-full flex-col w-full">
         <Appbar />
 
-        <div
+        <Div
           className={cx([
             "craftjs-renderer flex h-full w-full transition overflow-auto",
             {
@@ -64,10 +63,10 @@ export const Wrapper = ({ store, children }): JSX.Element => {
           ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
         >
           {children}
-        </div>
-      </div>
+        </Div>
+      </Div>
 
       <Sidebar store={store} />
-    </div>
+    </Div>
   );
 };
