@@ -24,11 +24,71 @@ export const components = [
       },
 
       {
-        title: "Section",
+        title: "Aside",
         icon: "fas fa-square-dashed",
         element: {
           type: "Element",
-          is: "Section",
+          is: "Aside",
+          props: { className: "w-full" },
+        },
+      },
+
+      {
+        title: "Fieldset",
+        icon: "fas fa-square-dashed",
+        element: {
+          type: "Element",
+          is: "Fieldset",
+          props: { className: "w-full" },
+        },
+      },
+
+      {
+        title: "Footer",
+        icon: "fas fa-square-dashed",
+        element: {
+          type: "Element",
+          is: "Footer",
+          props: { className: "w-full" },
+        },
+      },
+
+      {
+        title: "Form",
+        icon: "fas fa-square-dashed",
+        element: {
+          type: "Element",
+          is: "Form",
+          props: { className: "w-full" },
+        },
+      },
+
+      {
+        title: "Header",
+        icon: "fas fa-square-dashed",
+        element: {
+          type: "Element",
+          is: "Header",
+          props: { className: "w-full" },
+        },
+      },
+
+      {
+        title: "Main",
+        icon: "fas fa-square-dashed",
+        element: {
+          type: "Element",
+          is: "Main",
+          props: { className: "w-full" },
+        },
+      },
+
+      {
+        title: "Nav",
+        icon: "fas fa-square-dashed",
+        element: {
+          type: "Element",
+          is: "Nav",
           props: { className: "w-full" },
         },
       },
@@ -36,7 +96,7 @@ export const components = [
   },
   {
     key: "typography",
-    label: "Typography",
+    label: "Text",
     items: [
       {
         title: "Regular",
@@ -283,4 +343,5 @@ export const components = [
     ],
   },
   { key: "icons", label: "Icons", items: [] },
+  { key: "media", label: "Media", items: [] },
 ];
