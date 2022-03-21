@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Builder } from "../components/Builder/Builder";
+import "reactjs-popup/dist/index.css";
 
 const theme = createTheme({
   typography: {

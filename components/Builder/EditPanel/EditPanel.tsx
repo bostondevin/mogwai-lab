@@ -11,6 +11,8 @@ import { DataPanel } from "./DataPanel";
 
 import { Button } from "../../Elements/Button/Button/Button";
 import { Icon } from "../../Elements/Media/Icon/Icon";
+import { Text } from "../../Elements/Media/Text/Text";
+import { Popup } from "../../Elements/Container/Popup/Popup";
 
 const barWidth = 350;
 export const SidebarDiv = styled.div<{ enabled: boolean }>`
@@ -23,6 +25,7 @@ export const EditPanel = ({ store }): JSX.Element => {
   const [path, setPath] = useState(null);
   const [rulerVisible, setRulerVisible] = useState(false);
   const [outlinesVisible, setOutlinesVisible] = useState(false);
+  const [screen, setScreen] = useState("screen");
 
   const { enabled, canUndo, canRedo, actions, query } = useEditor(
     (state, query) => ({
@@ -42,6 +45,11 @@ export const EditPanel = ({ store }): JSX.Element => {
       .once((d) => {
         console.log(d);
       });
+
+    store
+      .get("editor")
+      .get("screen")
+      .on((d) => setScreen(d));
 
     store
       .get("editor")
@@ -65,7 +73,11 @@ export const EditPanel = ({ store }): JSX.Element => {
     }
   };
 
-  const toggleOutlines = () => {
+  const changeScreen = (e, d) => {
+    store.get("editor").get("screen").put(d);
+  };
+
+  const toggleOutlines = (e) => {
     store.get("editor").get("outlines").put(!outlinesVisible);
   };
 
@@ -110,11 +122,64 @@ export const EditPanel = ({ store }): JSX.Element => {
         </li>
 
         <li className="flex">
+          {screen}
+          <Popup
+            menu={
+              <div className="text-xs bg-slate-800 text-white w-full">
+                <Button
+                  onClick={(e) => changeScreen(e, "mobile")}
+                  type="button"
+                  className="block w-full py-1 hover:bg-slate-900 select-none cursor-pointer"
+                >
+                  <Icon className="fa-solid fa-mobile-screen mr-1" />
+                  <Text type="span" text="Mobile" disabled={true} />
+                </Button>
+                <Button
+                  onClick={(e) => changeScreen(e, "tablet")}
+                  type="button"
+                  className="block w-full py-1 hover:bg-slate-900 select-none cursor-pointer"
+                >
+                  <Icon className="fa-solid fa-tablet-screen mr-1" />
+                  <Text type="span" text="Tablet" disabled={true} />
+                </Button>
+                <Button
+                  onClick={(e) => changeScreen(e, "screen")}
+                  type="button"
+                  className="block w-full py-1 hover:bg-slate-900 select-none cursor-pointer"
+                >
+                  <Icon className="fa-solid fa-display mr-1" />
+                  <Text type="span" text="Fullscreen" disabled={true} />
+                </Button>
+              </div>
+            }
+            position="bottom center"
+          >
+            <Button
+              type="button"
+              tooltip="Mobile"
+              placement="bottom"
+              className="px-2"
+            >
+              <Icon
+                className={
+                  "fa-solid " +
+                  (screen === "mobile"
+                    ? "fa-mobile-screen"
+                    : screen === "tablet"
+                    ? "fa-tablet-screen"
+                    : "fa-display")
+                }
+              />
+            </Button>
+          </Popup>
+        </li>
+
+        <li className="flex">
           <Button
             type="button"
             tooltip="Outlines"
             placement="bottom"
-            onClick={toggleOutlines}
+            onClick={(e) => toggleOutlines(e)}
             disabled={!outlinesVisible}
             className="px-2"
           >

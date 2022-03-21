@@ -20,6 +20,8 @@ export const Wrapper = ({ store, children }): JSX.Element => {
   }));
 
   const [rulerVisible, setRulerVisible] = useState(false);
+  const [screenSize, setScreenSize] = useState(null);
+
   const [outlinesVisible, setOutlinesVisible] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -58,6 +60,11 @@ export const Wrapper = ({ store, children }): JSX.Element => {
         .get("editor")
         .get("outlines")
         .on((d) => setOutlinesVisible(d));
+
+      store
+        .get("editor")
+        .get("screen")
+        .on((d) => setScreenSize(d));
 
       store
         .get("editor")

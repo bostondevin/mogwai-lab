@@ -54,6 +54,7 @@
     "react-rnd": "^10.1.1",
     "react-router-dom": "^6.2.1",
     "react-youtube": "^7.9.0",
+    "reactjs-popup": "^2.0.5",
     "styled-components": "^4.4.1",
     "three-spritetext": "^1.6.5"
   },
