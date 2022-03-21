@@ -8,9 +8,12 @@ import { Icon } from "./Elements/Media/Icon/Icon";
 
 import Logo from "../public/sei-logo.svg";
 
-export const Appbar = (): JSX.Element => {
-  const [path, setPath] = useState(null);
+interface AppBarProps {
+  screen: string;
+}
 
+export const Appbar = (props: AppBarProps): JSX.Element => {
+  const [path, setPath] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
   const router = useRouter();
@@ -94,12 +97,25 @@ export const Appbar = (): JSX.Element => {
   const menuItemClasses = "";
 
   return (
-    <nav className="flex bg-white w-full">
-      <div style={{ width: "55px", height: "55px" }} className="ml-2 mr-10">
+    <>
+      <div
+        style={
+          props.screen === "mobile"
+            ? { width: "55px", height: "55px" }
+            : { width: "55px", height: "55px" }
+        }
+        className="ml-2 mr-10"
+      >
         <Logo />
       </div>
 
-      <ul className="flex flex-row w-full">
+      <ul
+        className={
+          props.screen === "mobile"
+            ? "flex flex-row w-full hidden"
+            : "flex flex-row w-full"
+        }
+      >
         {links.map((item) => {
           return (
             <li key={item.key} className="flex items-center">
@@ -108,8 +124,12 @@ export const Appbar = (): JSX.Element => {
                 onClick={clickLink}
                 className={path === item.href ? linkOnClasses : linkOffClasses}
               >
-                {item.key === 0 ? <Icon className={item.icon} /> : <></>}
-                {item.key !== 0 ? (
+                {item.key === 0 || props.screen === "tablet" ? (
+                  <Icon className={item.icon} />
+                ) : (
+                  <></>
+                )}
+                {item.key !== 0 && props.screen !== "tablet" ? (
                   <span className="ml-1">{item.label}</span>
                 ) : (
                   <></>
@@ -119,6 +139,8 @@ export const Appbar = (): JSX.Element => {
           );
         })}
       </ul>
+
+      {props.screen === "mobile" && <div className="flex w-full"></div>}
 
       <ul className="flex mr-3">
         <li className="flex gap-2">
@@ -151,6 +173,6 @@ export const Appbar = (): JSX.Element => {
           </li>
         )}
       </ul>
-    </nav>
+    </>
   );
 };

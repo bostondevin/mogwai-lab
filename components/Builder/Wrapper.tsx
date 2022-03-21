@@ -9,6 +9,7 @@ import Ruler from "@scena/react-ruler";
 import { Appbar } from "../Appbar";
 import { EditPanel } from "./EditPanel/EditPanel";
 import { Div } from "../Elements/Container/Div/Div";
+import { Nav } from "../Elements/Container/Nav/Nav";
 
 export const Wrapper = ({ store, children }): JSX.Element => {
   const {
@@ -20,7 +21,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
   }));
 
   const [rulerVisible, setRulerVisible] = useState(false);
-  const [screenSize, setScreenSize] = useState(null);
+  const [screen, setScreenSize] = useState(null);
 
   const [outlinesVisible, setOutlinesVisible] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -80,21 +81,49 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
   return (
     <>
-      {enabled && rulerVisible && (
-        <Ruler height={32} type="horizontal" ref={ruler} />
-      )}
-
       <Div className="flex h-full overflow-hidden flex-row w-full fixed">
-        <Div className="page-container flex h-full flex-col w-full">
-          <Appbar />
+        <Div
+          className={
+            enabled
+              ? "page-container flex h-full flex-col w-full bg-slate-400"
+              : "page-container flex h-full flex-col w-full bg-slate-400"
+          }
+        >
+          {enabled && rulerVisible && (
+            <div className="w-full">
+              <Ruler height={32} type="horizontal" ref={ruler} />
+            </div>
+          )}
+
+          <Nav
+            className="flex bg-white w-full"
+            style={{
+              width:
+                screen === "mobile"
+                  ? "400px"
+                  : screen === "tablet"
+                  ? "800px"
+                  : undefined,
+            }}
+          >
+            <Appbar screen={screen} />
+          </Nav>
 
           <Div
             className={cx([
-              "craftjs-renderer flex h-full w-full transition overflow-auto",
+              "craftjs-renderer flex h-full w-full transition overflow-auto bg-white",
               {
                 "p-3": enabled,
               },
             ])}
+            style={{
+              width:
+                screen === "mobile"
+                  ? "400px"
+                  : screen === "tablet"
+                  ? "800px"
+                  : undefined,
+            }}
             ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
           >
             {children}

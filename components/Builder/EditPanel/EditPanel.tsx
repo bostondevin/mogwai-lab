@@ -122,7 +122,6 @@ export const EditPanel = ({ store }): JSX.Element => {
         </li>
 
         <li className="flex">
-          {screen}
           <Popup
             menu={
               <div className="text-xs bg-slate-800 text-white w-full">
@@ -156,7 +155,7 @@ export const EditPanel = ({ store }): JSX.Element => {
           >
             <Button
               type="button"
-              tooltip="Mobile"
+              tooltip={screen}
               placement="bottom"
               className="px-2"
             >
