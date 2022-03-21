@@ -1,3 +1,3 @@
 # Mogwai Lab
 
-A project for creating things of all variety. Next.js, React, Tailwind, Material UI, Craft.js
+A project for creating things of all variety. Next.js, React, Tailwind, Craft.js, Gun.js
