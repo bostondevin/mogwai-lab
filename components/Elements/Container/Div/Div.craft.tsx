@@ -1,6 +1,7 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { Div, DivProps } from "./Div";
+import { CraftListItem } from "../ListItem/ListItem.craft";
 import { ContainerSettings } from "../../../Builder/toolbar/ContainerSettings";
 import {
   nodeHook,
@@ -37,6 +38,9 @@ CraftDiv.craft = {
   props: {},
   rules: {
     canDrag: () => true,
+    canMoveIn: (nodes) => {
+      return nodes.every((node) => node.data.type !== CraftListItem);
+    },
   },
   related: {
     toolbar: ContainerSettings,

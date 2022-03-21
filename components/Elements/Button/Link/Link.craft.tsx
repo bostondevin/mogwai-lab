@@ -26,11 +26,10 @@ CraftLink.craft = {
     className: "",
   },
   rules: {
-    canMoveIn: (nodes, self, helper) => {
+    canMoveIn: (nodes) => {
       return nodes.every(
         (node) => node.data.type === CraftText || node.data.type === CraftIcon
       );
-      //  && helper(self.id).decendants().length === 0
     },
   },
   related: {

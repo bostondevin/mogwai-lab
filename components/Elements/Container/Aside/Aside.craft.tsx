@@ -2,6 +2,7 @@ import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { Div } from "../Div/Div";
 import { Aside } from "./Aside";
+import { CraftListItem } from "../ListItem/ListItem.craft";
 import { CommonContainerProps } from "../../../../interfaces/Container.interface";
 
 import { ContainerSettings } from "../../../Builder/toolbar/ContainerSettings";
@@ -40,6 +41,9 @@ CraftAside.craft = {
   props: {},
   rules: {
     canDrag: () => true,
+    canMoveIn: (nodes) => {
+      return nodes.every((node) => node.data.type !== CraftListItem);
+    },
   },
   related: {
     toolbar: ContainerSettings,

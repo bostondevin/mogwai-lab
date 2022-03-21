@@ -48,9 +48,8 @@ CraftOrderedList.craft = {
   },
   rules: {
     canDrag: () => true,
-    canMoveIn: (nodes, self, helper) => {
+    canMoveIn: (nodes) => {
       return nodes.every((node) => node.data.type === CraftListItem);
-      //  && helper(self.id).decendants().length === 0
     },
   },
   related: {
