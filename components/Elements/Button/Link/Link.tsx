@@ -2,7 +2,7 @@ import React from "react";
 import NextLink from "next/link";
 
 export interface LinkProps {
-  href?: string;
+  href: string;
   className?: string;
   ariaLabel?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -25,6 +25,8 @@ export const Link = React.forwardRef((props: LinkProps, ref: any) => (
       arial-label={props.ariaLabel ? props.ariaLabel : undefined}
     >
       {props.children}
+
+      {!props.children && "Hyperlink Text"}
     </a>
   </NextLink>
 ));

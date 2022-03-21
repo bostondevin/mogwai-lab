@@ -365,7 +365,12 @@ export const components = [
         icon: "fas fa-bullseye-pointer",
         element: {
           type: "Element",
-          props: { canvas: true, is: "Button" },
+          is: "Button",
+          props: {
+            type: "button",
+            className:
+              "bg-blue-500 hover:bg-blue-500 rounded-md text-white text-sm p-2 shadow cursor-pointer select-none",
+          },
         },
       },
 
@@ -374,7 +379,11 @@ export const components = [
         icon: "fas fa-link",
         element: {
           type: "Element",
-          props: { canvas: true, is: "Link" },
+          is: "Link",
+          props: {
+            className: "text-blue-500 hover:underline hover:text-blue-600",
+            href: "/test-link",
+          },
         },
       },
     ],

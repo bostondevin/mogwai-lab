@@ -23,10 +23,7 @@ export const CraftButton: UserComponent<ButtonProps> = (props) => {
 
 CraftButton.craft = {
   displayName: "Button",
-  props: {
-    type: "button",
-    className: "w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg",
-  },
+  props: {},
   rules: {
     canMoveIn: (nodes, self, helper) => {
       return nodes.every(

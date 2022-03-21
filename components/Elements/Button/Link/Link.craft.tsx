@@ -21,7 +21,7 @@ export const CraftLink: UserComponent<LinkProps> = (props) => {
 };
 
 CraftLink.craft = {
-  displayName: "Button",
+  displayName: "Hyperlink",
   props: {
     className: "",
   },

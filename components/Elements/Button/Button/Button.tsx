@@ -41,6 +41,8 @@ export const Button = React.forwardRef((props: ButtonProps, ref: any) => (
     onMouseDown={props.onMouseDown}
   >
     {props.children}
+
+    {!props.children && "Button Text"}
   </button>
 ));
 
