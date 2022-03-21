@@ -18,6 +18,7 @@
     "@hapi/hapi": "^20.2.1",
     "@mui/icons-material": "^5.5.0",
     "@mui/material": "^5.5.0",
+    "@scena/react-ruler": "^0.9.1",
     "ag-grid-community": "^27.0.1",
     "ag-grid-enterprise": "^27.0.1",
     "ag-grid-react": "^27.0.1",

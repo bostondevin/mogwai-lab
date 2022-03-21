@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useEditor } from "@craftjs/core";
 import { useRouter } from "next/router";
 import lz from "lzutf8";
 import cx from "classnames";
 
+import Ruler from "@scena/react-ruler";
+
 import { Appbar } from "../Appbar";
-import { Sidebar } from "./EditPanel/EditPanel";
+import { EditPanel } from "./EditPanel/EditPanel";
 import { Div } from "../Elements/Container/Div/Div";
 
 export const Wrapper = ({ store, children }): JSX.Element => {
@@ -16,6 +18,12 @@ export const Wrapper = ({ store, children }): JSX.Element => {
   } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
+
+  const [rulerVisible, setRulerVisible] = useState(false);
+  const [outlinesVisible, setOutlinesVisible] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const ruler = useRef(null);
 
   const router = useRouter();
 
@@ -45,28 +53,49 @@ export const Wrapper = ({ store, children }): JSX.Element => {
           deserialize(JSON.stringify(blank));
         }
       });
+
+      store
+        .get("editor")
+        .get("outlines")
+        .on((d) => setOutlinesVisible(d));
+
+      store
+        .get("editor")
+        .get("ruler")
+        .on((d) => setRulerVisible(d));
+
+      store
+        .get("editor")
+        .get("dark")
+        .on((d) => setDarkMode(d));
     }
   }, [router.asPath]);
 
   return (
-    <Div className="flex h-full overflow-hidden flex-row w-full fixed">
-      <Div className="page-container flex h-full flex-col w-full">
-        <Appbar />
+    <>
+      {enabled && rulerVisible && (
+        <Ruler height={32} type="horizontal" ref={ruler} />
+      )}
 
-        <Div
-          className={cx([
-            "craftjs-renderer flex h-full w-full transition overflow-auto",
-            {
-              "p-3": enabled,
-            },
-          ])}
-          ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
-        >
-          {children}
+      <Div className="flex h-full overflow-hidden flex-row w-full fixed">
+        <Div className="page-container flex h-full flex-col w-full">
+          <Appbar />
+
+          <Div
+            className={cx([
+              "craftjs-renderer flex h-full w-full transition overflow-auto",
+              {
+                "p-3": enabled,
+              },
+            ])}
+            ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
+          >
+            {children}
+          </Div>
         </Div>
-      </Div>
 
-      <Sidebar store={store} />
-    </Div>
+        <EditPanel store={store} />
+      </Div>
+    </>
   );
 };

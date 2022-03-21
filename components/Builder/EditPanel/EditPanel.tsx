@@ -12,15 +12,18 @@ import { DataPanel } from "./DataPanel";
 import { Button } from "../../Elements/Button/Button/Button";
 import { Icon } from "../../Elements/Media/Icon/Icon";
 
+const barWidth = 350;
 export const SidebarDiv = styled.div<{ enabled: boolean }>`
-  width: 280px;
+  width: ${barWidth}px;
   opacity: ${(props) => (props.enabled ? 1 : 0)};
-  background: #fff;
-  margin-right: ${(props) => (props.enabled ? 0 : -280)}px;
+  margin-right: ${(props) => (props.enabled ? 0 : -barWidth)}px;
 `;
 
-export const Sidebar = ({ store }): JSX.Element => {
+export const EditPanel = ({ store }): JSX.Element => {
   const [path, setPath] = useState(null);
+  const [rulerVisible, setRulerVisible] = useState(false);
+  const [outlinesVisible, setOutlinesVisible] = useState(false);
+
   const { enabled, canUndo, canRedo, actions, query } = useEditor(
     (state, query) => ({
       enabled: state.options.enabled,
@@ -39,6 +42,16 @@ export const Sidebar = ({ store }): JSX.Element => {
       .once((d) => {
         console.log(d);
       });
+
+    store
+      .get("editor")
+      .get("outlines")
+      .on((d) => setOutlinesVisible(d));
+
+    store
+      .get("editor")
+      .get("ruler")
+      .on((d) => setRulerVisible(d));
   }, [router.asPath]);
 
   const doSave = () => {
@@ -53,7 +66,11 @@ export const Sidebar = ({ store }): JSX.Element => {
   };
 
   const toggleOutlines = () => {
-    // actions.setOptions((options) => (options.outlines = !outlines));
+    store.get("editor").get("outlines").put(!outlinesVisible);
+  };
+
+  const toggleRuler = () => {
+    store.get("editor").get("ruler").put(!rulerVisible);
   };
 
   const cancelEdit = () => {
@@ -77,7 +94,7 @@ export const Sidebar = ({ store }): JSX.Element => {
   return (
     <SidebarDiv
       enabled={enabled}
-      className="sidebar transition bg-white w-2 flex flex-col h-full overflow-y-auto"
+      className="sidebar transition w-2 flex flex-col h-full overflow-y-auto bg-slate-700"
     >
       <ul className="flex mr-3 bg-slate-700 text-white/75 w-full p-1 text-sm">
         <li className="flex w-full">
@@ -98,12 +115,30 @@ export const Sidebar = ({ store }): JSX.Element => {
             tooltip="Outlines"
             placement="bottom"
             onClick={toggleOutlines}
-            disabled={!canUndo}
+            disabled={!outlinesVisible}
             className="px-2"
           >
             <Icon
               className={
-                "fa-solid fa-square-dashed" + (canUndo ? "" : " opacity-50")
+                "fa-solid fa-square-dashed" +
+                (outlinesVisible ? "" : " opacity-50")
+              }
+            />
+          </Button>
+        </li>
+
+        <li className="flex">
+          <Button
+            type="button"
+            tooltip="Ruler"
+            placement="bottom"
+            onClick={toggleRuler}
+            disabled={!rulerVisible}
+            className="px-2"
+          >
+            <Icon
+              className={
+                "fa-solid fa-ruler" + (rulerVisible ? "" : " opacity-50")
               }
             />
           </Button>
