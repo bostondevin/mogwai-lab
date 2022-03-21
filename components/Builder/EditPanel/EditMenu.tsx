@@ -92,7 +92,11 @@ export const EditMenu = ({ render }) => {
         ? ReactDOM.createPortal(
             <IndicatorDiv
               ref={currentRef}
-              className="px-2 py-2 text-white bg-blue-600 fixed flex items-center rounded-t-md select-none"
+              className={
+                isActive
+                  ? "px-2 py-2 text-white bg-blue-600 fixed flex items-center rounded-t-md select-none"
+                  : "px-2 py-2 text-white bg-black/50 fixed flex items-center rounded-t-md select-none"
+              }
               style={{
                 left: getPos(dom).left,
                 top: getPos(dom).top,
@@ -100,12 +104,12 @@ export const EditMenu = ({ render }) => {
               }}
             >
               <h2 className="flex-1 mr-4">{name}</h2>
-              {moveable ? (
+              {moveable && isActive ? (
                 <Button type="button" className="mr-2 cursor-move" ref={drag}>
                   <Icon className="fas fa-arrows-up-down-left-right" />
                 </Button>
               ) : null}
-              {id !== ROOT_NODE && (
+              {id !== ROOT_NODE && isActive && (
                 <Button
                   type="button"
                   className="mr-2 cursor-pointer"
@@ -116,7 +120,7 @@ export const EditMenu = ({ render }) => {
                   <Icon className="fas fa-arrow-up" />
                 </Button>
               )}
-              {deletable ? (
+              {deletable && isActive ? (
                 <Button
                   type="button"
                   className="cursor-pointer"

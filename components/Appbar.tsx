@@ -53,7 +53,7 @@ export const Appbar = (props: AppBarProps): JSX.Element => {
     {
       key: 1,
       label: "Reporting",
-      href: "/reporting",
+      href: "/reports",
       icon: "fa-solid fa-file-chart-column",
     },
     {
@@ -111,9 +111,7 @@ export const Appbar = (props: AppBarProps): JSX.Element => {
 
       <ul
         className={
-          props.screen === "mobile"
-            ? "flex flex-row w-full hidden"
-            : "flex flex-row w-full"
+          props.screen === "mobile" ? "hidden" : "flex flex-row w-full"
         }
       >
         {links.map((item) => {

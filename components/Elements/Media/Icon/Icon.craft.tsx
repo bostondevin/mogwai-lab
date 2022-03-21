@@ -16,9 +16,7 @@ export const CraftIcon: UserComponent<IconProps> = (props) => {
 
 CraftIcon.craft = {
   displayName: "Icon",
-  props: {
-    className: "fas fa-home",
-  },
+  props: {},
   rules: {
     canDrag: () => true,
     /*

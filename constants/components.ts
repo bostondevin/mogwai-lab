@@ -379,6 +379,29 @@ export const components = [
       },
     ],
   },
-  { key: "icons", label: "Icons", items: [] },
+  {
+    key: "icons",
+    label: "Icons",
+    items: [
+      {
+        title: "Home Icon",
+        icon: "fas fa-home",
+        element: {
+          type: "Element",
+          is: "Icon",
+          props: { className: "fas fa-home" },
+        },
+      },
+      {
+        title: "Video Icon",
+        icon: "fas fa-video",
+        element: {
+          type: "Element",
+          is: "Icon",
+          props: { className: "fas fa-video" },
+        },
+      },
+    ],
+  },
   { key: "media", label: "Media", items: [] },
 ];
