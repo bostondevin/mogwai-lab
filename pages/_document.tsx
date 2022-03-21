@@ -21,8 +21,6 @@ export default class MyDocument extends Document {
             src="https://kit.fontawesome.com/2104ea5de2.js"
             crossOrigin="anonymous"
           ></script>
-
-          <script src="https://cdn.tailwindcss.com"></script>
         </Head>
         <body className="h-full w-full">
           <Main />
@@ -32,3 +30,4 @@ export default class MyDocument extends Document {
     );
   }
 }
+// <script src="https://cdn.tailwindcss.com"></script>

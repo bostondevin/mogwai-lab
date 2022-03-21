@@ -12,14 +12,17 @@ export interface PopupProps extends ContainerProps, CommonEvents {
   position?: PopupPosition;
 }
 
-const contentStyle = { background: "#000" };
+const contentStyle = {
+  background: "rgba(0,0,0,.9)",
+  padding: 0,
+  width: "100px",
+};
 const overlayStyle = {};
-const arrowStyle = { color: "#000" };
+const arrowStyle = { color: "rgba(0,0,0,.9)" };
 
 export const Popup = (props: Partial<PopupProps>) => {
   return (
     <ReactPopup
-      className={"bg-slate-700 bla"}
       closeOnDocumentClick={true}
       arrowStyle={arrowStyle}
       contentStyle={contentStyle}

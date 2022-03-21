@@ -108,9 +108,9 @@ export const EditPanel = ({ store }): JSX.Element => {
         opacity: enabled ? 1 : 0,
         marginRight: enabled ? 0 : -barWidth + "px",
       }}
-      className="sidebar w-2 flex flex-col h-full overflow-y-auto bg-slate-700 ease-in-out transition-all duration-300"
+      className="sidebar w-2 flex flex-col h-full overflow-y-auto bg-slate-300 dark:bg-slate-300 ease-in-out transition-all duration-300"
     >
-      <Nav className="bg-slate-900 text-white/75 w-full text-sm">
+      <Nav className="bg-slate-900 dark:bg-slate-900 text-white/75 w-full text-sm">
         <UnOrderedList className="flex mx-1 w-full">
           <ListItem className="flex w-full">
             <Button
@@ -131,26 +131,41 @@ export const EditPanel = ({ store }): JSX.Element => {
                   <Button
                     onClick={(e) => changeScreen(e, "mobile")}
                     type="button"
-                    className="block w-full py-1 hover:bg-slate-900 select-none cursor-pointer"
+                    className="block w-full py-2 hover:bg-slate-900 select-none cursor-pointer"
                   >
                     <Icon className="fa-solid fa-mobile-screen mr-1" />
-                    <Text type="span" text="Mobile" disabled={true} />
+                    <Text
+                      type="span"
+                      text="Mobile"
+                      disabled={true}
+                      className="w-full"
+                    />
                   </Button>
                   <Button
                     onClick={(e) => changeScreen(e, "tablet")}
                     type="button"
-                    className="block w-full py-1 hover:bg-slate-900 select-none cursor-pointer"
+                    className="block w-full py-2 hover:bg-slate-900 select-none cursor-pointer"
                   >
                     <Icon className="fa-solid fa-tablet-screen mr-1" />
-                    <Text type="span" text="Tablet" disabled={true} />
+                    <Text
+                      type="span"
+                      text="Tablet"
+                      disabled={true}
+                      className="w-full"
+                    />
                   </Button>
                   <Button
                     onClick={(e) => changeScreen(e, "screen")}
                     type="button"
-                    className="block w-full py-1 hover:bg-slate-900 select-none cursor-pointer"
+                    className="block w-full py-2 hover:bg-slate-900 select-none cursor-pointer"
                   >
                     <Icon className="fa-solid fa-display mr-1" />
-                    <Text type="span" text="Full" disabled={true} />
+                    <Text
+                      type="span"
+                      text="Full"
+                      disabled={true}
+                      className="w-full"
+                    />
                   </Button>
                 </div>
               }

@@ -21,7 +21,7 @@ export const DataPanel = ({ store, path }) => {
     <Accordion
       title={"Data"}
       className="bg-slate-700 text-white/75"
-      headerClassName="uppercase bg-slate-800 hover:bg-slate-900 hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer"
+      headerClassName="uppercase hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer select-none"
       containerClassName="flex w-full"
     >
       <div className="flex w-full text-xs gap-2">

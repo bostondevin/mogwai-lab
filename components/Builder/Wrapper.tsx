@@ -85,18 +85,25 @@ export const Wrapper = ({ store, children }): JSX.Element => {
         <Div
           className={
             enabled
-              ? "page-container flex h-full flex-col w-full bg-slate-400"
-              : "page-container flex h-full flex-col w-full bg-slate-400"
+              ? "page-container flex h-full flex-col w-full gradientDark"
+              : "page-container flex h-full flex-col w-full gradientDark"
           }
         >
           {enabled && rulerVisible && (
             <div className="w-full">
-              <Ruler height={32} type="horizontal" ref={ruler} />
+              <Ruler
+                height={32}
+                backgroundColor="rgba(0,0,0,.2)"
+                textColor="rgba(255,255,255,.4)"
+                lineColor="rgba(255,255,255,.3)"
+                type="horizontal"
+                ref={ruler}
+              />
             </div>
           )}
 
           <Nav
-            className="flex bg-white w-full ease-in-out transition-all duration-300"
+            className="flex bg-white dark:bg-slate-900 dark:text-white w-full ease-in-out transition-all duration-300"
             style={{
               width:
                 screen === "mobile"
@@ -106,12 +113,12 @@ export const Wrapper = ({ store, children }): JSX.Element => {
                   : undefined,
             }}
           >
-            <Appbar screen={screen} />
+            <Appbar screen={screen} store={store} />
           </Nav>
 
           <Div
             className={cx([
-              "craftjs-renderer flex h-full w-full overflow-auto bg-white ease-in-out transition-all duration-300",
+              "craftjs-renderer flex h-full w-full overflow-auto bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 ease-in-out transition-all duration-300",
               {
                 "p-3": enabled,
               },
@@ -132,6 +139,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
         <EditPanel store={store} />
       </Div>
+      <div className="text-6xl text-5xl text-4xl text-3xl text-2xl text-xl"></div>
     </>
   );
 };

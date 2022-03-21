@@ -85,7 +85,7 @@ export const ComponentsPanel = () => {
             key={"group_" + panelIndex}
             title={panel.label}
             className="bg-slate-700 text-white/75"
-            headerClassName="uppercase bg-slate-800 hover:bg-slate-900 hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer"
+            headerClassName="uppercase hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer select-none"
             containerClassName="overflow-hidden transition-all duration-200"
           >
             {panel.items.map((item, componentIndex) => {

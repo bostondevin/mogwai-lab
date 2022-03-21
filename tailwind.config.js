@@ -1,4 +1,3 @@
-// THIS IS NOT BEING USED -
 module.exports = {
   darkMode: "class",
   content: [

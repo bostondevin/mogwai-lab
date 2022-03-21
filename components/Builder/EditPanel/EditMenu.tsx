@@ -2,23 +2,10 @@ import { useNode, useEditor } from "@craftjs/core";
 import { ROOT_NODE } from "@craftjs/utils";
 import React, { useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
-import styled from "styled-components";
 
 import { Icon } from "../../Elements/Media/Icon/Icon";
 import { Button } from "../../Elements/Button/Button/Button";
-
-const IndicatorDiv = styled.div`
-  height: 30px;
-  margin-top: -29px;
-  font-size: 12px;
-  line-height: 12px;
-
-  svg {
-    fill: #fff;
-    width: 15px;
-    height: 15px;
-  }
-`;
+import { Div } from "../../Elements/Container/Div/Div";
 
 export const EditMenu = ({ render }) => {
   const { id } = useNode();
@@ -90,14 +77,16 @@ export const EditMenu = ({ render }) => {
     <>
       {enabled && (isHover || isActive)
         ? ReactDOM.createPortal(
-            <IndicatorDiv
+            <Div
               ref={currentRef}
               className={
                 isActive
-                  ? "px-2 py-2 text-white bg-blue-600 fixed flex items-center rounded-t-md select-none"
-                  : "px-2 py-2 text-white bg-black/50 fixed flex items-center rounded-t-md select-none"
+                  ? "p-2 text-white bg-blue-600 dark:bg-lime-600 fixed flex items-center rounded-t-md select-none text-xs"
+                  : "p-2 text-white/75 bg-black/75 fixed flex items-center rounded-t-md select-none text-xs"
               }
               style={{
+                height: "30px",
+                marginTop: "-30px",
                 left: getPos(dom).left,
                 top: getPos(dom).top,
                 zIndex: 9999,
@@ -132,7 +121,7 @@ export const EditMenu = ({ render }) => {
                   <Icon className="fas fa-trash" />
                 </Button>
               ) : null}
-            </IndicatorDiv>,
+            </Div>,
             document.querySelector(".page-container")
           )
         : null}

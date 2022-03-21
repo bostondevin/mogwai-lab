@@ -8,11 +8,7 @@ import { Icon } from "./Elements/Media/Icon/Icon";
 
 import Logo from "../public/sei-logo.svg";
 
-interface AppBarProps {
-  screen: string;
-}
-
-export const Appbar = (props: AppBarProps): JSX.Element => {
+export const Appbar = ({ screen, store }): JSX.Element => {
   const [path, setPath] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -20,6 +16,21 @@ export const Appbar = (props: AppBarProps): JSX.Element => {
 
   useEffect(() => {
     setPath(window.location.pathname);
+
+    store
+      .get("editor")
+      .get("dark")
+      .on((d) => {
+        const classList = document.documentElement.classList;
+
+        if (d) {
+          classList.remove("dark");
+        } else {
+          classList.add("dark");
+        }
+
+        setDarkMode(d);
+      });
   }, [router.asPath]);
 
   const { enabled, actions, query } = useEditor((state) => ({
@@ -31,15 +42,7 @@ export const Appbar = (props: AppBarProps): JSX.Element => {
   };
 
   const toggleDarkMode = () => {
-    const classList = document.body.classList;
-
-    if (!darkMode) {
-      classList.add("dark");
-    } else {
-      classList.remove("dark");
-    }
-
-    setDarkMode(!darkMode);
+    store.get("editor").get("dark").put(!darkMode);
   };
 
   const clickLink = () => {
@@ -91,29 +94,25 @@ export const Appbar = (props: AppBarProps): JSX.Element => {
   ];
 
   const linkOnClasses =
-    "flex py-4 px-4 text-sky-500 border-b-2 border-sky-500 font-bold text-sm h-full content-center";
+    "flex py-4 px-4 text-sky-500/75 hover:text-sky-500/100 dark:text-white/75 dark:hover:text-white/100 border-b-4 border-sky-500 dark:border-lime-500 text-sm h-full content-center";
   const linkOffClasses =
-    "flex py-4 px-4 text-sky-500 font-bold text-sm h-full content-center";
+    "flex py-4 px-4 text-sky-500/75 hover:text-sky-500/100 dark:text-white/75 dark:hover:text-white/100 text-sm h-full content-center";
   const menuItemClasses = "";
 
   return (
     <>
       <div
         style={
-          props.screen === "mobile"
-            ? { width: "55px", height: "55px" }
-            : { width: "55px", height: "55px" }
+          screen === "mobile"
+            ? { width: "40px", height: "40px" }
+            : { width: "48px", height: "48px" }
         }
-        className="ml-2 mr-10"
+        className="ml-5 mr-10 text-black/75 dark:text-white/75 inline-block mt-2 opacity-90"
       >
         <Logo />
       </div>
 
-      <ul
-        className={
-          props.screen === "mobile" ? "hidden" : "flex flex-row w-full"
-        }
-      >
+      <ul className={screen === "mobile" ? "hidden" : "flex flex-row w-full"}>
         {links.map((item) => {
           return (
             <li key={item.key} className="flex items-center">
@@ -122,12 +121,12 @@ export const Appbar = (props: AppBarProps): JSX.Element => {
                 onClick={clickLink}
                 className={path === item.href ? linkOnClasses : linkOffClasses}
               >
-                {item.key === 0 || props.screen === "tablet" ? (
+                {item.key === 0 || screen === "tablet" ? (
                   <Icon className={item.icon} />
                 ) : (
                   <></>
                 )}
-                {item.key !== 0 && props.screen !== "tablet" ? (
+                {item.key !== 0 && screen !== "tablet" ? (
                   <span className="ml-1">{item.label}</span>
                 ) : (
                   <></>
@@ -138,7 +137,7 @@ export const Appbar = (props: AppBarProps): JSX.Element => {
         })}
       </ul>
 
-      {props.screen === "mobile" && <div className="flex w-full"></div>}
+      {screen === "mobile" && <div className="flex w-full"></div>}
 
       <ul className="flex mr-3">
         <li className="flex gap-2">

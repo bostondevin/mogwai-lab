@@ -189,7 +189,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.16.7"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.13.10", "@babel/runtime@^7.16.7", "@babel/runtime@^7.17.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.13.10", "@babel/runtime@^7.16.7", "@babel/runtime@^7.17.2", "@babel/runtime@^7.17.7", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.7":
   version "7.17.8"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.8.tgz#3e56e4aff81befa55ac3ac6a0967349fd1c5bca2"
   integrity sha512-dQpEpK0O9o6lj6oPu0gRDbbnk+4LeHlNcBpspf6Olzt3GIX4P1lWF1gS+pHLDFlaJvbR6q7jCfQ08zA4QJBnmA==
@@ -937,6 +937,15 @@
     "@daybrush/utils" "^1.6.0"
     framework-utils "^1.1.0"
 
+"@tanem/svg-injector@^10.1.20":
+  version "10.1.21"
+  resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-10.1.21.tgz#b6e2ba4b4697a8644c3353ab9b4bc5d76b9671d0"
+  integrity sha512-eRv6TQ120GIu36jTki4j3mR/kZyUSeiz22bwZ67Lz9fXtdXnn4MfZGANnvIrxTfFt9KWj2IQTDMfbj69PGSzRg==
+  dependencies:
+    "@babel/runtime" "^7.17.7"
+    content-type "^1.0.4"
+    tslib "^2.3.1"
+
 "@trysound/sax@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
@@ -1456,6 +1465,11 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
+
+content-type@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
+  integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
 
 content@4.x.x:
   version "4.0.6"
@@ -3607,6 +3621,16 @@ react-router@6.2.2:
   integrity sha512-/MbxyLzd7Q7amp4gDOGaYvXwhEojkJD5BtExkuKmj39VEE0m3l/zipf6h2WIB2jyAO0lI6NGETh4RDcktRm4AQ==
   dependencies:
     history "^5.2.0"
+
+react-svg@^14.1.15:
+  version "14.1.15"
+  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-14.1.15.tgz#cff4ac9607a7c2ec245b76d8aabfbe83ad217ff8"
+  integrity sha512-mANfpKQxgGzhqq+zyPuQ6mfINHMNl34CxA9sDPZi1ZNNiJmRTWUvwVs74lRDuRqmwEk1TkKZhbx2tjWqUoDjRw==
+  dependencies:
+    "@babel/runtime" "^7.17.7"
+    "@tanem/svg-injector" "^10.1.20"
+    "@types/prop-types" "^15.7.4"
+    prop-types "^15.8.1"
 
 react-transition-group@^4.4.2:
   version "4.4.2"
