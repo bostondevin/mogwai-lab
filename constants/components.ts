@@ -105,7 +105,7 @@ export const components = [
         element: {
           type: "Element",
           is: "UnOrderedList",
-          props: { className: "" },
+          props: { className: "list-disc pl-4 text-sm" },
         },
       },
 
@@ -115,7 +115,7 @@ export const components = [
         element: {
           type: "Element",
           is: "OrderedList",
-          props: { className: "" },
+          props: { className: "list-decimal pl-4 text-sm" },
         },
       },
 

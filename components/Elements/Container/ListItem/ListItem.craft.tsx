@@ -29,7 +29,9 @@ export const CraftListItem: UserComponent<CommonContainerProps> = (props) => {
       {props.children}
 
       {!props.children && enabled && (
-        <Div className={emptyContainerClass} style={emptyContainerStyle}></Div>
+        <Div className={emptyContainerClass} style={emptyContainerStyle}>
+          Some text goes here
+        </Div>
       )}
     </ListItem>
   );
@@ -37,11 +39,12 @@ export const CraftListItem: UserComponent<CommonContainerProps> = (props) => {
 
 CraftListItem.craft = {
   displayName: "List Item",
-  props: {
-    className: "",
-  },
+  props: {},
   rules: {
     canDrag: () => true,
+    canMoveIn: (nodes) => {
+      return nodes.every((node) => node.data.type !== CraftListItem);
+    },
   },
   related: {
     toolbar: ContainerSettings,

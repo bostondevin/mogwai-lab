@@ -14,6 +14,8 @@ import { Text } from "../../Elements/Media/Text/Text";
 import { Popup } from "../../Elements/Container/Popup/Popup";
 import { Nav } from "../../Elements/Container/Nav/Nav";
 import { Div } from "../../Elements/Container/Div/Div";
+import { UnOrderedList } from "../../Elements/Container/UnOrderedList/UnOrderedList";
+import { ListItem } from "../../Elements/Container/ListItem/ListItem";
 
 const barWidth = 350;
 
@@ -109,8 +111,8 @@ export const EditPanel = ({ store }): JSX.Element => {
       className="sidebar transition w-2 flex flex-col h-full overflow-y-auto bg-slate-700"
     >
       <Nav className="bg-slate-900 text-white/75 w-full text-sm">
-        <ul className="flex mx-1 w-full">
-          <li className="flex w-full">
+        <UnOrderedList className="flex mx-1 w-full">
+          <ListItem className="flex w-full">
             <Button
               type="button"
               tooltip="Close"
@@ -120,9 +122,9 @@ export const EditPanel = ({ store }): JSX.Element => {
             >
               <Icon className="fa-solid fa-times" />
             </Button>
-          </li>
+          </ListItem>
 
-          <li className="flex">
+          <ListItem className="flex">
             <Popup
               menu={
                 <div className="text-xs bg-slate-800 text-white w-full">
@@ -172,9 +174,9 @@ export const EditPanel = ({ store }): JSX.Element => {
                 />
               </Button>
             </Popup>
-          </li>
+          </ListItem>
 
-          <li className="flex">
+          <ListItem className="flex">
             <Button
               type="button"
               tooltip="Outlines"
@@ -190,9 +192,9 @@ export const EditPanel = ({ store }): JSX.Element => {
                 }
               />
             </Button>
-          </li>
+          </ListItem>
 
-          <li className="flex">
+          <ListItem className="flex">
             <Button
               type="button"
               tooltip="Ruler"
@@ -207,9 +209,9 @@ export const EditPanel = ({ store }): JSX.Element => {
                 }
               />
             </Button>
-          </li>
+          </ListItem>
 
-          <li className="flex">
+          <ListItem className="flex">
             <Button
               type="button"
               tooltip="Remove All"
@@ -219,9 +221,9 @@ export const EditPanel = ({ store }): JSX.Element => {
             >
               <Icon className="fa-solid fa-trash" />
             </Button>
-          </li>
+          </ListItem>
 
-          <li className="flex">
+          <ListItem className="flex">
             <Button
               type="button"
               tooltip="Undo"
@@ -234,9 +236,9 @@ export const EditPanel = ({ store }): JSX.Element => {
                 className={"fa-solid fa-undo" + (canUndo ? "" : " opacity-50")}
               />
             </Button>
-          </li>
+          </ListItem>
 
-          <li className="flex">
+          <ListItem className="flex">
             <Button
               type="button"
               tooltip="Redo"
@@ -249,9 +251,9 @@ export const EditPanel = ({ store }): JSX.Element => {
                 className={"fa-solid fa-redo" + (canRedo ? "" : " opacity-50")}
               />
             </Button>
-          </li>
+          </ListItem>
 
-          <li className="flex gap-2">
+          <ListItem className="flex gap-2">
             <Button
               type="button"
               onClick={saveChanges}
@@ -266,8 +268,8 @@ export const EditPanel = ({ store }): JSX.Element => {
                 }
               />
             </Button>
-          </li>
-        </ul>
+          </ListItem>
+        </UnOrderedList>
       </Nav>
 
       <ComponentsPanel />

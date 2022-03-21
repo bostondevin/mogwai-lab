@@ -27,7 +27,9 @@ export const CraftUnOrderedList: UserComponent<CommonContainerProps> = (
     <UnOrderedList
       ref={connect}
       {...props}
-      className={props.className + (enabled ? editorEnabledAppend : "")}
+      className={
+        enabled ? props.className + editorEnabledAppend : props.className
+      }
     >
       {props.children}
 
@@ -43,9 +45,7 @@ export const CraftUnOrderedList: UserComponent<CommonContainerProps> = (
 
 CraftUnOrderedList.craft = {
   displayName: "Unordered List",
-  props: {
-    className: "",
-  },
+  props: {},
   rules: {
     canDrag: () => true,
     canMoveIn: (nodes) => {
