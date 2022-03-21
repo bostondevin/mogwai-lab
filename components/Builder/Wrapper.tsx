@@ -96,13 +96,13 @@ export const Wrapper = ({ store, children }): JSX.Element => {
           )}
 
           <Nav
-            className="flex bg-white w-full"
+            className="flex bg-white w-full ease-in-out transition-all duration-300"
             style={{
               width:
                 screen === "mobile"
-                  ? "400px"
+                  ? "480px"
                   : screen === "tablet"
-                  ? "800px"
+                  ? "768px"
                   : undefined,
             }}
           >
@@ -111,7 +111,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
           <Div
             className={cx([
-              "craftjs-renderer flex h-full w-full transition overflow-auto bg-white",
+              "craftjs-renderer flex h-full w-full overflow-auto bg-white ease-in-out transition-all duration-300",
               {
                 "p-3": enabled,
               },
@@ -119,9 +119,9 @@ export const Wrapper = ({ store, children }): JSX.Element => {
             style={{
               width:
                 screen === "mobile"
-                  ? "400px"
+                  ? "480px"
                   : screen === "tablet"
-                  ? "800px"
+                  ? "768px"
                   : undefined,
             }}
             ref={(ref) => connectors.select(connectors.hover(ref, null), null)}

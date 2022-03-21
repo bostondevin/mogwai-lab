@@ -108,7 +108,7 @@ export const EditPanel = ({ store }): JSX.Element => {
         opacity: enabled ? 1 : 0,
         marginRight: enabled ? 0 : -barWidth + "px",
       }}
-      className="sidebar transition w-2 flex flex-col h-full overflow-y-auto bg-slate-700"
+      className="sidebar w-2 flex flex-col h-full overflow-y-auto bg-slate-700 ease-in-out transition-all duration-300"
     >
       <Nav className="bg-slate-900 text-white/75 w-full text-sm">
         <UnOrderedList className="flex mx-1 w-full">
@@ -150,7 +150,7 @@ export const EditPanel = ({ store }): JSX.Element => {
                     className="block w-full py-1 hover:bg-slate-900 select-none cursor-pointer"
                   >
                     <Icon className="fa-solid fa-display mr-1" />
-                    <Text type="span" text="Fullscreen" disabled={true} />
+                    <Text type="span" text="Full" disabled={true} />
                   </Button>
                 </div>
               }
