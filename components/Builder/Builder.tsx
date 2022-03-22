@@ -2,36 +2,36 @@ import React from "react";
 import { Editor as CraftEditor, Frame, Element } from "@craftjs/core";
 
 import { Wrapper } from "./Wrapper";
-import { EditMenu } from "./EditPanel/EditMenu";
+import { EditMenu } from "./EditMenu";
 
-import { CraftButton } from "../Elements/Button.craft";
-import { CraftLink } from "../Elements/Link.craft";
+import { CraftButton } from "../Craft/Button.craft";
+import { CraftLink } from "../Craft/Link.craft";
 
-import { CraftArticle } from "../Elements/Article.craft";
-import { CraftAside } from "../Elements/Aside.craft";
-import { CraftDiv } from "../Elements/Div.craft";
-import { CraftFieldset } from "../Elements/Fieldset.craft";
-import { CraftFooter } from "../Elements/Footer.craft";
-import { CraftForm } from "../Elements/Form.craft";
-import { CraftHeader } from "../Elements/Header.craft";
-import { CraftMain } from "../Elements/Main.craft";
-import { CraftNav } from "../Elements/Nav.craft";
-import { CraftSection } from "../Elements/Section.craft";
+import { CraftArticle } from "../Craft/Article.craft";
+import { CraftAside } from "../Craft/Aside.craft";
+import { CraftDiv } from "../Craft/Div.craft";
+import { CraftFieldset } from "../Craft/Fieldset.craft";
+import { CraftFooter } from "../Craft/Footer.craft";
+import { CraftForm } from "../Craft/Form.craft";
+import { CraftHeader } from "../Craft/Header.craft";
+import { CraftMain } from "../Craft/Main.craft";
+import { CraftNav } from "../Craft/Nav.craft";
+import { CraftSection } from "../Craft/Section.craft";
 
-import { CraftOrderedList } from "../Elements/OrderedList.craft";
-import { CraftUnOrderedList } from "../Elements/UnOrderedList.craft";
-import { CraftListItem } from "../Elements/ListItem.craft";
+import { CraftOrderedList } from "../Craft/OrderedList.craft";
+import { CraftUnOrderedList } from "../Craft/UnOrderedList.craft";
+import { CraftListItem } from "../Craft/ListItem.craft";
 
-import { CraftInput } from "../Elements/Input.craft";
-import { CraftSelect } from "../Elements/Select.craft";
-import { CraftTextarea } from "../Elements/Textarea.craft";
+import { CraftInput } from "../Craft/Input.craft";
+import { CraftSelect } from "../Craft/Select.craft";
+import { CraftTextarea } from "../Craft/Textarea.craft";
 
-import { CraftDiagram } from "../Elements/Diagram.craft";
-import { CraftGrid } from "../Elements/Grid.craft";
-import { CraftIcon } from "../Elements/Icon.craft";
-import { CraftImage } from "../Elements/Image.craft";
-import { CraftText } from "../Elements/Text.craft";
-import { CraftVideo } from "../Elements/Video.craft";
+import { CraftDiagram } from "../Craft/Diagram.craft";
+import { CraftGrid } from "../Craft/Grid.craft";
+import { CraftIcon } from "../Craft/Icon.craft";
+import { CraftImage } from "../Craft/Image.craft";
+import { CraftText } from "../Craft/Text.craft";
+import { CraftVideo } from "../Craft/Video.craft";
 
 export const Builder = ({ store }): JSX.Element => {
   return (

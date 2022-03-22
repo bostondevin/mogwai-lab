@@ -6,10 +6,10 @@ import cx from "classnames";
 
 import Ruler from "@scena/react-ruler";
 
-import { Appbar } from "../Elements/Appbar";
-import { EditPanel } from "./EditPanel/EditPanel";
-import { Div } from "../Elements/Core/Div";
-import { Nav } from "../Elements/Core/Nav";
+import { Appbar } from "../Core/Appbar";
+import { EditPanel } from "./EditPanel";
+import { Div } from "../Core/Div";
+import { Nav } from "../Core/Nav";
 
 export const Wrapper = ({ store, children }): JSX.Element => {
   const {
