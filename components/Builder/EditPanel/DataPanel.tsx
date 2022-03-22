@@ -24,7 +24,7 @@ export const DataPanel = ({ store, path }) => {
         <div className="flex pl-2">
           <Select
             items={[
-              { label: "Id", value: "/predicates/id" },
+              { label: "ID", value: "/predicates/id" },
               { label: "Label", value: "/predicates/label" },
               { label: "Classes", value: "/predicates/classNames" },
               { label: "HTML", value: "/predicates/html" },

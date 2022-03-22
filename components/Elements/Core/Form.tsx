@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerProps } from "../../../interfaces/Container.interface";
+import { ContainerProps } from "../../../interfaces/common.interface";
 
 export interface FormProps extends ContainerProps {
   onClick?: (event: React.MouseEvent<HTMLFormElement>) => void;

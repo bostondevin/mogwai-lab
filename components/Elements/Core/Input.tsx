@@ -3,7 +3,7 @@ import {
   InputProps,
   regularInputClasses,
   smallInputClasses,
-} from "../../../interfaces/Container.interface";
+} from "../../../interfaces/common.interface";
 
 export const Input = React.forwardRef((props: InputProps, ref: any) => (
   <input

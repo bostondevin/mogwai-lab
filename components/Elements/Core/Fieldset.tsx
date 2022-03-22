@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerProps } from "../../../interfaces/Container.interface";
+import { ContainerProps } from "../../../interfaces/common.interface";
 
 export interface FieldsetProps extends ContainerProps {
   onClick?: (event: React.MouseEvent<HTMLFieldSetElement>) => void;

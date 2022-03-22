@@ -1,5 +1,5 @@
 import { Options } from "./Options";
-import { DataListProps } from "../../../interfaces/Container.interface";
+import { DataListProps } from "../../../interfaces/common.interface";
 
 export const DataList = (props: Partial<DataListProps>) => {
   return (

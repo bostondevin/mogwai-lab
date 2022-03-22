@@ -2,7 +2,7 @@ import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { Textarea } from "./Core/Textarea";
 import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
-import { TextareaProps } from "../../interfaces/Container.interface";
+import { TextareaProps } from "../../interfaces/common.interface";
 
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
 

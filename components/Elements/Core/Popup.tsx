@@ -2,7 +2,7 @@ import React from "react";
 import {
   ContainerProps,
   CommonEvents,
-} from "../../../interfaces/Container.interface";
+} from "../../../interfaces/common.interface";
 import ReactPopup from "reactjs-popup";
 import { PopupPosition } from "reactjs-popup/dist/types";
 

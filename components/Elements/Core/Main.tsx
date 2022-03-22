@@ -2,7 +2,7 @@ import React from "react";
 import {
   ContainerProps,
   CommonEvents,
-} from "../../../interfaces/Container.interface";
+} from "../../../interfaces/common.interface";
 
 export interface MainProps extends ContainerProps, CommonEvents {}
 

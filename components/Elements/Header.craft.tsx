@@ -3,7 +3,7 @@ import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { Div } from "./Core/Div";
 import { Header } from "./Core/Header";
 import { CraftListItem } from "./ListItem.craft";
-import { CommonContainerProps } from "../../interfaces/Container.interface";
+import { CommonContainerProps } from "../../interfaces/common.interface";
 
 import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
 import {

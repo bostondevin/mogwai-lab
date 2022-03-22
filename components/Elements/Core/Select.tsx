@@ -3,7 +3,7 @@ import {
   SelectProps,
   regularInputClasses,
   smallInputClasses,
-} from "../../../interfaces/Container.interface";
+} from "../../../interfaces/common.interface";
 
 import { Options } from "./Options";
 
@@ -11,7 +11,7 @@ export const Select = React.forwardRef((props: SelectProps, ref: any) => (
   <div className="relative inline-block w-full">
     <select
       ref={ref}
-      disabled={props.disabled}
+      {...props}
       className={props.tight ? smallInputClasses : regularInputClasses}
     >
       <Options items={props.items} />

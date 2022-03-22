@@ -2,7 +2,7 @@ import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { Input } from "./Core/Input";
 import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
-import { InputProps } from "../../interfaces/Container.interface";
+import { InputProps } from "../../interfaces/common.interface";
 
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
 
