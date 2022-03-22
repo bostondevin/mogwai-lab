@@ -6,10 +6,10 @@ import cx from "classnames";
 
 import Ruler from "@scena/react-ruler";
 
-import { Appbar } from "../Appbar";
+import { Appbar } from "../Elements/Appbar";
 import { EditPanel } from "./EditPanel/EditPanel";
-import { Div } from "../Elements/Container/Div/Div";
-import { Nav } from "../Elements/Container/Nav/Nav";
+import { Div } from "../Elements/Core/Div";
+import { Nav } from "../Elements/Core/Nav";
 
 export const Wrapper = ({ store, children }): JSX.Element => {
   const {
@@ -139,7 +139,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
         <EditPanel store={store} />
       </Div>
-      <div className="text-6xl text-5xl text-4xl text-3xl text-2xl text-xl hidden shadow-md mb-10 mb-9 mb-8 mb-7 mb-6 mb-5 mb-4 mb-3 mb-2 mb-1"></div>
+      <div className="w-full h-10 h-9 h-8 pl-3 w-4 pr-6 placeholder-gray-300 border rounded-md appearance-none focus:outline-none text-base text-6xl text-5xl text-4xl text-3xl text-2xl text-xl hidden shadow-md mb-10 mb-9 mb-8 mb-7 mb-6 mb-5 mb-4 mb-3 mb-2 mb-1"></div>
     </>
   );
 };

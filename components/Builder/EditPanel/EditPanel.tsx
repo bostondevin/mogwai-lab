@@ -8,18 +8,18 @@ import { Toolbar } from "./SettingsPanel";
 import { ComponentsPanel } from "./Components";
 import { DataPanel } from "./DataPanel";
 
-import { Button } from "../../Elements/Button/Button/Button";
-import { Link } from "../../Elements/Button/Link/Link";
+import { Button } from "../../Elements/Core/Button";
+import { Link } from "../../Elements/Core/Link";
 
-import { ButtonBar } from "../../Elements/Button/Bar/ButtonBar";
+import { ButtonBar } from "../../Elements/ButtonBar";
 
-import { Icon } from "../../Elements/Media/Icon/Icon";
-import { Text } from "../../Elements/Media/Text/Text";
-import { Popup } from "../../Elements/Container/Popup/Popup";
-import { Nav } from "../../Elements/Container/Nav/Nav";
-import { Div } from "../../Elements/Container/Div/Div";
-import { UnOrderedList } from "../../Elements/Container/UnOrderedList/UnOrderedList";
-import { ListItem } from "../../Elements/Container/ListItem/ListItem";
+import { Icon } from "../../Elements/Core/Icon";
+import { Text } from "../../Elements/Core/Text";
+import { Popup } from "../../Elements/Core/Popup";
+import { Nav } from "../../Elements/Core/Nav";
+import { Div } from "../../Elements/Core/Div";
+import { UnOrderedList } from "../../Elements/Core/UnOrderedList";
+import { ListItem } from "../../Elements/Core/ListItem";
 
 const barWidth = 350;
 
@@ -308,9 +308,11 @@ export const EditPanel = ({ store }): JSX.Element => {
 
       <ButtonBar onClick={changeTab} items={tabItems} selected={activeTab} />
 
-      {activeTab === "components" && <ComponentsPanel />}
-      {activeTab === "settings" && <Toolbar />}
-      {activeTab === "data" && <DataPanel store={store} path={path} />}
+      <div className="flex flex-col h-full overflow-y-auto mt-2">
+        {activeTab === "components" && <ComponentsPanel />}
+        {activeTab === "settings" && <Toolbar />}
+        {activeTab === "data" && <DataPanel store={store} path={path} />}
+      </div>
 
       <Layers expandRootOnLoad={true} />
     </Div>

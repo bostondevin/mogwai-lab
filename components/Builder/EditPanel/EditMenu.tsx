@@ -3,9 +3,9 @@ import { ROOT_NODE } from "@craftjs/utils";
 import React, { useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
 
-import { Icon } from "../../Elements/Media/Icon/Icon";
-import { Button } from "../../Elements/Button/Button/Button";
-import { Div } from "../../Elements/Container/Div/Div";
+import { Icon } from "../../Elements/Core/Icon";
+import { Button } from "../../Elements/Core/Button";
+import { Div } from "../../Elements/Core/Div";
 
 export const EditMenu = ({ render }) => {
   const { id } = useNode();
