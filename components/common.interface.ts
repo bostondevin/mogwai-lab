@@ -69,7 +69,8 @@ export interface DataListProps {
   items?: DataListItem[];
 }
 
-export const regularInputClasses =
-  "w-full h-10 pl-3 pr-6 text-base placeholder-gray-300 border rounded appearance-none focus:outline-none";
-export const smallInputClasses =
-  "w-full h-8 pl-2 pr-6 text-xs placeholder-gray-300 border rounded appearance-none focus:outline-none";
+const cClasses =
+  "w-full bg-white border hover:border-black/25 dark:border-black/0 dark:hover:border-black/50 dark:bg-black/25 placeholder-gray-300 rounded appearance-none focus:outline-none";
+
+export const regularInputClasses = "text-base h-10 pl-3 pr-6 " + cClasses;
+export const smallInputClasses = "text-xs h-8 pl-2 pr-6 " + cClasses;

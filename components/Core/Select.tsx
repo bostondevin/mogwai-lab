@@ -12,9 +12,13 @@ export const Select = React.forwardRef((props: SelectProps, ref: any) => (
     <select
       ref={ref}
       {...props}
-      className={props.tight ? smallInputClasses : regularInputClasses}
+      className={
+        props.tight
+          ? smallInputClasses + " cursor-pointer"
+          : regularInputClasses + " cursor-pointer"
+      }
     >
-      <Options items={props.items} />
+      <Options items={props.items} placeholder={props.placeholder} />
     </select>
     <div
       className={
