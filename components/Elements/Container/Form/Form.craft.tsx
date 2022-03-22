@@ -1,6 +1,6 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Div } from "../Div/Div";
+import { ContainerDiv } from "../Div/ContainerDiv";
 import { CraftListItem } from "../ListItem/ListItem.craft";
 import { Form, FormProps } from "./Form";
 
@@ -29,7 +29,10 @@ export const CraftForm: UserComponent<FormProps> = (props) => {
       {props.children}
 
       {!props.children && enabled && (
-        <Div className={emptyContainerClass} style={emptyContainerStyle}></Div>
+        <ContainerDiv
+          className={emptyContainerClass}
+          style={emptyContainerStyle}
+        ></ContainerDiv>
       )}
     </Form>
   );

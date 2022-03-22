@@ -7,7 +7,7 @@ export interface DivProps extends ContainerProps {
   onPointerOut?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export const Div = React.forwardRef((props: DivProps, ref: any) => (
+export const ContainerDiv = React.forwardRef((props: DivProps, ref: any) => (
   <div ref={ref} {...props}>
     {props.children}
   </div>

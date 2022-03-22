@@ -9,7 +9,7 @@ import { CraftLink } from "../Elements/Button/Link/Link.craft";
 
 import { CraftArticle } from "../Elements/Container/Article/Article.craft";
 import { CraftAside } from "../Elements/Container/Aside/Aside.craft";
-import { CraftDiv } from "../Elements/Container/Div/Div.craft";
+import { CraftDiv } from "../Elements/Container/Div/ContainerDiv.craft";
 import { CraftFieldset } from "../Elements/Container/Fieldset/Fieldset.craft";
 import { CraftFooter } from "../Elements/Container/Footer/Footer.craft";
 import { CraftForm } from "../Elements/Container/Form/Form.craft";

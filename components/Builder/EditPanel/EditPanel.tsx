@@ -3,6 +3,7 @@ import { useEditor } from "@craftjs/core";
 import { Layers } from "@craftjs/layers";
 import { useRouter } from "next/router";
 import lz from "lzutf8";
+import GridLayout from "react-grid-layout";
 
 import { Toolbar } from "./SettingsPanel";
 import { ComponentsPanel } from "./Components";
@@ -13,17 +14,49 @@ import { Icon } from "../../Elements/Media/Icon/Icon";
 import { Text } from "../../Elements/Media/Text/Text";
 import { Popup } from "../../Elements/Container/Popup/Popup";
 import { Nav } from "../../Elements/Container/Nav/Nav";
-import { Div } from "../../Elements/Container/Div/Div";
+import { ContainerDiv } from "../../Elements/Container/Div/ContainerDiv";
 import { UnOrderedList } from "../../Elements/Container/UnOrderedList/UnOrderedList";
 import { ListItem } from "../../Elements/Container/ListItem/ListItem";
 
-const barWidth = 350;
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
+}
 
 export const EditPanel = ({ store }): JSX.Element => {
   const [path, setPath] = useState(null);
   const [rulerVisible, setRulerVisible] = useState(false);
   const [outlinesVisible, setOutlinesVisible] = useState(false);
   const [screen, setScreen] = useState("screen");
+  const [layout, setLayout] = useState([
+    { i: "components", x: 0, y: 0, w: 3, h: 4 },
+    { i: "data", x: 3, y: 0, w: 3, h: 4 },
+    { i: "layers", x: 0, y: 3, w: 6, h: 3 },
+    { i: "toolbar", x: 0, y: 3, w: 6, h: 3 },
+  ]);
+
+  const size = useWindowSize();
 
   const { enabled, canUndo, canRedo, actions, query } = useEditor(
     (state, query) => ({
@@ -58,6 +91,21 @@ export const EditPanel = ({ store }): JSX.Element => {
       .get("editor")
       .get("ruler")
       .on((d) => setRulerVisible(d));
+
+    store
+      .get("editor")
+      .get("layout")
+      .load((d) => {
+        if (d) {
+          let arr = [];
+          Object.keys(d).forEach((l) => {
+            let newObj = { i: l };
+            arr.push({ ...newObj, ...d[l] });
+          });
+          console.log(arr);
+          // setLayout(arr);
+        }
+      });
   }, [router.asPath]);
 
   const doSave = () => {
@@ -71,11 +119,11 @@ export const EditPanel = ({ store }): JSX.Element => {
     }
   };
 
-  const changeScreen = (e, d) => {
+  const changeScreen = (d) => {
     store.get("editor").get("screen").put(d);
   };
 
-  const toggleOutlines = (e) => {
+  const toggleOutlines = () => {
     store.get("editor").get("outlines").put(!outlinesVisible);
   };
 
@@ -101,12 +149,57 @@ export const EditPanel = ({ store }): JSX.Element => {
     actions.setOptions((options) => (options.enabled = !enabled));
   };
 
+  const layoutChange = (newLayout) => {
+    console.log(newLayout);
+    newLayout.forEach((l) =>
+      store
+        .get("editor")
+        .get("layout")
+        .get(l.i)
+        .put({ w: l.w, h: l.h, x: l.x, y: l.y })
+    );
+  };
+
+  const getBarWidth = (width) => {
+    if (screen === "mobile" || screen === "tablet") {
+      if (screen === "mobile") {
+        if (width > 500) {
+          return width - 500;
+        } else {
+          return 380;
+        }
+      }
+
+      if (screen === "tablet") {
+        if (width > 790) {
+          return width - 790;
+        } else {
+          return 380;
+        }
+      }
+    } else {
+      if (width > 1040) {
+        return width - 350;
+      } else {
+        return 380;
+      }
+    }
+
+    /*
+    screen === "mobile"
+                  ? 480
+                  : screen === "tablet"
+                  ? 768
+                  : width;
+*/
+  };
+
   return (
-    <Div
+    <ContainerDiv
       style={{
-        width: barWidth + "px",
+        width: getBarWidth(size.width) + "px",
         opacity: enabled ? 1 : 0,
-        marginRight: enabled ? 0 : -barWidth + "px",
+        marginRight: enabled ? 0 : -getBarWidth(size.width) + "px",
       }}
       className="sidebar w-2 flex flex-col h-full overflow-y-auto bg-slate-300 dark:bg-slate-300 ease-in-out transition-all duration-300"
     >
@@ -129,7 +222,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               menu={
                 <div className="text-xs bg-slate-800 text-white w-full">
                   <Button
-                    onClick={(e) => changeScreen(e, "mobile")}
+                    onClick={() => changeScreen("mobile")}
                     type="button"
                     className="p-2 hover:bg-slate-800 select-none cursor-pointer"
                   >
@@ -142,7 +235,7 @@ export const EditPanel = ({ store }): JSX.Element => {
                     />
                   </Button>
                   <Button
-                    onClick={(e) => changeScreen(e, "tablet")}
+                    onClick={() => changeScreen("tablet")}
                     type="button"
                     className="p-2 hover:bg-slate-800 select-none cursor-pointer"
                   >
@@ -155,7 +248,7 @@ export const EditPanel = ({ store }): JSX.Element => {
                     />
                   </Button>
                   <Button
-                    onClick={(e) => changeScreen(e, "screen")}
+                    onClick={() => changeScreen("screen")}
                     type="button"
                     className="p-2 hover:bg-slate-800 select-none cursor-pointer"
                   >
@@ -196,7 +289,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               type="button"
               tooltip="Outlines"
               placement="bottom"
-              onClick={(e) => toggleOutlines(e)}
+              onClick={() => toggleOutlines()}
               disabled={!outlinesVisible}
               className="p-2 hover:bg-slate-800 select-none cursor-pointer"
             >
@@ -287,13 +380,30 @@ export const EditPanel = ({ store }): JSX.Element => {
         </UnOrderedList>
       </Nav>
 
-      <ComponentsPanel />
-
-      <Toolbar />
-
-      <DataPanel store={store} path={path} />
-
-      <Layers expandRootOnLoad={true} />
-    </Div>
+      <GridLayout
+        className="layout"
+        layout={layout}
+        cols={12}
+        rowHeight={30}
+        maxCols={12}
+        width={getBarWidth(size.width)}
+        onLayoutChange={layoutChange}
+        isBounded={true}
+        margin={[5, 5]}
+      >
+        <div key="components" className="bg-slate-900 p-2 overflow-y-auto">
+          <ComponentsPanel />
+        </div>
+        <div key="data" className="bg-slate-900 p-2 overflow-y-auto">
+          <DataPanel store={store} path={path} />
+        </div>
+        <div key="layers" className="bg-slate-900 p-2 overflow-y-auto">
+          <Layers expandRootOnLoad={true} />
+        </div>
+        <div key="toolbar" className="bg-slate-900 p-2 overflow-y-auto">
+          <Toolbar />
+        </div>
+      </GridLayout>
+    </ContainerDiv>
   );
 };

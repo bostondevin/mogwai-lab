@@ -8,7 +8,7 @@ import Ruler from "@scena/react-ruler";
 
 import { Appbar } from "../Appbar";
 import { EditPanel } from "./EditPanel/EditPanel";
-import { Div } from "../Elements/Container/Div/Div";
+import { ContainerDiv } from "../Elements/Container/Div/ContainerDiv";
 import { Nav } from "../Elements/Container/Nav/Nav";
 
 export const Wrapper = ({ store, children }): JSX.Element => {
@@ -83,9 +83,9 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
   return (
     <>
-      <Div className="flex h-full overflow-hidden flex-row w-full fixed bg-black/10 dark:bg-black/90">
-        <Div className="page-container flex h-full flex-col w-full">
-          <Div
+      <div className="flex h-full overflow-hidden flex-row w-full fixed bg-black/10 dark:bg-black/90">
+        <div className="page-container flex h-full flex-col w-full">
+          <div
             className="page-container flex h-full flex-col w-full bg-slate-200 dark:bg-slate-800"
             style={{
               width:
@@ -115,13 +115,13 @@ export const Wrapper = ({ store, children }): JSX.Element => {
               </div>
             )}
 
-            <Nav className="flex w-full bg-white dark:bg-slate-900 ease-in-out transition-all duration-300">
-              <Div className="flex w-full shadow-md mb-1 dark:text-white">
+            <nav className="flex w-full bg-white dark:bg-slate-900 ease-in-out transition-all duration-300">
+              <div className="flex w-full shadow-md mb-1 dark:text-white">
                 <Appbar screen={screen} store={store} />
-              </Div>{" "}
-            </Nav>
+              </div>{" "}
+            </nav>
 
-            <Div
+            <div
               className={cx([
                 "craftjs-renderer flex h-full w-full overflow-auto bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 ease-in-out transition-all duration-300",
                 {
@@ -133,12 +133,12 @@ export const Wrapper = ({ store, children }): JSX.Element => {
               }
             >
               {children}
-            </Div>
-          </Div>
-        </Div>
+            </div>
+          </div>
+        </div>
 
         <EditPanel store={store} />
-      </Div>
+      </div>
       <div className="text-6xl text-5xl text-4xl text-3xl text-2xl text-xl hidden shadow-md mb-10 mb-9 mb-8 mb-7 mb-6 mb-5 mb-4 mb-3 mb-2 mb-1"></div>
     </>
   );

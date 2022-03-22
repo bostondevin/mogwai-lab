@@ -1,6 +1,6 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Div } from "../Div/Div";
+import { ContainerDiv } from "../Div/ContainerDiv";
 import { Nav } from "./Nav";
 import { CraftListItem } from "../ListItem/ListItem.craft";
 import { CommonContainerProps } from "../../../../interfaces/Container.interface";
@@ -30,7 +30,10 @@ export const CraftNav: UserComponent<CommonContainerProps> = (props) => {
       {props.children}
 
       {!props.children && enabled && (
-        <Div className={emptyContainerClass} style={emptyContainerStyle}></Div>
+        <ContainerDiv
+          className={emptyContainerClass}
+          style={emptyContainerStyle}
+        ></ContainerDiv>
       )}
     </Nav>
   );

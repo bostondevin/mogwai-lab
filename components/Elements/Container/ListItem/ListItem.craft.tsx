@@ -1,6 +1,6 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Div } from "../Div/Div";
+import { ContainerDiv } from "../Div/ContainerDiv";
 import { ListItem } from "./ListItem";
 import { CommonContainerProps } from "../../../../interfaces/Container.interface";
 
@@ -29,9 +29,12 @@ export const CraftListItem: UserComponent<CommonContainerProps> = (props) => {
       {props.children}
 
       {!props.children && enabled && (
-        <Div className={emptyContainerClass} style={emptyContainerStyle}>
+        <ContainerDiv
+          className={emptyContainerClass}
+          style={emptyContainerStyle}
+        >
           Some text goes here
-        </Div>
+        </ContainerDiv>
       )}
     </ListItem>
   );

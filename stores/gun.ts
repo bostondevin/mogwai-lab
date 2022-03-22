@@ -4,6 +4,7 @@ import "gun/lib/webrtc.js";
 import "gun/lib/not.js";
 import "gun/lib/path.js";
 import "gun/lib/load.js";
+import "gun/lib/open.js";
 import { nanoid } from "nanoid";
 
 export const gunStore = Gun({
