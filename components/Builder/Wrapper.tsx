@@ -65,7 +65,9 @@ export const Wrapper = ({ store, children }): JSX.Element => {
       store
         .get("editor")
         .get("screen")
-        .on((d) => setScreenSize(d));
+        .on((d) => {
+          setScreenSize(d);
+        });
 
       store
         .get("editor")

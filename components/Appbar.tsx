@@ -110,7 +110,7 @@ export const Appbar = ({ screen, store }): JSX.Element => {
             ? { width: "40px", height: "40px" }
             : { width: "48px", height: "48px" }
         }
-        className="ml-5 mr-10 text-black dark:text-white inline-block mt-2 opacity-90"
+        className="ml-5 mr-10 text-black dark:text-white mt-2 opacity-90"
       >
         <Logo />
       </Div>
