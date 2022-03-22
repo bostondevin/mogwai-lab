@@ -5,8 +5,11 @@ import { useEditor } from "@craftjs/core";
 import { Link } from "./Elements/Button/Link/Link";
 import { Button } from "./Elements/Button/Button/Button";
 import { Icon } from "./Elements/Media/Icon/Icon";
+import { UnOrderedList } from "./Elements/Container/UnOrderedList/UnOrderedList";
+import { ListItem } from "./Elements/Container/ListItem/ListItem";
 
 import Logo from "../public/sei-logo.svg";
+import { Div } from "./Elements/Container/Div/Div";
 
 export const Appbar = ({ screen, store }): JSX.Element => {
   const [path, setPath] = useState(null);
@@ -101,21 +104,23 @@ export const Appbar = ({ screen, store }): JSX.Element => {
 
   return (
     <>
-      <div
+      <Div
         style={
           screen === "mobile"
             ? { width: "40px", height: "40px" }
             : { width: "48px", height: "48px" }
         }
-        className="ml-5 mr-10 text-black/75 dark:text-white/75 inline-block mt-2 opacity-90"
+        className="ml-5 mr-10 text-black dark:text-white inline-block mt-2 opacity-90"
       >
         <Logo />
-      </div>
+      </Div>
 
-      <ul className={screen === "mobile" ? "hidden" : "flex flex-row w-full"}>
+      <UnOrderedList
+        className={screen === "mobile" ? "hidden" : "flex flex-row w-full"}
+      >
         {links.map((item) => {
           return (
-            <li key={item.key} className="flex items-center">
+            <ListItem key={item.key} className="flex items-center">
               <Link
                 href={item.href}
                 onClick={clickLink}
@@ -132,15 +137,39 @@ export const Appbar = ({ screen, store }): JSX.Element => {
                   <></>
                 )}
               </Link>
-            </li>
+            </ListItem>
           );
         })}
-      </ul>
+      </UnOrderedList>
 
       {screen === "mobile" && <div className="flex w-full"></div>}
 
-      <ul className="flex mr-3">
-        <li className="flex gap-2">
+      <UnOrderedList className="flex mr-3 gap-2">
+        <ListItem className="flex">
+          <Button
+            tooltip="Settings"
+            className="px-2 opacity-50 hover:opacity-80"
+          >
+            <Icon className="fa-solid fa-bars" />
+          </Button>
+        </ListItem>
+
+        <ListItem className="flex">
+          <Button
+            tooltip="Settings"
+            className="px-2 opacity-50 hover:opacity-80"
+          >
+            <Icon className="fa-solid fa-grid" />
+          </Button>
+        </ListItem>
+
+        <ListItem className="flex">
+          <Button tooltip="Search" className="px-2 opacity-50 hover:opacity-80">
+            <Icon className="fa-solid fa-search" />
+          </Button>
+        </ListItem>
+
+        <ListItem className="flex">
           <Button
             onClick={toggleDarkMode}
             tooltip={darkMode ? "Light mode" : "Dark mode"}
@@ -151,10 +180,10 @@ export const Appbar = ({ screen, store }): JSX.Element => {
               className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}
             />
           </Button>
-        </li>
+        </ListItem>
 
         {!enabled && (
-          <li className="flex">
+          <ListItem className="flex">
             <Button
               onClick={toggleEdit}
               tooltip={enabled ? "Save" : "Edit"}
@@ -167,9 +196,9 @@ export const Appbar = ({ screen, store }): JSX.Element => {
                 }
               />
             </Button>
-          </li>
+          </ListItem>
         )}
-      </ul>
+      </UnOrderedList>
     </>
   );
 };

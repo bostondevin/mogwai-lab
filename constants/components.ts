@@ -177,7 +177,7 @@ export const components = [
           type: "Text",
           props: {
             type: "p",
-            className: "text-base font-light leading-relaxed mt-0 mb-4",
+            className: "text-base font-light leading-relaxed mt-0 mb-5",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           },
         },
@@ -190,7 +190,7 @@ export const components = [
           type: "Text",
           props: {
             type: "p",
-            className: "text-lg font-light leading-relaxed mt-6 mb-4",
+            className: "text-lg font-light leading-relaxed mb-6",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           },
         },
@@ -203,7 +203,7 @@ export const components = [
           type: "Text",
           props: {
             type: "small",
-            className: "font-normal leading-normal",
+            className: "font-normal leading-normal mb-3",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           },
         },
@@ -216,8 +216,8 @@ export const components = [
           type: "Text",
           props: {
             type: "h1",
-            className: "text-6xl font-normal leading-normal mt-0 mb-2",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            className: "text-6xl mt-0 mb-6",
+            text: "Lorem ipsum dolor sit amet",
           },
         },
       },
@@ -228,7 +228,7 @@ export const components = [
           type: "Text",
           props: {
             type: "h2",
-            className: "text-5xl font-normal leading-normal mt-0 mb-2",
+            className: "text-5xl font-normal leading-normal mt-0 mb-5",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
           },
         },
