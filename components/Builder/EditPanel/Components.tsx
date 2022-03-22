@@ -84,8 +84,8 @@ export const ComponentsPanel = () => {
           <Accordion
             key={"group_" + panelIndex}
             title={panel.label}
-            className="bg-slate-700 text-white/75"
-            headerClassName="uppercase hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer select-none"
+            className="dark:text-white/75"
+            headerClassName="uppercase hover:bg-slate-200 dark:hover:bg-slate-800 p-2 flex justify-between text-xs cursor-pointer select-none"
             containerClassName="overflow-hidden transition-all duration-200"
           >
             {panel.items.map((item, componentIndex) => {

@@ -9,6 +9,10 @@ import { ComponentsPanel } from "./Components";
 import { DataPanel } from "./DataPanel";
 
 import { Button } from "../../Elements/Button/Button/Button";
+import { Link } from "../../Elements/Button/Link/Link";
+
+import { ButtonBar } from "../../Elements/Button/Bar/ButtonBar";
+
 import { Icon } from "../../Elements/Media/Icon/Icon";
 import { Text } from "../../Elements/Media/Text/Text";
 import { Popup } from "../../Elements/Container/Popup/Popup";
@@ -24,6 +28,7 @@ export const EditPanel = ({ store }): JSX.Element => {
   const [rulerVisible, setRulerVisible] = useState(false);
   const [outlinesVisible, setOutlinesVisible] = useState(false);
   const [screen, setScreen] = useState("screen");
+  const [activeTab, setActiveTab] = useState("components");
 
   const { enabled, canUndo, canRedo, actions, query } = useEditor(
     (state, query) => ({
@@ -51,6 +56,11 @@ export const EditPanel = ({ store }): JSX.Element => {
 
     store
       .get("editor")
+      .get("activeTab")
+      .on((d) => setActiveTab(d));
+
+    store
+      .get("editor")
       .get("outlines")
       .on((d) => setOutlinesVisible(d));
 
@@ -69,6 +79,10 @@ export const EditPanel = ({ store }): JSX.Element => {
       const template = store.path(("templates" + path).split("/")).get("html");
       template.put(condensedJson, () => {});
     }
+  };
+
+  const changeTab = (e) => {
+    store.get("editor").get("activeTab").put(e.targetEleId);
   };
 
   const changeScreen = (e, d) => {
@@ -101,6 +115,11 @@ export const EditPanel = ({ store }): JSX.Element => {
     actions.setOptions((options) => (options.enabled = !enabled));
   };
 
+  const tabItems = [
+    { id: "components", label: "Components" },
+    { id: "settings", label: "Settings" },
+    { id: "data", label: "Data" },
+  ];
   return (
     <Div
       style={{
@@ -108,9 +127,9 @@ export const EditPanel = ({ store }): JSX.Element => {
         opacity: enabled ? 1 : 0,
         marginRight: enabled ? 0 : -barWidth + "px",
       }}
-      className="sidebar w-2 flex flex-col h-full overflow-y-auto bg-slate-300 dark:bg-slate-300 ease-in-out transition-all duration-300"
+      className="sidebar w-2 border-l border-slate-300 dark:border-slate-800 flex shadow-md flex-col h-full overflow-y-auto bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white/75 ease-in-out transition-all duration-300"
     >
-      <Nav className="bg-slate-900 dark:bg-slate-900 text-white/75 w-full text-sm">
+      <Nav className="bg-slate-300 dark:bg-slate-900 w-full text-sm">
         <UnOrderedList className="flex w-full">
           <ListItem className="flex w-full">
             <Button
@@ -118,7 +137,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               tooltip="Close"
               onClick={cancelEdit}
               placement="bottom"
-              className="px-3 py-2 hover:bg-slate-800"
+              className="px-3 py-2 hover:bg-slate-400"
             >
               <Icon className="fa-solid fa-times" />
             </Button>
@@ -127,7 +146,7 @@ export const EditPanel = ({ store }): JSX.Element => {
           <ListItem className="flex">
             <Popup
               menu={
-                <div className="text-xs bg-slate-800 text-white w-full">
+                <div className="text-xs bg-slate-400 text-white w-full">
                   <Button
                     onClick={(e) => changeScreen(e, "mobile")}
                     type="button"
@@ -175,7 +194,7 @@ export const EditPanel = ({ store }): JSX.Element => {
                 type="button"
                 tooltip={screen}
                 placement="bottom"
-                className="p-2 hover:bg-slate-800 select-none cursor-pointer"
+                className="p-2 hover:bg-slate-400 select-none cursor-pointer"
               >
                 <Icon
                   className={
@@ -198,7 +217,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               placement="bottom"
               onClick={(e) => toggleOutlines(e)}
               disabled={!outlinesVisible}
-              className="p-2 hover:bg-slate-800 select-none cursor-pointer"
+              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
             >
               <Icon
                 className={
@@ -216,7 +235,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               placement="bottom"
               onClick={toggleRuler}
               disabled={!rulerVisible}
-              className="p-2 hover:bg-slate-800 select-none cursor-pointer"
+              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
             >
               <Icon
                 className={
@@ -232,7 +251,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               tooltip="Remove All"
               onClick={clear}
               placement="bottom"
-              className="p-2 hover:bg-slate-800 select-none cursor-pointer"
+              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
             >
               <Icon className="fa-solid fa-trash" />
             </Button>
@@ -245,7 +264,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               placement="bottom"
               onClick={() => actions.history.undo()}
               disabled={!canUndo}
-              className="p-2 hover:bg-slate-800 select-none cursor-pointer"
+              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
             >
               <Icon
                 className={"fa-solid fa-undo" + (canUndo ? "" : " opacity-50")}
@@ -260,7 +279,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               placement="bottom"
               disabled={!canRedo}
               onClick={() => actions.history.redo()}
-              className="p-2 hover:bg-slate-800 select-none cursor-pointer"
+              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
             >
               <Icon
                 className={"fa-solid fa-redo" + (canRedo ? "" : " opacity-50")}
@@ -275,7 +294,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               disabled={!canUndo}
               tooltip={enabled ? "Save" : "Edit"}
               placement="bottom"
-              className="px-3 py-2 hover:bg-slate-800 select-none cursor-pointer"
+              className="px-3 py-2 hover:bg-slate-400 select-none cursor-pointer"
             >
               <Icon
                 className={
@@ -287,11 +306,11 @@ export const EditPanel = ({ store }): JSX.Element => {
         </UnOrderedList>
       </Nav>
 
-      <ComponentsPanel />
+      <ButtonBar onClick={changeTab} items={tabItems} selected={activeTab} />
 
-      <Toolbar />
-
-      <DataPanel store={store} path={path} />
+      {activeTab === "components" && <ComponentsPanel />}
+      {activeTab === "settings" && <Toolbar />}
+      {activeTab === "data" && <DataPanel store={store} path={path} />}
 
       <Layers expandRootOnLoad={true} />
     </Div>

@@ -25,10 +25,14 @@ body {
 }
 
 .gradientDark {
-  background: #044069;
-  background: -webkit-linear-gradient(to bottom, #044069 0%, #000000 100%);
-  background: -moz-linear-gradient(to bottom, #044069 0%, #000000 100%);
-  background: linear-gradient(to bottom, #044069 0%, #000000 100%);
+  background: rgb(30, 41, 59);
+  background: -webkit-linear-gradient(
+    to bottom,
+    rgb(30, 41, 59) 0%,
+    #000000 100%
+  );
+  background: -moz-linear-gradient(to bottom, rgb(30, 41, 59) 0%, #000000 100%);
+  background: linear-gradient(to bottom, rgb(30, 41, 59) 0%, #000000 100%);
   height: 100%;
 }
 

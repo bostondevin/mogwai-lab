@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useEditor } from "@craftjs/core";
-import { Accordion } from "../../Accordion";
 
 export const DataPanel = ({ store, path }) => {
   const { enabled } = useEditor((state) => ({
@@ -18,28 +17,19 @@ export const DataPanel = ({ store, path }) => {
   }, []);
 
   return (
-    <Accordion
-      title={"Data"}
-      className="bg-slate-700 text-white/75"
-      headerClassName="uppercase hover:text-white/100 p-2 flex justify-between text-xs cursor-pointer select-none"
-      containerClassName="flex w-full"
-    >
-      <div className="flex w-full text-xs gap-2">
-        {dataProps &&
-          Object.keys(dataProps).map((item, componentIndex) => {
-            return (
-              <div
-                key={"component_" + componentIndex}
-                className="flex w-full gap-2 mb-2"
-              >
-                <div className="flex pl-2">{item}</div>
-                <div className="flex break-all pr-2 pb-2">
-                  {dataProps[item]}
-                </div>
-              </div>
-            );
-          })}
-      </div>
-    </Accordion>
+    <div className="flex w-full text-xs gap-2">
+      {dataProps &&
+        Object.keys(dataProps).map((item, componentIndex) => {
+          return (
+            <div
+              key={"component_" + componentIndex}
+              className="flex w-full gap-2 mb-2"
+            >
+              <div className="flex pl-2">{item}</div>
+              <div className="flex break-all pr-2 pb-2">{dataProps[item]}</div>
+            </div>
+          );
+        })}
+    </div>
   );
 };
