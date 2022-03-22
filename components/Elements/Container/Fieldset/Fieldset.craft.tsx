@@ -1,6 +1,6 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { ContainerDiv } from "../Div/ContainerDiv";
+import { Div } from "../Div/Div";
 import { CraftListItem } from "../ListItem/ListItem.craft";
 import { Fieldset, FieldsetProps } from "./Fieldset";
 
@@ -29,10 +29,7 @@ export const CraftFieldset: UserComponent<FieldsetProps> = (props) => {
       {props.children}
 
       {!props.children && enabled && (
-        <ContainerDiv
-          className={emptyContainerClass}
-          style={emptyContainerStyle}
-        ></ContainerDiv>
+        <Div className={emptyContainerClass} style={emptyContainerStyle}></Div>
       )}
     </Fieldset>
   );

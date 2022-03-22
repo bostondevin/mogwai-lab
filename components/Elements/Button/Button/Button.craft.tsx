@@ -15,14 +15,9 @@ export const CraftButton: UserComponent<ButtonProps> = (props) => {
   const { enabled } = useEditor(editorHook);
 
   return (
-    <button
-      ref={connect}
-      className={props.className}
-      disabled={enabled || props.disabled}
-      onClick={props.onClick}
-    >
+    <Button ref={connect} {...props} disabled={enabled}>
       {props.children}
-    </button>
+    </Button>
   );
 };
 
@@ -30,10 +25,11 @@ CraftButton.craft = {
   displayName: "Button",
   props: {},
   rules: {
-    canMoveIn: (nodes) => {
+    canMoveIn: (nodes, self, helper) => {
       return nodes.every(
         (node) => node.data.type === CraftText || node.data.type === CraftIcon
       );
+      //  && helper(self.id).decendants().length === 0
     },
   },
   related: {

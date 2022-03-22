@@ -1,6 +1,6 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { ContainerDiv, DivProps } from "./ContainerDiv";
+import { Div, DivProps } from "./Div";
 import { CraftListItem } from "../ListItem/ListItem.craft";
 import { ContainerSettings } from "../../../Builder/toolbar/ContainerSettings";
 import {
@@ -19,7 +19,7 @@ export const CraftDiv: UserComponent<DivProps> = (props) => {
   const { enabled } = useEditor(editorHook);
 
   return (
-    <div
+    <Div
       ref={connect}
       {...props}
       className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -27,12 +27,9 @@ export const CraftDiv: UserComponent<DivProps> = (props) => {
       {props.children}
 
       {!props.children && enabled && (
-        <ContainerDiv
-          className={emptyContainerClass}
-          style={emptyContainerStyle}
-        ></ContainerDiv>
+        <Div className={emptyContainerClass} style={emptyContainerStyle}></Div>
       )}
-    </div>
+    </Div>
   );
 };
 

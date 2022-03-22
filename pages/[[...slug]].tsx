@@ -2,8 +2,6 @@ import { NextSeo } from "next-seo";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Builder } from "../components/Builder/Builder";
 import "reactjs-popup/dist/index.css";
-import "react-grid-layout/css/styles.css";
-import "react-resizable/css/styles.css";
 
 const theme = createTheme({
   typography: {

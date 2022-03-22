@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 import { Icon } from "../../Elements/Media/Icon/Icon";
 import { Button } from "../../Elements/Button/Button/Button";
-import { ContainerDiv } from "../../Elements/Container/Div/ContainerDiv";
+import { Div } from "../../Elements/Container/Div/Div";
 
 export const EditMenu = ({ render }) => {
   const { id } = useNode();
@@ -77,7 +77,7 @@ export const EditMenu = ({ render }) => {
     <>
       {enabled && (isHover || isActive)
         ? ReactDOM.createPortal(
-            <ContainerDiv
+            <Div
               ref={currentRef}
               className={
                 isActive
@@ -94,9 +94,9 @@ export const EditMenu = ({ render }) => {
             >
               <h2 className="flex-1 mr-4">{name}</h2>
               {moveable && isActive ? (
-                <button type="button" className="mr-2 cursor-move" ref={drag}>
+                <Button type="button" className="mr-2 cursor-move" ref={drag}>
                   <Icon className="fas fa-arrows-up-down-left-right" />
-                </button>
+                </Button>
               ) : null}
               {id !== ROOT_NODE && isActive && (
                 <Button
@@ -121,7 +121,7 @@ export const EditMenu = ({ render }) => {
                   <Icon className="fas fa-trash" />
                 </Button>
               ) : null}
-            </ContainerDiv>,
+            </Div>,
             document.querySelector(".page-container")
           )
         : null}

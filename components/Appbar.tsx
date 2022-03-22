@@ -9,7 +9,7 @@ import { UnOrderedList } from "./Elements/Container/UnOrderedList/UnOrderedList"
 import { ListItem } from "./Elements/Container/ListItem/ListItem";
 
 import Logo from "../public/sei-logo.svg";
-import { ContainerDiv } from "./Elements/Container/Div/ContainerDiv";
+import { Div } from "./Elements/Container/Div/Div";
 
 export const Appbar = ({ screen, store }): JSX.Element => {
   const [path, setPath] = useState(null);
@@ -104,7 +104,7 @@ export const Appbar = ({ screen, store }): JSX.Element => {
 
   return (
     <>
-      <ContainerDiv
+      <Div
         style={
           screen === "mobile"
             ? { width: "40px", height: "40px" }
@@ -113,7 +113,7 @@ export const Appbar = ({ screen, store }): JSX.Element => {
         className="ml-5 mr-10 text-black dark:text-white mt-2 opacity-90"
       >
         <Logo />
-      </ContainerDiv>
+      </Div>
 
       <UnOrderedList
         className={screen === "mobile" ? "hidden" : "flex flex-row w-full"}
