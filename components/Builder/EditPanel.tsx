@@ -23,7 +23,7 @@ import { ListItem } from "../Core/ListItem";
 
 const barWidth = 350;
 
-export const EditPanel = ({ store }): JSX.Element => {
+export const EditPanel = ({ store, darkMode }): JSX.Element => {
   const [path, setPath] = useState(null);
   const [rulerVisible, setRulerVisible] = useState(false);
   const [outlinesVisible, setOutlinesVisible] = useState(false);
@@ -120,6 +120,16 @@ export const EditPanel = ({ store }): JSX.Element => {
     { id: "settings", label: "Settings" },
     { id: "data", label: "Data" },
   ];
+
+  const screenSizes = [
+    { id: "mobile", label: "Mobile", icon: "fa-solid fa-mobile-screen" },
+    { id: "tablet", label: "Tablet", icon: "fa-solid fa-tablet-screen" },
+    { id: "screen", label: "Full", icon: "fa-solid fa-display" },
+  ];
+
+  const navItemClass =
+    "p-2 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-900 select-none cursor-pointer";
+
   return (
     <Div
       style={{
@@ -129,7 +139,7 @@ export const EditPanel = ({ store }): JSX.Element => {
       }}
       className="sidebar w-2 border-l border-slate-300 dark:border-slate-800 flex shadow-md flex-col h-full overflow-y-auto bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white/75 ease-in-out transition-all duration-300"
     >
-      <Nav className="bg-slate-300 dark:bg-slate-900 w-full text-sm">
+      <Nav className="bg-slate-300 dark:bg-slate-800 w-full">
         <UnOrderedList className="flex w-full">
           <ListItem className="flex w-full">
             <Button
@@ -137,7 +147,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               tooltip="Close"
               onClick={cancelEdit}
               placement="bottom"
-              className="px-3 py-2 hover:bg-slate-400"
+              className={navItemClass}
             >
               <Icon className="fa-solid fa-times" />
             </Button>
@@ -145,47 +155,27 @@ export const EditPanel = ({ store }): JSX.Element => {
 
           <ListItem className="flex">
             <Popup
+              bgColor={darkMode ? "rgba(51,65,85,1)" : "rgba(201,213,225,1)"}
+              width={100}
               menu={
-                <div className="text-xs bg-slate-400 text-white w-full">
-                  <Button
-                    onClick={(e) => changeScreen(e, "mobile")}
-                    type="button"
-                    className="p-2 hover:bg-slate-800 select-none cursor-pointer"
-                  >
-                    <Icon className="fa-solid fa-mobile-screen mr-1" />
-                    <Text
-                      type="span"
-                      text="Mobile"
-                      disabled={true}
-                      className="w-full"
-                    />
-                  </Button>
-                  <Button
-                    onClick={(e) => changeScreen(e, "tablet")}
-                    type="button"
-                    className="p-2 hover:bg-slate-800 select-none cursor-pointer"
-                  >
-                    <Icon className="fa-solid fa-tablet-screen mr-1" />
-                    <Text
-                      type="span"
-                      text="Tablet"
-                      disabled={true}
-                      className="w-full"
-                    />
-                  </Button>
-                  <Button
-                    onClick={(e) => changeScreen(e, "screen")}
-                    type="button"
-                    className="p-2 hover:bg-slate-800 select-none cursor-pointer"
-                  >
-                    <Icon className="fa-solid fa-display mr-1" />
-                    <Text
-                      type="span"
-                      text="Full"
-                      disabled={true}
-                      className="w-full"
-                    />
-                  </Button>
+                <div className="text-xs bg-slate-700 dark:bg-slate-300 text-white dark:text-black w-full flex flex-col rounded-md shadow-md py-1">
+                  {screenSizes.map((item) => {
+                    return (
+                      <Button
+                        onClick={(e) => changeScreen(e, item.id)}
+                        type="button"
+                        className="p-2 hover:bg-slate-800 dark:hover:bg-slate-400 select-none cursor-pointer flex gap-2"
+                      >
+                        <Icon className={item.icon + " flex"} />
+                        <Text
+                          type="span"
+                          text={item.label}
+                          disabled={true}
+                          className="w-full flex"
+                        />
+                      </Button>
+                    );
+                  })}
                 </div>
               }
               position="bottom center"
@@ -194,7 +184,7 @@ export const EditPanel = ({ store }): JSX.Element => {
                 type="button"
                 tooltip={screen}
                 placement="bottom"
-                className="p-2 hover:bg-slate-400 select-none cursor-pointer"
+                className={navItemClass}
               >
                 <Icon
                   className={
@@ -217,7 +207,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               placement="bottom"
               onClick={(e) => toggleOutlines(e)}
               disabled={!outlinesVisible}
-              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
+              className={navItemClass}
             >
               <Icon
                 className={
@@ -235,7 +225,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               placement="bottom"
               onClick={toggleRuler}
               disabled={!rulerVisible}
-              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
+              className={navItemClass}
             >
               <Icon
                 className={
@@ -251,7 +241,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               tooltip="Remove All"
               onClick={clear}
               placement="bottom"
-              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
+              className={navItemClass}
             >
               <Icon className="fa-solid fa-trash" />
             </Button>
@@ -264,7 +254,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               placement="bottom"
               onClick={() => actions.history.undo()}
               disabled={!canUndo}
-              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
+              className={navItemClass}
             >
               <Icon
                 className={"fa-solid fa-undo" + (canUndo ? "" : " opacity-50")}
@@ -279,7 +269,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               placement="bottom"
               disabled={!canRedo}
               onClick={() => actions.history.redo()}
-              className="p-2 hover:bg-slate-400 select-none cursor-pointer"
+              className={navItemClass}
             >
               <Icon
                 className={"fa-solid fa-redo" + (canRedo ? "" : " opacity-50")}
@@ -294,7 +284,7 @@ export const EditPanel = ({ store }): JSX.Element => {
               disabled={!canUndo}
               tooltip={enabled ? "Save" : "Edit"}
               placement="bottom"
-              className="px-3 py-2 hover:bg-slate-400 select-none cursor-pointer"
+              className={navItemClass}
             >
               <Icon
                 className={

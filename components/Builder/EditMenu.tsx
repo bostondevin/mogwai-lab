@@ -37,8 +37,36 @@ export const EditMenu = ({ render }) => {
 
   useEffect(() => {
     if (dom) {
-      if (isActive || isHover) dom.classList.add("component-selected");
-      else dom.classList.remove("component-selected");
+      if (enabled)
+        dom.classList.add(
+          "outline-1",
+          "outline-dotted",
+          "outline-black/0",
+          "dark:outline-white/0",
+          "hover:outline-black/25",
+          "hover:dark:outline-white/25"
+        );
+
+      if (isHover && !isActive) {
+        //dom.classList.remove("outline-black/25", "dark:outline-white/25");
+        //dom.classList.add("outline-black/50", "dark:outline-white/50");
+      }
+
+      if (isActive) {
+        dom.classList.remove(
+          "outline-black/0",
+          "dark:outline-white/0",
+          "hover:outline-black/25",
+          "hover:dark:outline-white/25"
+        );
+        dom.classList.add(
+          "component-selected",
+          "dark:outline-lime-500",
+          "outline-blue-500"
+        );
+      }
+
+      //else dom.classList.remove("component-selected", "outline-lime-500");
     }
   }, [dom, isActive, isHover]);
 
