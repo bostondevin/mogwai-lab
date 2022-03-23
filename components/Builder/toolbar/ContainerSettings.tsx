@@ -1,9 +1,14 @@
 import React from "react";
+import { useNode } from "@craftjs/core";
+import { DataForm } from "../DataForm";
 
 export const ContainerSettings = () => {
-  return (
-    <React.Fragment>
-      <div>Hoosies</div>
-    </React.Fragment>
-  );
+  const {
+    actions: { setProp },
+    propValue,
+  } = useNode((node) => ({
+    propValue: node.data.props,
+  }));
+
+  return <DataForm dataProps={propValue} />;
 };
