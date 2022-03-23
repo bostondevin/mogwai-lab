@@ -11,5 +11,15 @@ export const ContainerSettings = () => {
     propValue: node.data.props,
   }));
 
-  return <DataForm dataProps={propValue} predicates={predicates} />;
+  const changeDataItem = (e) => {
+    console.log(e);
+  };
+
+  return (
+    <DataForm
+      dataProps={propValue}
+      predicates={predicates}
+      onChange={changeDataItem}
+    />
+  );
 };

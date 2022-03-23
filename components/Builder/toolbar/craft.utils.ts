@@ -6,7 +6,7 @@ export const editorHook = (state) => ({
   enabled: state.options.enabled,
 });
 
-export const editorEnabledAppend = " outline-1 outline-dotted p-1";
+export const editorEnabledAppend = " outline-1 outline-dotted p-2";
 export const emptyContainerClass =
-  "border-dashed border-4 border-black/10 dark:border-white/10"; //  h-full w-full flex
+  "border-dashed border-2 border-black/10 dark:border-white/10"; //  h-full w-full flex
 export const emptyContainerStyle = { minHeight: "50px" };

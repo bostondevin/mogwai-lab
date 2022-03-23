@@ -26,7 +26,7 @@ export const EditMenu = ({ render }) => {
   } = useNode((node) => ({
     isHover: node.events.hovered,
     dom: node.dom,
-    name: node.data.custom.displayName || node.data.displayName,
+    name: node.data.displayName,
     moveable: query.node(node.id).isDraggable(),
     deletable: query.node(node.id).isDeletable(),
     parent: node.data.parent,

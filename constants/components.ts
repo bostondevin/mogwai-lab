@@ -2,7 +2,7 @@ export const predicates = {
   id: { label: "ID", type: "text" },
   label: { label: "Label", type: "text" },
   className: { label: "Classes", type: "select" },
-  html: { label: "HTML", type: "textarea" },
+  html: { label: "Template", type: "textarea" },
 };
 
 export const components = [

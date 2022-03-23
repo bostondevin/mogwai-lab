@@ -300,7 +300,9 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
 
       <div className="flex flex-col h-full overflow-y-auto mt-2">
         {activeTab === "components" && <ComponentsPanel />}
-        {activeTab === "settings" && <SettingsPanel />}
+        {activeTab === "settings" && (
+          <SettingsPanel store={store} path={path} />
+        )}
         {activeTab === "data" && <DataPanel store={store} path={path} />}
       </div>
 

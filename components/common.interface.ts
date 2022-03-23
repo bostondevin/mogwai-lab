@@ -30,7 +30,7 @@ export interface CommonInputProps {
   id?: string;
   name?: string;
   value?: any;
-  labelledby?: string;
+  "aria-labeled-by"?: string;
   className?: string;
   placeholder?: string;
   style?: any;
@@ -67,5 +67,5 @@ export interface DataListProps {
 const cClasses =
   "w-full bg-white border hover:border-black/25 dark:border-black/0 dark:hover:border-black/50 dark:bg-black/25 placeholder-gray-300 rounded appearance-none focus:outline-none";
 
-export const regularInputClasses = "text-base h-10 pl-3 pr-6 " + cClasses;
-export const smallInputClasses = "text-xs h-8 pl-2 pr-6 " + cClasses;
+export const regularInputClasses = "text-base " + cClasses;
+export const smallInputClasses = "text-xs " + cClasses;
