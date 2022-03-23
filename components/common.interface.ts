@@ -59,14 +59,9 @@ export interface SelectProps extends CommonInputProps, DataListProps {
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-interface DataListItem {
-  label?: string;
-  value?: string;
-}
-
 export interface DataListProps {
   id?: string;
-  items?: DataListItem[];
+  items?: any;
 }
 
 const cClasses =

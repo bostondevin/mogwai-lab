@@ -12,8 +12,8 @@ export const Options = (props: Partial<OptionsProps>) => {
   return (
     <>
       {props.placeholder && <option>{props.placeholder}</option>}
-      {props.items.map((item: OptionProps) => {
-        return <option value={item.value}>{item.label}</option>;
+      {Object.keys(props.items).map((key) => {
+        return <option value={key}>{props.items[key].label}</option>;
       })}
     </>
   );

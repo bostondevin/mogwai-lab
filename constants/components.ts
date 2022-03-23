@@ -1,3 +1,10 @@
+export const predicates = {
+  id: { label: "ID" },
+  label: { label: "Label" },
+  className: { label: "Classes" },
+  html: { label: "HTML" },
+};
+
 export const components = [
   {
     key: "containers",

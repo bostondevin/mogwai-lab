@@ -2,6 +2,7 @@ import React from "react";
 import { Select } from "../Core/Select";
 import { Input } from "../Core/Input";
 import { InputWrapper } from "components/Core/InputWrapper";
+import { predicates } from "../../constants/components";
 
 export const DataForm = ({ dataProps }) => {
   const addDataItem = (e) => {
@@ -13,12 +14,7 @@ export const DataForm = ({ dataProps }) => {
       <div className="flex w-full gap-1 mb-2">
         <div className="flex pl-2">
           <Select
-            items={[
-              { label: "ID", value: "/predicates/id" },
-              { label: "Label", value: "/predicates/label" },
-              { label: "Classes", value: "/predicates/classNames" },
-              { label: "HTML", value: "/predicates/html" },
-            ]}
+            items={predicates}
             placeholder="- Choose -"
             tight={true}
           ></Select>
