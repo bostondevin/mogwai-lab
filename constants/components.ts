@@ -1,8 +1,8 @@
 export const predicates = {
-  id: { label: "ID" },
-  label: { label: "Label" },
-  className: { label: "Classes" },
-  html: { label: "HTML" },
+  id: { label: "ID", type: "text" },
+  label: { label: "Label", type: "text" },
+  className: { label: "Classes", type: "select" },
+  html: { label: "HTML", type: "textarea" },
 };
 
 export const components = [

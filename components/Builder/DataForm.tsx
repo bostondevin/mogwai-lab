@@ -2,9 +2,8 @@ import React from "react";
 import { Select } from "../Core/Select";
 import { Input } from "../Core/Input";
 import { InputWrapper } from "components/Core/InputWrapper";
-import { predicates } from "../../constants/components";
 
-export const DataForm = ({ dataProps }) => {
+export const DataForm = ({ dataProps, predicates }) => {
   const addDataItem = (e) => {
     console.log(e);
   };
@@ -27,11 +26,11 @@ export const DataForm = ({ dataProps }) => {
       </div>
 
       {dataProps &&
-        Object.keys(dataProps).map((item, index) => {
+        Object.keys(dataProps).map((key, index) => {
           return (
             <div key={index} className="flex w-full gap-1 mb-2">
-              <div className="flex pl-2">{item}</div>
-              <div className="flex break-all pr-2 pb-2">{dataProps[item]}</div>
+              <div className="flex pl-2">{predicates[key].label}:</div>
+              <div className="flex break-all pr-2 pb-2">{dataProps[key]}</div>
             </div>
           );
         })}
