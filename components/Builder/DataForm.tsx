@@ -7,23 +7,32 @@ export const DataForm = ({ dataProps, predicates }) => {
   const addDataItem = (e) => {
     console.log(e);
   };
+  const submitAddForm = (e) => {
+    console.log(e);
+  };
 
   return (
     <div className="flex w-full text-xs gap-2 flex-col">
-      <div className="flex w-full gap-1 mb-2">
-        <div className="flex pl-2">
-          <Select
-            items={predicates}
-            placeholder="- Choose -"
-            tight={true}
-          ></Select>
+      <form onSubmit={submitAddForm}>
+        <div className="flex w-full gap-1 mb-2">
+          <div className="flex pl-2">
+            <Select
+              items={predicates}
+              placeholder="- Choose -"
+              tight={true}
+            ></Select>
+          </div>
+          <div className="flex break-all pr-2 pb-2">
+            <InputWrapper
+              buttonIcon="fa fa-plus"
+              buttonType="submit"
+              onClick={addDataItem}
+            >
+              <Input type="text" placeholder="Enter a thing" tight={true} />
+            </InputWrapper>
+          </div>
         </div>
-        <div className="flex break-all pr-2 pb-2">
-          <InputWrapper buttonIcon="fa fa-plus" onClick={addDataItem}>
-            <Input type="text" placeholder="Enter a thing" tight={true} />
-          </InputWrapper>
-        </div>
-      </div>
+      </form>
 
       {dataProps &&
         Object.keys(dataProps).map((key, index) => {

@@ -4,7 +4,7 @@ import { Layers } from "@craftjs/layers";
 import { useRouter } from "next/router";
 import lz from "lzutf8";
 
-import { Toolbar } from "./SettingsPanel";
+import { SettingsPanel } from "./SettingsPanel";
 import { ComponentsPanel } from "./Components";
 import { DataPanel } from "./DataPanel";
 
@@ -300,7 +300,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
 
       <div className="flex flex-col h-full overflow-y-auto mt-2">
         {activeTab === "components" && <ComponentsPanel />}
-        {activeTab === "settings" && <Toolbar />}
+        {activeTab === "settings" && <SettingsPanel />}
         {activeTab === "data" && <DataPanel store={store} path={path} />}
       </div>
 
