@@ -24,7 +24,6 @@ export const ClassNames = (props: Partial<ClassNamesProps>) => {
   );
 };
 /*
-
       <Display className={props.className} />
       <Border className={props.className} />
       <Margin className={props.className} />

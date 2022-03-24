@@ -27,7 +27,6 @@ export const CraftForm: UserComponent<FormProps> = (props) => {
       className={props.className + (enabled ? editorEnabledAppend : "")}
     >
       {props.children}
-
       {!props.children && enabled && (
         <Div className={emptyContainerClass} style={emptyContainerStyle}></Div>
       )}

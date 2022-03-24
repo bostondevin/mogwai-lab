@@ -15,8 +15,8 @@ export const Textarea = ({
     rows={rows}
     className={
       tight
-        ? smallInputClasses + " pl-2 pr-6 h-8"
-        : regularInputClasses + " pl-3 pr-6 h-10"
+        ? smallInputClasses + " pl-2 pr-6"
+        : regularInputClasses + " pl-3 pr-6"
     }
     {...handler()}
   />

@@ -1,8 +1,17 @@
 export const predicates = {
-  id: { label: "ID", type: "text" },
-  label: { label: "Label", type: "text" },
-  className: { label: "Classes", type: "classes" },
-  html: { label: "Template", type: "textarea" },
+  id: { type: "Input", props: { label: "ID", type: "text", tight: true } },
+  label: {
+    type: "Input",
+    props: { label: "Label", type: "text", tight: true },
+  },
+  className: {
+    type: "Input",
+    props: { label: "Tailwind Classes", type: "text", tight: true },
+  },
+  html: {
+    type: "Textarea",
+    props: { label: "Template", tight: true, rows: 5 },
+  },
 };
 
 export const components = [

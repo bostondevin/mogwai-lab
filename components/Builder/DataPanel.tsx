@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useEditor } from "@craftjs/core";
-import { DataForm } from "../Core/DataForm";
+import { Form } from "../Core/Form";
 import { predicates } from "../components";
 import lz from "lzutf8";
+import { FormItems } from "components/Core/FormItems";
 
 export const DataPanel = ({ store, path }) => {
   const { enabled } = useEditor((state) => ({
@@ -39,11 +40,8 @@ export const DataPanel = ({ store, path }) => {
   };
 
   return (
-    <DataForm
-      onChange={changeDataItem}
-      dataProps={dataProps}
-      predicates={predicates}
-      onClick={addDataItem}
-    />
+    <Form onChange={changeDataItem} onClick={addDataItem}>
+      <FormItems data={dataProps} />
+    </Form>
   );
 };

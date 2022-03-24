@@ -11,9 +11,9 @@ import { Options } from "./Options";
 
 export const Select = ({
   handler,
-  meta: { placeholder, tight, items },
+  meta: { placeholder, tight, items, ref },
 }: AbstractControl) => (
-  <div className="relative inline-block w-full">
+  <div ref={ref} className="relative inline-block w-full">
     <select
       {...handler()}
       className={

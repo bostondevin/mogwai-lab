@@ -1,6 +1,7 @@
 import React from "react";
 import { useNode } from "@craftjs/core";
-import { DataForm } from "../../Core/DataForm";
+import { Form } from "../../Core/Form";
+import { FormItems } from "../../Core/FormItems";
 import { predicates } from "../../components";
 
 export const ContainerSettings = () => {
@@ -15,11 +16,11 @@ export const ContainerSettings = () => {
     console.log(e);
   };
 
+  const schema = {};
+
   return (
-    <DataForm
-      data={propValue}
-      predicates={predicates}
-      onChange={changeDataItem}
-    />
+    <Form onChange={changeDataItem}>
+      <FormItems data={predicates} />
+    </Form>
   );
 };

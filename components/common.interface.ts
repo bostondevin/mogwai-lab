@@ -75,14 +75,14 @@ const cClasses =
 export const regularInputClasses = "text-base " + cClasses;
 export const smallInputClasses = "text-xs " + cClasses;
 
-export const baseColors = {
+const baseColors = {
   transparent: { label: "Transparent" },
   current: { label: "Current" },
   black: { label: "Black" },
   white: { label: "White" },
 };
 
-export const colors = {
+const colors = {
   slate: { label: "Slate" },
   gray: { label: "Gray" },
   zinc: { label: "Zinc" },
@@ -107,4 +107,228 @@ export const colors = {
   rose: { label: "Rose" },
 };
 
-export const colorIntensity = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+const colorIntensity = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+
+const fontSizes = {
+  "text-xs": { label: "X Small" },
+  "text-sm": { label: "Small" },
+  "text-base": { label: "Base" },
+  "text-lg": { label: "Large" },
+  "text-xl": { label: "XL" },
+  "text-2xl": { label: "2XL" },
+  "text-3xl": { label: "3XL" },
+  "text-4xl": { label: "4XL" },
+  "text-5xl": { label: "5XL" },
+  "text-6xl": { label: "6XL" },
+};
+
+const leadingTypes = {
+  "leading-none": { label: "None" },
+  "leading-tight": { label: "Tight" },
+  "leading-snug": { label: "Snug" },
+  "leading-normal": { label: "Normal" },
+  "leading-relaxed": { label: "Relaxed" },
+  "leading-loose": { label: "Loose" },
+  "leading-3": { label: "3" },
+  "leading-4": { label: "4" },
+  "leading-5": { label: "5" },
+  "leading-6": { label: "6" },
+  "leading-7": { label: "7" },
+  "leading-8": { label: "8" },
+  "leading-9": { label: "9" },
+  "leading-10": { label: "10" },
+};
+
+const fontStyles = {
+  "font-normal": { label: "Normal" },
+  "font-bold": { label: "Bold" },
+  "font-semibold": { label: "Semibold" },
+  "font-extrabold": { label: "Extra bold" },
+  "font-medium": { label: "Medium" },
+  "font-light": { label: "Light" },
+  "font-thin": { label: "Thin" },
+  "font-hairline": { label: "Hairline" },
+};
+
+const textAlign = {
+  "text-left": { label: "Left" },
+  "text-right": { label: "Right" },
+  "text-center": { label: "Center" },
+  "text-justify": { label: "Justify" },
+};
+
+const textTracking = {
+  "tracking-normal": { label: "Normal" },
+  "tracking-tighter": { label: "Tighter" },
+  "tracking-tight": { label: "Tight" },
+  "tracking-wide": { label: "Wide" },
+  "tracking-wider": { label: "Wider" },
+  "tracking-widest": { label: "Widest" },
+};
+
+const lines = {
+  underline: { label: "Underline" },
+  "line-through": { label: "Line through" },
+  "no-underline": { label: "None" },
+};
+
+const caseTypes = {
+  "normal-case": { label: "Normal" },
+  lowercase: { label: "Lowercase" },
+  uppwercase: { label: "Uppercase" },
+  capitalize: { label: "Capitalize" },
+};
+
+const shadows = {
+  "shadow-none": { label: "None" },
+  shadow: { label: "Normal" },
+  "shadow-xs": { label: "X Small" },
+  "shadow-sm": { label: "Small" },
+  "shadow-md": { label: "Medium" },
+  "shadow-lg": { label: "Large" },
+  "shadow-xl": { label: "XL" },
+  "shadow-2xl": { label: "2XL" },
+  "shadow-inner": { label: "Inner" },
+  "shadow-outline": { label: "Outline" },
+};
+
+const heights = {
+  "h-full": { label: "Full" },
+  "h-screen": { label: "Screen" },
+  "h-auto": { label: "Auto" },
+  "h-px": { label: "Px" },
+
+  "h-0": { label: "0" },
+  "h-1": { label: "1" },
+  "h-2": { label: "2" },
+  "h-3": { label: "3" },
+  "h-4": { label: "4" },
+  "h-5": { label: "5" },
+  "h-6": { label: "6" },
+  "h-8": { label: "8" },
+  "h-10": { label: "10" },
+  "h-12": { label: "12" },
+  "h-20": { label: "20" },
+  "h-24": { label: "24" },
+  "h-32": { label: "32" },
+  "h-40": { label: "40" },
+  "h-48": { label: "48" },
+  "h-56": { label: "56" },
+  "h-64": { label: "64" },
+};
+
+const widths = {
+  "w-full": { label: "Full" },
+  "w-screen": { label: "Screen" },
+  "w-auto": { label: "Auto" },
+  "w-px": { label: "Px" },
+
+  "w-1/2": { label: "1/2" },
+  "w-1/3": { label: "1/3" },
+  "w-2/3": { label: "2/3" },
+  "w-1/4": { label: "1/4" },
+  "w-2/4": { label: "2/4" },
+  "w-3/4": { label: "3/4" },
+  "w-1/5": { label: "1/5" },
+  "w-2/5": { label: "2/5" },
+  "w-3/5": { label: "3/5" },
+  "w-4/5": { label: "4/5" },
+  "w-1/6": { label: "1/6" },
+  "w-2/6": { label: "2/6" },
+  "w-3/6": { label: "3/6" },
+  "w-4/6": { label: "4/6" },
+  "w-5/6": { label: "5/6" },
+  "w-1/12": { label: "1/12" },
+  "w-2/12": { label: "2/12" },
+  "w-3/12": { label: "3/12" },
+  "w-4/12": { label: "4/12" },
+  "w-5/12": { label: "5/12" },
+  "w-6/12": { label: "6/12" },
+  "w-7/12": { label: "7/12" },
+  "w-8/12": { label: "8/12" },
+  "w-9/12": { label: "9/12" },
+  "w-10/12": { label: "10/12" },
+  "w-11/12": { label: "11/12" },
+
+  "w-0": { label: "0" },
+  "w-1": { label: "1" },
+  "w-2": { label: "2" },
+  "w-3": { label: "3" },
+  "w-4": { label: "4" },
+  "w-5": { label: "5" },
+  "w-6": { label: "6" },
+  "w-8": { label: "8" },
+  "w-10": { label: "10" },
+  "w-12": { label: "12" },
+  "w-16": { label: "16" },
+  "w-20": { label: "20" },
+  "w-24": { label: "24" },
+  "w-32": { label: "32" },
+  "w-40": { label: "40" },
+  "w-48": { label: "48" },
+  "w-56": { label: "56" },
+  "w-64": { label: "64" },
+};
+
+//const c = props.className.split(" ");
+//console.log(c);
+
+let textColors = { ...baseColors };
+let bgColors = { ...baseColors };
+let borderColors = { ...baseColors };
+
+Object.keys(colors).forEach((c) => {
+  colorIntensity.forEach((intensity) => {
+    const lab = { ...colors[c] };
+    lab.label = lab.label + " " + intensity;
+    textColors["text-" + c + "-" + intensity] = lab;
+    bgColors["bg-" + c + "-" + intensity] = lab;
+    borderColors["border-" + c + "-" + intensity] = lab;
+  });
+});
+
+export const TextClasses = {
+  "text-color": {
+    type: "Select",
+    props: { items: textColors, label: "Text Color" },
+  },
+  "text-style": {
+    type: "Select",
+    props: { items: fontStyles, label: "Text Style" },
+  },
+  "text-size": {
+    type: "Select",
+    props: { items: fontSizes, label: "Text Size" },
+  },
+  "text-align": {
+    type: "Select",
+    props: { items: textAlign, label: "Text Align" },
+  },
+  "text-tracking": {
+    type: "Select",
+    props: { items: textTracking, label: "Letter Spacing" },
+  },
+  "text-leading": {
+    type: "Select",
+    props: { items: leadingTypes, label: "Line Spacing" },
+  },
+};
+
+export const BoxClasses = {
+  "bg-color": {
+    type: "Select",
+    props: { items: bgColors, label: "Background Color" },
+  },
+  width: {
+    type: "Select",
+    props: { items: widths, label: "Width" },
+  },
+  height: {
+    type: "Select",
+    props: { items: heights, label: "Height" },
+  },
+  shadow: {
+    type: "Select",
+    props: { items: shadows, label: "Shadow" },
+  },
+};
