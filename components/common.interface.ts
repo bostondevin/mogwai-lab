@@ -276,6 +276,7 @@ const widths = {
 let textColors = { ...baseColors };
 let bgColors = { ...baseColors };
 let borderColors = { ...baseColors };
+let outlineColors = { ...baseColors };
 
 Object.keys(colors).forEach((c) => {
   colorIntensity.forEach((intensity) => {
@@ -284,6 +285,7 @@ Object.keys(colors).forEach((c) => {
     textColors["text-" + c + "-" + intensity] = lab;
     bgColors["bg-" + c + "-" + intensity] = lab;
     borderColors["border-" + c + "-" + intensity] = lab;
+    outlineColors["outline-" + c + "-" + intensity] = lab;
   });
 });
 

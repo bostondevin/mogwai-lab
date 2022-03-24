@@ -309,7 +309,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
       </div>
 
       <div>
-        <h2 className="bg-slate-800 py-2 px-2 text-xs uppercase select-none">
+        <h2 className="bg-slate-200 dark:bg-slate-800 py-2 px-2 text-xs uppercase select-none">
           <Icon className="fa-solid fa-layer-group mr-2" /> Layers
         </h2>
         <Layers renderLayer={Layer} expandRootOnLoad={true} />
