@@ -1,5 +1,4 @@
 import React from "react";
-import lz from "lzutf8";
 
 import { FieldGroup, AbstractControl } from "react-reactive-form";
 

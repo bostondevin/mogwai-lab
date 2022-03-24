@@ -4,7 +4,7 @@ import { Input } from "./Input";
 import { Textarea } from "./Textarea";
 import { Text } from "./Text";
 
-import { FieldControl } from "react-reactive-form";
+import { FieldControl, FormGenerator } from "react-reactive-form";
 
 export const FormItems = (props) => {
   const inputComponents = {
@@ -13,29 +13,20 @@ export const FormItems = (props) => {
     Textarea: Textarea,
   };
 
-  return (
-    <>
-      {props.data &&
-        Object.keys(props.data).map((key, index) => {
-          return (
-            <div key={index} className={props.className}>
-              <Text
-                className={props.labelClassName}
-                type="label"
-                text={props.data[key].props.label}
-              />
-              <FieldControl
-                name={key}
-                render={inputComponents[props.data[key].type]}
-                meta={props.data[key].props}
-              />
-            </div>
-          );
-        })}
+  let f;
 
-      {!props.data && "No data"}
-    </>
-  );
+  const handleReset = () => {
+    f.reset();
+  };
+
+  const setForm = (form) => {
+    f = form;
+    f.meta = {
+      handleReset: handleReset,
+    };
+  };
+
+  return <FormGenerator onMount={setForm} fieldConfig={props.data} />;
 };
 
 /*

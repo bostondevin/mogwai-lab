@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useEditor } from "@craftjs/core";
 import { Form } from "../Core/Form";
-import { predicates } from "../components";
 import lz from "lzutf8";
-import { FormItems } from "components/Core/FormItems";
+import { FormGenerator, Validators } from "react-reactive-form";
 
 export const DataPanel = ({ store, path }) => {
   const { enabled } = useEditor((state) => ({
@@ -39,13 +38,17 @@ export const DataPanel = ({ store, path }) => {
     }
   };
 
+  const valueChanges = (e) => {
+    console.log(e);
+  };
+
+  const fieldConfig = {
+    controls: {},
+  };
+
   return (
-    <Form onChange={changeDataItem} onClick={addDataItem}>
-      <FormItems
-        data={dataProps}
-        className="flex w-full gap-1 mb-2"
-        labelClassName="flex pl-2"
-      />
+    <Form onSubmit={changeDataItem} onClick={addDataItem}>
+      <FormGenerator onValueChanges={valueChanges} fieldConfig={fieldConfig} />
     </Form>
   );
 };

@@ -14,8 +14,12 @@ export const Options = (props: Partial<OptionsProps>) => {
       <option>{props.placeholder ? props.placeholder : " "}</option>
 
       {props.items &&
-        Object.keys(props.items).map((key) => {
-          return <option value={key}>{props.items[key].label}</option>;
+        Object.keys(props.items).map((key, index) => {
+          return (
+            <option key={index} value={key}>
+              {props.items[key].label}
+            </option>
+          );
         })}
     </>
   );

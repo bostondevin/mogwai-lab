@@ -6,26 +6,25 @@ import {
   smallInputClasses,
 } from "../common.interface";
 import { Icon } from "./Icon";
+import { Text } from "./Text";
 import { Options } from "./Options";
 
-export const Select = ({
-  handler,
-  meta: { placeholder, tight, items },
-}: AbstractControl) => (
-  <div className="relative inline-block w-full">
+export const Select = ({ handler, meta }: AbstractControl) => (
+  <div className={meta.className}>
+    <Text className={meta.labelClassName} text={meta.label} type="label" />
     <select
       {...handler()}
       className={
-        tight
+        meta.tight
           ? smallInputClasses + " pl-2 pr-6 h-8 cursor-pointer"
           : regularInputClasses + " pl-3 pr-6 h-10 cursor-pointer"
       }
     >
-      <Options items={items} placeholder={placeholder} />
+      <Options items={meta.items} placeholder={meta.placeholder} />
     </select>
     <div
       className={
-        tight
+        meta.tight
           ? "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-8"
           : "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-10"
       }
