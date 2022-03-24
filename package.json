@@ -55,6 +55,7 @@
     "react-youtube": "^7.9.0",
     "reactjs-popup": "^2.0.5",
     "styled-components": "^4.4.1",
+    "tailwindcss-classnames": "^3.0.3",
     "three-spritetext": "^1.6.5"
   },
   "devDependencies": {

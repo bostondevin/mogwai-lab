@@ -2,6 +2,7 @@ type InputType =
   | "text"
   | "number"
   | "tel"
+  | "color"
   | "email"
   | "date"
   | "datetime-local"
@@ -62,6 +63,10 @@ export interface SelectProps extends CommonInputProps, DataListProps {
 export interface DataListProps {
   id?: string;
   items?: any;
+}
+
+export interface ClassNamesProps {
+  className?: string;
 }
 
 const cClasses =

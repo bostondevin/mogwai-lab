@@ -1,7 +1,7 @@
 export const predicates = {
   id: { label: "ID", type: "text" },
   label: { label: "Label", type: "text" },
-  className: { label: "Classes", type: "select" },
+  className: { label: "Classes", type: "classes" },
   html: { label: "Template", type: "textarea" },
 };
 
