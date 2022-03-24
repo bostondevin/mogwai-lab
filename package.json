@@ -49,6 +49,7 @@
     "react-force-graph-2d": "^1.23.10",
     "react-force-graph-3d": "^1.21.12",
     "react-loading": "^2.0.3",
+    "react-reactive-form": "^1.0.32",
     "react-rnd": "^10.1.1",
     "react-router-dom": "^6.2.1",
     "react-svg": "^14.1.15",

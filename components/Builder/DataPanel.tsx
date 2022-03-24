@@ -15,7 +15,7 @@ export const DataPanel = ({ store, path }) => {
     store.path(("templates" + path).split("/")).once((d) => {
       let o = { ...d };
       delete o._;
-      delete o.html;
+      // delete o.html;
       setDataProps(o);
     });
   }, []);

@@ -1,19 +1,23 @@
 import React from "react";
+import { AbstractControl } from "react-reactive-form";
 import {
   TextareaProps,
   regularInputClasses,
   smallInputClasses,
 } from "../common.interface";
 
-export const Textarea = React.forwardRef((props: TextareaProps, ref: any) => (
+export const Textarea = ({
+  handler,
+  meta: { placeholder, tight, rows },
+}: AbstractControl) => (
   <textarea
-    ref={ref}
-    {...props}
+    placeholder={placeholder}
+    rows={rows}
     className={
-      props.tight ? smallInputClasses + " p-1" : regularInputClasses + " p-2"
+      tight
+        ? smallInputClasses + " pl-2 pr-6 h-8"
+        : regularInputClasses + " pl-3 pr-6 h-10"
     }
-    onChange={props.onChange}
-  >
-    {props.value}
-  </textarea>
-));
+    {...handler()}
+  />
+);

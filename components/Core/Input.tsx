@@ -1,19 +1,23 @@
 import React from "react";
+import { AbstractControl } from "react-reactive-form";
 import {
   InputProps,
   regularInputClasses,
   smallInputClasses,
 } from "../common.interface";
 
-export const Input = React.forwardRef((props: InputProps, ref: any) => (
+export const Input = ({
+  handler,
+  meta: { placeholder, tight, type },
+}: AbstractControl) => (
   <input
-    ref={ref}
-    {...props}
+    type={type}
+    placeholder={placeholder}
     className={
-      props.tight
+      tight
         ? smallInputClasses + " pl-2 pr-6 h-8"
         : regularInputClasses + " pl-3 pr-6 h-10"
     }
-    onChange={props.onChange}
+    {...handler()}
   />
-));
+);
