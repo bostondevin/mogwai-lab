@@ -1,31 +1,18 @@
 import React from "react";
-import { ClassNamesProps } from "../../common.interface";
+import {
+  ClassNamesProps,
+  baseColors,
+  colors,
+  colorIntensity,
+} from "../../common.interface";
 
 import { Select } from "../Select";
 import { Text } from "../Text";
+import { Div } from "../Div";
 import { Input } from "../Input";
 import { Fieldset } from "../Fieldset";
 
 export const Font = (props: Partial<ClassNamesProps>) => {
-  const color = [
-    "transparent",
-    "current",
-    "black",
-    "white",
-    "gray",
-    "red",
-    "orange",
-    "yellow",
-    "lime",
-    "green",
-    "teal",
-    "blue",
-    "slate",
-    "indigo",
-    "purple",
-    "pink",
-  ];
-
   const fontSizes = {
     "text-xs": { label: "X Small" },
     "text-sm": { label: "Small" },
@@ -37,13 +24,6 @@ export const Font = (props: Partial<ClassNamesProps>) => {
     "text-4xl": { label: "4XL" },
     "text-5xl": { label: "5XL" },
     "text-6xl": { label: "6XL" },
-  };
-
-  const caseTypes = {
-    "normal-case": { label: "Normal" },
-    lowercase: { label: "Lowercase" },
-    uppwercase: { label: "Uppercase" },
-    capitalize: { label: "Capitalize" },
   };
 
   const leadingTypes = {
@@ -61,12 +41,6 @@ export const Font = (props: Partial<ClassNamesProps>) => {
     "leading-8": { label: "8" },
     "leading-9": { label: "9" },
     "leading-10": { label: "10" },
-  };
-
-  const lines = {
-    underline: { label: "Underline" },
-    "line-through": { label: "Line through" },
-    "no-underline": { label: "None" },
   };
 
   const fontStyles = {
@@ -96,8 +70,31 @@ export const Font = (props: Partial<ClassNamesProps>) => {
     "tracking-widest": { label: "Widest" },
   };
 
-  const c = props.className.split(" ");
-  console.log(c);
+  const lines = {
+    underline: { label: "Underline" },
+    "line-through": { label: "Line through" },
+    "no-underline": { label: "None" },
+  };
+
+  const caseTypes = {
+    "normal-case": { label: "Normal" },
+    lowercase: { label: "Lowercase" },
+    uppwercase: { label: "Uppercase" },
+    capitalize: { label: "Capitalize" },
+  };
+
+  //const c = props.className.split(" ");
+  //console.log(c);
+
+  let fullColors = { ...baseColors };
+
+  Object.keys(colors).forEach((c) => {
+    colorIntensity.forEach((intensity) => {
+      const lab = { ...colors[c] };
+      lab.label = lab.label + " " + intensity;
+      fullColors["text-" + c + "-" + intensity] = lab;
+    });
+  });
 
   return (
     <Fieldset className="border p-2 m-2 border-slate-300 dark:border-slate-500 rounded grid grid-cols-2 gap-2">
@@ -108,37 +105,33 @@ export const Font = (props: Partial<ClassNamesProps>) => {
         text="Text"
       />
 
-      <div className="flex flex-col">
+      <Div className="flex flex-col">
         <Text
           className="opacity-50"
           id="text-color"
           type="label"
           text="Color"
         />
-        <Input
-          type="color"
-          aria-labeled-by="text-style"
-          items={fontStyles}
-          tight={true}
-        />
-      </div>
+        <Select aria-labeled-by="text-color" items={fullColors} tight={true} />
+      </Div>
 
-      <div className="flex flex-col">
+      <Div className="flex flex-col">
         <Text
           className="opacity-50"
           id="text-style"
           type="label"
           text="Style"
         />
-        <Select aria-labeled-by="text-style" items={fontStyles} tight={true} />
-      </div>
 
-      <div className="flex flex-col">
+        <Select aria-labeled-by="text-style" items={fontStyles} tight={true} />
+      </Div>
+
+      <Div className="flex flex-col">
         <Text className="opacity-50" id="text-size" type="label" text="Size" />
         <Select aria-labeled-by="text-size" items={fontSizes} tight={true} />
-      </div>
+      </Div>
 
-      <div className="flex flex-col">
+      <Div className="flex flex-col">
         <Text
           className="opacity-50"
           id="text-align"
@@ -146,9 +139,9 @@ export const Font = (props: Partial<ClassNamesProps>) => {
           text="Align"
         />
         <Select aria-labeled-by="text-align" items={textAlign} tight={true} />
-      </div>
+      </Div>
 
-      <div className="flex flex-col">
+      <Div className="flex flex-col">
         <Text
           className="opacity-50"
           id="tracking-size"
@@ -160,9 +153,9 @@ export const Font = (props: Partial<ClassNamesProps>) => {
           items={textTracking}
           tight={true}
         />
-      </div>
+      </Div>
 
-      <div className="flex flex-col">
+      <Div className="flex flex-col">
         <Text
           className="opacity-50"
           id="leading-size"
@@ -174,7 +167,7 @@ export const Font = (props: Partial<ClassNamesProps>) => {
           items={leadingTypes}
           tight={true}
         />
-      </div>
+      </Div>
     </Fieldset>
   );
 };
