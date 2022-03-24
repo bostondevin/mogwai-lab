@@ -146,7 +146,7 @@ export const Font = (props: Partial<ClassNamesProps>) => {
           className="opacity-50"
           id="tracking-size"
           type="label"
-          text="Tracking"
+          text="Letter Spacing"
         />
         <Select
           aria-labeled-by="tracking-size"
@@ -160,7 +160,7 @@ export const Font = (props: Partial<ClassNamesProps>) => {
           className="opacity-50"
           id="leading-size"
           type="label"
-          text="Leading"
+          text="Line Spacing"
         />
         <Select
           aria-labeled-by="leading-size"

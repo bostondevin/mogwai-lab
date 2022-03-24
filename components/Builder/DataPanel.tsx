@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useEditor } from "@craftjs/core";
-import { DataForm } from "./DataForm";
+import { DataForm } from "../Core/DataForm";
 import { predicates } from "../../constants/components";
 import lz from "lzutf8";
 

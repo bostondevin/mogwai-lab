@@ -1,6 +1,6 @@
 import React from "react";
 import { useNode } from "@craftjs/core";
-import { DataForm } from "../DataForm";
+import { DataForm } from "../../Core/DataForm";
 import { predicates } from "../../../constants/components";
 
 export const ContainerSettings = () => {
@@ -17,7 +17,7 @@ export const ContainerSettings = () => {
 
   return (
     <DataForm
-      dataProps={propValue}
+      data={propValue}
       predicates={predicates}
       onChange={changeDataItem}
     />

@@ -1,9 +1,9 @@
 import React from "react";
-import { Select } from "../Core/Select";
-import { Input } from "../Core/Input";
-import { Textarea } from "../Core/Textarea";
-import { Text } from "../Core/Text";
-import { ClassNames } from "../Core/ClassNames/ClassNames";
+import { Select } from "./Select";
+import { Input } from "./Input";
+import { Textarea } from "./Textarea";
+import { Text } from "./Text";
+import { ClassNames } from "./ClassNames/ClassNames";
 import { InputWrapper } from "components/Core/InputWrapper";
 import lz from "lzutf8";
 
@@ -18,11 +18,11 @@ export const DataForm = (props) => {
   const formatHtmlData = (key) => {
     if (key === "html") {
       const json = lz.decompress(
-        lz.decodeBase64(decodeURIComponent(props.dataProps[key]))
+        lz.decodeBase64(decodeURIComponent(props.data[key]))
       );
       return json;
     } else {
-      return props.dataProps[key];
+      return props.data[key];
     }
   };
 
@@ -32,14 +32,10 @@ export const DataForm = (props) => {
 
   return (
     <div className="flex w-full text-xs gap-2 flex-col">
-      <form onSubmit={submitAddForm}>
+      <form onSubmit={submitAddForm} className="hidden">
         <div className="flex w-full gap-1 mb-2">
           <div className="flex pl-2">
-            <Select
-              items={props.predicates}
-              placeholder="- Choose -"
-              tight={true}
-            ></Select>
+            <Select items={props.predicates} tight={true}></Select>
           </div>
           <div className="flex break-all pr-2 pb-2">
             <InputWrapper
@@ -53,12 +49,12 @@ export const DataForm = (props) => {
         </div>
       </form>
 
-      {props.dataProps &&
-        Object.keys(props.dataProps).map((key, index) => {
+      {props.data &&
+        Object.keys(props.data).map((key, index) => {
           return (
             <>
               {props.predicates[key].type === "classes" && (
-                <ClassNames className={props.dataProps[key]} />
+                <ClassNames className={props.data[key]} />
               )}
 
               {props.predicates[key].type !== "classes" && (
@@ -73,7 +69,7 @@ export const DataForm = (props) => {
                     {props.predicates[key].type === "text" && (
                       <Input
                         type="text"
-                        value={props.dataProps[key]}
+                        value={props.data[key]}
                         tight={true}
                         aria-labeled-by={key}
                         onChange={(e) => changeData(e, key)}
@@ -90,7 +86,7 @@ export const DataForm = (props) => {
                     )}
                     {props.predicates[key].type === "select" && (
                       <Select
-                        value={props.dataProps[key]}
+                        value={props.data[key]}
                         tight={true}
                         aria-labeled-by={key}
                         onChange={(e) => changeData(e, key)}

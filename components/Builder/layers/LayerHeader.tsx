@@ -34,9 +34,10 @@ export const DefaultLayerHeader: React.FC = () => {
 
   return (
     <div
-      className="text-xs p-2 flex w-full hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer select-none"
+      className="text-xs py-1 px-2 flex w-full hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer select-none"
       ref={drag}
     >
+      <div style={{ width: depth * 8 + "px" }}></div>
       <div className="flex w-full" ref={layerHeader}>
         {topLevel && <Icon className="fa fa-link" />}
 
