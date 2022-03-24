@@ -2,7 +2,7 @@ import React from "react";
 import { useNode } from "@craftjs/core";
 import { Form } from "../../Core/Form";
 import { FormItems } from "../../Core/FormItems";
-import { predicates } from "../../components";
+import { TailwindClasses } from "../../common.interface";
 
 export const ContainerSettings = () => {
   const {
@@ -16,11 +16,13 @@ export const ContainerSettings = () => {
     console.log(e);
   };
 
-  const schema = {};
-
   return (
-    <Form onChange={changeDataItem}>
-      <FormItems data={predicates} />
+    <Form onChange={changeDataItem} className="grid grid-cols-2 gap-2 p-2">
+      <FormItems
+        data={TailwindClasses}
+        className="flex w-full gap mb-2 flex-col"
+        labelClassName="flex text-xs opacity-50"
+      />
     </Form>
   );
 };

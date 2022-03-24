@@ -41,7 +41,11 @@ export const DataPanel = ({ store, path }) => {
 
   return (
     <Form onChange={changeDataItem} onClick={addDataItem}>
-      <FormItems data={dataProps} />
+      <FormItems
+        data={dataProps}
+        className="flex w-full gap-1 mb-2"
+        labelClassName="flex pl-2"
+      />
     </Form>
   );
 };

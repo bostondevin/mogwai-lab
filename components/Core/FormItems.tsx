@@ -3,7 +3,6 @@ import { Select } from "./Select";
 import { Input } from "./Input";
 import { Textarea } from "./Textarea";
 import { Text } from "./Text";
-import { ClassNames } from "./ClassNames/ClassNames";
 
 import { FieldControl } from "react-reactive-form";
 
@@ -12,7 +11,6 @@ export const FormItems = (props) => {
     Select: Select,
     Input: Input,
     Textarea: Textarea,
-    ClassNames: ClassNames,
   };
 
   return (
@@ -20,12 +18,11 @@ export const FormItems = (props) => {
       {props.data &&
         Object.keys(props.data).map((key, index) => {
           return (
-            <div key={index} className="flex w-full gap-1 mb-2">
+            <div key={index} className={props.className}>
               <Text
-                className="flex pl-2"
-                id={key}
+                className={props.labelClassName}
                 type="label"
-                text={props.data[key].label}
+                text={props.data[key].props.label}
               />
               <FieldControl
                 name={key}
@@ -35,6 +32,8 @@ export const FormItems = (props) => {
             </div>
           );
         })}
+
+      {!props.data && "No data"}
     </>
   );
 };

@@ -217,6 +217,35 @@ const heights = {
   "h-64": { label: "64" },
 };
 
+const displayTypes = {
+  relative: { label: "Relative" },
+  absolute: { label: "Absolute" },
+  flex: { label: "Flex" },
+  grid: { label: "Grid" },
+  block: { label: "Block" },
+  inline: { label: "Inline" },
+  "inline-block": { label: "Inline Block" },
+  static: { label: "Static" },
+  fixed: { label: "Fixed" },
+  none: { label: "None" },
+};
+
+const gridColumns = {
+  "grid-cols-none": { label: "None" },
+  "grid-cols-1": { label: "1" },
+  "grid-cols-2": { label: "2" },
+  "grid-cols-3": { label: "3" },
+  "grid-cols-4": { label: "4" },
+  "grid-cols-5": { label: "5" },
+  "grid-cols-6": { label: "6" },
+  "grid-cols-7": { label: "7" },
+  "grid-cols-8": { label: "8" },
+  "grid-cols-9": { label: "9" },
+  "grid-cols-10": { label: "10" },
+  "grid-cols-11": { label: "11" },
+  "grid-cols-12": { label: "12" },
+};
+
 const widths = {
   "w-full": { label: "Full" },
   "w-screen": { label: "Screen" },
@@ -289,48 +318,50 @@ Object.keys(colors).forEach((c) => {
   });
 });
 
-export const TextClasses = {
-  "text-color": {
+export const TailwindClasses = {
+  text: { type: "Textarea", props: { label: "Text", tight: true } },
+  textColor: {
     type: "Select",
-    props: { items: textColors, label: "Text Color" },
+    props: { items: textColors, label: "Text Color", tight: true },
   },
-  "text-style": {
+  textStyle: {
     type: "Select",
-    props: { items: fontStyles, label: "Text Style" },
+    props: { items: fontStyles, label: "Text Style", tight: true },
   },
-  "text-size": {
+  textSize: {
     type: "Select",
-    props: { items: fontSizes, label: "Text Size" },
+    props: { items: fontSizes, label: "Text Size", tight: true },
   },
   "text-align": {
     type: "Select",
-    props: { items: textAlign, label: "Text Align" },
+    props: { items: textAlign, label: "Text Align", tight: true },
   },
   "text-tracking": {
     type: "Select",
-    props: { items: textTracking, label: "Letter Spacing" },
+    props: { items: textTracking, label: "Letter Spacing", tight: true },
   },
   "text-leading": {
     type: "Select",
-    props: { items: leadingTypes, label: "Line Spacing" },
+    props: { items: leadingTypes, label: "Line Spacing", tight: true },
   },
-};
-
-export const BoxClasses = {
+  display: {
+    type: "Select",
+    props: { items: displayTypes, label: "Display", tight: true },
+  },
   "bg-color": {
     type: "Select",
-    props: { items: bgColors, label: "Background Color" },
+    props: { items: bgColors, label: "Background Color", tight: true },
   },
   width: {
     type: "Select",
-    props: { items: widths, label: "Width" },
+    props: { items: widths, label: "Width", tight: true },
   },
   height: {
     type: "Select",
-    props: { items: heights, label: "Height" },
+    props: { items: heights, label: "Height", tight: true },
   },
   shadow: {
     type: "Select",
-    props: { items: shadows, label: "Shadow" },
+    props: { items: shadows, label: "Shadow", tight: true },
   },
 };

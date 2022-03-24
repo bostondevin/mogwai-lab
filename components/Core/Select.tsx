@@ -6,14 +6,13 @@ import {
   smallInputClasses,
 } from "../common.interface";
 import { Icon } from "./Icon";
-
 import { Options } from "./Options";
 
 export const Select = ({
   handler,
-  meta: { placeholder, tight, items, ref },
+  meta: { placeholder, tight, items },
 }: AbstractControl) => (
-  <div ref={ref} className="relative inline-block w-full">
+  <div className="relative inline-block w-full">
     <select
       {...handler()}
       className={
@@ -31,7 +30,7 @@ export const Select = ({
           : "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-10"
       }
     >
-      <Icon className="fa-solid fa-caret-down" />
+      <Icon className="fa-solid fa-chevron-down text-sm" />
     </div>
   </div>
 );
