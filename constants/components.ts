@@ -302,7 +302,9 @@ export const components = [
         icon: "fas fa-diagram-project",
         element: {
           type: "Diagram",
-          props: {},
+          props: {
+            className: "w-full h-full gradientDark",
+          },
         },
       },
 

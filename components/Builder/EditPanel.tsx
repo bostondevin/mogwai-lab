@@ -11,6 +11,8 @@ import { DataPanel } from "./DataPanel";
 import { Button } from "../Core/Button";
 import { Link } from "../Core/Link";
 
+import { Layer } from "./layers/Layer";
+
 import { ButtonBar } from "../Core/ButtonBar";
 
 import { Icon } from "../Core/Icon";
@@ -306,7 +308,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
         {activeTab === "data" && <DataPanel store={store} path={path} />}
       </div>
 
-      <Layers expandRootOnLoad={true} />
+      <Layers renderLayer={Layer} expandRootOnLoad={true} />
     </Div>
   );
 };

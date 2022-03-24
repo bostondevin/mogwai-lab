@@ -1,12 +1,22 @@
 import React, { useState, useCallback } from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 
-import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
 import { ReactDiagram, DiagramProps } from "gojs-react";
+
+import { Div, DivProps } from "../Core/Div";
+
+import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
+import {
+  nodeHook,
+  editorHook,
+  emptyContainerClass,
+  emptyContainerStyle,
+  editorEnabledAppend,
+} from "../Builder/toolbar/craft.utils";
 
 import * as go from "gojs";
 
-export const CraftDiagram: UserComponent<DiagramProps> = () => {
+export const CraftDiagram: UserComponent<DivProps> = (props) => {
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
   const [breadCrumbs, setBreadCrumbs] = useState([]);
 
@@ -474,7 +484,11 @@ export const CraftDiagram: UserComponent<DiagramProps> = () => {
   }
 
   return (
-    <div ref={connect} className="gradientDark">
+    <Div
+      ref={connect}
+      {...props}
+      className={props.className + (enabled ? editorEnabledAppend : "")}
+    >
       <ReactDiagram
         ref={fgRef}
         initDiagram={initDiagram}
@@ -482,7 +496,7 @@ export const CraftDiagram: UserComponent<DiagramProps> = () => {
         nodeDataArray={graphData.nodes}
         onModelChange={handleModelChange}
       />
-    </div>
+    </Div>
   );
 };
 
@@ -496,5 +510,7 @@ CraftDiagram.craft = {
       nodes.every((node) => node.data.type === Text || node.data.type === Icon),
       */
   },
-  related: {},
+  related: {
+    toolbar: ContainerSettings,
+  },
 };
