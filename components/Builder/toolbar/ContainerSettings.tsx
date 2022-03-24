@@ -1,7 +1,7 @@
 import React from "react";
 import { useNode } from "@craftjs/core";
 import { DataForm } from "../../Core/DataForm";
-import { predicates } from "../../../constants/components";
+import { predicates } from "../../components";
 
 export const ContainerSettings = () => {
   const {

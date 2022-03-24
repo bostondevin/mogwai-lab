@@ -57,7 +57,7 @@ export const DefaultLayerHeader: React.FC = () => {
       </div>
 
       <Button
-        className={hidden && "opacity-50"}
+        className={hidden && "opacity-25"}
         onClick={() => actions.setHidden(id, !hidden)}
       >
         <Icon className={hidden ? "fa fa-eye" : "fa fa-eye"} />

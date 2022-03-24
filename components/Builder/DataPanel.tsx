@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useEditor } from "@craftjs/core";
 import { DataForm } from "../Core/DataForm";
-import { predicates } from "../../constants/components";
+import { predicates } from "../components";
 import lz from "lzutf8";
 
 export const DataPanel = ({ store, path }) => {

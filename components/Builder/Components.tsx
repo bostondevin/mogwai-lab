@@ -35,7 +35,7 @@ import { CraftImage } from "../Craft/Image.craft";
 import { CraftText } from "../Craft/Text.craft";
 import { CraftVideo } from "../Craft/Video.craft";
 
-import { components } from "../../constants/components";
+import { components } from "../components";
 import { pro } from "../../constants/fontawesome-free";
 
 export const ComponentsPanel = () => {
