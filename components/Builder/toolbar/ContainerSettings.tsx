@@ -34,7 +34,7 @@ export const ContainerSettings = () => {
         newClassArr.push(newClassNames[d]);
       });
 
-      setProp((props) => (props.className = newClassArr.join(" ")), 500);
+      setProp((props) => (props.className = newClassArr.join(" ")), 100);
 
       console.log(value);
     });
@@ -44,17 +44,7 @@ export const ContainerSettings = () => {
     console.log(e);
   };
 
-  const customItems = {
-    text: {
-      render: Textarea,
-      meta: {
-        label: "Text",
-        tight: true,
-        className: outerClassName,
-        labelClassName: labelClassName,
-      },
-    },
-  };
+  const customItems = {};
 
   const o = {
     Select: Select,
