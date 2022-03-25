@@ -34,7 +34,7 @@ export const DefaultLayerHeader: React.FC = () => {
 
   return (
     <div
-      className="text-xs py-1 px-2 flex w-full hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer select-none"
+      className="py-1 px-2 flex w-full hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer select-none"
       ref={drag}
     >
       <div style={{ width: depth * 8 + "px" }}></div>

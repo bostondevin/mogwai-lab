@@ -141,7 +141,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
       }}
       className="sidebar w-2 border-l border-slate-300 dark:border-slate-800 flex shadow-md flex-col h-full overflow-y-auto bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white/75 ease-in-out transition-all duration-300"
     >
-      <Nav className="bg-slate-300 dark:bg-slate-800 w-full text-xs">
+      <Nav className="bg-slate-300 dark:bg-slate-800 w-full text-sm">
         <UnOrderedList className="flex w-full">
           <ListItem className="flex w-full">
             <Button
@@ -308,7 +308,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
         {activeTab === "data" && <DataPanel store={store} path={path} />}
       </div>
 
-      <div>
+      <div className="text-sm">
         <h2 className="bg-slate-200 dark:bg-slate-800 py-2 px-2 text-xs uppercase select-none">
           <Icon className="fa-solid fa-layer-group mr-2" /> Layers
         </h2>
