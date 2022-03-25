@@ -90,14 +90,10 @@ export const EditMenu = ({ render }) => {
   }, [dom, getPos]);
 
   useEffect(() => {
-    document
-      .querySelector(".craftjs-renderer")
-      .addEventListener("scroll", scroll);
-
+    const o = document.querySelector(".craftjs-renderer");
+    if (o) o.addEventListener("scroll", scroll);
     return () => {
-      document
-        .querySelector(".craftjs-renderer")
-        .removeEventListener("scroll", scroll);
+      if (o) o.removeEventListener("scroll", scroll);
     };
   }, [scroll]);
 

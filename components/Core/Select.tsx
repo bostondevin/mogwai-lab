@@ -7,12 +7,14 @@ import {
 } from "../common.interface";
 import { Icon } from "./Icon";
 import { Text } from "./Text";
+import { Div } from "./Div";
+import { Button } from "./Button";
 import { Options } from "./Options";
 
 export const Select = ({ handler, meta }: AbstractControl) => (
-  <div className={meta.className}>
+  <Div className={meta.className}>
     <Text className={meta.labelClassName} text={meta.label} type="label" />
-    <div className={meta.inputClassName}>
+    <Div className={meta.inputClassName}>
       <select
         {...handler()}
         className={
@@ -23,7 +25,7 @@ export const Select = ({ handler, meta }: AbstractControl) => (
       >
         <Options items={meta.items} placeholder={meta.placeholder} />
       </select>
-      <div
+      <Button
         className={
           meta.tight
             ? "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-8"
@@ -31,7 +33,7 @@ export const Select = ({ handler, meta }: AbstractControl) => (
         }
       >
         <Icon className="fa-solid fa-chevron-down" />
-      </div>
-    </div>
-  </div>
+      </Button>
+    </Div>
+  </Div>
 );

@@ -10,6 +10,7 @@ import {
   boxClasses,
   outerClassName,
   labelClassName,
+  getClassNames,
 } from "../../common.interface";
 
 export const TextSettings = () => {
@@ -20,38 +21,55 @@ export const TextSettings = () => {
     propValue: node.data.props,
   }));
 
-  let baseForm = FormBuilder.group({
-    username: ["", Validators.required],
-    password: ["", Validators.required],
-    rememberMe: false,
-  });
+  const formatColorProp = (prop, newClasses) => {
+    if (prop + "-color" in newClasses) {
+      if (prop + "-intensity" in newClasses) {
+        newClasses[prop + "-color"] =
+          newClasses[prop + "-color"] + "-" + newClasses[prop + "-intensity"];
+        delete newClasses[prop + "-intensity"];
+      }
+      if (prop + "-opacity" in newClasses) {
+        newClasses[prop + "-color"] =
+          newClasses[prop + "-color"] + "/" + newClasses[prop + "-opacity"];
+        delete newClasses[prop + "-opacity"];
+      }
+    } else {
+      delete newClasses[prop + "-opacity"];
+      delete newClasses[prop + "-intensity"];
+    }
+  };
 
   const mountForm = (f) => {
-    console.log(propValue);
-    baseForm = f;
-    baseForm.valueChanges.subscribe((value) => {
-      const newClassNames = Object.keys(value).reduce((acc, key) => {
-        const _acc = acc;
-        if (value[key] !== undefined && key.indexOf("className:") === 0)
-          _acc[key] = value[key];
-        return _acc;
-      }, {});
-
-      const newClassArr = [];
-      Object.keys(newClassNames).forEach((d) => {
-        newClassArr.push(newClassNames[d]);
-      });
-
-      setProp((props) => (props.className = newClassArr.join(" ")), 100);
+    f.valueChanges.subscribe((value) => {
+      let newClasses = {};
 
       Object.keys(value).forEach((key) => {
         if (key.indexOf("className:") !== 0) {
-          console.log(key);
+          //console.log(key);
           setProp((props) => (props[key] = value[key]), 100);
+        } else {
+          if (value[key])
+            newClasses[key.replace("className:", "")] = value[key];
         }
       });
 
-      console.log(value);
+      formatColorProp("text", newClasses);
+      formatColorProp("bg", newClasses);
+
+      console.log(newClasses);
+
+      const arr = [];
+
+      Object.keys(newClasses).forEach((key) => {
+        if (key.indexOf("-") > -1) {
+          arr.push(key.split("-")[0] + "-" + newClasses[key]);
+        } else {
+          arr.push(key + "-" + newClasses[key]);
+        }
+      });
+
+      console.log(arr);
+      setProp((props) => (props.className = arr.join(" ")), 100);
     });
   };
 
@@ -84,6 +102,18 @@ export const TextSettings = () => {
   const config = {
     controls: { ...customItems, ...textClasses },
   };
+
+  Object.keys(propValue).forEach((key) => {
+    if (key in config.controls) {
+      if (key === "classNames") {
+        propValue[key].split(" ").forEach((k) => {
+          console.log("classNames:" + k);
+          // config.controls['classNames:' + k].formState = "";
+        });
+      }
+      config.controls[key].formState = propValue[key]; // ["", Validators.required],
+    }
+  });
 
   return (
     <Form onSubmit={submitForm} className="grid grid-cols-2 gap-2 p-2">
