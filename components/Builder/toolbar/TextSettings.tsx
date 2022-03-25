@@ -104,8 +104,11 @@ export const TextSettings = () => {
     controls: { ...customItems, ...textClasses },
   };
 
-  console.log(config);
-  console.log(propValue);
+  const setFormValue = (d, key, kParts) => {
+    if (d in tailwindSchema[kParts[0]][kParts[1]]) {
+      config.controls[key].formState = d;
+    }
+  };
 
   Object.keys(config.controls).forEach((key) => {
     if (key in propValue && key.indexOf("className:") === -1) {
@@ -116,8 +119,6 @@ export const TextSettings = () => {
       const k = key.replace("className:", "");
       const c = propValue["className"].split(" ");
 
-      console.log(k);
-
       if (k.indexOf("-") === -1) {
         const filterVal = c.find((d) => d.indexOf(k) === 0);
         if (filterVal) {
@@ -126,22 +127,43 @@ export const TextSettings = () => {
           } else {
             config.controls[key].formState = filterVal;
           }
-
-          console.log(config.controls[key].formState);
         }
       } else {
         const kParts = k.split("-");
-        //console.log(kParts);
+
+        const filterVal = c
+          .filter((d) => d.indexOf(kParts[0] + "-") === 0)
+          .map((d) => d.replace(kParts[0] + "-", ""));
+        // console.log(kParts);
+        // console.log(filterVal);
+
+        filterVal.forEach((d) => {
+          if (d in tailwindSchema[kParts[0]][kParts[1]]) {
+            config.controls[key].formState = d;
+          }
+
+          if (d.indexOf("-") > -1) {
+            const m = d.split("-");
+
+            if (m.length === 2) {
+              if (m[1].indexOf("/") > -1) {
+                const op = m[1].split("/");
+                setFormValue(op[1], key, kParts);
+              } else {
+                setFormValue(m[1], key, kParts);
+              }
+            } else {
+              if (d.indexOf("/") > -1) {
+                const op = d.split("/");
+                console.log(op[1]);
+                setFormValue(op[1], key, kParts);
+              } else {
+                setFormValue(d, key, kParts);
+              }
+            }
+          }
+        });
       }
-
-      // const classes = propValue['className'];
-      //console.log(propValue["className"]);
-      //console.log(tailwindSchema);
-
-      // classes.forEach((k) => {
-      //console.log(k);
-      // config.controls['classNames:' + k].formState = "";
-      //});
     }
   });
 
