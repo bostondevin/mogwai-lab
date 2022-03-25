@@ -28,35 +28,3 @@ export const FormItems = (props) => {
 
   return <FormGenerator onMount={setForm} fieldConfig={props.data} />;
 };
-
-/*
-{props.data &&
-              Object.keys(props.data).map((key, index) => {
-                return (
-                  <>
-                    {props.predicates[key].type === "Classnames" && (
-                      <ClassNames className={props.data[key]} />
-                    )}
-
-                    {props.predicates[key].type !== "classes" && (
-                      <div key={index} className="flex w-full gap-1 mb-2">
-                        <Text
-                          className="flex pl-2"
-                          id={key}
-                          type="label"
-                          text={props.predicates[key].label}
-                        />
-                        <div className="flex break-all pr-2 pb-2 w-full">
-                          <FieldControl
-                            name={key}
-                            render={inputComponents[props.predicates[key].type]}
-                            meta={props.predicates[key].props}
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </>
-                );
-              })}
-
-              */

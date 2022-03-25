@@ -35,7 +35,6 @@ export const Form = (props) => {
                     label: "First Name",
                     placeholder: "Enter first name",
                     tight: true,
-                    items: props.predicates,
                   }}
                 />
               </div>

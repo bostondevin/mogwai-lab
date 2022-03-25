@@ -12,6 +12,21 @@ type InputType =
   | "range"
   | "file";
 
+export const InputTypes = {
+  text: { label: "Text" },
+  number: { label: "Number" },
+  tel: { label: "Phone" },
+  color: { label: "Color" },
+  email: { label: "Email" },
+  date: { label: "Date" },
+  "datetime-local": { label: "Date/Time" },
+  time: { label: "Time" },
+  checkbox: { label: "Checkbox" },
+  radio: { label: "Radio" },
+  range: { label: "Range" },
+  file: { label: "Slate" },
+};
+
 export type ContainerProps = {
   className?: string;
   style?: any;
