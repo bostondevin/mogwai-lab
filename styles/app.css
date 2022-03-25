@@ -2,11 +2,24 @@
 @tailwind components;
 @import url("https://use.typekit.net/mpa1wkh.css");
 
+@font-face {
+  font-family: "proximanova-regular";
+  src: url("../public/fonts/Proxima-Nova-Webfont/Webfonts/proximanova_regular_macroman/proximanova-regular-webfont.woff2")
+      format("woff2"),
+    url("../public/fonts/Proxima-Nova-Webfont/Webfonts/proximanova_regular_macroman/proximanova-regular-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
+  font-family: "proximanova-regular";
+  /*
   font-family: "acumin-pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
+    */
 }
 
 @tailwind utilities;

@@ -25,6 +25,7 @@ export const DataPanel = ({ store, path }) => {
   };
 
   const changeDataItem = (e) => {
+    /*
     console.log(e);
     console.log(path);
     const template = store.path(("templates" + path).split("/")).get(e.key);
@@ -36,6 +37,7 @@ export const DataPanel = ({ store, path }) => {
     } else {
       template.put(e.value, () => {});
     }
+    */
   };
 
   const valueChanges = (e) => {

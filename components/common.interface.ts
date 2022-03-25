@@ -12,6 +12,19 @@ type InputType =
   | "range"
   | "file";
 
+export const TextTypes = {
+  span: { label: "Span" },
+  p: { label: "Paragraph" },
+  legend: { label: "Legend" },
+  label: { label: "Label" },
+  h1: { label: "H1" },
+  h2: { label: "H2" },
+  h3: { label: "H3" },
+  h4: { label: "H4" },
+  h5: { label: "H5" },
+  h6: { label: "H6" },
+};
+
 export const InputTypes = {
   text: { label: "Text" },
   number: { label: "Number" },
@@ -300,9 +313,9 @@ const baseColors = {
     "w-64": { label: "64" },
   };
 
-export const outerClassName = "flex w-full gap mb-2 flex-col";
+export const outerClassName = "flex w-full gap-1 mb-2 flex-col";
 export const labelClassName = "flex text-xs opacity-50";
-export const inputClassName = "";
+export const inputClassName = "relative";
 
 let textColors = { ...baseColors };
 let bgColors = { ...baseColors };
@@ -329,6 +342,7 @@ export const boxClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:bg-color": {
@@ -339,6 +353,7 @@ export const boxClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:width": {
@@ -349,6 +364,7 @@ export const boxClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:height": {
@@ -359,6 +375,7 @@ export const boxClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:shadow": {
@@ -370,11 +387,23 @@ export const boxClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
 };
 
 export const textClasses = {
+  type: {
+    type: "Select",
+    meta: {
+      items: TextTypes,
+      label: "Text Type",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
   "className:text-color": {
     type: "Select",
     meta: {
@@ -383,6 +412,7 @@ export const textClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:text-style": {
@@ -393,6 +423,7 @@ export const textClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:text-size": {
@@ -403,6 +434,7 @@ export const textClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:text-align": {
@@ -413,6 +445,7 @@ export const textClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:text-tracking": {
@@ -423,6 +456,7 @@ export const textClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
   "className:text-leading": {
@@ -433,6 +467,7 @@ export const textClasses = {
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
+      inputClassName: inputClassName,
     },
   },
 };

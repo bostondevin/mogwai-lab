@@ -4,7 +4,7 @@ import { Form } from "../../Core/Form";
 import { Textarea } from "../../Core/Textarea";
 import { Input } from "../../Core/Input";
 import { Select } from "../../Core/Select";
-import { FormGenerator, Validators } from "react-reactive-form";
+import { FormGenerator, Validators, FormBuilder } from "react-reactive-form";
 import {
   textClasses,
   boxClasses,
@@ -20,8 +20,16 @@ export const TextSettings = () => {
     propValue: node.data.props,
   }));
 
+  let baseForm = FormBuilder.group({
+    username: ["", Validators.required],
+    password: ["", Validators.required],
+    rememberMe: false,
+  });
+
   const mountForm = (f) => {
-    f.valueChanges.subscribe((value) => {
+    console.log(propValue);
+    baseForm = f;
+    baseForm.valueChanges.subscribe((value) => {
       const newClassNames = Object.keys(value).reduce((acc, key) => {
         const _acc = acc;
         if (value[key] !== undefined && key.indexOf("className:") === 0)
@@ -35,6 +43,13 @@ export const TextSettings = () => {
       });
 
       setProp((props) => (props.className = newClassArr.join(" ")), 100);
+
+      Object.keys(value).forEach((key) => {
+        if (key.indexOf("className:") !== 0) {
+          console.log(key);
+          setProp((props) => (props[key] = value[key]), 100);
+        }
+      });
 
       console.log(value);
     });

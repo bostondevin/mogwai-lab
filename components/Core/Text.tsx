@@ -28,7 +28,7 @@ export const Text = React.forwardRef((props: TextProps, ref: any) => (
   <ContentEditable
     innerRef={ref}
     id={props.id}
-    html={props.text}
+    html={props.text || ""}
     disabled={props.disabled}
     className={props.className}
     tagName={props.type}

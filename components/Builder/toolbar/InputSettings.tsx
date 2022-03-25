@@ -4,7 +4,7 @@ import { Form } from "../../Core/Form";
 import { Textarea } from "../../Core/Textarea";
 import { Input } from "../../Core/Input";
 import { Select } from "../../Core/Select";
-import { FormGenerator, Validators } from "react-reactive-form";
+import { FormGenerator, FormBuilder, Validators } from "react-reactive-form";
 import {
   textClasses,
   boxClasses,
@@ -21,7 +21,15 @@ export const InputSettings = () => {
     propValue: node.data.props,
   }));
 
+  const fg = FormBuilder.group({
+    username: ["", Validators.required],
+  });
+
   const mountForm = (f) => {
+    console.log(propValue);
+
+    f.formState = {};
+
     f.valueChanges.subscribe((value) => {
       const newClassNames = Object.keys(value).reduce((acc, key) => {
         const _acc = acc;
