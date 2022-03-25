@@ -11,6 +11,7 @@ import {
   outerClassName,
   labelClassName,
   getClassNames,
+  tailwindSchema,
 } from "../../common.interface";
 
 export const TextSettings = () => {
@@ -103,15 +104,44 @@ export const TextSettings = () => {
     controls: { ...customItems, ...textClasses },
   };
 
-  Object.keys(propValue).forEach((key) => {
-    if (key in config.controls) {
-      if (key === "classNames") {
-        propValue[key].split(" ").forEach((k) => {
-          console.log("classNames:" + k);
-          // config.controls['classNames:' + k].formState = "";
-        });
-      }
+  console.log(config);
+  console.log(propValue);
+
+  Object.keys(config.controls).forEach((key) => {
+    if (key in propValue && key.indexOf("className:") === -1) {
       config.controls[key].formState = propValue[key]; // ["", Validators.required],
+    }
+
+    if (key.indexOf("className:") === 0 && "className" in propValue) {
+      const k = key.replace("className:", "");
+      const c = propValue["className"].split(" ");
+
+      console.log(k);
+
+      if (k.indexOf("-") === -1) {
+        const filterVal = c.find((d) => d.indexOf(k) === 0);
+        if (filterVal) {
+          if (filterVal.indexOf("-") > -1) {
+            config.controls[key].formState = filterVal.split("-")[1];
+          } else {
+            config.controls[key].formState = filterVal;
+          }
+
+          console.log(config.controls[key].formState);
+        }
+      } else {
+        const kParts = k.split("-");
+        //console.log(kParts);
+      }
+
+      // const classes = propValue['className'];
+      //console.log(propValue["className"]);
+      //console.log(tailwindSchema);
+
+      // classes.forEach((k) => {
+      //console.log(k);
+      // config.controls['classNames:' + k].formState = "";
+      //});
     }
   });
 

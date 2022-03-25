@@ -153,7 +153,7 @@ const colors = {
   rose: { label: "Rose" },
 };
 
-const tailwindSchema = {
+export const tailwindSchema = {
   text: {
     color: colors,
     intensity: colorIntensity,
@@ -492,7 +492,7 @@ export const textClasses = {
       inputClassName: inputClassName,
     },
   },
-  "className:font-style": {
+  "className:font": {
     type: "Select",
     meta: {
       items: tailwindSchema.font.style,
