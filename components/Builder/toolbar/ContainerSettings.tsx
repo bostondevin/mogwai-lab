@@ -245,6 +245,20 @@ export const ContainerSettings = () => {
 
   const mountForm = (f) => {
     f.valueChanges.subscribe((value) => {
+      const newClassNames = Object.keys(value).reduce((acc, key) => {
+        const _acc = acc;
+        if (value[key] !== undefined && key.indexOf("className:") === 0)
+          _acc[key] = value[key];
+        return _acc;
+      }, {});
+
+      const newClassArr = [];
+      Object.keys(newClassNames).forEach((d) => {
+        newClassArr.push(newClassNames[d]);
+      });
+
+      setProp((props) => (props.className = newClassArr.join(" ")), 500);
+
       console.log(value);
     });
   };
