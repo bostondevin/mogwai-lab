@@ -1,9 +1,6 @@
 import React from "react";
 
 import { Button } from "./Button";
-import { UnOrderedList } from "./UnOrderedList";
-import { ListItem } from "./ListItem";
-import { Icon } from "./Icon";
 
 interface ButtonItem {
   id: string;
@@ -31,22 +28,22 @@ export const ButtonBar = (props: Partial<ButtonBarProps>) => {
   };
 
   return (
-    <UnOrderedList className={"flex flex-row w-full text-xs"}>
+    <ul className={"flex flex-row w-full text-xs"}>
       {props.items.map((item, index) => {
         return (
-          <ListItem className="flex items-center" key={index}>
+          <li className="flex items-center" key={index}>
             <Button
               onClick={(e) => changeTab(e, item.id)}
               className={
                 props.selected === item.id ? linkOnClasses : linkOffClasses
               }
             >
-              {item.icon && <Icon className={item.icon} />}
+              {item.icon && <i className={item.icon} />}
               <span className="ml-1">{item.label}</span>
             </Button>
-          </ListItem>
+          </li>
         );
       })}
-    </UnOrderedList>
+    </ul>
   );
 };

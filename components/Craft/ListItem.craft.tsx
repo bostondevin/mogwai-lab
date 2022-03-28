@@ -1,7 +1,5 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { DivContainer } from "../Core/Div";
-import { ListItem } from "../Core/ListItem";
 import { ContainerProps } from "../common.interface";
 
 import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";

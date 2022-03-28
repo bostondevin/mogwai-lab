@@ -1,8 +1,8 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Icon, IconProps } from "../Core/Icon";
 import { ButtonSettings } from "../Builder/toolbar/ButtonSettings";
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
+import { IconProps } from "../common.interface";
 
 export const CraftIcon: UserComponent<IconProps> = (props) => {
   const {

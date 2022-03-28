@@ -10,13 +10,8 @@ import { DataPanel } from "./DataPanel";
 import { Button } from "../Core/Button";
 import { Layer } from "./layers/Layer";
 import { ButtonBar } from "../Core/ButtonBar";
-import { Icon } from "../Core/Icon";
 import { Text } from "../Core/Text";
 import { Popup } from "../Core/Popup";
-import { Nav } from "../Core/Nav";
-import { DivContainer } from "../Core/Div";
-import { UnOrderedList } from "../Core/UnOrderedList";
-import { ListItem } from "../Core/ListItem";
 
 const barWidth = 350;
 
@@ -128,7 +123,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
     "p-2 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-900 select-none cursor-pointer";
 
   return (
-    <DivContainer
+    <div
       style={{
         width: barWidth + "px",
         opacity: enabled ? 1 : 0,
@@ -136,9 +131,9 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
       }}
       className="sidebar w-2 border-l border-slate-300 dark:border-slate-800 flex shadow-md flex-col h-full overflow-y-auto bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white/75 ease-in-out transition-all duration-300"
     >
-      <Nav className="bg-slate-300 dark:bg-slate-800 w-full text-sm">
-        <UnOrderedList className="flex w-full">
-          <ListItem className="flex w-full">
+      <nav className="bg-slate-300 dark:bg-slate-800 w-full text-sm">
+        <ul className="flex w-full">
+          <li className="flex w-full">
             <Button
               type="button"
               tooltip="Close"
@@ -146,11 +141,11 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               placement="bottom"
               className={navItemClass}
             >
-              <Icon className="fa-solid fa-times" />
+              <i className="fa-solid fa-times" />
             </Button>
-          </ListItem>
+          </li>
 
-          <ListItem className="flex">
+          <li className="flex">
             <Popup
               bgColor={darkMode ? "rgba(51,65,85,1)" : "rgba(201,213,225,1)"}
               width={100}
@@ -164,7 +159,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                         type="button"
                         className="p-2 hover:bg-slate-800 dark:hover:bg-slate-400 select-none cursor-pointer flex gap-2"
                       >
-                        <Icon className={item.icon + " flex"} />
+                        <i className={item.icon + " flex"} />
                         <Text
                           type="span"
                           text={item.label}
@@ -184,7 +179,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                 placement="bottom"
                 className={navItemClass}
               >
-                <Icon
+                <i
                   className={
                     "fa-solid " +
                     (screen === "mobile"
@@ -196,9 +191,9 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                 />
               </Button>
             </Popup>
-          </ListItem>
+          </li>
 
-          <ListItem className="flex">
+          <li className="flex">
             <Button
               type="button"
               tooltip="Outlines"
@@ -207,16 +202,16 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               disabled={!outlinesVisible}
               className={navItemClass}
             >
-              <Icon
+              <i
                 className={
                   "fa-solid fa-square-dashed" +
                   (outlinesVisible ? "" : " opacity-50")
                 }
               />
             </Button>
-          </ListItem>
+          </li>
 
-          <ListItem className="flex">
+          <li className="flex">
             <Button
               type="button"
               tooltip="Ruler"
@@ -225,15 +220,15 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               disabled={!rulerVisible}
               className={navItemClass}
             >
-              <Icon
+              <i
                 className={
                   "fa-solid fa-ruler" + (rulerVisible ? "" : " opacity-50")
                 }
               />
             </Button>
-          </ListItem>
+          </li>
 
-          <ListItem className="flex">
+          <li className="flex">
             <Button
               type="button"
               tooltip="Remove All"
@@ -241,11 +236,11 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               placement="bottom"
               className={navItemClass}
             >
-              <Icon className="fa-solid fa-trash" />
+              <i className="fa-solid fa-trash" />
             </Button>
-          </ListItem>
+          </li>
 
-          <ListItem className="flex">
+          <li className="flex">
             <Button
               type="button"
               tooltip="Undo"
@@ -254,13 +249,13 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               disabled={!canUndo}
               className={navItemClass}
             >
-              <Icon
+              <i
                 className={"fa-solid fa-undo" + (canUndo ? "" : " opacity-50")}
               />
             </Button>
-          </ListItem>
+          </li>
 
-          <ListItem className="flex">
+          <li className="flex">
             <Button
               type="button"
               tooltip="Redo"
@@ -269,13 +264,13 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               onClick={() => actions.history.redo()}
               className={navItemClass}
             >
-              <Icon
+              <i
                 className={"fa-solid fa-redo" + (canRedo ? "" : " opacity-50")}
               />
             </Button>
-          </ListItem>
+          </li>
 
-          <ListItem className="flex gap-2">
+          <li className="flex gap-2">
             <Button
               type="button"
               onClick={saveChanges}
@@ -284,15 +279,15 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               placement="bottom"
               className={navItemClass}
             >
-              <Icon
+              <i
                 className={
                   "fa-solid fa-floppy-disk" + (canUndo ? "" : " opacity-50")
                 }
               />
             </Button>
-          </ListItem>
-        </UnOrderedList>
-      </Nav>
+          </li>
+        </ul>
+      </nav>
 
       <ButtonBar onClick={changeTab} items={tabItems} selected={activeTab} />
 
@@ -304,10 +299,10 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
 
       <div className="text-sm">
         <h2 className="bg-slate-200 dark:bg-slate-800 py-2 px-2 text-xs uppercase select-none">
-          <Icon className="fa-solid fa-layer-group mr-2" /> Layers
+          <i className="fa-solid fa-layer-group mr-2" /> Layers
         </h2>
         <Layers renderLayer={Layer} expandRootOnLoad={true} />
       </div>
-    </DivContainer>
+    </div>
   );
 };

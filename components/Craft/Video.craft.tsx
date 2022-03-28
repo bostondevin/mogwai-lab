@@ -1,9 +1,9 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Video, VideoProps } from "../Core/Video";
 import { ButtonSettings } from "../Builder/toolbar/ButtonSettings";
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
 import YouTube from "react-youtube";
+import { VideoProps } from "../common.interface";
 
 export const CraftVideo: UserComponent<VideoProps> = (props) => {
   const {

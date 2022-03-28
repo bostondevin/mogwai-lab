@@ -1,9 +1,6 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { ListItem } from "../Core/ListItem";
 import { CraftListItem } from "./ListItem.craft";
-import { OrderedList } from "../Core/OrderedList";
-import { UnOrderedList } from "../Core/UnOrderedList";
 import { ListProps } from "../common.interface";
 
 import { ListSettings } from "../Builder/toolbar/ListSettings";

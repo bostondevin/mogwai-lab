@@ -4,9 +4,6 @@ import { useEditor } from "@craftjs/core";
 
 import { Link } from "./Link";
 import { Button } from "./Button";
-import { Icon } from "./Icon";
-import { UnOrderedList } from "./UnOrderedList";
-import { ListItem } from "./ListItem";
 
 export const Appbar = ({ screen, store }): JSX.Element => {
   const [path, setPath] = useState(null);
@@ -136,19 +133,17 @@ export const Appbar = ({ screen, store }): JSX.Element => {
         </svg>
       </Link>
 
-      <UnOrderedList
-        className={screen === "mobile" ? "hidden" : "flex flex-row w-full"}
-      >
+      <ul className={screen === "mobile" ? "hidden" : "flex flex-row w-full"}>
         {links.map((item) => {
           return (
-            <ListItem key={item.key} className="flex items-center">
+            <li key={item.key} className="flex items-center">
               <Link
                 href={item.href}
                 onClick={clickLink}
                 className={path === item.href ? linkOnClasses : linkOffClasses}
               >
                 {item.key === 0 || screen === "tablet" ? (
-                  <Icon className={item.icon} />
+                  <i className={item.icon} />
                 ) : (
                   <></>
                 )}
@@ -158,68 +153,66 @@ export const Appbar = ({ screen, store }): JSX.Element => {
                   <></>
                 )}
               </Link>
-            </ListItem>
+            </li>
           );
         })}
-      </UnOrderedList>
+      </ul>
 
       {screen === "mobile" && <div className="flex w-full"></div>}
 
-      <UnOrderedList className="flex mr-3 gap-2">
-        <ListItem className="flex">
+      <ul className="flex mr-3 gap-2">
+        <li className="flex">
           <Button
             tooltip="Settings"
             className="px-2 opacity-50 hover:opacity-80"
           >
-            <Icon className="fa-solid fa-bars" />
+            <i className="fa-solid fa-bars" />
           </Button>
-        </ListItem>
+        </li>
 
-        <ListItem className="flex">
+        <li className="flex">
           <Button
             tooltip="Settings"
             className="px-2 opacity-50 hover:opacity-80"
           >
-            <Icon className="fa-solid fa-grid" />
+            <i className="fa-solid fa-grid" />
           </Button>
-        </ListItem>
+        </li>
 
-        <ListItem className="flex">
+        <li className="flex">
           <Button tooltip="Search" className="px-2 opacity-50 hover:opacity-80">
-            <Icon className="fa-solid fa-search" />
+            <i className="fa-solid fa-search" />
           </Button>
-        </ListItem>
+        </li>
 
-        <ListItem className="flex">
+        <li className="flex">
           <Button
             onClick={toggleDarkMode}
             tooltip={darkMode ? "Light mode" : "Dark mode"}
             placement="bottom"
             className="px-2 opacity-50 hover:opacity-80"
           >
-            <Icon
-              className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"}
-            />
+            <i className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"} />
           </Button>
-        </ListItem>
+        </li>
 
         {!enabled && (
-          <ListItem className="flex">
+          <li className="flex">
             <Button
               onClick={toggleEdit}
               tooltip={enabled ? "Save" : "Edit"}
               placement="bottom"
               className="px-2 opacity-50 hover:opacity-80"
             >
-              <Icon
+              <i
                 className={
                   enabled ? "fa-solid fa-floppy-disk" : "fa-solid fa-edit"
                 }
               />
             </Button>
-          </ListItem>
+          </li>
         )}
-      </UnOrderedList>
+      </ul>
     </>
   );
 };

@@ -3,9 +3,7 @@ import { ROOT_NODE } from "@craftjs/utils";
 import React, { useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
 
-import { Icon } from "../Core/Icon";
 import { Button } from "../Core/Button";
-import { DivContainer } from "../Core/Div";
 
 export const EditMenu = ({ render }) => {
   const { id } = useNode();
@@ -101,7 +99,7 @@ export const EditMenu = ({ render }) => {
     <>
       {enabled && (isHover || isActive)
         ? ReactDOM.createPortal(
-            <DivContainer
+            <div
               ref={currentRef}
               className={
                 isActive
@@ -119,7 +117,7 @@ export const EditMenu = ({ render }) => {
               <h2 className="flex-1 mr-4">{name}</h2>
               {moveable && isActive ? (
                 <button type="button" className="mr-2 cursor-move" ref={drag}>
-                  <Icon className="fas fa-arrows-up-down-left-right" />
+                  <i className="fas fa-arrows-up-down-left-right" />
                 </button>
               ) : null}
               {id !== ROOT_NODE && isActive && (
@@ -130,7 +128,7 @@ export const EditMenu = ({ render }) => {
                     actions.selectNode(parent);
                   }}
                 >
-                  <Icon className="fas fa-arrow-up" />
+                  <i className="fas fa-arrow-up" />
                 </Button>
               )}
               {deletable && isActive ? (
@@ -142,10 +140,10 @@ export const EditMenu = ({ render }) => {
                     actions.delete(id);
                   }}
                 >
-                  <Icon className="fas fa-trash" />
+                  <i className="fas fa-trash" />
                 </Button>
               ) : null}
-            </DivContainer>,
+            </div>,
             document.querySelector(".page-container")
           )
         : null}

@@ -5,16 +5,14 @@ import {
   regularInputClasses,
   smallInputClasses,
 } from "../common.interface";
-import { Icon } from "./Icon";
 import { Text } from "./Text";
-import { DivContainer } from "./Div";
 import { Button } from "./Button";
 import { Options } from "./Options";
 
 export const Select = ({ handler, meta }: AbstractControl) => (
-  <DivContainer className={meta.className}>
+  <div className={meta.className}>
     <Text className={meta.labelClassName} text={meta.label} type="label" />
-    <DivContainer className={meta.inputClassName}>
+    <div className={meta.inputClassName}>
       <select
         {...handler()}
         className={
@@ -32,8 +30,8 @@ export const Select = ({ handler, meta }: AbstractControl) => (
             : "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-10"
         }
       >
-        <Icon className="fa-solid fa-chevron-down" />
+        <i className="fa-solid fa-chevron-down" />
       </Button>
-    </DivContainer>
-  </DivContainer>
+    </div>
+  </div>
 );

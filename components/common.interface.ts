@@ -1,3 +1,5 @@
+import { ContentEditableEvent } from "react-contenteditable";
+
 export const TextTypes = {
   span: { label: "Span" },
   p: { label: "Paragraph" },
@@ -55,6 +57,46 @@ export type CommonProps = {
   "aria-label"?: string;
   children?: any;
 };
+
+type TextType =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "span"
+  | "p"
+  | "small"
+  | "legend"
+  | "label";
+
+export interface TextProps {
+  onChange?: (event: ContentEditableEvent) => void;
+  type: TextType;
+  text?: string;
+  id?: string;
+  className?: string;
+  disabled?: boolean;
+  //  children?: JSX.Element | JSX.Element[] | string | number | boolean | null | undefined
+}
+
+export type IconProps = {
+  className?: string;
+  "aria-hidden"?: boolean;
+};
+
+export interface ImageProps {
+  src?: string;
+  alt?: string;
+  className?: string;
+  style?: any;
+}
+
+export interface VideoProps {
+  videoId?: string;
+  className?: string;
+}
 
 export type CommonEvents = {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;

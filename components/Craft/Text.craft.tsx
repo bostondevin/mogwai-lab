@@ -1,9 +1,9 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Text, TextProps } from "../Core/Text";
 import { TextSettings } from "../Builder/toolbar/TextSettings";
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
-import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
+import ContentEditable from "react-contenteditable";
+import { TextProps } from "../common.interface";
 
 export const CraftText: UserComponent<TextProps> = (props) => {
   const {

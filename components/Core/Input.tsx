@@ -1,8 +1,6 @@
 import React from "react";
 import { AbstractControl } from "react-reactive-form";
 import { Button } from "./Button";
-import { Icon } from "./Icon";
-import { DivContainer } from "./Div";
 import {
   InputProps,
   regularInputClasses,
@@ -35,7 +33,7 @@ export const Input = ({ handler, meta }: AbstractControl) => {
             type={meta.buttonType}
             className="absolute inset-y-0 right-0 flex items-center px-2 font-bold text-white bg-indigo-600 rounded-r-lg hover:bg-indigo-500 focus:bg-indigo-700"
           >
-            <Icon className={meta.buttonIcon} />
+            <i className={meta.buttonIcon} />
           </Button>
         )}
       </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { DivContainer } from "../Core/Div";
 import { Form } from "../Core/Form";
 import { CraftListItem } from "./ListItem.craft";
 import { ContainerProps } from "../common.interface";
@@ -31,10 +30,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
         >
           {props.children}
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </Form>
       )}
@@ -48,10 +47,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </div>
       )}
@@ -65,10 +64,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </aside>
       )}
@@ -82,10 +81,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </nav>
       )}
@@ -99,10 +98,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </header>
       )}
@@ -116,10 +115,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </footer>
       )}
@@ -133,10 +132,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </section>
       )}
@@ -150,10 +149,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </article>
       )}
@@ -167,10 +166,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </fieldset>
       )}
@@ -184,10 +183,10 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <DivContainer
+            <div
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></DivContainer>
+            ></div>
           )}
         </main>
       )}

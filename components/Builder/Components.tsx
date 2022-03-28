@@ -4,7 +4,6 @@ import { Element, useEditor } from "@craftjs/core";
 import { Accordion } from "../Core/Accordion";
 
 import { Button } from "../Core/Button";
-import { Icon } from "../Core/Icon";
 
 import { CraftButton } from "../Craft/Button.craft";
 
@@ -73,7 +72,7 @@ export const ComponentsPanel = () => {
               )
             }
           >
-            <Icon className={item.icon} />
+            <i className={item.icon} />
           </Button>
         );
       })}

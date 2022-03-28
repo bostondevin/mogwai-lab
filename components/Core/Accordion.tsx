@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { Icon } from "./Icon";
 
 type AccordionProps = {
   title: string;
@@ -22,9 +21,7 @@ export const Accordion = (props: Partial<AccordionProps>) => {
   return (
     <div onClick={HandleOpening} className={props.className}>
       <div className={props.headerClassName}>
-        <Icon
-          className={"mr-2 fas fa-chevron-" + (isOpened ? "down" : "right")}
-        />
+        <i className={"mr-2 fas fa-chevron-" + (isOpened ? "down" : "right")} />
         <h4 className="w-full">{props.title}</h4>
       </div>
 
