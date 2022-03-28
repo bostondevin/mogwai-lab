@@ -4,7 +4,7 @@ import NextLink from "next/link";
 export interface LinkProps {
   href: string;
   className?: string;
-  ariaLabel?: string;
+  "aria-label"?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children?:
     | JSX.Element
@@ -22,7 +22,7 @@ export const Link = React.forwardRef((props: LinkProps, ref: any) => (
       ref={ref}
       onClick={() => props.onClick}
       className={props.className}
-      arial-label={props.ariaLabel ? props.ariaLabel : undefined}
+      arial-label={props["aria-label"] ? props["aria-label"] : undefined}
     >
       {props.children}
 

@@ -44,7 +44,7 @@ export const ContainerSettings = () => {
         },
       },
 
-      ariaLabel: {
+      "aria-label": {
         render: Input,
         meta: {
           label: "Aria label",

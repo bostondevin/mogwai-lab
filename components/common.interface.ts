@@ -52,7 +52,7 @@ export type CommonProps = {
   id?: string;
   className?: string;
   style?: any;
-  ariaLabel?: string;
+  "aria-label"?: string;
   children?:
     | JSX.Element
     | JSX.Element[]
@@ -107,6 +107,8 @@ export interface InputProps extends CommonInputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type:
     | "text"
+    | "textarea"
+    | "select"
     | "number"
     | "tel"
     | "color"

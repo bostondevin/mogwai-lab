@@ -12,8 +12,6 @@ import { CraftList } from "../Craft/List.craft";
 import { CraftListItem } from "../Craft/ListItem.craft";
 
 import { CraftInput } from "../Craft/Input.craft";
-import { CraftSelect } from "../Craft/Select.craft";
-import { CraftTextarea } from "../Craft/Textarea.craft";
 
 import { CraftDiagram } from "../Craft/Diagram.craft";
 import { CraftGrid } from "../Craft/Grid.craft";
@@ -34,8 +32,6 @@ export const Builder = ({ store }): JSX.Element => {
         CraftListItem,
 
         CraftInput,
-        CraftSelect,
-        CraftTextarea,
 
         CraftDiagram,
         CraftGrid,

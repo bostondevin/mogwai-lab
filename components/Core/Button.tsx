@@ -21,7 +21,7 @@ interface ButtonProps {
   tooltip?: string;
   disabled?: boolean;
   style?: string;
-  ariaLabel?: string;
+  "aria-label"?: string;
   children?:
     | JSX.Element
     | JSX.Element[]

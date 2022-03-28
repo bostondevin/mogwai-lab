@@ -1,3 +1,196 @@
+export const baseComponents = [
+  {
+    title: "Text",
+    icon: "fas fa-text",
+    shrink: true,
+    element: {
+      type: "Text",
+      props: {
+        type: "span",
+        className: "text-xs",
+        text: "Lorem ipsum dolor",
+      },
+    },
+  },
+
+  {
+    title: "Paragraph",
+    icon: "fas fa-paragraph",
+    element: {
+      type: "Text",
+      props: {
+        type: "p",
+        className: "text-base font-light leading-relaxed mt-0 mb-5",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+    },
+  },
+
+  {
+    title: "Home Icon",
+    icon: "fas fa-home",
+    element: {
+      type: "Element",
+      is: "Icon",
+      props: { className: "fas fa-home" },
+    },
+  },
+
+  {
+    title: "Button",
+    icon: "fas fa-bullseye-pointer",
+    element: {
+      type: "Element",
+      is: "Button",
+      props: {
+        type: "button",
+        buttonType: "button",
+        className:
+          "bg-blue-500 hover:bg-blue-500 rounded-md text-white text-sm p-2 shadow cursor-pointer select-none",
+      },
+    },
+  },
+
+  {
+    title: "Container",
+    icon: "fas fa-square-dashed",
+    element: {
+      type: "Element",
+      is: "Container",
+      props: { className: "w-full", type: "div" },
+    },
+  },
+
+  {
+    title: "Unordered List",
+    icon: "fas fa-list-ul",
+    element: {
+      type: "Element",
+      is: "List",
+      props: { type: "ul", className: "list-disc pl-4 text-sm" },
+    },
+  },
+
+  {
+    title: "Ordered List",
+    icon: "fas fa-list-ol",
+    element: {
+      type: "Element",
+      is: "List",
+      props: { type: "ol", className: "list-disc pl-4 text-sm" },
+    },
+  },
+
+  {
+    title: "H1",
+    icon: "fas fa-h1",
+    element: {
+      type: "Text",
+      props: {
+        type: "h1",
+        className: "text-6xl mt-0 mb-6",
+        text: "Lorem ipsum dolor sit amet",
+      },
+    },
+  },
+  {
+    title: "H2",
+    icon: "fas fa-h2",
+    element: {
+      type: "Text",
+      props: {
+        type: "h2",
+        className: "text-5xl font-normal leading-normal mt-0 mb-5",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      },
+    },
+  },
+  {
+    title: "H3",
+    icon: "fas fa-h3",
+    element: {
+      type: "Text",
+      props: {
+        type: "h3",
+        className: "text-4xl font-normal leading-normal mt-0 mb-2",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      },
+    },
+  },
+
+  {
+    title: "H4",
+    icon: "fas fa-h4",
+    element: {
+      type: "Text",
+      props: {
+        type: "h4",
+        className: "text-3xl font-normal leading-normal mt-0 mb-2",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      },
+    },
+  },
+
+  {
+    title: "H5",
+    icon: "fas fa-h5",
+    element: {
+      type: "Text",
+      props: {
+        type: "h5",
+        className: "text-2xl font-normal leading-normal mt-0 mb-2",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      },
+    },
+  },
+
+  {
+    title: "H6",
+    icon: "fas fa-h6",
+    element: {
+      type: "Text",
+      props: {
+        type: "h6",
+        className: "text-xl font-normal leading-normal mt-0 mb-2",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      },
+    },
+  },
+
+  {
+    title: "Diagram",
+    icon: "fas fa-diagram-project",
+    element: {
+      type: "Diagram",
+      props: {
+        className: "w-full h-full gradientDark",
+      },
+    },
+  },
+
+  {
+    title: "Grid",
+    icon: "fas fa-table",
+    element: {
+      type: "Grid",
+      props: {
+        className: "w-full",
+        dataSource: "templates/test333",
+      },
+    },
+  },
+
+  {
+    title: "Video",
+    icon: "fab fa-youtube",
+    element: {
+      type: "Video",
+      props: {},
+    },
+  },
+];
+
+/*
 export const components = [
   {
     key: "containers",
@@ -348,3 +541,5 @@ export const components = [
   },
   { key: "media", label: "Media", items: [] },
 ];
+
+*/

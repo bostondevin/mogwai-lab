@@ -14,8 +14,6 @@ import { CraftList } from "../Craft/List.craft";
 import { CraftListItem } from "../Craft/ListItem.craft";
 
 import { CraftInput } from "../Craft/Input.craft";
-import { CraftSelect } from "../Craft/Select.craft";
-import { CraftTextarea } from "../Craft/Textarea.craft";
 
 import { CraftDiagram } from "../Craft/Diagram.craft";
 import { CraftGrid } from "../Craft/Grid.craft";
@@ -24,7 +22,7 @@ import { CraftImage } from "../Craft/Image.craft";
 import { CraftText } from "../Craft/Text.craft";
 import { CraftVideo } from "../Craft/Video.craft";
 
-import { components } from "../components";
+import { baseComponents } from "../components";
 
 export const ComponentsPanel = () => {
   const {
@@ -43,8 +41,6 @@ export const ComponentsPanel = () => {
     ListItem: CraftListItem,
 
     Input: CraftInput,
-    Select: CraftSelect,
-    Textarea: CraftTextarea,
 
     Diagram: CraftDiagram,
     Grid: CraftGrid,
@@ -55,44 +51,32 @@ export const ComponentsPanel = () => {
   };
 
   return (
-    <>
-      {components.map((panel, panelIndex) => {
+    <div className="flex flex-wrap flex-row">
+      {baseComponents.map((item, componentIndex) => {
         return (
-          <Accordion
-            key={"group_" + panelIndex}
-            title={panel.label}
-            className="dark:text-white/75"
-            headerClassName="uppercase hover:bg-slate-200 dark:hover:bg-slate-800 p-2 flex justify-between text-xs cursor-pointer select-none"
-            containerClassName="overflow-hidden transition-all duration-200"
+          <Button
+            key={"component_" + componentIndex}
+            className="p-2 inline-block cursor-grab"
+            tooltip={item.title}
+            ref={(ref: any) =>
+              create(
+                ref,
+                item.element.type === "Element" ? (
+                  <Element
+                    canvas
+                    is={o[item.element.is]}
+                    {...item.element.props}
+                  ></Element>
+                ) : (
+                  createElement(o[item.element.type], item.element.props)
+                )
+              )
+            }
           >
-            {panel.items.map((item, componentIndex) => {
-              return (
-                <Button
-                  key={"component_" + componentIndex}
-                  className="p-2 inline-block cursor-grab"
-                  tooltip={item.title}
-                  ref={(ref: any) =>
-                    create(
-                      ref,
-                      item.element.type === "Element" ? (
-                        <Element
-                          canvas
-                          is={o[item.element.is]}
-                          {...item.element.props}
-                        ></Element>
-                      ) : (
-                        createElement(o[item.element.type], item.element.props)
-                      )
-                    )
-                  }
-                >
-                  <Icon className={item.icon} />
-                </Button>
-              );
-            })}
-          </Accordion>
+            <Icon className={item.icon} />
+          </Button>
         );
       })}
-    </>
+    </div>
   );
 };
