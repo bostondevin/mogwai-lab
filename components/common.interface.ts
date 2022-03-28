@@ -1,17 +1,3 @@
-type InputType =
-  | "text"
-  | "number"
-  | "tel"
-  | "color"
-  | "email"
-  | "date"
-  | "datetime-local"
-  | "time"
-  | "checkbox"
-  | "radio"
-  | "range"
-  | "file";
-
 export const TextTypes = {
   span: { label: "Span" },
   p: { label: "Paragraph" },
@@ -40,11 +26,41 @@ export const InputTypes = {
   file: { label: "Slate" },
 };
 
-export type ContainerProps = {
+export const ContainerTypes = {
+  div: { label: "Div" },
+  fieldset: { label: "Fieldset" },
+  article: { label: "Article" },
+  section: { label: "Section" },
+  header: { label: "Header" },
+  nav: { label: "Nav" },
+  aside: { label: "Aside" },
+  main: { label: "Main" },
+  footer: { label: "Footer" },
+};
+
+export const ListTypes = {
+  ul: { label: "Unordered" },
+  ol: { label: "Ordered" },
+};
+
+export const ActionButtonTypes = {
+  button: { label: "Button" },
+  a: { label: "Link" },
+};
+
+export type CommonProps = {
+  id?: string;
   className?: string;
   style?: any;
   ariaLabel?: string;
-  children?: React.ReactNode;
+  children?:
+    | JSX.Element
+    | JSX.Element[]
+    | string
+    | number
+    | boolean
+    | null
+    | undefined;
 };
 
 export type CommonEvents = {
@@ -53,16 +69,34 @@ export type CommonEvents = {
   onPointerOut?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-export interface CommonContainerProps extends ContainerProps, CommonEvents {}
+export interface ContainerProps extends CommonProps, CommonEvents {
+  type?:
+    | "div"
+    | "form"
+    | "header"
+    | "nav"
+    | "main"
+    | "aside"
+    | "footer"
+    | "fieldset"
+    | "section"
+    | "article";
+}
 
-export interface CommonInputProps {
-  id?: string;
+export interface ListProps extends CommonProps, CommonEvents {
+  type?: "ol" | "ul";
+}
+
+export interface ButtonProps extends CommonProps, CommonEvents {
+  type?: "button" | "a";
+  buttonType?: "button" | "submit" | "reset";
+  href?: string;
+}
+
+export interface CommonInputProps extends CommonProps, CommonEvents {
   name?: string;
   value?: any;
-  "aria-labeled-by"?: string;
-  className?: string;
   placeholder?: string;
-  style?: any;
   tight?: boolean;
   disabled?: boolean;
 }
@@ -71,7 +105,19 @@ export interface InputProps extends CommonInputProps {
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type: InputType;
+  type:
+    | "text"
+    | "number"
+    | "tel"
+    | "color"
+    | "email"
+    | "date"
+    | "datetime-local"
+    | "time"
+    | "checkbox"
+    | "radio"
+    | "range"
+    | "file";
 }
 
 export interface TextareaProps extends CommonInputProps {
@@ -91,10 +137,6 @@ export interface SelectProps extends CommonInputProps, DataListProps {
 export interface DataListProps {
   id?: string;
   items?: any;
-}
-
-export interface ClassNamesProps {
-  className?: string;
 }
 
 const cClasses =
@@ -388,7 +430,7 @@ Object.keys(colors).forEach((c) => {
 });
 */
 
-export const boxClasses = {
+export const tailwindClassForm = {
   "className:display": {
     type: "Select",
     meta: {
@@ -400,17 +442,7 @@ export const boxClasses = {
       inputClassName: inputClassName,
     },
   },
-  "className:bg-color": {
-    type: "Select",
-    meta: {
-      items: tailwindSchema.bg.color,
-      label: "Background Color",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
-    },
-  },
+
   "className:w": {
     type: "Select",
     meta: {
@@ -433,6 +465,41 @@ export const boxClasses = {
       inputClassName: inputClassName,
     },
   },
+
+  "className:bg-color": {
+    type: "Select",
+    meta: {
+      items: tailwindSchema.bg.color,
+      label: "Background Color",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+  "className:bg-intensity": {
+    type: "Select",
+    meta: {
+      items: tailwindSchema.bg.intensity,
+      label: "Background Intensity",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+  "className:bg-opacity": {
+    type: "Select",
+    meta: {
+      items: tailwindSchema.bg.opacity,
+      label: "Background Opacity",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
   "className:shadow": {
     type: "Select",
     // options: { validators: Validators.required },
@@ -445,20 +512,7 @@ export const boxClasses = {
       inputClassName: inputClassName,
     },
   },
-};
 
-export const textClasses = {
-  type: {
-    type: "Select",
-    meta: {
-      items: TextTypes,
-      label: "Text Type",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
-    },
-  },
   "className:text-color": {
     type: "Select",
     meta: {
@@ -474,7 +528,7 @@ export const textClasses = {
     type: "Select",
     meta: {
       items: tailwindSchema.text.intensity,
-      label: "Text Color Intensity",
+      label: "Text Intensity",
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
@@ -485,7 +539,7 @@ export const textClasses = {
     type: "Select",
     meta: {
       items: tailwindSchema.text.opacity,
-      label: "Text Color Opacity",
+      label: "Text Opacity",
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
@@ -570,4 +624,133 @@ export const getClassNames = (value) => {
   console.log(newClassArr);
 
   return newClassArr.join(" ");
+};
+
+export const formatColorProp = (prop, newClasses) => {
+  if (prop + "-color" in newClasses) {
+    if (prop + "-intensity" in newClasses) {
+      newClasses[prop + "-color"] =
+        newClasses[prop + "-color"] + "-" + newClasses[prop + "-intensity"];
+      delete newClasses[prop + "-intensity"];
+    }
+    if (prop + "-opacity" in newClasses) {
+      newClasses[prop + "-color"] =
+        newClasses[prop + "-color"] + "/" + newClasses[prop + "-opacity"];
+      delete newClasses[prop + "-opacity"];
+    }
+  } else {
+    delete newClasses[prop + "-opacity"];
+    delete newClasses[prop + "-intensity"];
+  }
+};
+
+const setFormValue = (config, d, key, kParts) => {
+  if (d in tailwindSchema[kParts[0]][kParts[1]]) {
+    config.controls[key].formState = d;
+  }
+};
+
+export const saveFormChanges = (value, setProp) => {
+  {
+    let newClasses = {};
+
+    Object.keys(value).forEach((key) => {
+      if (key.indexOf("className:") !== 0) {
+        setProp((props) => (props[key] = value[key]), 100);
+      } else {
+        if (value[key]) newClasses[key.replace("className:", "")] = value[key];
+      }
+    });
+
+    formatColorProp("text", newClasses);
+    formatColorProp("bg", newClasses);
+
+    const arr = [];
+
+    Object.keys(newClasses).forEach((key) => {
+      if (key.indexOf("-") > -1) {
+        arr.push(key.split("-")[0] + "-" + newClasses[key]);
+      } else {
+        if (key === "display") {
+          arr.push(newClasses[key]);
+        } else {
+          arr.push(key + "-" + newClasses[key]);
+        }
+      }
+    });
+
+    setProp((props) => (props.className = arr.join(" ")), 100);
+  }
+};
+
+export const tailwindFormConfig = (customItems, o, propValue) => {
+  Object.keys(tailwindClassForm).forEach((d) => {
+    tailwindClassForm[d].render = o[tailwindClassForm[d].type];
+  });
+
+  const config = {
+    controls: { ...customItems, ...tailwindClassForm },
+  };
+
+  Object.keys(config.controls).forEach((key) => {
+    if (key in propValue && key.indexOf("className:") === -1) {
+      config.controls[key].formState = propValue[key]; // ["", Validators.required],
+    }
+
+    if (key.indexOf("className:") === 0 && "className" in propValue) {
+      const k = key.replace("className:", "");
+      const c = propValue["className"].split(" ");
+
+      if (k.indexOf("-") === -1) {
+        const filterVal = c.find((d) => d.indexOf(k) === 0);
+        if (filterVal) {
+          if (filterVal.indexOf("-") > -1) {
+            config.controls[key].formState = filterVal.split("-")[1];
+          } else {
+            config.controls[key].formState = filterVal;
+          }
+        }
+      } else {
+        const kParts = k.split("-");
+
+        const filterVal = c
+          .filter((d) => d.indexOf(kParts[0] + "-") === 0)
+          .map((d) => d.replace(kParts[0] + "-", ""));
+        // console.log(kParts);
+        // console.log(filterVal);
+
+        filterVal.forEach((d) => {
+          if (d in tailwindSchema[kParts[0]][kParts[1]]) {
+            config.controls[key].formState = d;
+          }
+
+          if (d.indexOf("-") > -1) {
+            // Intensity
+            const m = d.split("-");
+
+            if (m.length === 2) {
+              if (m[1].indexOf("/") > -1) {
+                // Opacity
+                const op = m[1].split("/");
+                setFormValue(config, op[1], key, kParts);
+              } else {
+                setFormValue(config, m[1], key, kParts);
+              }
+            } else {
+              if (d.indexOf("/") > -1) {
+                // Opacity
+                const op = d.split("/");
+                console.log(op[1]);
+                setFormValue(config, op[1], key, kParts);
+              } else {
+                setFormValue(config, d, key, kParts);
+              }
+            }
+          }
+        });
+      }
+    }
+  });
+
+  return config;
 };

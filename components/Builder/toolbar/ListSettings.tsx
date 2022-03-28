@@ -10,11 +10,11 @@ import {
   labelClassName,
   saveFormChanges,
   tailwindFormConfig,
+  ListTypes,
   inputClassName,
-  TextTypes,
 } from "../../common.interface";
 
-export const TextSettings = () => {
+export const ListSettings = () => {
   const {
     actions: { setProp },
     propValue,
@@ -35,18 +35,19 @@ export const TextSettings = () => {
       type: {
         render: Select,
         meta: {
-          items: TextTypes,
-          label: "Text Type",
+          items: ListTypes,
+          label: "List Type",
           tight: true,
           className: outerClassName,
           labelClassName: labelClassName,
           inputClassName: inputClassName,
         },
       },
-      text: {
-        render: Textarea,
+
+      ariaLabel: {
+        render: Input,
         meta: {
-          label: "Text",
+          label: "Aria label",
           tight: true,
           className: outerClassName,
           labelClassName: labelClassName,

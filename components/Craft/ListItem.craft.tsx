@@ -1,8 +1,8 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Div } from "../Core/Div";
+import { DivContainer } from "../Core/Div";
 import { ListItem } from "../Core/ListItem";
-import { CommonContainerProps } from "../common.interface";
+import { ContainerProps } from "../common.interface";
 
 import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
 import {
@@ -13,7 +13,7 @@ import {
   editorEnabledAppend,
 } from "../Builder/toolbar/craft.utils";
 
-export const CraftListItem: UserComponent<CommonContainerProps> = (props) => {
+export const CraftListItem: UserComponent<ContainerProps> = (props) => {
   const {
     connectors: { connect },
   } = useNode(nodeHook);
@@ -29,9 +29,12 @@ export const CraftListItem: UserComponent<CommonContainerProps> = (props) => {
       {props.children}
 
       {!props.children && enabled && (
-        <Div className={emptyContainerClass} style={emptyContainerStyle}>
+        <DivContainer
+          className={emptyContainerClass}
+          style={emptyContainerStyle}
+        >
           Some text goes here
-        </Div>
+        </DivContainer>
       )}
     </ListItem>
   );

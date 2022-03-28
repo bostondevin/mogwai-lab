@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface ButtonProps {
+interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseDown?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";

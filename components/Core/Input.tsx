@@ -2,7 +2,7 @@ import React from "react";
 import { AbstractControl } from "react-reactive-form";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
-import { Div } from "./Div";
+import { DivContainer } from "./Div";
 import {
   InputProps,
   regularInputClasses,

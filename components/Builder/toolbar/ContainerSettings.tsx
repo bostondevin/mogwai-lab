@@ -6,10 +6,12 @@ import { Input } from "../../Core/Input";
 import { Select } from "../../Core/Select";
 import { FormGenerator, Validators } from "react-reactive-form";
 import {
-  textClasses,
-  boxClasses,
   outerClassName,
   labelClassName,
+  saveFormChanges,
+  tailwindFormConfig,
+  ContainerTypes,
+  inputClassName,
 } from "../../common.interface";
 
 export const ContainerSettings = () => {
@@ -21,44 +23,44 @@ export const ContainerSettings = () => {
   }));
 
   const mountForm = (f) => {
-    f.valueChanges.subscribe((value) => {
-      const newClassNames = Object.keys(value).reduce((acc, key) => {
-        const _acc = acc;
-        if (value[key] !== undefined && key.indexOf("className:") === 0)
-          _acc[key] = value[key];
-        return _acc;
-      }, {});
-
-      const newClassArr = [];
-      Object.keys(newClassNames).forEach((d) => {
-        newClassArr.push(newClassNames[d]);
-      });
-
-      setProp((props) => (props.className = newClassArr.join(" ")), 100);
-
-      console.log(value);
-    });
+    f.valueChanges.subscribe((value) => saveFormChanges(value, setProp));
   };
 
   const submitForm = (e) => {
     console.log(e);
   };
 
-  const customItems = {};
+  const config = tailwindFormConfig(
+    {
+      type: {
+        render: Select,
+        meta: {
+          items: ContainerTypes,
+          label: "Container Type",
+          tight: true,
+          className: outerClassName,
+          labelClassName: labelClassName,
+          inputClassName: inputClassName,
+        },
+      },
 
-  const o = {
-    Select: Select,
-    Input: Input,
-    Textarea: Textarea,
-  };
-
-  Object.keys(boxClasses).forEach((d) => {
-    boxClasses[d].render = o[boxClasses[d].type];
-  });
-
-  const config = {
-    controls: { ...customItems, ...boxClasses },
-  };
+      ariaLabel: {
+        render: Input,
+        meta: {
+          label: "Aria label",
+          tight: true,
+          className: outerClassName,
+          labelClassName: labelClassName,
+        },
+      },
+    },
+    {
+      Select: Select,
+      Input: Input,
+      Textarea: Textarea,
+    },
+    propValue
+  );
 
   return (
     <Form onSubmit={submitForm} className="grid grid-cols-2 gap-2 p-2">

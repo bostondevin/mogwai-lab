@@ -1,8 +1,8 @@
 import React from "react";
-import { CommonContainerProps } from "../common.interface";
+import { ContainerProps } from "../common.interface";
 
 export const OrderedList = React.forwardRef(
-  (props: CommonContainerProps, ref: any) => (
+  (props: ContainerProps, ref: any) => (
     <ol ref={ref} className={props.className} style={props.style}>
       {props.children}
     </ol>

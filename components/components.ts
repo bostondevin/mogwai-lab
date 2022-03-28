@@ -4,52 +4,12 @@ export const components = [
     label: "Containers",
     items: [
       {
-        title: "Div",
+        title: "Container",
         icon: "fas fa-square-dashed",
         element: {
           type: "Element",
-          is: "Div",
-          props: { className: "w-full" },
-        },
-      },
-
-      {
-        title: "Article",
-        icon: "fas fa-square-dashed",
-        element: {
-          type: "Element",
-          is: "Article",
-          props: { className: "w-full" },
-        },
-      },
-
-      {
-        title: "Aside",
-        icon: "fas fa-square-dashed",
-        element: {
-          type: "Element",
-          is: "Aside",
-          props: { className: "w-full" },
-        },
-      },
-
-      {
-        title: "Fieldset",
-        icon: "fas fa-square-dashed",
-        element: {
-          type: "Element",
-          is: "Fieldset",
-          props: { className: "w-full" },
-        },
-      },
-
-      {
-        title: "Footer",
-        icon: "fas fa-square-dashed",
-        element: {
-          type: "Element",
-          is: "Footer",
-          props: { className: "w-full" },
+          is: "Container",
+          props: { className: "w-full", type: "div" },
         },
       },
 
@@ -59,36 +19,6 @@ export const components = [
         element: {
           type: "Element",
           is: "Form",
-          props: { className: "w-full" },
-        },
-      },
-
-      {
-        title: "Header",
-        icon: "fas fa-square-dashed",
-        element: {
-          type: "Element",
-          is: "Header",
-          props: { className: "w-full" },
-        },
-      },
-
-      {
-        title: "Main",
-        icon: "fas fa-square-dashed",
-        element: {
-          type: "Element",
-          is: "Main",
-          props: { className: "w-full" },
-        },
-      },
-
-      {
-        title: "Nav",
-        icon: "fas fa-square-dashed",
-        element: {
-          type: "Element",
-          is: "Nav",
           props: { className: "w-full" },
         },
       },
@@ -104,8 +34,8 @@ export const components = [
         icon: "fas fa-list-ul",
         element: {
           type: "Element",
-          is: "UnOrderedList",
-          props: { className: "list-disc pl-4 text-sm" },
+          is: "List",
+          props: { type: "ul", className: "list-disc pl-4 text-sm" },
         },
       },
 
@@ -114,8 +44,8 @@ export const components = [
         icon: "fas fa-list-ol",
         element: {
           type: "Element",
-          is: "OrderedList",
-          props: { className: "list-decimal pl-4 text-sm" },
+          is: "List",
+          props: { type: "ol", className: "list-decimal pl-4 text-sm" },
         },
       },
 
@@ -370,6 +300,7 @@ export const components = [
           is: "Button",
           props: {
             type: "button",
+            buttonType: "button",
             className:
               "bg-blue-500 hover:bg-blue-500 rounded-md text-white text-sm p-2 shadow cursor-pointer select-none",
           },
@@ -381,8 +312,9 @@ export const components = [
         icon: "fas fa-link",
         element: {
           type: "Element",
-          is: "Link",
+          is: "Button",
           props: {
+            type: "a",
             className: "text-blue-500 hover:underline hover:text-blue-600",
             href: "/test-link",
           },

@@ -19,7 +19,7 @@ import { Icon } from "../Core/Icon";
 import { Text } from "../Core/Text";
 import { Popup } from "../Core/Popup";
 import { Nav } from "../Core/Nav";
-import { Div } from "../Core/Div";
+import { DivContainer } from "../Core/Div";
 import { UnOrderedList } from "../Core/UnOrderedList";
 import { ListItem } from "../Core/ListItem";
 
@@ -133,7 +133,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
     "p-2 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-900 select-none cursor-pointer";
 
   return (
-    <Div
+    <DivContainer
       style={{
         width: barWidth + "px",
         opacity: enabled ? 1 : 0,
@@ -164,6 +164,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                   {screenSizes.map((item) => {
                     return (
                       <Button
+                        key={item.id}
                         onClick={(e) => changeScreen(e, item.id)}
                         type="button"
                         className="p-2 hover:bg-slate-800 dark:hover:bg-slate-400 select-none cursor-pointer flex gap-2"
@@ -314,6 +315,6 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
         </h2>
         <Layers renderLayer={Layer} expandRootOnLoad={true} />
       </div>
-    </Div>
+    </DivContainer>
   );
 };

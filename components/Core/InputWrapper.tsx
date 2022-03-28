@@ -1,6 +1,6 @@
 import { Button } from "./Button";
 import { Icon } from "./Icon";
-import { Div } from "./Div";
+import { DivContainer } from "./Div";
 
 type InputWrapperProps = {
   buttonIcon?: string;
@@ -22,7 +22,7 @@ export const InputWrapper = (props: Partial<InputWrapperProps>) => {
   };
 
   return (
-    <Div className="relative">
+    <DivContainer className="relative">
       {props.children}
       {props.buttonIcon && (
         <Button
@@ -33,6 +33,6 @@ export const InputWrapper = (props: Partial<InputWrapperProps>) => {
           <Icon className={props.buttonIcon} />
         </Button>
       )}
-    </Div>
+    </DivContainer>
   );
 };

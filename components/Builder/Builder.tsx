@@ -5,21 +5,10 @@ import { Wrapper } from "./Wrapper";
 import { EditMenu } from "./EditMenu";
 
 import { CraftButton } from "../Craft/Button.craft";
-import { CraftLink } from "../Craft/Link.craft";
 
-import { CraftArticle } from "../Craft/Article.craft";
-import { CraftAside } from "../Craft/Aside.craft";
-import { CraftDiv } from "../Craft/Div.craft";
-import { CraftFieldset } from "../Craft/Fieldset.craft";
-import { CraftFooter } from "../Craft/Footer.craft";
-import { CraftForm } from "../Craft/Form.craft";
-import { CraftHeader } from "../Craft/Header.craft";
-import { CraftMain } from "../Craft/Main.craft";
-import { CraftNav } from "../Craft/Nav.craft";
-import { CraftSection } from "../Craft/Section.craft";
+import { CraftContainer } from "../Craft/Container.craft";
 
-import { CraftOrderedList } from "../Craft/OrderedList.craft";
-import { CraftUnOrderedList } from "../Craft/UnOrderedList.craft";
+import { CraftList } from "../Craft/List.craft";
 import { CraftListItem } from "../Craft/ListItem.craft";
 
 import { CraftInput } from "../Craft/Input.craft";
@@ -38,21 +27,10 @@ export const Builder = ({ store }): JSX.Element => {
     <CraftEditor
       resolver={{
         CraftButton,
-        CraftLink,
 
-        CraftArticle,
-        CraftAside,
-        CraftDiv,
-        CraftFieldset,
-        CraftFooter,
-        CraftForm,
-        CraftHeader,
-        CraftMain,
-        CraftNav,
-        CraftSection,
+        CraftContainer,
 
-        CraftOrderedList,
-        CraftUnOrderedList,
+        CraftList,
         CraftListItem,
 
         CraftInput,

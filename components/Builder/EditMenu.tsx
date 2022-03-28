@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 import { Icon } from "../Core/Icon";
 import { Button } from "../Core/Button";
-import { Div } from "../Core/Div";
+import { DivContainer } from "../Core/Div";
 
 export const EditMenu = ({ render }) => {
   const { id } = useNode();
@@ -101,7 +101,7 @@ export const EditMenu = ({ render }) => {
     <>
       {enabled && (isHover || isActive)
         ? ReactDOM.createPortal(
-            <Div
+            <DivContainer
               ref={currentRef}
               className={
                 isActive
@@ -145,7 +145,7 @@ export const EditMenu = ({ render }) => {
                   <Icon className="fas fa-trash" />
                 </Button>
               ) : null}
-            </Div>,
+            </DivContainer>,
             document.querySelector(".page-container")
           )
         : null}

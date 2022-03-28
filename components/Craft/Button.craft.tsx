@@ -3,9 +3,12 @@ import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { CraftIcon } from "./Icon.craft";
 import { CraftText } from "./Text.craft";
 
-import { Button, ButtonProps } from "../Core/Button";
+import { Button } from "../Core/Button";
+import { Link, LinkProps } from "../Core/Link";
 import { ButtonSettings } from "../Builder/toolbar/ButtonSettings";
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
+
+import { ButtonProps } from "../common.interface";
 
 export const CraftButton: UserComponent<ButtonProps> = (props) => {
   const {
@@ -15,9 +18,18 @@ export const CraftButton: UserComponent<ButtonProps> = (props) => {
   const { enabled } = useEditor(editorHook);
 
   return (
-    <Button ref={connect} {...props} disabled={enabled}>
-      {props.children}
-    </Button>
+    <>
+      {props.type === "button" && (
+        <Button ref={connect} {...props} disabled={enabled}>
+          {props.children}
+        </Button>
+      )}
+      {props.type === "a" && (
+        <Link ref={connect} {...props} disabled={enabled}>
+          {props.children}
+        </Link>
+      )}
+    </>
   );
 };
 

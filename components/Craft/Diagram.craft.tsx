@@ -16,7 +16,7 @@ import {
 
 import * as go from "gojs";
 
-export const CraftDiagram: UserComponent<DivProps> = (props) => {
+export const CraftDiagram: UserComponent<DivContainerProps> = (props) => {
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
   const [breadCrumbs, setBreadCrumbs] = useState([]);
 
@@ -484,7 +484,7 @@ export const CraftDiagram: UserComponent<DivProps> = (props) => {
   }
 
   return (
-    <Div
+    <DivContainer
       ref={connect}
       {...props}
       className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -496,7 +496,7 @@ export const CraftDiagram: UserComponent<DivProps> = (props) => {
         nodeDataArray={graphData.nodes}
         onModelChange={handleModelChange}
       />
-    </Div>
+    </DivContainer>
   );
 };
 

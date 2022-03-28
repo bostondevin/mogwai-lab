@@ -1,11 +1,11 @@
 import React from "react";
 import { UserComponent, useNode, useEditor, Element } from "@craftjs/core";
 
-import { Div } from "../Core/Div";
+import { DivContainer } from "../Core/Div";
 import { Aside } from "../Core/Aside";
 
 import { CraftListItem } from "./ListItem.craft";
-import { CommonContainerProps } from "../common.interface";
+import { ContainerProps } from "../common.interface";
 
 import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
 import {
@@ -16,7 +16,7 @@ import {
   editorEnabledAppend,
 } from "../Builder/toolbar/craft.utils";
 
-export const CraftSideNav: UserComponent<CommonContainerProps> = (props) => {
+export const CraftSideNav: UserComponent<ContainerProps> = (props) => {
   const {
     connectors: { connect },
   } = useNode(nodeHook);

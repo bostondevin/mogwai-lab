@@ -1,10 +1,8 @@
 import React from "react";
-import { CommonContainerProps } from "../common.interface";
+import { ContainerProps } from "../common.interface";
 
-export const Header = React.forwardRef(
-  (props: CommonContainerProps, ref: any) => (
-    <header ref={ref} {...props}>
-      {props.children}
-    </header>
-  )
-);
+export const Header = React.forwardRef((props: ContainerProps, ref: any) => (
+  <header ref={ref} {...props}>
+    {props.children}
+  </header>
+));

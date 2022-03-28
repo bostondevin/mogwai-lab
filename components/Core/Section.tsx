@@ -1,10 +1,8 @@
 import React from "react";
-import { CommonContainerProps } from "../common.interface";
+import { ContainerProps } from "../common.interface";
 
-export const Section = React.forwardRef(
-  (props: CommonContainerProps, ref: any) => (
-    <section ref={ref} {...props}>
-      {props.children}
-    </section>
-  )
-);
+export const Section = React.forwardRef((props: ContainerProps, ref: any) => (
+  <section ref={ref} {...props}>
+    {props.children}
+  </section>
+));

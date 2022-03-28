@@ -127,11 +127,12 @@ export const Appbar = ({ screen, store }): JSX.Element => {
             fill="currentColor"
           ></path>
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M0 0.5H48V22.6226H0V0.5ZM39.2923 15.3841C39.2923 16.6807 38.2483 17.7318 36.9604 17.7318C35.6724 17.7318 34.6284 16.6807 34.6284 15.3841C34.6284 14.0875 35.6724 13.0364 36.9604 13.0364C38.2483 13.0364 39.2923 14.0875 39.2923 15.3841Z"
             fill="currentColor"
           ></path>
+          x{" "}
         </svg>
       </Link>
 

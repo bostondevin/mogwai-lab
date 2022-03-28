@@ -8,7 +8,7 @@ import Ruler from "@scena/react-ruler";
 
 import { Appbar } from "../Core/Appbar";
 import { EditPanel } from "./EditPanel";
-import { Div } from "../Core/Div";
+import { DivContainer } from "../Core/Div";
 import { Nav } from "../Core/Nav";
 
 export const Wrapper = ({ store, children }): JSX.Element => {
@@ -83,9 +83,9 @@ export const Wrapper = ({ store, children }): JSX.Element => {
 
   return (
     <>
-      <Div className="flex h-full overflow-hidden flex-row w-full fixed bg-black/10 dark:bg-black/90">
-        <Div className="page-container flex h-full flex-col w-full">
-          <Div
+      <DivContainer className="flex h-full overflow-hidden flex-row w-full fixed bg-black/10 dark:bg-black/90">
+        <DivContainer className="page-container flex h-full flex-col w-full">
+          <DivContainer
             className="page-container flex h-full flex-col w-full bg-slate-200 dark:bg-slate-800"
             style={{
               width:
@@ -116,12 +116,12 @@ export const Wrapper = ({ store, children }): JSX.Element => {
             )}
 
             <Nav className="flex w-full bg-white dark:bg-slate-900 ease-in-out transition-all duration-300">
-              <Div className="flex w-full shadow-md mb-1 dark:text-white">
+              <DivContainer className="flex w-full shadow-md mb-1 dark:text-white">
                 <Appbar screen={screen} store={store} />
-              </Div>{" "}
+              </DivContainer>{" "}
             </Nav>
 
-            <Div
+            <DivContainer
               className={cx([
                 "craftjs-renderer flex h-full w-full overflow-auto bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 ease-in-out transition-all duration-300",
                 {
@@ -133,12 +133,12 @@ export const Wrapper = ({ store, children }): JSX.Element => {
               }
             >
               {children}
-            </Div>
-          </Div>
-        </Div>
+            </DivContainer>
+          </DivContainer>
+        </DivContainer>
 
         <EditPanel store={store} darkMode={darkMode} />
-      </Div>
+      </DivContainer>
       <div className="w-full h-10 h-9 h-8 pl-3 w-4 pr-6 placeholder-gray-300 border rounded-md appearance-none focus:outline-none text-base text-6xl text-5xl text-4xl text-3xl text-2xl text-xl hidden shadow-md mb-10 mb-9 mb-8 mb-7 mb-6 mb-5 mb-4 mb-3 mb-2 mb-1"></div>
     </>
   );
