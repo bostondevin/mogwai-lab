@@ -77,7 +77,17 @@ export const baseComponents = [
     element: {
       type: "Element",
       is: "List",
-      props: { type: "ol", className: "list-disc pl-4 text-sm" },
+      props: { type: "ol", className: "list-decimal pl-4 text-sm" },
+    },
+  },
+
+  {
+    title: "List Item",
+    icon: "fas fa-list",
+    element: {
+      type: "Element",
+      is: "ListItem",
+      props: { className: "" },
     },
   },
 
