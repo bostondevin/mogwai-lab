@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useEditor } from "@craftjs/core";
-
 import { Link } from "./Link";
-import { Button } from "./Button";
 
 export const Appbar = ({ screen, store }): JSX.Element => {
   const [path, setPath] = useState(null);
@@ -162,46 +160,38 @@ export const Appbar = ({ screen, store }): JSX.Element => {
 
       <ul className="flex mr-3 gap-2">
         <li className="flex">
-          <Button
-            tooltip="Settings"
-            className="px-2 opacity-50 hover:opacity-80"
-          >
+          <button title="Settings" className="px-2 opacity-50 hover:opacity-80">
             <i className="fa-solid fa-bars" />
-          </Button>
+          </button>
         </li>
 
         <li className="flex">
-          <Button
-            tooltip="Settings"
-            className="px-2 opacity-50 hover:opacity-80"
-          >
+          <button title="Settings" className="px-2 opacity-50 hover:opacity-80">
             <i className="fa-solid fa-grid" />
-          </Button>
+          </button>
         </li>
 
         <li className="flex">
-          <Button tooltip="Search" className="px-2 opacity-50 hover:opacity-80">
+          <button title="Search" className="px-2 opacity-50 hover:opacity-80">
             <i className="fa-solid fa-search" />
-          </Button>
+          </button>
         </li>
 
         <li className="flex">
-          <Button
+          <button
             onClick={toggleDarkMode}
-            tooltip={darkMode ? "Light mode" : "Dark mode"}
-            placement="bottom"
+            title={darkMode ? "Light mode" : "Dark mode"}
             className="px-2 opacity-50 hover:opacity-80"
           >
             <i className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"} />
-          </Button>
+          </button>
         </li>
 
         {!enabled && (
           <li className="flex">
-            <Button
+            <button
               onClick={toggleEdit}
-              tooltip={enabled ? "Save" : "Edit"}
-              placement="bottom"
+              title={enabled ? "Save" : "Edit"}
               className="px-2 opacity-50 hover:opacity-80"
             >
               <i
@@ -209,7 +199,7 @@ export const Appbar = ({ screen, store }): JSX.Element => {
                   enabled ? "fa-solid fa-floppy-disk" : "fa-solid fa-edit"
                 }
               />
-            </Button>
+            </button>
           </li>
         )}
       </ul>

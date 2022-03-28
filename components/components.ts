@@ -1,3 +1,9 @@
+import {
+  outerClassName,
+  inputClassName,
+  labelClassName,
+} from "./common.interface";
+
 export const baseComponents = [
   {
     title: "Text",
@@ -88,6 +94,50 @@ export const baseComponents = [
       type: "Element",
       is: "ListItem",
       props: { className: "" },
+    },
+  },
+
+  {
+    title: "Form",
+    icon: "fas fa-home",
+    element: {
+      type: "Element",
+      is: "Form",
+      props: { className: "" },
+    },
+  },
+
+  {
+    title: "Text Input",
+    icon: "fas fa-home",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "text",
+        label: "Text",
+        tight: true,
+        className: outerClassName,
+        labelClassName: labelClassName,
+        inputClassName: inputClassName,
+      },
+    },
+  },
+
+  {
+    title: "Color Input",
+    icon: "fas fa-eye",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "color",
+        tight: true,
+        label: "Color",
+        className: outerClassName,
+        labelClassName: labelClassName,
+        inputClassName: inputClassName,
+      },
     },
   },
 

@@ -3,7 +3,7 @@ import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { CraftListItem } from "./ListItem.craft";
 import { ListProps } from "../common.interface";
 
-import { ListSettings } from "../Builder/toolbar/ListSettings";
+import { ListSettings } from "../Builder/settings/ListSettings";
 
 import {
   nodeHook,
@@ -11,7 +11,7 @@ import {
   emptyContainerClass,
   emptyContainerStyle,
   editorEnabledAppend,
-} from "../Builder/toolbar/craft.utils";
+} from "../Builder/settings/craft.utils";
 
 export const CraftList: UserComponent<ListProps> = (props) => {
   const {

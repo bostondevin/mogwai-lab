@@ -1,14 +1,12 @@
 import React from "react";
 
-import { Button } from "./Button";
-
 interface ButtonItem {
   id: string;
   icon?: string;
   label?: string;
 }
 
-export interface ButtonBarProps {
+interface ButtonBarProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   items?: ButtonItem[];
@@ -32,7 +30,7 @@ export const ButtonBar = (props: Partial<ButtonBarProps>) => {
       {props.items.map((item, index) => {
         return (
           <li className="flex items-center" key={index}>
-            <Button
+            <button
               onClick={(e) => changeTab(e, item.id)}
               className={
                 props.selected === item.id ? linkOnClasses : linkOffClasses
@@ -40,7 +38,7 @@ export const ButtonBar = (props: Partial<ButtonBarProps>) => {
             >
               {item.icon && <i className={item.icon} />}
               <span className="ml-1">{item.label}</span>
-            </Button>
+            </button>
           </li>
         );
       })}

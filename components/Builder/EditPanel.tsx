@@ -7,11 +7,10 @@ import lz from "lzutf8";
 import { SettingsPanel } from "./SettingsPanel";
 import { ComponentsPanel } from "./Components";
 import { DataPanel } from "./DataPanel";
-import { Button } from "../Core/Button";
 import { Layer } from "./layers/Layer";
-import { ButtonBar } from "../Core/ButtonBar";
 import { Text } from "../Core/Text";
 import { Popup } from "../Core/Popup";
+import { ButtonBar } from "components/Core/ButtonBar";
 
 const barWidth = 350;
 
@@ -134,15 +133,14 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
       <nav className="bg-slate-300 dark:bg-slate-800 w-full text-sm">
         <ul className="flex w-full">
           <li className="flex w-full">
-            <Button
+            <button
               type="button"
-              tooltip="Close"
+              title="Close"
               onClick={cancelEdit}
-              placement="bottom"
               className={navItemClass}
             >
               <i className="fa-solid fa-times" />
-            </Button>
+            </button>
           </li>
 
           <li className="flex">
@@ -153,7 +151,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                 <div className="text-xs bg-slate-700 dark:bg-slate-300 text-white dark:text-black w-full flex flex-col rounded-md shadow-md py-1">
                   {screenSizes.map((item) => {
                     return (
-                      <Button
+                      <button
                         key={item.id}
                         onClick={() => changeScreen(item.id)}
                         type="button"
@@ -166,19 +164,14 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                           disabled={true}
                           className="w-full flex"
                         />
-                      </Button>
+                      </button>
                     );
                   })}
                 </div>
               }
               position="bottom center"
             >
-              <Button
-                type="button"
-                tooltip={screen}
-                placement="bottom"
-                className={navItemClass}
-              >
+              <button type="button" title={screen} className={navItemClass}>
                 <i
                   className={
                     "fa-solid " +
@@ -189,15 +182,14 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                       : "fa-display")
                   }
                 />
-              </Button>
+              </button>
             </Popup>
           </li>
 
           <li className="flex">
-            <Button
+            <button
               type="button"
-              tooltip="Outlines"
-              placement="bottom"
+              title="Outlines"
               onClick={() => toggleOutlines()}
               disabled={!outlinesVisible}
               className={navItemClass}
@@ -208,14 +200,13 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                   (outlinesVisible ? "" : " opacity-50")
                 }
               />
-            </Button>
+            </button>
           </li>
 
           <li className="flex">
-            <Button
+            <button
               type="button"
-              tooltip="Ruler"
-              placement="bottom"
+              title="Ruler"
               onClick={toggleRuler}
               disabled={!rulerVisible}
               className={navItemClass}
@@ -225,26 +216,24 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                   "fa-solid fa-ruler" + (rulerVisible ? "" : " opacity-50")
                 }
               />
-            </Button>
+            </button>
           </li>
 
           <li className="flex">
-            <Button
+            <button
               type="button"
-              tooltip="Remove All"
+              title="Remove All"
               onClick={clear}
-              placement="bottom"
               className={navItemClass}
             >
               <i className="fa-solid fa-trash" />
-            </Button>
+            </button>
           </li>
 
           <li className="flex">
-            <Button
+            <button
               type="button"
-              tooltip="Undo"
-              placement="bottom"
+              title="Undo"
               onClick={() => actions.history.undo()}
               disabled={!canUndo}
               className={navItemClass}
@@ -252,14 +241,13 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               <i
                 className={"fa-solid fa-undo" + (canUndo ? "" : " opacity-50")}
               />
-            </Button>
+            </button>
           </li>
 
           <li className="flex">
-            <Button
+            <button
               type="button"
-              tooltip="Redo"
-              placement="bottom"
+              title="Redo"
               disabled={!canRedo}
               onClick={() => actions.history.redo()}
               className={navItemClass}
@@ -267,16 +255,15 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               <i
                 className={"fa-solid fa-redo" + (canRedo ? "" : " opacity-50")}
               />
-            </Button>
+            </button>
           </li>
 
           <li className="flex gap-2">
-            <Button
+            <button
               type="button"
               onClick={saveChanges}
               disabled={!canUndo}
-              tooltip={enabled ? "Save" : "Edit"}
-              placement="bottom"
+              title={enabled ? "Save" : "Edit"}
               className={navItemClass}
             >
               <i
@@ -284,7 +271,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                   "fa-solid fa-floppy-disk" + (canUndo ? "" : " opacity-50")
                 }
               />
-            </Button>
+            </button>
           </li>
         </ul>
       </nav>

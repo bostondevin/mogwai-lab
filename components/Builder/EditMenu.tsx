@@ -3,8 +3,6 @@ import { ROOT_NODE } from "@craftjs/utils";
 import React, { useEffect, useRef, useCallback } from "react";
 import ReactDOM from "react-dom";
 
-import { Button } from "../Core/Button";
-
 export const EditMenu = ({ render }) => {
   const { id } = useNode();
 
@@ -121,7 +119,7 @@ export const EditMenu = ({ render }) => {
                 </button>
               ) : null}
               {id !== ROOT_NODE && isActive && (
-                <Button
+                <button
                   type="button"
                   className="mr-2 cursor-pointer"
                   onClick={() => {
@@ -129,10 +127,10 @@ export const EditMenu = ({ render }) => {
                   }}
                 >
                   <i className="fas fa-arrow-up" />
-                </Button>
+                </button>
               )}
               {deletable && isActive ? (
-                <Button
+                <button
                   type="button"
                   className="cursor-pointer"
                   onMouseDown={(e: React.MouseEvent) => {
@@ -141,7 +139,7 @@ export const EditMenu = ({ render }) => {
                   }}
                 >
                   <i className="fas fa-trash" />
-                </Button>
+                </button>
               ) : null}
             </div>,
             document.querySelector(".page-container")

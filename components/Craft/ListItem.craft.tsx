@@ -2,14 +2,14 @@ import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { ContainerProps } from "../common.interface";
 
-import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
+import { ContainerSettings } from "../Builder/settings/ContainerSettings";
 import {
   nodeHook,
   editorHook,
   emptyContainerClass,
   emptyContainerStyle,
   editorEnabledAppend,
-} from "../Builder/toolbar/craft.utils";
+} from "../Builder/settings/craft.utils";
 
 export const CraftListItem: UserComponent<ContainerProps> = (props) => {
   const {

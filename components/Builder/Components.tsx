@@ -1,13 +1,10 @@
 import React, { createElement } from "react";
 import { Element, useEditor } from "@craftjs/core";
 
-import { Accordion } from "../Core/Accordion";
-
-import { Button } from "../Core/Button";
-
 import { CraftButton } from "../Craft/Button.craft";
 
 import { CraftContainer } from "../Craft/Container.craft";
+import { CraftForm } from "../Craft/Form.craft";
 
 import { CraftList } from "../Craft/List.craft";
 import { CraftListItem } from "../Craft/ListItem.craft";
@@ -35,6 +32,7 @@ export const ComponentsPanel = () => {
     Button: CraftButton,
 
     Container: CraftContainer,
+    Form: CraftForm,
 
     List: CraftList,
     ListItem: CraftListItem,
@@ -53,10 +51,10 @@ export const ComponentsPanel = () => {
     <div className="flex flex-wrap flex-row">
       {baseComponents.map((item, componentIndex) => {
         return (
-          <Button
+          <button
             key={"component_" + componentIndex}
             className="p-2 inline-block cursor-grab"
-            tooltip={item.title}
+            title={item.title}
             ref={(ref: any) =>
               create(
                 ref,
@@ -73,7 +71,7 @@ export const ComponentsPanel = () => {
             }
           >
             <i className={item.icon} />
-          </Button>
+          </button>
         );
       })}
     </div>

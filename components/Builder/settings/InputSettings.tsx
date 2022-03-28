@@ -1,9 +1,7 @@
 import React from "react";
 import { useNode } from "@craftjs/core";
 import { Form } from "../../Core/Form";
-import { Textarea } from "../../Core/Textarea";
 import { Input } from "../../Core/Input";
-import { Select } from "../../Core/Select";
 import { FormGenerator, FormBuilder, Validators } from "react-reactive-form";
 import {
   outerClassName,
@@ -53,8 +51,9 @@ export const InputSettings = () => {
 
   const customItems = {
     type: {
-      type: "Select",
+      render: Input,
       meta: {
+        type: "select",
         items: InputTypes,
         label: "Type",
         tight: true,
@@ -64,20 +63,15 @@ export const InputSettings = () => {
     },
 
     placeholder: {
-      type: "Input",
+      render: Input,
       meta: {
+        type: "text",
         label: "Placeholder",
         tight: true,
         className: outerClassName,
         labelClassName: labelClassName,
       },
     },
-  };
-
-  const o = {
-    Select: Select,
-    Input: Input,
-    Textarea: Textarea,
   };
 
   const config = {

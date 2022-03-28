@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { GridSettings } from "../Builder/toolbar/GridSettings";
-import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
+import { GridSettings } from "../Builder/settings/GridSettings";
+import { nodeHook, editorHook } from "../Builder/settings/craft.utils";
 import { AgGridReact, AgGridColumnProps } from "ag-grid-react";
 
 import "ag-grid-enterprise";

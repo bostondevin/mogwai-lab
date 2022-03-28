@@ -3,14 +3,14 @@ import { UserComponent, useNode, useEditor } from "@craftjs/core";
 
 import { ReactDiagram, DiagramProps } from "gojs-react";
 
-import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
+import { ContainerSettings } from "../Builder/settings/ContainerSettings";
 import {
   nodeHook,
   editorHook,
   emptyContainerClass,
   emptyContainerStyle,
   editorEnabledAppend,
-} from "../Builder/toolbar/craft.utils";
+} from "../Builder/settings/craft.utils";
 import { ContainerProps } from "../common.interface";
 
 import * as go from "gojs";

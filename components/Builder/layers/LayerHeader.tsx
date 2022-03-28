@@ -2,8 +2,6 @@ import React from "react";
 import cx from "classnames";
 import { useEditor } from "@craftjs/core";
 import { useLayer } from "@craftjs/layers";
-import { Button } from "components/Core/Button";
-
 import { EditableLayerName } from "./EditableLabel";
 
 export const DefaultLayerHeader: React.FC = () => {
@@ -40,7 +38,7 @@ export const DefaultLayerHeader: React.FC = () => {
       <div className="flex w-full" ref={layerHeader}>
         {topLevel && <i className="fa fa-link" />}
 
-        <Button className="mr-2" onMouseDown={() => toggleLayer()}>
+        <button className="mr-2" onMouseDown={() => toggleLayer()}>
           <i
             className={cx([
               "",
@@ -51,16 +49,16 @@ export const DefaultLayerHeader: React.FC = () => {
               },
             ])}
           />
-        </Button>
+        </button>
         <EditableLayerName />
       </div>
 
-      <Button
+      <button
         className={hidden && "opacity-25"}
         onClick={() => actions.setHidden(id, !hidden)}
       >
         <i className={hidden ? "fa fa-eye" : "fa fa-eye"} />
-      </Button>
+      </button>
     </div>
   );
 };

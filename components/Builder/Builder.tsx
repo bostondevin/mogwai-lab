@@ -7,6 +7,7 @@ import { EditMenu } from "./EditMenu";
 import { CraftButton } from "../Craft/Button.craft";
 
 import { CraftContainer } from "../Craft/Container.craft";
+import { CraftForm } from "../Craft/Form.craft";
 
 import { CraftList } from "../Craft/List.craft";
 import { CraftListItem } from "../Craft/ListItem.craft";
@@ -27,6 +28,7 @@ export const Builder = ({ store }): JSX.Element => {
         CraftButton,
 
         CraftContainer,
+        CraftForm,
 
         CraftList,
         CraftListItem,

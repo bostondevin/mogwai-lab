@@ -104,10 +104,13 @@ export type CommonEvents = {
   onPointerOut?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
+export interface FormProps extends CommonProps, CommonEvents {
+  onSubmit?: (event: React.MouseEvent<HTMLElement>) => void;
+}
+
 export interface ContainerProps extends CommonProps, CommonEvents {
   type?:
     | "div"
-    | "form"
     | "header"
     | "nav"
     | "main"
@@ -472,8 +475,9 @@ Object.keys(colors).forEach((c) => {
 
 export const tailwindClassForm = {
   "className:display": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.display,
       label: "Display",
       tight: true,
@@ -484,8 +488,9 @@ export const tailwindClassForm = {
   },
 
   "className:w": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.w,
       label: "Width",
       tight: true,
@@ -495,8 +500,9 @@ export const tailwindClassForm = {
     },
   },
   "className:h": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.h,
       label: "Height",
       tight: true,
@@ -507,8 +513,9 @@ export const tailwindClassForm = {
   },
 
   "className:bg-color": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.bg.color,
       label: "Background Color",
       tight: true,
@@ -518,8 +525,9 @@ export const tailwindClassForm = {
     },
   },
   "className:bg-intensity": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.bg.intensity,
       label: "Background Intensity",
       tight: true,
@@ -529,8 +537,9 @@ export const tailwindClassForm = {
     },
   },
   "className:bg-opacity": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.bg.opacity,
       label: "Background Opacity",
       tight: true,
@@ -541,9 +550,10 @@ export const tailwindClassForm = {
   },
 
   "className:shadow": {
-    type: "Select",
+    type: "Input",
     // options: { validators: Validators.required },
     meta: {
+      type: "select",
       items: tailwindSchema.shadow,
       label: "Shadow",
       tight: true,
@@ -554,8 +564,9 @@ export const tailwindClassForm = {
   },
 
   "className:text-color": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.text.color,
       label: "Text Color",
       tight: true,
@@ -565,8 +576,9 @@ export const tailwindClassForm = {
     },
   },
   "className:text-intensity": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.text.intensity,
       label: "Text Intensity",
       tight: true,
@@ -576,8 +588,9 @@ export const tailwindClassForm = {
     },
   },
   "className:text-opacity": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.text.opacity,
       label: "Text Opacity",
       tight: true,
@@ -587,8 +600,9 @@ export const tailwindClassForm = {
     },
   },
   "className:font": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.font.style,
       label: "Font Style",
       tight: true,
@@ -598,8 +612,9 @@ export const tailwindClassForm = {
     },
   },
   "className:text-size": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.text.size,
       label: "Text Size",
       tight: true,
@@ -609,8 +624,9 @@ export const tailwindClassForm = {
     },
   },
   "className:text-align": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.text.align,
       label: "Text Align",
       tight: true,
@@ -620,8 +636,9 @@ export const tailwindClassForm = {
     },
   },
   "className:tracking": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.tracking,
       label: "Letter Spacing",
       tight: true,
@@ -631,8 +648,9 @@ export const tailwindClassForm = {
     },
   },
   "className:leading": {
-    type: "Select",
+    type: "Input",
     meta: {
+      type: "select",
       items: tailwindSchema.leading,
       label: "Line Spacing",
       tight: true,
@@ -641,29 +659,6 @@ export const tailwindClassForm = {
       inputClassName: inputClassName,
     },
   },
-};
-
-export const getClassNames = (value) => {
-  /*
-  const newClassNames = Object.keys(value).reduce((acc, key) => {
-    const _acc = acc;
-    if (value[key] !== undefined && key.indexOf("className:") === 0)
-      _acc[key] = value[key];
-    return _acc;
-  }, {});
-  */
-
-  const newClassArr = [];
-
-  Object.keys(value).forEach((d) => {
-    console.log(d);
-    console.log(value[d]);
-    // newClassArr.push(newClassNames[d]);
-  });
-
-  console.log(newClassArr);
-
-  return newClassArr.join(" ");
 };
 
 export const formatColorProp = (prop, newClasses) => {

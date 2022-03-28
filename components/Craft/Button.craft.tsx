@@ -4,8 +4,8 @@ import { CraftIcon } from "./Icon.craft";
 import { CraftText } from "./Text.craft";
 import NextLink from "next/link";
 
-import { ButtonSettings } from "../Builder/toolbar/ButtonSettings";
-import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
+import { ButtonSettings } from "../Builder/settings/ButtonSettings";
+import { nodeHook, editorHook } from "../Builder/settings/craft.utils";
 
 import { ButtonProps } from "../common.interface";
 

@@ -1,17 +1,16 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Form } from "../Core/Form";
 import { CraftListItem } from "./ListItem.craft";
 import { ContainerProps } from "../common.interface";
 
-import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
+import { ContainerSettings } from "../Builder/settings/ContainerSettings";
 import {
   nodeHook,
   editorHook,
   emptyContainerClass,
   emptyContainerStyle,
   editorEnabledAppend,
-} from "../Builder/toolbar/craft.utils";
+} from "../Builder/settings/craft.utils";
 
 export const CraftContainer: UserComponent<ContainerProps> = (props) => {
   const {
@@ -22,22 +21,6 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
 
   return (
     <>
-      {props.type === "form" && (
-        <Form
-          ref={connect}
-          {...props}
-          className={props.className + (enabled ? editorEnabledAppend : "")}
-        >
-          {props.children}
-          {!props.children && enabled && (
-            <div
-              className={emptyContainerClass}
-              style={emptyContainerStyle}
-            ></div>
-          )}
-        </Form>
-      )}
-
       {props.type === "div" && (
         <div
           ref={connect}

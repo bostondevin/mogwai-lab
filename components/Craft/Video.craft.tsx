@@ -1,7 +1,7 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { ButtonSettings } from "../Builder/toolbar/ButtonSettings";
-import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
+import { ButtonSettings } from "../Builder/settings/ButtonSettings";
+import { nodeHook, editorHook } from "../Builder/settings/craft.utils";
 import YouTube from "react-youtube";
 import { VideoProps } from "../common.interface";
 

@@ -1,9 +1,7 @@
 import React from "react";
 import { useNode } from "@craftjs/core";
 import { Form } from "../../Core/Form";
-import { Textarea } from "../../Core/Textarea";
 import { Input } from "../../Core/Input";
-import { Select } from "../../Core/Select";
 import { FormGenerator, Validators } from "react-reactive-form";
 import {
   outerClassName,
@@ -33,8 +31,9 @@ export const TextSettings = () => {
   const config = tailwindFormConfig(
     {
       type: {
-        render: Select,
+        render: Input,
         meta: {
+          type: "select",
           items: TextTypes,
           label: "Text Type",
           tight: true,
@@ -44,8 +43,9 @@ export const TextSettings = () => {
         },
       },
       text: {
-        render: Textarea,
+        render: Input,
         meta: {
+          type: "textarea",
           label: "Text",
           tight: true,
           className: outerClassName,
@@ -54,9 +54,7 @@ export const TextSettings = () => {
       },
     },
     {
-      Select: Select,
       Input: Input,
-      Textarea: Textarea,
     },
     propValue
   );
