@@ -1,7 +1,7 @@
 import { useEditor } from "@craftjs/core";
 import { createElement } from "react";
 
-export const SettingsPanel = ({ store, path }) => {
+export const SettingsPanel = () => {
   const { active, related } = useEditor((state, query) => {
     const currentlySelectedNodeId = query.getEvent("selected").first();
     return {

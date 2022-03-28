@@ -3,6 +3,7 @@ import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { Text, TextProps } from "../Core/Text";
 import { TextSettings } from "../Builder/toolbar/TextSettings";
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
+import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 
 export const CraftText: UserComponent<TextProps> = (props) => {
   const {
@@ -13,13 +14,16 @@ export const CraftText: UserComponent<TextProps> = (props) => {
   const { enabled } = useEditor(editorHook);
 
   return (
-    <Text
-      ref={connect}
-      {...props}
-      disabled={!enabled}
+    <ContentEditable
+      innerRef={connect}
+      id={props.id}
+      html={props.text || ""}
+      disabled={props.disabled && !enabled}
+      className={props.className}
+      tagName={props.type}
       onChange={(e) => {
         setProp((prop) => (prop.text = e.target.value), 500);
-      }} // use true to disable editing
+      }}
     />
   );
 };

@@ -53,14 +53,7 @@ export type CommonProps = {
   className?: string;
   style?: any;
   "aria-label"?: string;
-  children?:
-    | JSX.Element
-    | JSX.Element[]
-    | string
-    | number
-    | boolean
-    | null
-    | undefined;
+  children?: any;
 };
 
 export type CommonEvents = {
@@ -105,6 +98,9 @@ export interface InputProps extends CommonInputProps {
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
+  labelClassName?: string;
+  inputClassName?: string;
   type:
     | "text"
     | "textarea"
@@ -694,7 +690,11 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
     controls: { ...customItems, ...tailwindClassForm },
   };
 
+  console.log(config);
+
   Object.keys(config.controls).forEach((key) => {
+    config.controls[key].formState = null;
+
     if (key in propValue && key.indexOf("className:") === -1) {
       config.controls[key].formState = propValue[key]; // ["", Validators.required],
     }
@@ -705,11 +705,19 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
 
       if (k.indexOf("-") === -1) {
         const filterVal = c.find((d) => d.indexOf(k) === 0);
+
         if (filterVal) {
           if (filterVal.indexOf("-") > -1) {
             config.controls[key].formState = filterVal.split("-")[1];
           } else {
             config.controls[key].formState = filterVal;
+          }
+        } else {
+          console.log(k + " ---- " + filterVal);
+          if (k === "display") {
+            const m = c.find((d) => d in tailwindSchema[k]);
+            config.controls[key].formState = m;
+            // Object.keys(tailwindSchema[k]).indexOf();
           }
         }
       } else {

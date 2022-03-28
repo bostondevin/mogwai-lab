@@ -1,15 +1,7 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { DivContainer } from "../Core/Div";
-import { Aside } from "../Core/Aside";
-import { Nav } from "../Core/Nav";
-import { Header } from "../Core/Header";
-import { Footer } from "../Core/Footer";
-import { Section } from "../Core/Section";
-import { Article } from "../Core/Article";
-import { Fieldset } from "../Core/Fieldset";
-import { Main } from "../Core/Main";
-import { Form, FormProps } from "../Core/Form";
+import { Form } from "../Core/Form";
 import { CraftListItem } from "./ListItem.craft";
 import { ContainerProps } from "../common.interface";
 
@@ -48,7 +40,7 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
       )}
 
       {props.type === "div" && (
-        <DivContainer
+        <div
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -61,11 +53,11 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </DivContainer>
+        </div>
       )}
 
       {props.type === "aside" && (
-        <Aside
+        <aside
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -78,11 +70,11 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </Aside>
+        </aside>
       )}
 
       {props.type === "nav" && (
-        <Nav
+        <nav
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -95,11 +87,11 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </Nav>
+        </nav>
       )}
 
       {props.type === "header" && (
-        <Header
+        <header
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -112,11 +104,11 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </Header>
+        </header>
       )}
 
       {props.type === "footer" && (
-        <Footer
+        <footer
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -129,11 +121,11 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </Footer>
+        </footer>
       )}
 
       {props.type === "section" && (
-        <Section
+        <section
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -146,11 +138,11 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </Section>
+        </section>
       )}
 
       {props.type === "article" && (
-        <Article
+        <article
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -163,11 +155,11 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </Article>
+        </article>
       )}
 
       {props.type === "fieldset" && (
-        <Fieldset
+        <fieldset
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -180,11 +172,11 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </Fieldset>
+        </fieldset>
       )}
 
       {props.type === "main" && (
-        <Main
+        <main
           ref={connect}
           {...props}
           className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -197,7 +189,7 @@ export const CraftContainer: UserComponent<ContainerProps> = (props) => {
               style={emptyContainerStyle}
             ></DivContainer>
           )}
-        </Main>
+        </main>
       )}
     </>
   );

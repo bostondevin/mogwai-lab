@@ -24,7 +24,7 @@ export const DataPanel = ({ store, path }) => {
     console.log(e);
   };
 
-  const changeDataItem = (e) => {
+  const changeDataItem = () => {
     /*
     console.log(e);
     console.log(path);

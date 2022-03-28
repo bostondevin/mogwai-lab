@@ -3,6 +3,7 @@ import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { Video, VideoProps } from "../Core/Video";
 import { ButtonSettings } from "../Builder/toolbar/ButtonSettings";
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
+import YouTube from "react-youtube";
 
 export const CraftVideo: UserComponent<VideoProps> = (props) => {
   const {
@@ -12,11 +13,18 @@ export const CraftVideo: UserComponent<VideoProps> = (props) => {
   const { enabled } = useEditor(editorHook);
 
   return (
-    <Video
+    <div
       ref={connect}
-      {...props}
       className={props.className + (enabled ? " pointer-events-none" : "")}
-    />
+    >
+      <YouTube
+        videoId={props.videoId}
+        opts={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
+    </div>
   );
 };
 

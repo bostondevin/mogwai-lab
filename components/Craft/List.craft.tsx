@@ -26,9 +26,9 @@ export const CraftList: UserComponent<ListProps> = (props) => {
   return (
     <>
       {props.type === "ol" && (
-        <OrderedList
+        <ol
           ref={connect}
-          {...props}
+          style={props.style}
           className={
             enabled ? props.className + editorEnabledAppend : props.className
           }
@@ -36,18 +36,18 @@ export const CraftList: UserComponent<ListProps> = (props) => {
           {props.children}
 
           {!props.children && enabled && (
-            <ListItem
+            <li
               className={emptyContainerClass}
               style={emptyContainerStyle}
-            ></ListItem>
+            ></li>
           )}
-        </OrderedList>
+        </ol>
       )}
       {!props.type ||
         (props.type === "ul" && (
-          <UnOrderedList
+          <ul
             ref={connect}
-            {...props}
+            style={props.style}
             className={
               enabled ? props.className + editorEnabledAppend : props.className
             }
@@ -55,12 +55,12 @@ export const CraftList: UserComponent<ListProps> = (props) => {
             {props.children}
 
             {!props.children && enabled && (
-              <ListItem
+              <li
                 className={emptyContainerClass}
                 style={emptyContainerStyle}
-              ></ListItem>
+              ></li>
             )}
-          </UnOrderedList>
+          </ul>
         ))}
     </>
   );

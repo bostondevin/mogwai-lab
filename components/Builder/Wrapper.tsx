@@ -118,10 +118,10 @@ export const Wrapper = ({ store, children }): JSX.Element => {
             <Nav className="flex w-full bg-white dark:bg-slate-900 ease-in-out transition-all duration-300">
               <DivContainer className="flex w-full shadow-md mb-1 dark:text-white">
                 <Appbar screen={screen} store={store} />
-              </DivContainer>{" "}
+              </DivContainer>
             </Nav>
 
-            <DivContainer
+            <div
               className={cx([
                 "craftjs-renderer flex h-full w-full overflow-auto bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 ease-in-out transition-all duration-300",
                 {
@@ -133,7 +133,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
               }
             >
               {children}
-            </DivContainer>
+            </div>
           </DivContainer>
         </DivContainer>
 

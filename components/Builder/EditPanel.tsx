@@ -7,14 +7,9 @@ import lz from "lzutf8";
 import { SettingsPanel } from "./SettingsPanel";
 import { ComponentsPanel } from "./Components";
 import { DataPanel } from "./DataPanel";
-
 import { Button } from "../Core/Button";
-import { Link } from "../Core/Link";
-
 import { Layer } from "./layers/Layer";
-
 import { ButtonBar } from "../Core/ButtonBar";
-
 import { Icon } from "../Core/Icon";
 import { Text } from "../Core/Text";
 import { Popup } from "../Core/Popup";
@@ -87,11 +82,11 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
     store.get("editor").get("activeTab").put(e.targetEleId);
   };
 
-  const changeScreen = (e, d) => {
+  const changeScreen = (d) => {
     store.get("editor").get("screen").put(d);
   };
 
-  const toggleOutlines = (e) => {
+  const toggleOutlines = () => {
     store.get("editor").get("outlines").put(!outlinesVisible);
   };
 
@@ -165,7 +160,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
                     return (
                       <Button
                         key={item.id}
-                        onClick={(e) => changeScreen(e, item.id)}
+                        onClick={() => changeScreen(item.id)}
                         type="button"
                         className="p-2 hover:bg-slate-800 dark:hover:bg-slate-400 select-none cursor-pointer flex gap-2"
                       >
@@ -208,7 +203,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               type="button"
               tooltip="Outlines"
               placement="bottom"
-              onClick={(e) => toggleOutlines(e)}
+              onClick={() => toggleOutlines()}
               disabled={!outlinesVisible}
               className={navItemClass}
             >
@@ -303,9 +298,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
 
       <div className="flex flex-col h-full overflow-y-auto mt-2">
         {activeTab === "components" && <ComponentsPanel />}
-        {activeTab === "settings" && (
-          <SettingsPanel store={store} path={path} />
-        )}
+        {activeTab === "settings" && <SettingsPanel />}
         {activeTab === "data" && <DataPanel store={store} path={path} />}
       </div>
 

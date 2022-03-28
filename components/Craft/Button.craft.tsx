@@ -2,6 +2,7 @@ import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
 import { CraftIcon } from "./Icon.craft";
 import { CraftText } from "./Text.craft";
+import NextLink from "next/link";
 
 import { Button } from "../Core/Button";
 import { Link, LinkProps } from "../Core/Link";
@@ -20,14 +21,29 @@ export const CraftButton: UserComponent<ButtonProps> = (props) => {
   return (
     <>
       {props.type === "button" && (
-        <Button ref={connect} {...props} disabled={enabled}>
+        <button
+          ref={connect}
+          type={props.type}
+          className={props.className}
+          style={props.style}
+          disabled={enabled}
+        >
           {props.children}
-        </Button>
+        </button>
       )}
       {props.type === "a" && (
-        <Link ref={connect} {...props} disabled={enabled}>
-          {props.children}
-        </Link>
+        <NextLink href={props.href}>
+          <a
+            ref={connect}
+            onClick={() => props.onClick}
+            className={props.className}
+            arial-label={props["aria-label"] ? props["aria-label"] : undefined}
+          >
+            {props.children}
+
+            {!props.children && "Hyperlink Text"}
+          </a>
+        </NextLink>
       )}
     </>
   );
@@ -37,7 +53,7 @@ CraftButton.craft = {
   displayName: "Button",
   props: {},
   rules: {
-    canMoveIn: (nodes, self, helper) => {
+    canMoveIn: (nodes) => {
       return nodes.every(
         (node) => node.data.type === CraftText || node.data.type === CraftIcon
       );

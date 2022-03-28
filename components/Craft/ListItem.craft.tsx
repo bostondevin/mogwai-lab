@@ -21,7 +21,7 @@ export const CraftListItem: UserComponent<ContainerProps> = (props) => {
   const { enabled } = useEditor(editorHook);
 
   return (
-    <ListItem
+    <li
       ref={connect}
       {...props}
       className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -29,14 +29,11 @@ export const CraftListItem: UserComponent<ContainerProps> = (props) => {
       {props.children}
 
       {!props.children && enabled && (
-        <DivContainer
-          className={emptyContainerClass}
-          style={emptyContainerStyle}
-        >
+        <div className={emptyContainerClass} style={emptyContainerStyle}>
           Some text goes here
-        </DivContainer>
+        </div>
       )}
-    </ListItem>
+    </li>
   );
 };
 

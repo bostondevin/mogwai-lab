@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { Grid, GridProps } from "../Core/Grid";
 import { GridSettings } from "../Builder/toolbar/GridSettings";
 import { nodeHook, editorHook } from "../Builder/toolbar/craft.utils";
+import { AgGridReact, AgGridColumnProps } from "ag-grid-react";
+
+import "ag-grid-enterprise";
+import "ag-grid-enterprise/dist/styles/ag-grid.css";
+import "ag-grid-enterprise/dist/styles/ag-theme-balham-dark.css";
+
+type GridProps = {
+  className?: string;
+  dataSource?: string;
+  rows: [];
+  columns: [AgGridColumnProps];
+};
 
 export const CraftGrid: UserComponent<GridProps> = (props) => {
   const {
@@ -26,7 +37,18 @@ export const CraftGrid: UserComponent<GridProps> = (props) => {
   }, []);
 */
 
-  return <Grid ref={connect} {...props} />;
+  return (
+    <div
+      ref={connect}
+      style={{ height: "150px" }}
+      className={props.className + " ag-theme-balham-dark w-full"}
+    >
+      <AgGridReact
+        rowData={props.rows}
+        columnDefs={props.columns}
+      ></AgGridReact>
+    </div>
+  );
 };
 
 CraftGrid.craft = {

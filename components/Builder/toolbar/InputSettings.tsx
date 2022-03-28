@@ -6,8 +6,6 @@ import { Input } from "../../Core/Input";
 import { Select } from "../../Core/Select";
 import { FormGenerator, FormBuilder, Validators } from "react-reactive-form";
 import {
-  textClasses,
-  boxClasses,
   outerClassName,
   labelClassName,
   InputTypes,
@@ -82,12 +80,8 @@ export const InputSettings = () => {
     Textarea: Textarea,
   };
 
-  Object.keys(textClasses).forEach((d) => {
-    textClasses[d].render = o[textClasses[d].type];
-  });
-
   const config = {
-    controls: { ...customItems, ...textClasses },
+    controls: customItems,
   };
 
   return (

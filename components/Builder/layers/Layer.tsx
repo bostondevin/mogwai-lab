@@ -16,6 +16,7 @@ export const Layer: React.FC = ({ children }) => {
   }));
 
   const { hasChildCanvases } = useEditor((state, query) => {
+    console.log(state);
     return {
       hasChildCanvases: query.node(id).isParentOfTopLevelNodes(),
     };

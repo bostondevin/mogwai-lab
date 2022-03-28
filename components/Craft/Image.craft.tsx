@@ -11,7 +11,11 @@ export const CraftImage: UserComponent<ImageProps> = (props) => {
 
   const { enabled } = useEditor(editorHook);
 
-  return <Image ref={connect} {...props} />;
+  return (
+    <picture ref={connect} className={props.className} style={props.style}>
+      <img {...props} />
+    </picture>
+  );
 };
 
 CraftImage.craft = {

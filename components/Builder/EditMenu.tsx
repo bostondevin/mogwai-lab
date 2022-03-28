@@ -118,9 +118,9 @@ export const EditMenu = ({ render }) => {
             >
               <h2 className="flex-1 mr-4">{name}</h2>
               {moveable && isActive ? (
-                <Button type="button" className="mr-2 cursor-move" ref={drag}>
+                <button type="button" className="mr-2 cursor-move" ref={drag}>
                   <Icon className="fas fa-arrows-up-down-left-right" />
-                </Button>
+                </button>
               ) : null}
               {id !== ROOT_NODE && isActive && (
                 <Button

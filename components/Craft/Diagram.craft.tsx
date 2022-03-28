@@ -3,8 +3,6 @@ import { UserComponent, useNode, useEditor } from "@craftjs/core";
 
 import { ReactDiagram, DiagramProps } from "gojs-react";
 
-import { Div, DivProps } from "../Core/Div";
-
 import { ContainerSettings } from "../Builder/toolbar/ContainerSettings";
 import {
   nodeHook,
@@ -13,10 +11,11 @@ import {
   emptyContainerStyle,
   editorEnabledAppend,
 } from "../Builder/toolbar/craft.utils";
+import { ContainerProps } from "../common.interface";
 
 import * as go from "gojs";
 
-export const CraftDiagram: UserComponent<DivContainerProps> = (props) => {
+export const CraftDiagram: UserComponent<ContainerProps> = (props) => {
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
   const [breadCrumbs, setBreadCrumbs] = useState([]);
 
@@ -484,7 +483,7 @@ export const CraftDiagram: UserComponent<DivContainerProps> = (props) => {
   }
 
   return (
-    <DivContainer
+    <div
       ref={connect}
       {...props}
       className={props.className + (enabled ? editorEnabledAppend : "")}
@@ -496,7 +495,7 @@ export const CraftDiagram: UserComponent<DivContainerProps> = (props) => {
         nodeDataArray={graphData.nodes}
         onModelChange={handleModelChange}
       />
-    </DivContainer>
+    </div>
   );
 };
 

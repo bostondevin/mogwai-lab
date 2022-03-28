@@ -11,7 +11,7 @@ export const CraftIcon: UserComponent<IconProps> = (props) => {
 
   const { enabled } = useEditor(editorHook);
 
-  return <Icon ref={connect} {...props} />;
+  return <i ref={connect} {...props} />;
 };
 
 CraftIcon.craft = {
