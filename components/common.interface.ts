@@ -670,9 +670,9 @@ export const formatColorProp = (prop, newClasses) => {
   }
 };
 
-const setFormValue = (config, d, key, kParts) => {
-  if (d in tailwindSchema[kParts[0]][kParts[1]]) {
-    config.controls[key].formState = d;
+const setFormValue = (config, val, key, kParts) => {
+  if (val in tailwindSchema[kParts[0]][kParts[1]]) {
+    config.controls[key].formState = val;
   }
 };
 
@@ -742,7 +742,6 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
           if (k === "display") {
             const m = c.find((d) => d in tailwindSchema[k]);
             config.controls[key].formState = m;
-            // Object.keys(tailwindSchema[k]).indexOf();
           }
         }
       } else {
@@ -751,42 +750,25 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
         const filterVal = c
           .filter((d) => d.indexOf(kParts[0] + "-") === 0)
           .map((d) => d.replace(kParts[0] + "-", ""));
-        console.log(kParts);
-        console.log(filterVal);
-        console.log(key);
 
         filterVal.forEach((d) => {
+          // Color Intensity
           if (d.indexOf("-") > -1) {
-            // Intensity
-            const m = d.split("-");
-
-            if (m[0] in tailwindSchema[kParts[0]][kParts[1]]) {
-              config.controls[key].formState = m[0];
-            }
-
-            if (m.length === 2) {
-              if (m[1].indexOf("/") > -1) {
-                // Opacity
-                const op = m[1].split("/");
-                setFormValue(config, op[1], key, kParts);
-              } else {
-                setFormValue(config, m[1], key, kParts);
-              }
-            } else {
-              if (d.indexOf("/") > -1) {
-                // Opacity
-                const op = d.split("/");
-                // console.log(op[1]);
-                setFormValue(config, op[1], key, kParts);
-              } else {
-                setFormValue(config, d, key, kParts);
-              }
-            }
-          } else {
-            if (d in tailwindSchema[kParts[0]][kParts[1]]) {
-              config.controls[key].formState = d;
-            }
+            let val = d.split("-")[1]; // Get intensity
+            if (val.indexOf("/") > -1) val = val.split("/")[0];
+            setFormValue(config, val, key, kParts);
           }
+
+          // Color Opacity
+          if (d.indexOf("/") > -1) {
+            let val = d.split("/")[1]; // Get opacity
+            setFormValue(config, val, key, kParts);
+          }
+
+          let val = d;
+          if (val.indexOf("-") > -1) val = val.split("-")[0]; // Strip intensity
+          if (val.indexOf("/") > -1) val = val.split("/")[0]; // Strip opacity
+          setFormValue(config, val, key, kParts);
         });
       }
     }
