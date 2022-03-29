@@ -25,11 +25,7 @@ export const Input = ({
           <input
             type={meta.type}
             placeholder={meta.placeholder}
-            className={
-              meta.tight
-                ? smallInputClasses + " pl-2 pr-6 h-8"
-                : regularInputClasses + " pl-3 pr-6 h-10"
-            }
+            className="bg-transparent w-full h-full outline-none"
             {...handler()}
           />
         )}
@@ -38,37 +34,18 @@ export const Input = ({
           <textarea
             placeholder={meta.placeholder}
             rows={meta.rows}
-            className={
-              meta.tight
-                ? smallInputClasses + " pl-2 pr-6"
-                : regularInputClasses + " pl-3 pr-6"
-            }
+            className="bg-transparent w-full h-full outline-none"
             {...handler()}
           ></textarea>
         )}
 
         {meta.type === "select" && (
-          <>
-            <select
-              {...handler()}
-              className={
-                meta.tight
-                  ? smallInputClasses + " pl-2 pr-6 h-8 cursor-pointer"
-                  : regularInputClasses + " pl-3 pr-6 h-10 cursor-pointer"
-              }
-            >
-              <Options items={meta.items} placeholder={meta.placeholder} />
-            </select>
-            <button
-              className={
-                meta.tight
-                  ? "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-8"
-                  : "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-10"
-              }
-            >
-              <i className="fa-solid fa-chevron-down" />
-            </button>
-          </>
+          <select
+            {...handler()}
+            className="bg-transparent w-full h-full outline-none"
+          >
+            <Options items={meta.items} placeholder={meta.placeholder} />
+          </select>
         )}
 
         {meta.buttonIcon && (
@@ -84,3 +61,22 @@ export const Input = ({
     </div>
   );
 };
+
+/*
+            className={
+              meta.tight
+                ? smallInputClasses + " pl-2 pr-6 h-8"
+                : regularInputClasses + " pl-3 pr-6 h-10"
+
+
+                <button
+              className={
+                meta.tight
+                  ? "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-8"
+                  : "absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none h-10"
+              }
+            >
+              <i className="fa-solid fa-chevron-down" />
+            </button>
+
+                */

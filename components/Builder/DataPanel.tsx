@@ -31,19 +31,29 @@ export const DataPanel = ({ store, path }) => {
       const newItems = {};
 
       Object.keys(o).forEach((d) => {
+        const dataType = typeof o[d];
+        const dataLength = dataType.length;
+
+        let type;
+
+        if (dataType === "string" && dataLength > 50) type = "textarea";
+        if (dataType === "number") type = "number";
+        if (dataType === "boolean") type = "checkbox";
+
         newItems[d] = {
           render: Input,
           meta: {
             type: "textarea",
-            label: "Condensed HTML",
+            label: "Structure",
             tight: true,
-            className: outerClassName,
-            labelClassName: labelClassName,
-            inputClassName: inputClassName,
+            rows: 5,
+            className: "flex text-xs gap-1 w-full",
+            labelClassName: "opacity-50 w-1/5",
+            inputClassName: "w-full break-all outline-none border p-1 rounded",
           },
         };
 
-        if (d === "html") {
+        if (d === "html" && o[d]) {
           const json = lz.decompress(lz.decodeBase64(decodeURIComponent(o[d])));
           if (json) deserialize(json);
           newItems[d].formState = json;
@@ -79,7 +89,7 @@ export const DataPanel = ({ store, path }) => {
   };
 
   return (
-    <form className="grid grid-cols-2 gap-2 p-2">
+    <form className="p-2">
       <FormGenerator
         onMount={mountForm}
         fieldConfig={{
