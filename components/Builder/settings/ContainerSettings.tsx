@@ -28,7 +28,7 @@ export const ContainerSettings = () => {
   };
 
   const submitForm = (e) => {
-    // console.log(e);
+    console.log(e);
   };
 
   const config = tailwindFormConfig(

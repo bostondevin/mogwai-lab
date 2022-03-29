@@ -450,7 +450,7 @@ export const tailwindSchema = {
 export const outerClassName = "flex text-xs w-full gap-1 mb-2 flex-col";
 export const labelClassName = "flex text-xs opacity-50";
 export const inputClassName =
-  "w-full break-all outline-none border p-1 rounded break-all ";
+  "w-full break-all outline-none border p-1 rounded break-all";
 
 /*
 Object.keys(colors).forEach((c) => {
