@@ -58,51 +58,42 @@ export type CommonProps = {
   children?: any;
 };
 
-type TextType =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "span"
-  | "p"
-  | "small"
-  | "legend"
-  | "label";
-
-export interface TextProps {
-  onChange?: (event: ContentEditableEvent) => void;
-  type: TextType;
-  text?: string;
-  id?: string;
-  className?: string;
-  disabled?: boolean;
-  //  children?: JSX.Element | JSX.Element[] | string | number | boolean | null | undefined
-}
-
-export type IconProps = {
-  className?: string;
-  "aria-hidden"?: boolean;
-};
-
-export interface ImageProps {
-  src?: string;
-  alt?: string;
-  className?: string;
-  style?: any;
-}
-
-export interface VideoProps {
-  videoId?: string;
-  className?: string;
-}
-
 export type CommonEvents = {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onPointerOver?: (event: React.MouseEvent<HTMLElement>) => void;
   onPointerOut?: (event: React.MouseEvent<HTMLElement>) => void;
 };
+
+export interface TextProps extends CommonProps, CommonEvents {
+  onChange?: (event: ContentEditableEvent) => void;
+  type:
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "span"
+    | "p"
+    | "small"
+    | "legend"
+    | "label";
+  text?: string;
+  disabled?: boolean;
+}
+
+export interface IconProps extends CommonProps, CommonEvents {
+  "aria-hidden"?: boolean;
+}
+
+export interface ImageProps extends CommonProps, CommonEvents {
+  src?: string;
+  alt?: string;
+}
+
+export interface VideoProps extends CommonProps, CommonEvents {
+  videoId?: string;
+}
 
 export interface FormProps extends CommonProps, CommonEvents {
   onSubmit?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -727,8 +718,6 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
     controls: { ...customItems, ...tailwindClassForm },
   };
 
-  console.log(config);
-
   Object.keys(config.controls).forEach((key) => {
     config.controls[key].formState = null;
 
@@ -737,8 +726,8 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
     }
 
     if (key.indexOf("className:") === 0 && "className" in propValue) {
-      const k = key.replace("className:", "");
-      const c = propValue["className"].split(" ");
+      const k = key.replace("className:", ""); // dictionary class
+      const c = propValue["className"].split(" "); // existing classes
 
       if (k.indexOf("-") === -1) {
         const filterVal = c.find((d) => d.indexOf(k) === 0);
@@ -750,7 +739,6 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
             config.controls[key].formState = filterVal;
           }
         } else {
-          console.log(k + " ---- " + filterVal);
           if (k === "display") {
             const m = c.find((d) => d in tailwindSchema[k]);
             config.controls[key].formState = m;
@@ -763,17 +751,18 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
         const filterVal = c
           .filter((d) => d.indexOf(kParts[0] + "-") === 0)
           .map((d) => d.replace(kParts[0] + "-", ""));
-        // console.log(kParts);
-        // console.log(filterVal);
+        console.log(kParts);
+        console.log(filterVal);
+        console.log(key);
 
         filterVal.forEach((d) => {
-          if (d in tailwindSchema[kParts[0]][kParts[1]]) {
-            config.controls[key].formState = d;
-          }
-
           if (d.indexOf("-") > -1) {
             // Intensity
             const m = d.split("-");
+
+            if (m[0] in tailwindSchema[kParts[0]][kParts[1]]) {
+              config.controls[key].formState = m[0];
+            }
 
             if (m.length === 2) {
               if (m[1].indexOf("/") > -1) {
@@ -787,11 +776,15 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
               if (d.indexOf("/") > -1) {
                 // Opacity
                 const op = d.split("/");
-                console.log(op[1]);
+                // console.log(op[1]);
                 setFormValue(config, op[1], key, kParts);
               } else {
                 setFormValue(config, d, key, kParts);
               }
+            }
+          } else {
+            if (d in tailwindSchema[kParts[0]][kParts[1]]) {
+              config.controls[key].formState = d;
             }
           }
         });

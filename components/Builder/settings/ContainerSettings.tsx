@@ -10,6 +10,7 @@ import {
   tailwindFormConfig,
   ContainerTypes,
   inputClassName,
+  tailwindClassForm,
 } from "../../common.interface";
 
 export const ContainerSettings = () => {
@@ -21,6 +22,8 @@ export const ContainerSettings = () => {
   }));
 
   const mountForm = (f) => {
+    console.log(tailwindClassForm);
+
     f.valueChanges.subscribe((value) => saveFormChanges(value, setProp));
   };
 

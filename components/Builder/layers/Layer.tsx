@@ -15,13 +15,6 @@ export const Layer: React.FC = ({ children }) => {
     expanded: layer.expanded,
   }));
 
-  const { hasChildCanvases } = useEditor((state, query) => {
-    console.log(state);
-    return {
-      hasChildCanvases: query.node(id).isParentOfTopLevelNodes(),
-    };
-  });
-
   return (
     <div ref={layer} className="flex flex-col w-full">
       <DefaultLayerHeader />
