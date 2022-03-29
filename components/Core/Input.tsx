@@ -4,7 +4,12 @@ import { regularInputClasses, smallInputClasses } from "../common.interface";
 import { Text } from "./Text";
 import { Options } from "./Options";
 
-export const Input = ({ handler, meta }: AbstractControl) => {
+export const Input = ({
+  handler,
+  meta,
+  touched,
+  hasError,
+}: AbstractControl) => {
   const clickButton = (e) => {
     meta.onClick(e);
   };
@@ -12,6 +17,9 @@ export const Input = ({ handler, meta }: AbstractControl) => {
   return (
     <div className={meta.className}>
       <Text className={meta.labelClassName} text={meta.label} type="label" />
+      <span>
+        {touched && hasError("required") && meta.label + " is required"}
+      </span>
       <div className={meta.inputClassName}>
         {meta.type !== "textarea" && meta.type !== "select" && (
           <input

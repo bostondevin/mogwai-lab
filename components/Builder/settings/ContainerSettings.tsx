@@ -22,13 +22,13 @@ export const ContainerSettings = () => {
   }));
 
   const mountForm = (f) => {
-    console.log(tailwindClassForm);
+    // console.log(tailwindClassForm);
 
     f.valueChanges.subscribe((value) => saveFormChanges(value, setProp));
   };
 
   const submitForm = (e) => {
-    console.log(e);
+    // console.log(e);
   };
 
   const config = tailwindFormConfig(
