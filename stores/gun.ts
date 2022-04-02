@@ -6,8 +6,10 @@ import "gun/lib/path.js";
 import "gun/lib/load.js";
 import { nanoid } from "nanoid";
 
+// http://localhost:8765/gun
+
 export const gunStore = Gun({
-  peers: ["https://mogwai-water.herokuapp.com/gun"],
+  peers: ["https://mogwai.herokuapp.com/gun"],
   uuid: () => {
     return nanoid(11);
   },

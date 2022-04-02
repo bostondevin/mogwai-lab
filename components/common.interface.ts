@@ -15,6 +15,7 @@ export const TextTypes = {
 
 export const InputTypes = {
   text: { label: "Text" },
+  textarea: { label: "Text Area" },
   number: { label: "Number" },
   tel: { label: "Phone" },
   color: { label: "Color" },
@@ -25,7 +26,8 @@ export const InputTypes = {
   checkbox: { label: "Checkbox" },
   radio: { label: "Radio" },
   range: { label: "Range" },
-  file: { label: "Slate" },
+  file: { label: "File" },
+  select: { label: "Select" },
 };
 
 export const ContainerTypes = {
@@ -450,7 +452,7 @@ export const tailwindSchema = {
 export const outerClassName = "flex text-xs w-full gap-1 mb-2 flex-col";
 export const labelClassName = "flex text-xs opacity-50";
 export const inputClassName =
-  "w-full break-all outline-none border p-1 rounded break-all";
+  "w-full break-all outline-none border dark:border-black/25 p-1 rounded break-all";
 
 /*
 Object.keys(colors).forEach((c) => {

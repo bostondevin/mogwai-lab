@@ -116,10 +116,8 @@ export const baseComponents = [
       props: {
         type: "text",
         label: "Text",
-        tight: true,
-        className: outerClassName,
-        labelClassName: labelClassName,
-        inputClassName: inputClassName,
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
       },
     },
   },

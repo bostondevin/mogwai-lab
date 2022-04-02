@@ -18,7 +18,7 @@ export const CraftText: UserComponent<TextProps> = (props) => {
       innerRef={connect}
       id={props.id}
       html={props.text || ""}
-      disabled={props.disabled && !enabled}
+      disabled={props.disabled || !enabled}
       className={props.className}
       tagName={props.type}
       onChange={(e) => {

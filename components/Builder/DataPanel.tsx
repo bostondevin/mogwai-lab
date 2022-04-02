@@ -3,12 +3,7 @@ import { useEditor } from "@craftjs/core";
 import { Input } from "../Core/Input";
 import lz from "lzutf8";
 import { FormGenerator } from "react-reactive-form";
-import {
-  outerClassName,
-  labelClassName,
-  saveFormChanges,
-  inputClassName,
-} from "../common.interface";
+import { InputTypes } from "../common.interface";
 
 export const DataPanel = ({ store, path }) => {
   const {
@@ -20,6 +15,7 @@ export const DataPanel = ({ store, path }) => {
   }));
 
   const [formProps, setFormProps] = useState({});
+  const [addFormProps, setAddFormProps] = useState(null);
 
   useEffect(() => {
     store.path(("templates" + path).split("/")).once((d) => {
@@ -66,6 +62,36 @@ export const DataPanel = ({ store, path }) => {
     });
   }, []);
 
+  const formAddProps = {
+    type: {
+      render: Input,
+      meta: {
+        type: "select",
+        items: InputTypes,
+        label: "Type",
+        tight: true,
+        className: "flex text-xs gap-1 w-full",
+        labelClassName: "opacity-50 w-1/5",
+        inputClassName:
+          "w-full break-all outline-none border p-1 w-4/5 rounded",
+      },
+    },
+
+    value: {
+      render: Input,
+      meta: {
+        type: "text",
+        items: InputTypes,
+        label: "Value",
+        tight: true,
+        className: "flex text-xs gap-1 w-full",
+        labelClassName: "opacity-50 w-1/5",
+        inputClassName:
+          "w-full break-all outline-none border p-1 w-4/5 rounded",
+      },
+    },
+  };
+
   const changeDataItem = () => {
     /*
     console.log(e);
@@ -88,14 +114,41 @@ export const DataPanel = ({ store, path }) => {
     });
   };
 
+  const mountAddForm = (f) => {
+    f.valueChanges.subscribe((value) => {
+      console.log(value);
+      // setAddFormProps(() => value);
+      // setAddFormProps((v) => value);
+    });
+  };
+
+  const submitAddForm = (e) => {
+    e.preventDefault();
+    console.log(addFormProps);
+  };
+
   return (
-    <form className="p-2">
-      <FormGenerator
-        onMount={mountForm}
-        fieldConfig={{
-          controls: formProps,
-        }}
-      />
-    </form>
+    <>
+      <form className="p-2" onSubmit={submitAddForm}>
+        <FormGenerator
+          onMount={mountAddForm}
+          fieldConfig={{
+            controls: formAddProps,
+          }}
+        />
+        <button type="submit">
+          <i className="fa-solid fa-save"></i>
+        </button>
+      </form>
+
+      <form className="p-2">
+        <FormGenerator
+          onMount={mountForm}
+          fieldConfig={{
+            controls: formProps,
+          }}
+        />
+      </form>
+    </>
   );
 };

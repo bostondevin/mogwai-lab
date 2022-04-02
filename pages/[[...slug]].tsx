@@ -6,11 +6,11 @@ function Home({ store }) {
   return (
     <>
       <NextSeo
-        title="SEI Investments"
-        description="SEI Investments"
-        canonical="http://seic.com/"
+        title="Mogwai Labs"
+        description="Mogwai Labs Builder App"
+        canonical="http://mogwai-labs.com/"
         twitter={{
-          site: "seic.com",
+          site: "mogwai-labs.com",
           cardType: "summary_large_image",
         }}
       />

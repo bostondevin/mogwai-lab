@@ -33,6 +33,18 @@ export const EditMenu = ({ render }) => {
 
   useEffect(() => {
     if (dom) {
+      dom.classList.remove(
+        "outline-1",
+        "outline-dotted",
+        "outline-black/0",
+        "dark:outline-white/0",
+        "hover:outline-black/25",
+        "hover:dark:outline-white/25",
+        "component-selected",
+        "dark:outline-lime-500",
+        "outline-blue-500"
+      );
+
       if (enabled)
         dom.classList.add(
           "outline-1",
@@ -48,13 +60,7 @@ export const EditMenu = ({ render }) => {
         //dom.classList.add("outline-black/50", "dark:outline-white/50");
       }
 
-      if (isActive) {
-        dom.classList.remove(
-          "outline-black/0",
-          "dark:outline-white/0",
-          "hover:outline-black/25",
-          "hover:dark:outline-white/25"
-        );
+      if (enabled && isActive) {
         dom.classList.add(
           "component-selected",
           "dark:outline-lime-500",

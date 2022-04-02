@@ -1,7 +1,7 @@
 import React from "react";
 import { AbstractControl } from "react-reactive-form";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { ContainerSettings } from "../Builder/settings/ContainerSettings";
+import { InputSettings } from "../Builder/settings/InputSettings";
 import { InputProps } from "../common.interface";
 import { regularInputClasses, smallInputClasses } from "../common.interface";
 
@@ -15,36 +15,36 @@ export const CraftInput: UserComponent<InputProps> = (props) => {
   const { enabled } = useEditor(editorHook);
 
   return (
-    <div className={props.className} ref={connect}>
-      <label className={props.labelClassName}>{props.label}</label>
-      <div className={props.inputClassName}>
-        {props.type !== "textarea" && props.type !== "select" && (
-          <input
-            {...props}
-            className={props.tight ? smallInputClasses : regularInputClasses}
-            readOnly={enabled}
-          />
-        )}
-        {props.type === "textarea" && (
-          <textarea
-            className={props.tight ? smallInputClasses : regularInputClasses}
-            readOnly={enabled}
-          ></textarea>
-        )}
-        {props.type === "select" && (
-          <select
-            name={props.name}
-            id={props.id}
-            disabled={enabled}
-            className={props.tight ? smallInputClasses : regularInputClasses}
-          >
-            <option>DDDDD</option>
-            <option>DDDDD</option>
-            <option>DDDDD</option>
-          </select>
-        )}
-      </div>
-    </div>
+    <>
+      {props.type !== "textarea" && props.type !== "select" && (
+        <input
+          ref={connect}
+          {...props}
+          className={props.className}
+          readOnly={enabled}
+        />
+      )}
+      {props.type === "textarea" && (
+        <textarea
+          ref={connect}
+          className={props.className}
+          readOnly={enabled}
+        ></textarea>
+      )}
+      {props.type === "select" && (
+        <select
+          ref={connect}
+          name={props.name}
+          id={props.id}
+          disabled={enabled}
+          className={props.className}
+        >
+          <option>DDDDD</option>
+          <option>DDDDD</option>
+          <option>DDDDD</option>
+        </select>
+      )}
+    </>
   );
 };
 
@@ -55,6 +55,6 @@ CraftInput.craft = {
     canDrag: () => true,
   },
   related: {
-    toolbar: ContainerSettings,
+    toolbar: InputSettings,
   },
 };
