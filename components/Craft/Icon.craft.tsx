@@ -11,7 +11,17 @@ export const CraftIcon: UserComponent<IconProps> = (props) => {
 
   const { enabled } = useEditor(editorHook);
 
-  return <i ref={connect} {...props} />;
+  const filteredClasses = props.className
+    .split(" ")
+    .map((d) => d.replace("icon-", ""));
+
+  return (
+    <i
+      ref={connect}
+      style={props.style}
+      className={filteredClasses.join(" ")}
+    />
+  );
 };
 
 CraftIcon.craft = {

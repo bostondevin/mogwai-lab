@@ -526,19 +526,6 @@ Object.keys(colors).forEach((c) => {
 */
 
 export const tailwindClassForm = {
-  "className:fa": {
-    type: "Input",
-    meta: {
-      type: "select",
-      items: tailwindSchema.fa,
-      label: "Icon Style",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
-    },
-  },
-
   "className:display": {
     type: "Input",
     meta: {
@@ -994,13 +981,13 @@ export const saveFormChanges = (value, setProp) => {
 };
 
 export const tailwindFormConfig = (customItems, o, propValue) => {
-  Object.keys(tailwindClassForm).forEach((d) => {
-    tailwindClassForm[d].render = o[tailwindClassForm[d].type];
-  });
-
   const config = {
     controls: { ...customItems, ...tailwindClassForm },
   };
+
+  Object.keys(config.controls).forEach((d) => {
+    config.controls[d].render = o[config.controls[d].type];
+  });
 
   Object.keys(config.controls).forEach((key) => {
     config.controls[key].formState = null;
@@ -1014,18 +1001,34 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
       const c = propValue["className"].split(" "); // existing classes
 
       if (k.indexOf("-") === -1) {
-        const filterVal = c.find((d) => d.indexOf(k + "-") === 0);
-
-        if (filterVal) {
-          if (filterVal.indexOf("-") > -1) {
-            config.controls[key].formState = filterVal.split("-")[1];
-          } else {
+        if (k === "icon") {
+          const filterVal = c.find(
+            (d) =>
+              d.indexOf("fa-") === 0 &&
+              d !== "fa-solid" &&
+              d !== "fa-regular" &&
+              d !== "fa-thin" &&
+              d !== "fa-light" &&
+              d !== "fa-brand"
+          );
+          if (filterVal) {
+            console.log(filterVal);
             config.controls[key].formState = filterVal;
           }
         } else {
-          if (k === "display") {
-            const m = c.find((d) => d in tailwindSchema[k]);
-            config.controls[key].formState = m;
+          const filterVal = c.find((d) => d.indexOf(k + "-") === 0);
+
+          if (filterVal) {
+            if (filterVal.indexOf("-") > -1) {
+              config.controls[key].formState = filterVal.split("-")[1];
+            } else {
+              config.controls[key].formState = filterVal;
+            }
+          } else {
+            if (k === "display") {
+              const m = c.find((d) => d in tailwindSchema[k]);
+              config.controls[key].formState = m;
+            }
           }
         }
       } else {

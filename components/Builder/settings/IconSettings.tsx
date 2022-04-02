@@ -33,21 +33,8 @@ export const IconSettings = () => {
 
   const config = tailwindFormConfig(
     {
-      "className:fa": {
-        type: Input,
-        meta: {
-          type: "select",
-          items: tailwindSchema.fa,
-          label: "Icon StyleZZZ",
-          tight: true,
-          className: outerClassName,
-          labelClassName: labelClassName,
-          inputClassName: inputClassName,
-        },
-      },
-
-      "className:bbb": {
-        type: Input,
+      "className:icon": {
+        type: "Input",
         meta: {
           type: "select",
           items: icons,
@@ -58,6 +45,20 @@ export const IconSettings = () => {
           inputClassName: inputClassName,
         },
       },
+
+      "className:fa": {
+        type: "Input",
+        meta: {
+          type: "select",
+          items: tailwindSchema.fa,
+          label: "Icon Style",
+          tight: true,
+          className: outerClassName,
+          labelClassName: labelClassName,
+          inputClassName: inputClassName,
+        },
+      },
+
       /*
       text: {
         render: Input,
