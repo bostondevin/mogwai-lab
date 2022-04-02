@@ -1002,18 +1002,9 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
 
       if (k.indexOf("-") === -1) {
         if (k === "icon") {
-          const filterVal = c.find(
-            (d) =>
-              d.indexOf("fa-") === 0 &&
-              d !== "fa-solid" &&
-              d !== "fa-regular" &&
-              d !== "fa-thin" &&
-              d !== "fa-light" &&
-              d !== "fa-brand"
-          );
+          const filterVal = c.find((d) => d.indexOf("icon-") === 0);
           if (filterVal) {
-            console.log(filterVal);
-            config.controls[key].formState = filterVal;
+            config.controls[key].formState = filterVal.replace("icon-", "");
           }
         } else {
           const filterVal = c.find((d) => d.indexOf(k + "-") === 0);
@@ -1034,6 +1025,7 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
       } else {
         const kParts = k.split("-");
 
+        console.log(kParts);
         const filterVal = c
           .filter((d) => d.indexOf(kParts[0] + "-") === 0)
           .map((d) => d.replace(kParts[0] + "-", ""));
