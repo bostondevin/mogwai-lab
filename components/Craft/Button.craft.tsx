@@ -5,7 +5,14 @@ import { CraftText } from "./Text.craft";
 import NextLink from "next/link";
 
 import { ButtonSettings } from "../Builder/settings/ButtonSettings";
-import { nodeHook, editorHook } from "../Builder/settings/craft.utils";
+
+import {
+  nodeHook,
+  editorHook,
+  emptyContainerClass,
+  emptyContainerStyle,
+  editorEnabledAppend,
+} from "../Builder/settings/craft.utils";
 
 import { ButtonProps } from "../common.interface";
 
@@ -24,9 +31,16 @@ export const CraftButton: UserComponent<ButtonProps> = (props) => {
           type={props.type}
           className={props.className}
           style={props.style}
-          disabled={enabled}
+          disabled={props.disabled}
         >
           {props.children}
+
+          {!props.children && enabled && (
+            <span
+              className={emptyContainerClass}
+              style={{ minHeight: "24px" }}
+            ></span>
+          )}
         </button>
       )}
       {props.type === "a" && (
@@ -39,7 +53,12 @@ export const CraftButton: UserComponent<ButtonProps> = (props) => {
           >
             {props.children}
 
-            {!props.children && "Hyperlink Text"}
+            {!props.children && enabled && (
+              <span
+                className={emptyContainerClass}
+                style={{ minHeight: "24px" }}
+              ></span>
+            )}
           </a>
         </NextLink>
       )}

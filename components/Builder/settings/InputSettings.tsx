@@ -38,24 +38,25 @@ export const InputSettings = () => {
         meta: {
           type: "select",
           items: InputTypes,
-          label: "Input Type",
+          label: "Type",
           tight: true,
           className: outerClassName,
           labelClassName: labelClassName,
           inputClassName: inputClassName,
         },
       },
-
+      /*
       label: {
         render: Input,
         meta: {
           type: "text",
-          label: "label",
+          label: "Label",
           tight: true,
           className: outerClassName,
           labelClassName: labelClassName,
         },
       },
+      */
     },
     {
       Input: Input,
@@ -64,7 +65,7 @@ export const InputSettings = () => {
   );
 
   return (
-    <Form onSubmit={submitForm} className="grid grid-cols-2 gap-2 p-2">
+    <Form onSubmit={submitForm} className="grid grid-cols-3 gap-2 p-2">
       <FormGenerator onMount={mountForm} fieldConfig={config} />
     </Form>
   );

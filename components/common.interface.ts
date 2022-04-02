@@ -18,6 +18,7 @@ export const InputTypes = {
   textarea: { label: "Text Area" },
   number: { label: "Number" },
   tel: { label: "Phone" },
+  password: { label: "Password" },
   color: { label: "Color" },
   email: { label: "Email" },
   date: { label: "Date" },
@@ -40,6 +41,12 @@ export const ContainerTypes = {
   aside: { label: "Aside" },
   main: { label: "Main" },
   footer: { label: "Footer" },
+};
+
+export const ButtonTypes = {
+  button: { label: "Button" },
+  submit: { label: "Submit" },
+  reset: { label: "Reset" },
 };
 
 export const ListTypes = {
@@ -122,6 +129,7 @@ export interface ButtonProps extends CommonProps, CommonEvents {
   type?: "button" | "a";
   buttonType?: "button" | "submit" | "reset";
   href?: string;
+  disabled?: boolean;
 }
 
 export interface CommonInputProps extends CommonProps, CommonEvents {
@@ -231,6 +239,27 @@ const colors = {
   rose: { label: "Rose" },
 };
 
+const sizes = {
+  "0": { label: "0" },
+  "1": { label: "1" },
+  "2": { label: "2" },
+  "3": { label: "3" },
+  "4": { label: "4" },
+  "5": { label: "5" },
+  "6": { label: "6" },
+  "8": { label: "8" },
+  "10": { label: "10" },
+  "12": { label: "12" },
+  "16": { label: "16" },
+  "20": { label: "20" },
+  "24": { label: "24" },
+  "32": { label: "32" },
+  "40": { label: "40" },
+  "48": { label: "48" },
+  "56": { label: "56" },
+  "64": { label: "64" },
+};
+
 export const tailwindSchema = {
   text: {
     color: colors,
@@ -295,6 +324,13 @@ export const tailwindSchema = {
     color: colors,
     intensity: colorIntensity,
     opacity: colorOpacity,
+  },
+  rounded: {
+    xs: { label: "X Small" },
+    sm: { label: "Small" },
+    md: { label: "Medium" },
+    lg: { label: "Large" },
+    xl: { label: "XL" },
   },
   tracking: {
     normal: { label: "Normal" },
@@ -407,6 +443,20 @@ export const tailwindSchema = {
     "56": { label: "56" },
     "64": { label: "64" },
   },
+  p: sizes,
+  px: sizes,
+  py: sizes,
+  pt: sizes,
+  pr: sizes,
+  pb: sizes,
+  pl: sizes,
+  m: sizes,
+  mx: sizes,
+  my: sizes,
+  mt: sizes,
+  mr: sizes,
+  mb: sizes,
+  ml: sizes,
   "grid-cols": {
     none: { label: "None" },
     "1": { label: "1" },
@@ -447,6 +497,14 @@ export const tailwindSchema = {
     static: { label: "Static" },
     none: { label: "None" },
   },
+
+  fa: {
+    solid: { label: "Solid" },
+    thin: { label: "Thin" },
+    regular: { label: "Regular" },
+    light: { label: "Light" },
+    brand: { label: "Brand" },
+  },
 };
 
 export const outerClassName = "flex text-xs w-full gap-1 mb-2 flex-col";
@@ -468,6 +526,19 @@ Object.keys(colors).forEach((c) => {
 */
 
 export const tailwindClassForm = {
+  "className:fa": {
+    type: "Input",
+    meta: {
+      type: "select",
+      items: tailwindSchema.fa,
+      label: "Icon Style",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
   "className:display": {
     type: "Input",
     meta: {
@@ -511,7 +582,7 @@ export const tailwindClassForm = {
     meta: {
       type: "select",
       items: tailwindSchema.bg.color,
-      label: "Background Color",
+      label: "Bg Color",
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
@@ -523,7 +594,7 @@ export const tailwindClassForm = {
     meta: {
       type: "select",
       items: tailwindSchema.bg.intensity,
-      label: "Background Intensity",
+      label: "Bg Intensity",
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
@@ -535,7 +606,21 @@ export const tailwindClassForm = {
     meta: {
       type: "select",
       items: tailwindSchema.bg.opacity,
-      label: "Background Opacity",
+      label: "Bg Opacity",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:rounded": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.rounded,
+      label: "Rounded",
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
@@ -550,6 +635,202 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.shadow,
       label: "Shadow",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:m": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.m,
+      label: "Margin",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:mx": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.px,
+      label: "Margin X",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:my": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.py,
+      label: "Margin Y",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:mt": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.pt,
+      label: "Margin Top",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:mb": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.pb,
+      label: "Margin Bottom",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:ml": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.py,
+      label: "Margin Left",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:mr": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.py,
+      label: "Margin Right",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:p": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.p,
+      label: "Padding",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:px": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.px,
+      label: "Pad X",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:py": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.py,
+      label: "Pad Y",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:pt": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.pt,
+      label: "Pad Top",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:pb": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.pb,
+      label: "Pad Bottom",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:pl": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.py,
+      label: "Pad Left",
+      tight: true,
+      className: outerClassName,
+      labelClassName: labelClassName,
+      inputClassName: inputClassName,
+    },
+  },
+
+  "className:pr": {
+    type: "Input",
+    // options: { validators: Validators.required },
+    meta: {
+      type: "select",
+      items: tailwindSchema.py,
+      label: "Pad Right",
       tight: true,
       className: outerClassName,
       labelClassName: labelClassName,
@@ -733,7 +1014,7 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
       const c = propValue["className"].split(" "); // existing classes
 
       if (k.indexOf("-") === -1) {
-        const filterVal = c.find((d) => d.indexOf(k) === 0);
+        const filterVal = c.find((d) => d.indexOf(k + "-") === 0);
 
         if (filterVal) {
           if (filterVal.indexOf("-") > -1) {

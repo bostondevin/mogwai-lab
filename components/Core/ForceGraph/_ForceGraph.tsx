@@ -61,18 +61,18 @@ const ForceGraphBase = () => {
   };
 
   const nodeThreeObject = (node) => {
-    let iconClass = "fas fa-dollar-sign";
+    let iconClass = "fa-solid fa-dollar-sign";
     let lightColor = "#EAA5F2";
     let darkColor = "#CD1FDE";
 
     switch (node.type) {
       case "household":
-        iconClass = "fas fa-users";
+        iconClass = "fa-solid fa-users";
         lightColor = "#95c7f3";
         darkColor = "#0071dc";
         break;
       case "client":
-        iconClass = "fas fa-user";
+        iconClass = "fa-solid fa-user";
         lightColor = "#95c7f3";
         darkColor = "#0071dc";
         break;

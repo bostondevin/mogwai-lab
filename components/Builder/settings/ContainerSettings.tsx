@@ -38,7 +38,7 @@ export const ContainerSettings = () => {
         meta: {
           type: "select",
           items: ContainerTypes,
-          label: "Container Type",
+          label: "Type",
           tight: true,
           className: outerClassName,
           labelClassName: labelClassName,
@@ -64,7 +64,7 @@ export const ContainerSettings = () => {
   );
 
   return (
-    <Form onSubmit={submitForm} className="grid grid-cols-2 gap-2 p-2">
+    <Form onSubmit={submitForm} className="grid grid-cols-3 gap-2 p-2">
       <FormGenerator onMount={mountForm} fieldConfig={config} />
     </Form>
   );

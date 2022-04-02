@@ -60,7 +60,7 @@ export const EditMenu = ({ render }) => {
         //dom.classList.add("outline-black/50", "dark:outline-white/50");
       }
 
-      if (enabled && isActive) {
+      if (isActive) {
         dom.classList.add(
           "component-selected",
           "dark:outline-lime-500",
@@ -121,7 +121,7 @@ export const EditMenu = ({ render }) => {
               <h2 className="flex-1 mr-4">{name}</h2>
               {moveable && isActive ? (
                 <button type="button" className="mr-2 cursor-move" ref={drag}>
-                  <i className="fas fa-arrows-up-down-left-right" />
+                  <i className="fa-solid fa-arrows-up-down-left-right" />
                 </button>
               ) : null}
               {id !== ROOT_NODE && isActive && (
@@ -132,7 +132,7 @@ export const EditMenu = ({ render }) => {
                     actions.selectNode(parent);
                   }}
                 >
-                  <i className="fas fa-arrow-up" />
+                  <i className="fa-solid fa-arrow-up" />
                 </button>
               )}
               {deletable && isActive ? (
@@ -144,7 +144,7 @@ export const EditMenu = ({ render }) => {
                     actions.delete(id);
                   }}
                 >
-                  <i className="fas fa-trash" />
+                  <i className="fa-solid fa-trash" />
                 </button>
               ) : null}
             </div>,

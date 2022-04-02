@@ -1,6 +1,6 @@
 import React from "react";
 import { UserComponent, useNode, useEditor } from "@craftjs/core";
-import { ButtonSettings } from "../Builder/settings/ButtonSettings";
+import { IconSettings } from "../Builder/settings/IconSettings";
 import { nodeHook, editorHook } from "../Builder/settings/craft.utils";
 import { IconProps } from "../common.interface";
 
@@ -19,12 +19,8 @@ CraftIcon.craft = {
   props: {},
   rules: {
     canDrag: () => true,
-    /*
-    canMoveIn: (nodes) =>
-      nodes.every((node) => node.data.type === Text || node.data.type === Icon),
-      */
   },
   related: {
-    toolbar: ButtonSettings,
+    toolbar: IconSettings,
   },
 };

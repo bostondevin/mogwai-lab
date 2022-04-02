@@ -7,7 +7,7 @@ import {
 export const baseComponents = [
   {
     title: "Text",
-    icon: "fas fa-text",
+    icon: "fa-solid fa-text",
     shrink: true,
     element: {
       type: "Text",
@@ -21,7 +21,7 @@ export const baseComponents = [
 
   {
     title: "Paragraph",
-    icon: "fas fa-paragraph",
+    icon: "fa-solid fa-paragraph",
     element: {
       type: "Text",
       props: {
@@ -34,17 +34,17 @@ export const baseComponents = [
 
   {
     title: "Home Icon",
-    icon: "fas fa-home",
+    icon: "fa-solid fa-home",
     element: {
       type: "Element",
       is: "Icon",
-      props: { className: "fas fa-home" },
+      props: { className: "fa-solid fa-home" },
     },
   },
 
   {
     title: "Button",
-    icon: "fas fa-bullseye-pointer",
+    icon: "fa-solid fa-bullseye-pointer",
     element: {
       type: "Element",
       is: "Button",
@@ -59,7 +59,7 @@ export const baseComponents = [
 
   {
     title: "Container",
-    icon: "fas fa-square-dashed",
+    icon: "fa-solid fa-square-dashed",
     element: {
       type: "Element",
       is: "Container",
@@ -69,7 +69,7 @@ export const baseComponents = [
 
   {
     title: "Unordered List",
-    icon: "fas fa-list-ul",
+    icon: "fa-solid fa-list-ul",
     element: {
       type: "Element",
       is: "List",
@@ -79,7 +79,7 @@ export const baseComponents = [
 
   {
     title: "Ordered List",
-    icon: "fas fa-list-ol",
+    icon: "fa-solid fa-list-ol",
     element: {
       type: "Element",
       is: "List",
@@ -89,7 +89,7 @@ export const baseComponents = [
 
   {
     title: "List Item",
-    icon: "fas fa-list",
+    icon: "fa-solid fa-list",
     element: {
       type: "Element",
       is: "ListItem",
@@ -99,7 +99,7 @@ export const baseComponents = [
 
   {
     title: "Form",
-    icon: "fas fa-home",
+    icon: "fa-solid fa-home",
     element: {
       type: "Element",
       is: "Form",
@@ -109,7 +109,7 @@ export const baseComponents = [
 
   {
     title: "Text Input",
-    icon: "fas fa-home",
+    icon: "fa-solid fa-home",
     element: {
       type: "Element",
       is: "Input",
@@ -124,7 +124,7 @@ export const baseComponents = [
 
   {
     title: "Color Input",
-    icon: "fas fa-eye",
+    icon: "fa-solid fa-eye",
     element: {
       type: "Element",
       is: "Input",
@@ -141,7 +141,7 @@ export const baseComponents = [
 
   {
     title: "H1",
-    icon: "fas fa-h1",
+    icon: "fa-solid fa-h1",
     element: {
       type: "Text",
       props: {
@@ -153,7 +153,7 @@ export const baseComponents = [
   },
   {
     title: "H2",
-    icon: "fas fa-h2",
+    icon: "fa-solid fa-h2",
     element: {
       type: "Text",
       props: {
@@ -165,7 +165,7 @@ export const baseComponents = [
   },
   {
     title: "H3",
-    icon: "fas fa-h3",
+    icon: "fa-solid fa-h3",
     element: {
       type: "Text",
       props: {
@@ -178,7 +178,7 @@ export const baseComponents = [
 
   {
     title: "H4",
-    icon: "fas fa-h4",
+    icon: "fa-solid fa-h4",
     element: {
       type: "Text",
       props: {
@@ -191,7 +191,7 @@ export const baseComponents = [
 
   {
     title: "H5",
-    icon: "fas fa-h5",
+    icon: "fa-solid fa-h5",
     element: {
       type: "Text",
       props: {
@@ -204,7 +204,7 @@ export const baseComponents = [
 
   {
     title: "H6",
-    icon: "fas fa-h6",
+    icon: "fa-solid fa-h6",
     element: {
       type: "Text",
       props: {
@@ -217,7 +217,7 @@ export const baseComponents = [
 
   {
     title: "Diagram",
-    icon: "fas fa-diagram-project",
+    icon: "fa-solid fa-diagram-project",
     element: {
       type: "Diagram",
       props: {
@@ -228,7 +228,7 @@ export const baseComponents = [
 
   {
     title: "Grid",
-    icon: "fas fa-table",
+    icon: "fa-solid fa-table",
     element: {
       type: "Grid",
       props: {
@@ -256,7 +256,7 @@ export const components = [
     items: [
       {
         title: "Container",
-        icon: "fas fa-square-dashed",
+        icon: "fa-solid fa-square-dashed",
         element: {
           type: "Element",
           is: "Container",
@@ -266,7 +266,7 @@ export const components = [
 
       {
         title: "Form",
-        icon: "fas fa-square-dashed",
+        icon: "fa-solid fa-square-dashed",
         element: {
           type: "Element",
           is: "Form",
@@ -282,7 +282,7 @@ export const components = [
     items: [
       {
         title: "Unordered List",
-        icon: "fas fa-list-ul",
+        icon: "fa-solid fa-list-ul",
         element: {
           type: "Element",
           is: "List",
@@ -292,7 +292,7 @@ export const components = [
 
       {
         title: "Ordered List",
-        icon: "fas fa-list-ol",
+        icon: "fa-solid fa-list-ol",
         element: {
           type: "Element",
           is: "List",
@@ -302,7 +302,7 @@ export const components = [
 
       {
         title: "List Item",
-        icon: "fas fa-block-quote",
+        icon: "fa-solid fa-block-quote",
         element: {
           type: "Element",
           is: "ListItem",
@@ -318,7 +318,7 @@ export const components = [
     items: [
       {
         title: "Regular",
-        icon: "fas fa-text",
+        icon: "fa-solid fa-text",
         element: {
           type: "Text",
           props: { type: "span", text: "Lorem ipsum dolor" },
@@ -326,7 +326,7 @@ export const components = [
       },
       {
         title: "Small",
-        icon: "fas fa-text",
+        icon: "fa-solid fa-text",
         shrink: true,
         element: {
           type: "Text",
@@ -339,7 +339,7 @@ export const components = [
       },
       {
         title: "Small Light",
-        icon: "fas fa-text opacity-50",
+        icon: "fa-solid fa-text opacity-50",
         shrink: true,
         element: {
           type: "Text",
@@ -353,7 +353,7 @@ export const components = [
 
       {
         title: "Paragraph",
-        icon: "fas fa-paragraph",
+        icon: "fa-solid fa-paragraph",
         element: {
           type: "Text",
           props: {
@@ -366,7 +366,7 @@ export const components = [
 
       {
         title: "Lead",
-        icon: "fas fa-paragraph",
+        icon: "fa-solid fa-paragraph",
         element: {
           type: "Text",
           props: {
@@ -379,7 +379,7 @@ export const components = [
 
       {
         title: "Small",
-        icon: "fas fa-paragraph",
+        icon: "fa-solid fa-paragraph",
         element: {
           type: "Text",
           props: {
@@ -392,7 +392,7 @@ export const components = [
 
       {
         title: "H1",
-        icon: "fas fa-h1",
+        icon: "fa-solid fa-h1",
         element: {
           type: "Text",
           props: {
@@ -404,7 +404,7 @@ export const components = [
       },
       {
         title: "H2",
-        icon: "fas fa-h2",
+        icon: "fa-solid fa-h2",
         element: {
           type: "Text",
           props: {
@@ -416,7 +416,7 @@ export const components = [
       },
       {
         title: "H3",
-        icon: "fas fa-h3",
+        icon: "fa-solid fa-h3",
         element: {
           type: "Text",
           props: {
@@ -429,7 +429,7 @@ export const components = [
 
       {
         title: "H4",
-        icon: "fas fa-h4",
+        icon: "fa-solid fa-h4",
         element: {
           type: "Text",
           props: {
@@ -442,7 +442,7 @@ export const components = [
 
       {
         title: "H5",
-        icon: "fas fa-h5",
+        icon: "fa-solid fa-h5",
         element: {
           type: "Text",
           props: {
@@ -455,7 +455,7 @@ export const components = [
 
       {
         title: "H6",
-        icon: "fas fa-h6",
+        icon: "fa-solid fa-h6",
         element: {
           type: "Text",
           props: {
@@ -473,7 +473,7 @@ export const components = [
     items: [
       {
         title: "Diagram",
-        icon: "fas fa-diagram-project",
+        icon: "fa-solid fa-diagram-project",
         element: {
           type: "Diagram",
           props: {
@@ -484,7 +484,7 @@ export const components = [
 
       {
         title: "Grid",
-        icon: "fas fa-table",
+        icon: "fa-solid fa-table",
         element: {
           type: "Grid",
           props: {
@@ -510,7 +510,7 @@ export const components = [
     items: [
       {
         title: "Text Input",
-        icon: "fas fa-input-pipe",
+        icon: "fa-solid fa-input-pipe",
         element: {
           type: "Input",
           props: { type: "text" },
@@ -519,7 +519,7 @@ export const components = [
 
       {
         title: "Select",
-        icon: "fas fa-list-dropdown",
+        icon: "fa-solid fa-list-dropdown",
         element: {
           type: "Select",
           props: {
@@ -545,7 +545,7 @@ export const components = [
     items: [
       {
         title: "Button",
-        icon: "fas fa-bullseye-pointer",
+        icon: "fa-solid fa-bullseye-pointer",
         element: {
           type: "Element",
           is: "Button",
@@ -560,7 +560,7 @@ export const components = [
 
       {
         title: "Hyperlink",
-        icon: "fas fa-link",
+        icon: "fa-solid fa-link",
         element: {
           type: "Element",
           is: "Button",
@@ -579,20 +579,20 @@ export const components = [
     items: [
       {
         title: "Home Icon",
-        icon: "fas fa-home",
+        icon: "fa-solid fa-home",
         element: {
           type: "Element",
           is: "Icon",
-          props: { className: "fas fa-home" },
+          props: { className: "fa-solid fa-home" },
         },
       },
       {
         title: "Video Icon",
-        icon: "fas fa-video",
+        icon: "fa-solid fa-video",
         element: {
           type: "Element",
           is: "Icon",
-          props: { className: "fas fa-video" },
+          props: { className: "fa-solid fa-video" },
         },
       },
     ],

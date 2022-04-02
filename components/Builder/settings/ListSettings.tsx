@@ -61,7 +61,7 @@ export const ListSettings = () => {
   );
 
   return (
-    <Form onSubmit={submitForm} className="grid grid-cols-2 gap-2 p-2">
+    <Form onSubmit={submitForm} className="grid grid-cols-3 gap-2 p-2">
       <FormGenerator onMount={mountForm} fieldConfig={config} />
     </Form>
   );

@@ -10,9 +10,12 @@ import {
   tailwindFormConfig,
   inputClassName,
   TextTypes,
+  tailwindSchema,
 } from "../../common.interface";
 
-export const TextSettings = () => {
+import { icons } from "../../fa-solid";
+
+export const IconSettings = () => {
   const {
     actions: { setProp },
     propValue,
@@ -30,28 +33,43 @@ export const TextSettings = () => {
 
   const config = tailwindFormConfig(
     {
-      type: {
-        render: Input,
+      "className:fa": {
+        type: Input,
         meta: {
           type: "select",
-          items: TextTypes,
-          label: "Text Type",
+          items: tailwindSchema.fa,
+          label: "Icon StyleZZZ",
           tight: true,
           className: outerClassName,
           labelClassName: labelClassName,
           inputClassName: inputClassName,
         },
       },
+
+      "className:bbb": {
+        type: Input,
+        meta: {
+          type: "select",
+          items: icons,
+          label: "Icon",
+          tight: true,
+          className: outerClassName,
+          labelClassName: labelClassName,
+          inputClassName: inputClassName,
+        },
+      },
+      /*
       text: {
         render: Input,
         meta: {
           type: "textarea",
-          label: "Text",
+          label: "Aria label",
           tight: true,
           className: outerClassName,
           labelClassName: labelClassName,
         },
       },
+      */
     },
     {
       Input: Input,
