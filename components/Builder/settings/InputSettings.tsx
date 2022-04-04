@@ -35,7 +35,7 @@ export const InputSettings = () => {
   const config = tailwindFormConfig(
     {
       type: {
-        render: Input,
+        type: "Input",
         meta: {
           type: "select",
           items: InputTypes,
@@ -44,7 +44,7 @@ export const InputSettings = () => {
       },
       /*
       label: {
-        render: Input,
+        type: "Input",
         meta: {
           type: "text",
           label: "Label",

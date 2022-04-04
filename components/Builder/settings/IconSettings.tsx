@@ -54,7 +54,7 @@ export const IconSettings = () => {
 
       /*
       text: {
-        render: Input,
+        type: "Input",
         meta: {
           type: "textarea",
           label: "Aria label",

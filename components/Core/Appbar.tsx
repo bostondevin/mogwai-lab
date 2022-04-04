@@ -156,7 +156,7 @@ export const Appbar = ({ screen, store }): JSX.Element => {
 
         <li className="flex">
           <button
-            onClick={toggleDarkMode}
+            onClick={() => toggleDarkMode()}
             title={darkMode ? "Light mode" : "Dark mode"}
             className="px-2 opacity-50 hover:opacity-80"
           >
@@ -167,7 +167,7 @@ export const Appbar = ({ screen, store }): JSX.Element => {
         {!enabled && (
           <li className="flex">
             <button
-              onClick={toggleEdit}
+              onClick={() => toggleEdit()}
               title={enabled ? "Save" : "Edit"}
               className="px-2 opacity-50 hover:opacity-80"
             >

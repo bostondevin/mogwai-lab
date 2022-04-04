@@ -70,7 +70,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
         lz.encodeBase64(lz.compress(json))
       );
       const template = store.path(("templates" + path).split("/")).get("html");
-      template.put(condensedJson, () => {});
+      template.put(condensedJson, (d) => {});
     }
   };
 
@@ -262,7 +262,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
           <li className="flex gap-2">
             <button
               type="button"
-              onClick={() => saveChanges}
+              onClick={() => saveChanges()}
               disabled={!canUndo}
               title={enabled ? "Save" : "Edit"}
               className={navItemClass}

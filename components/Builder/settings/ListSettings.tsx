@@ -32,7 +32,7 @@ export const ListSettings = () => {
   const config = tailwindFormConfig(
     {
       type: {
-        render: Input,
+        type: "Input",
         meta: {
           type: "select",
           items: ListTypes,
@@ -41,7 +41,7 @@ export const ListSettings = () => {
       },
 
       "aria-label": {
-        render: Input,
+        type: "Input",
         meta: {
           type: "text",
           label: "Aria label",

@@ -5,15 +5,11 @@ import { Wrapper } from "./Wrapper";
 import { EditMenu } from "./EditMenu";
 
 import { CraftButton } from "../Craft/Button.craft";
-
 import { CraftContainer } from "../Craft/Container.craft";
 import { CraftForm } from "../Craft/Form.craft";
-
 import { CraftList } from "../Craft/List.craft";
 import { CraftListItem } from "../Craft/ListItem.craft";
-
 import { CraftInput } from "../Craft/Input.craft";
-
 import { CraftDiagram } from "../Craft/Diagram.craft";
 import { CraftGrid } from "../Craft/Grid.craft";
 import { CraftIcon } from "../Craft/Icon.craft";
@@ -26,21 +22,17 @@ export const Builder = ({ store }): JSX.Element => {
     <CraftEditor
       resolver={{
         CraftButton,
-
+        CraftText,
         CraftContainer,
         CraftForm,
-
+        CraftInput,
         CraftList,
         CraftListItem,
-
-        CraftInput,
-
-        CraftDiagram,
-        CraftGrid,
         CraftIcon,
         CraftImage,
-        CraftText,
         CraftVideo,
+        CraftDiagram,
+        CraftGrid,
       }}
       enabled={false}
       onRender={EditMenu}

@@ -35,7 +35,7 @@ export const ButtonSettings = () => {
   const config = tailwindFormConfig(
     {
       type: {
-        render: Input,
+        type: "Input",
         meta: {
           type: "select",
           items: ButtonTypes,
@@ -44,7 +44,7 @@ export const ButtonSettings = () => {
       },
 
       "aria-label": {
-        render: Input,
+        type: "Input",
         meta: {
           type: "text",
           label: "Aria label",

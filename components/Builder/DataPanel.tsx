@@ -37,7 +37,7 @@ export const DataPanel = ({ store, path }) => {
         if (dataType === "boolean") type = "checkbox";
 
         newItems[d] = {
-          render: Input,
+          type: "Input",
           meta: {
             type: "textarea",
             label: "Structure",
@@ -64,7 +64,7 @@ export const DataPanel = ({ store, path }) => {
 
   const formAddProps = {
     type: {
-      render: Input,
+      type: "Input",
       meta: {
         type: "select",
         items: InputTypes,
@@ -78,7 +78,7 @@ export const DataPanel = ({ store, path }) => {
     },
 
     value: {
-      render: Input,
+      type: "Input",
       meta: {
         type: "text",
         items: InputTypes,

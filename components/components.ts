@@ -6,6 +6,16 @@ import {
 
 export const baseComponents = [
   {
+    title: "Container",
+    icon: "fa-solid fa-square-dashed",
+    element: {
+      type: "Element",
+      is: "Container",
+      props: { className: "w-full", type: "div" },
+    },
+  },
+
+  {
     title: "Text",
     icon: "fa-solid fa-text",
     shrink: true,
@@ -33,8 +43,8 @@ export const baseComponents = [
   },
 
   {
-    title: "Home Icon",
-    icon: "fa-solid fa-home",
+    title: "Icon",
+    icon: "fa-solid fa-font-awesome",
     element: {
       type: "Element",
       is: "Icon",
@@ -54,16 +64,6 @@ export const baseComponents = [
         className:
           "bg-blue-500 hover:bg-blue-500 rounded-md text-white text-sm p-2 shadow cursor-pointer select-none",
       },
-    },
-  },
-
-  {
-    title: "Container",
-    icon: "fa-solid fa-square-dashed",
-    element: {
-      type: "Element",
-      is: "Container",
-      props: { className: "w-full", type: "div" },
     },
   },
 
@@ -109,7 +109,7 @@ export const baseComponents = [
 
   {
     title: "Text Input",
-    icon: "fa-solid fa-home",
+    icon: "fa-solid fa-input-text",
     element: {
       type: "Element",
       is: "Input",
@@ -123,8 +123,23 @@ export const baseComponents = [
   },
 
   {
+    title: "Numeric Input",
+    icon: "fa-solid fa-input-numeric",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "number",
+        label: "Number",
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
+      },
+    },
+  },
+
+  {
     title: "Color Input",
-    icon: "fa-solid fa-eye",
+    icon: "fa-solid fa-eye-dropper",
     element: {
       type: "Element",
       is: "Input",

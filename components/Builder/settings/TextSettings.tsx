@@ -32,7 +32,7 @@ export const TextSettings = () => {
   const config = tailwindFormConfig(
     {
       type: {
-        render: Input,
+        type: "Input",
         meta: {
           type: "select",
           items: TextTypes,
@@ -44,7 +44,7 @@ export const TextSettings = () => {
         },
       },
       text: {
-        render: Input,
+        type: "Input",
         meta: {
           type: "textarea",
           label: "Text",
