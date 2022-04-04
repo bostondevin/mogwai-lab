@@ -130,7 +130,7 @@ export const baseComponents = [
       is: "Input",
       props: {
         type: "color",
-        tight: true,
+
         label: "Color",
         className: outerClassName,
         labelClassName: labelClassName,

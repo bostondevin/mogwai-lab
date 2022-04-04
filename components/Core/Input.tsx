@@ -1,6 +1,12 @@
 import React from "react";
 import { AbstractControl } from "react-reactive-form";
-import { regularInputClasses, smallInputClasses } from "../common.interface";
+import {
+  regularInputClasses,
+  smallInputClasses,
+  labelClassName,
+  inputClassName,
+  outerClassName,
+} from "../common.interface";
 import { Text } from "./Text";
 import { Options } from "./Options";
 
@@ -15,12 +21,12 @@ export const Input = ({
   };
 
   return (
-    <div className={meta.className}>
-      <Text className={meta.labelClassName} text={meta.label} type="label" />
+    <div className={outerClassName}>
+      <Text className={labelClassName} text={meta.label} type="label" />
       <span>
         {touched && hasError("required") && meta.label + " is required"}
       </span>
-      <div className={meta.inputClassName}>
+      <div className={smallInputClasses}>
         {meta.type !== "textarea" && meta.type !== "select" && (
           <input
             type={meta.type}

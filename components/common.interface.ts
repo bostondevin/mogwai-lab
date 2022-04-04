@@ -188,6 +188,7 @@ const cClasses =
 
 export const regularInputClasses = "text-base " + cClasses;
 export const smallInputClasses = "text-xs " + cClasses;
+export const formClasses = "grid grid-cols-3 gap-1 p-2";
 
 const colorIntensity = {
   "50": { label: "50" },
@@ -507,8 +508,8 @@ export const tailwindSchema = {
   },
 };
 
-export const outerClassName = "flex text-xs w-full gap-1 mb-2 flex-col";
-export const labelClassName = "flex text-xs opacity-50";
+export const outerClassName = "flex text-xs w-full mb-1 flex-col";
+export const labelClassName = "flex text-xs opacity-50 mb-1";
 export const inputClassName =
   "w-full break-all outline-none border dark:border-black/25 p-1 rounded break-all";
 
@@ -532,10 +533,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.display,
       label: "Display",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -545,10 +542,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.w,
       label: "Width",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:h": {
@@ -557,10 +550,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.h,
       label: "Height",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -570,10 +559,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.bg.color,
       label: "Bg Color",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:bg-intensity": {
@@ -582,10 +567,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.bg.intensity,
       label: "Bg Intensity",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:bg-opacity": {
@@ -594,10 +575,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.bg.opacity,
       label: "Bg Opacity",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -608,10 +585,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.rounded,
       label: "Rounded",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -622,10 +595,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.shadow,
       label: "Shadow",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -636,10 +605,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.m,
       label: "Margin",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -650,10 +615,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.px,
       label: "Margin X",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -664,10 +625,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.py,
       label: "Margin Y",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -678,10 +635,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.pt,
       label: "Margin Top",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -692,10 +645,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.pb,
       label: "Margin Bottom",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -706,10 +655,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.py,
       label: "Margin Left",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -720,10 +665,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.py,
       label: "Margin Right",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -734,10 +675,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.p,
       label: "Padding",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -748,10 +685,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.px,
       label: "Pad X",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -762,10 +695,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.py,
       label: "Pad Y",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -776,10 +705,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.pt,
       label: "Pad Top",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -790,10 +715,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.pb,
       label: "Pad Bottom",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -804,10 +725,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.py,
       label: "Pad Left",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -818,10 +735,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.py,
       label: "Pad Right",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
 
@@ -831,10 +744,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.text.color,
       label: "Text Color",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:text-intensity": {
@@ -843,10 +752,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.text.intensity,
       label: "Text Intensity",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:text-opacity": {
@@ -855,10 +760,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.text.opacity,
       label: "Text Opacity",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:font": {
@@ -867,10 +768,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.font.style,
       label: "Font Style",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:text-size": {
@@ -879,10 +776,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.text.size,
       label: "Text Size",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:text-align": {
@@ -891,10 +784,6 @@ export const tailwindClassForm = {
       type: "select",
       items: tailwindSchema.text.align,
       label: "Text Align",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
     },
   },
   "className:tracking": {
@@ -902,11 +791,7 @@ export const tailwindClassForm = {
     meta: {
       type: "select",
       items: tailwindSchema.tracking,
-      label: "Letter Spacing",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
+      label: "Letter Space",
     },
   },
   "className:leading": {
@@ -914,11 +799,7 @@ export const tailwindClassForm = {
     meta: {
       type: "select",
       items: tailwindSchema.leading,
-      label: "Line Spacing",
-      tight: true,
-      className: outerClassName,
-      labelClassName: labelClassName,
-      inputClassName: inputClassName,
+      label: "Line Space",
     },
   },
 };
@@ -1025,7 +906,6 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
       } else {
         const kParts = k.split("-");
 
-        console.log(kParts);
         const filterVal = c
           .filter((d) => d.indexOf(kParts[0] + "-") === 0)
           .map((d) => d.replace(kParts[0] + "-", ""));

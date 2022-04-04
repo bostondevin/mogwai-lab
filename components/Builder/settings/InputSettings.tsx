@@ -11,6 +11,7 @@ import {
   InputTypes,
   inputClassName,
   tailwindClassForm,
+  formClasses,
 } from "../../common.interface";
 
 export const InputSettings = () => {
@@ -39,10 +40,6 @@ export const InputSettings = () => {
           type: "select",
           items: InputTypes,
           label: "Type",
-          tight: true,
-          className: outerClassName,
-          labelClassName: labelClassName,
-          inputClassName: inputClassName,
         },
       },
       /*
@@ -51,7 +48,7 @@ export const InputSettings = () => {
         meta: {
           type: "text",
           label: "Label",
-          tight: true,
+          
           className: outerClassName,
           labelClassName: labelClassName,
         },
@@ -65,7 +62,7 @@ export const InputSettings = () => {
   );
 
   return (
-    <Form onSubmit={submitForm} className="grid grid-cols-3 gap-2 p-2">
+    <Form onSubmit={submitForm} className={formClasses}>
       <FormGenerator onMount={mountForm} fieldConfig={config} />
     </Form>
   );

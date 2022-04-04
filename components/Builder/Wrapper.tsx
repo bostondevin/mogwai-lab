@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import lz from "lzutf8";
 import cx from "classnames";
 
-import Ruler from "@scena/react-ruler";
+import Ruler, { RulerProps, RulerInterface } from "@scena/react-ruler";
 
 import { tailwindClassForm } from "../common.interface";
 
@@ -26,9 +26,37 @@ export const Wrapper = ({ store, children }): JSX.Element => {
   const [outlinesVisible, setOutlinesVisible] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  const ruler = useRef(null);
+  const rulerRef = useRef<RulerInterface | null>(null);
+  const nameDOM = useRef<HTMLElement | null>(null);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (store) {
+      store
+        .get("editor")
+        .get("outlines")
+        .on((d) => setOutlinesVisible(d));
+
+      store
+        .get("editor")
+        .get("screen")
+        .on((d) => {
+          setScreenSize(d);
+          if (rulerRef?.current) rulerRef.current.resize();
+        });
+
+      store
+        .get("editor")
+        .get("ruler")
+        .on((d) => setRulerVisible(d));
+
+      store
+        .get("editor")
+        .get("dark")
+        .on((d) => setDarkMode(d));
+    }
+  }, []);
 
   useEffect(() => {
     if (store) {
@@ -58,28 +86,6 @@ export const Wrapper = ({ store, children }): JSX.Element => {
           deserialize(JSON.stringify(blank));
         }
       });
-
-      store
-        .get("editor")
-        .get("outlines")
-        .on((d) => setOutlinesVisible(d));
-
-      store
-        .get("editor")
-        .get("screen")
-        .on((d) => {
-          setScreenSize(d);
-        });
-
-      store
-        .get("editor")
-        .get("ruler")
-        .on((d) => setRulerVisible(d));
-
-      store
-        .get("editor")
-        .get("dark")
-        .on((d) => setDarkMode(d));
     }
   }, [router.asPath]);
 
@@ -112,7 +118,7 @@ export const Wrapper = ({ store, children }): JSX.Element => {
                     darkMode ? "rgba(0,0,0,.3)" : "rgba(255,255,255,.3)"
                   }
                   type="horizontal"
-                  ref={ruler}
+                  ref={rulerRef}
                 />
               </div>
             )}

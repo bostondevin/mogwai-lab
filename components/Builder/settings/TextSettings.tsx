@@ -10,6 +10,7 @@ import {
   tailwindFormConfig,
   inputClassName,
   TextTypes,
+  formClasses,
 } from "../../common.interface";
 
 export const TextSettings = () => {
@@ -36,7 +37,7 @@ export const TextSettings = () => {
           type: "select",
           items: TextTypes,
           label: "Text Type",
-          tight: true,
+
           className: outerClassName,
           labelClassName: labelClassName,
           inputClassName: inputClassName,
@@ -47,7 +48,7 @@ export const TextSettings = () => {
         meta: {
           type: "textarea",
           label: "Text",
-          tight: true,
+
           className: outerClassName,
           labelClassName: labelClassName,
         },
@@ -60,7 +61,7 @@ export const TextSettings = () => {
   );
 
   return (
-    <Form onSubmit={submitForm} className="grid grid-cols-3 gap-2 p-2">
+    <Form onSubmit={submitForm} className={formClasses}>
       <FormGenerator onMount={mountForm} fieldConfig={config} />
     </Form>
   );

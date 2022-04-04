@@ -32,14 +32,6 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
   const router = useRouter();
 
   useEffect(() => {
-    setPath(window.location.pathname);
-    store
-      .get("templates")
-      .get("web:components")
-      .once((d) => {
-        console.log(d);
-      });
-
     store
       .get("editor")
       .get("screen")
@@ -59,6 +51,16 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
       .get("editor")
       .get("ruler")
       .on((d) => setRulerVisible(d));
+  }, []);
+
+  useEffect(() => {
+    setPath(window.location.pathname);
+    store
+      .get("templates")
+      .get("web:components")
+      .once((d) => {
+        console.log(d);
+      });
   }, [router.asPath]);
 
   const doSave = () => {
@@ -85,6 +87,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
   };
 
   const toggleRuler = () => {
+    console.log(rulerVisible);
     store.get("editor").get("ruler").put(!rulerVisible);
   };
 
@@ -136,7 +139,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
             <button
               type="button"
               title="Close"
-              onClick={cancelEdit}
+              onClick={() => cancelEdit()}
               className={navItemClass}
             >
               <i className="fa-solid fa-times" />
@@ -191,8 +194,9 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
               type="button"
               title="Outlines"
               onClick={() => toggleOutlines()}
-              disabled={!outlinesVisible}
-              className={navItemClass}
+              className={
+                outlinesVisible ? navItemClass : "opacity-50 " + navItemClass
+              }
             >
               <i
                 className={
@@ -207,15 +211,12 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
             <button
               type="button"
               title="Ruler"
-              onClick={toggleRuler}
-              disabled={!rulerVisible}
-              className={navItemClass}
+              onClick={() => toggleRuler()}
+              className={
+                rulerVisible ? navItemClass : "opacity-50 " + navItemClass
+              }
             >
-              <i
-                className={
-                  "fa-solid fa-ruler" + (rulerVisible ? "" : " opacity-50")
-                }
-              />
+              <i className={"fa-solid fa-ruler"} />
             </button>
           </li>
 
@@ -223,7 +224,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
             <button
               type="button"
               title="Remove All"
-              onClick={clear}
+              onClick={() => clear()}
               className={navItemClass}
             >
               <i className="fa-solid fa-trash" />
@@ -261,7 +262,7 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
           <li className="flex gap-2">
             <button
               type="button"
-              onClick={saveChanges}
+              onClick={() => saveChanges}
               disabled={!canUndo}
               title={enabled ? "Save" : "Edit"}
               className={navItemClass}
@@ -284,8 +285,8 @@ export const EditPanel = ({ store, darkMode }): JSX.Element => {
         {activeTab === "data" && <DataPanel store={store} path={path} />}
       </div>
 
-      <div className="text-sm">
-        <h2 className="bg-slate-200 dark:bg-slate-800 py-2 px-2 text-xs uppercase select-none">
+      <div className="text-xs">
+        <h2 className="bg-slate-200 dark:bg-slate-800 py-2 px-2 uppercase select-none">
           <i className="fa-solid fa-layer-group mr-2" /> Layers
         </h2>
         <Layers renderLayer={Layer} expandRootOnLoad={true} />

@@ -11,6 +11,7 @@ import {
   inputClassName,
   TextTypes,
   tailwindSchema,
+  formClasses,
 } from "../../common.interface";
 
 import { icons } from "../../fa-solid";
@@ -39,10 +40,6 @@ export const IconSettings = () => {
           type: "select",
           items: icons,
           label: "Icon",
-          tight: true,
-          className: outerClassName,
-          labelClassName: labelClassName,
-          inputClassName: inputClassName,
         },
       },
 
@@ -52,10 +49,6 @@ export const IconSettings = () => {
           type: "select",
           items: tailwindSchema.fa,
           label: "Icon Style",
-          tight: true,
-          className: outerClassName,
-          labelClassName: labelClassName,
-          inputClassName: inputClassName,
         },
       },
 
@@ -65,7 +58,7 @@ export const IconSettings = () => {
         meta: {
           type: "textarea",
           label: "Aria label",
-          tight: true,
+          
           className: outerClassName,
           labelClassName: labelClassName,
         },
@@ -79,7 +72,7 @@ export const IconSettings = () => {
   );
 
   return (
-    <Form onSubmit={submitForm} className="grid grid-cols-3 gap-2 p-2">
+    <Form onSubmit={submitForm} className={formClasses}>
       <FormGenerator onMount={mountForm} fieldConfig={config} />
     </Form>
   );

@@ -41,7 +41,7 @@ export const DataPanel = ({ store, path }) => {
           meta: {
             type: "textarea",
             label: "Structure",
-            tight: true,
+
             rows: 5,
             className: "flex text-xs gap-1 w-full",
             labelClassName: "opacity-50 w-1/5",
@@ -69,7 +69,7 @@ export const DataPanel = ({ store, path }) => {
         type: "select",
         items: InputTypes,
         label: "Type",
-        tight: true,
+
         className: "flex text-xs gap-1 w-full",
         labelClassName: "opacity-50 w-1/5",
         inputClassName:
@@ -83,7 +83,7 @@ export const DataPanel = ({ store, path }) => {
         type: "text",
         items: InputTypes,
         label: "Value",
-        tight: true,
+
         className: "flex text-xs gap-1 w-full",
         labelClassName: "opacity-50 w-1/5",
         inputClassName:

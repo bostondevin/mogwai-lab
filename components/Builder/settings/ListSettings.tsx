@@ -10,6 +10,7 @@ import {
   tailwindFormConfig,
   ListTypes,
   inputClassName,
+  formClasses,
 } from "../../common.interface";
 
 export const ListSettings = () => {
@@ -36,10 +37,6 @@ export const ListSettings = () => {
           type: "select",
           items: ListTypes,
           label: "List Type",
-          tight: true,
-          className: outerClassName,
-          labelClassName: labelClassName,
-          inputClassName: inputClassName,
         },
       },
 
@@ -48,9 +45,6 @@ export const ListSettings = () => {
         meta: {
           type: "text",
           label: "Aria label",
-          tight: true,
-          className: outerClassName,
-          labelClassName: labelClassName,
         },
       },
     },
@@ -61,7 +55,7 @@ export const ListSettings = () => {
   );
 
   return (
-    <Form onSubmit={submitForm} className="grid grid-cols-3 gap-2 p-2">
+    <Form onSubmit={submitForm} className={formClasses}>
       <FormGenerator onMount={mountForm} fieldConfig={config} />
     </Form>
   );

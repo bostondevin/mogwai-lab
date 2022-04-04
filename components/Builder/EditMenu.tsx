@@ -61,6 +61,13 @@ export const EditMenu = ({ render }) => {
       }
 
       if (isActive) {
+        dom.classList.remove(
+          "outline-black/0",
+          "dark:outline-white/0",
+          "hover:outline-black/25",
+          "hover:dark:outline-white/25"
+        );
+
         dom.classList.add(
           "component-selected",
           "dark:outline-lime-500",

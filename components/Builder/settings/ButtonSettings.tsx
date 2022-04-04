@@ -11,6 +11,7 @@ import {
   ButtonTypes,
   inputClassName,
   tailwindClassForm,
+  formClasses,
 } from "../../common.interface";
 
 export const ButtonSettings = () => {
@@ -39,10 +40,6 @@ export const ButtonSettings = () => {
           type: "select",
           items: ButtonTypes,
           label: "Type",
-          tight: true,
-          className: outerClassName,
-          labelClassName: labelClassName,
-          inputClassName: inputClassName,
         },
       },
 
@@ -51,9 +48,6 @@ export const ButtonSettings = () => {
         meta: {
           type: "text",
           label: "Aria label",
-          tight: true,
-          className: outerClassName,
-          labelClassName: labelClassName,
         },
       },
     },
@@ -64,7 +58,7 @@ export const ButtonSettings = () => {
   );
 
   return (
-    <Form onSubmit={submitForm} className="grid grid-cols-3 gap-2 p-2">
+    <Form onSubmit={submitForm} className={formClasses}>
       <FormGenerator onMount={mountForm} fieldConfig={config} />
     </Form>
   );
