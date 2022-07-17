@@ -9,7 +9,7 @@ import { nanoid } from "nanoid";
 // http://localhost:8765/gun
 // https://mogwai.herokuapp.com/gun
 export const gunStore = Gun({
-  peers: ["https://mogwai.herokuapp.com/gun"],
+  peers: ["http://localhost:8765/gun"],
   uuid: () => {
     return nanoid(11);
   },

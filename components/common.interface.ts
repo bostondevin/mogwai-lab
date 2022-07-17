@@ -831,6 +831,7 @@ const setFormValue = (config, val, key, kParts) => {
 export const saveFormChanges = (value, setProp) => {
   {
     let newClasses = {};
+    console.log(value);
 
     Object.keys(value).forEach((key) => {
       if (key.indexOf("className:") !== 0) {
@@ -866,13 +867,14 @@ export const tailwindFormConfig = (customItems, o, propValue) => {
     controls: { ...customItems, ...tailwindClassForm },
   };
 
-  Object.keys(config.controls).forEach((d) => {
-    config.controls[d].render = o[config.controls[d].type];
+  Object.keys(config.controls).forEach((key) => {
+    config.controls[key].render = o[config.controls[key].type];
+    config.controls[key].formState = null;
   });
 
-  Object.keys(config.controls).forEach((key) => {
-    config.controls[key].formState = null;
+  console.log(config.controls);
 
+  Object.keys(config.controls).forEach((key) => {
     if (key in propValue && key.indexOf("className:") === -1) {
       config.controls[key].formState = propValue[key]; // ["", Validators.required],
     }

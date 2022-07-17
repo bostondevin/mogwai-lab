@@ -25,7 +25,10 @@ export const ContainerSettings = () => {
   const mountForm = (f) => {
     // console.log(tailwindClassForm);
 
-    f.valueChanges.subscribe((value) => saveFormChanges(value, setProp));
+    f.valueChanges.subscribe((value) => {
+      console.log(value);
+      saveFormChanges(value, setProp);
+    });
   };
 
   const submitForm = (e) => {

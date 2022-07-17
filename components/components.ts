@@ -99,7 +99,7 @@ export const baseComponents = [
 
   {
     title: "Form",
-    icon: "fa-solid fa-home",
+    icon: "fa-solid fa-input-pipe",
     element: {
       type: "Element",
       is: "Form",
@@ -138,6 +138,36 @@ export const baseComponents = [
   },
 
   {
+    title: "Phone Input",
+    icon: "fa-solid fa-phone",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "tel",
+        label: "Phone",
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
+      },
+    },
+  },
+
+  {
+    title: "Email Input",
+    icon: "fa-solid fa-at",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "email",
+        label: "Email",
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
+      },
+    },
+  },
+
+  {
     title: "Color Input",
     icon: "fa-solid fa-eye-dropper",
     element: {
@@ -145,11 +175,111 @@ export const baseComponents = [
       is: "Input",
       props: {
         type: "color",
-
         label: "Color",
-        className: outerClassName,
-        labelClassName: labelClassName,
-        inputClassName: inputClassName,
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
+      },
+    },
+  },
+
+  {
+    title: "Checkbox Input",
+    icon: "fa-solid fa-square-check",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "checkbox",
+        label: "Checkbox",
+        className: "outline-none",
+      },
+    },
+  },
+
+  {
+    title: "Radio Input",
+    icon: "fa-solid fa-circle-dot",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "radio",
+        label: "Radio",
+        className: "outline-none",
+      },
+    },
+  },
+
+  {
+    title: "Slider Input",
+    icon: "fa-solid fa-slider",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "range",
+        label: "Checkbox",
+        className: "outline-none",
+      },
+    },
+  },
+
+  {
+    title: "Date Input",
+    icon: "fa-solid fa-calendar-days",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "date",
+        label: "Date",
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
+      },
+    },
+  },
+
+  {
+    title: "Date/Time Input",
+    icon: "fa-solid fa-calendar-clock",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "datetime-local",
+        label: "Date & Time",
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
+      },
+    },
+  },
+
+  {
+    title: "Time Input",
+    icon: "fa-solid fa-clock",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "time",
+        label: "Time",
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
+      },
+    },
+  },
+
+  {
+    title: "Password Input",
+    icon: "fa-solid fa-key",
+    element: {
+      type: "Element",
+      is: "Input",
+      props: {
+        type: "password",
+        label: "Password",
+        className:
+          "w-full rounded py-1 px-2 text-sm bg-black/25 dark:bg-white/25 outline-none",
       },
     },
   },
